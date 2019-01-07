@@ -3,7 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seogwipean", "Seogwipean\Seogwipean.csproj", "{98BF6598-35FA-4658-A33C-FE39C8489860}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seogwipean.Web", "Seogwipean\Seogwipean.Web.csproj", "{98BF6598-35FA-4658-A33C-FE39C8489860}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9B7C5F59-F26B-47A4-81ED-0AB62B7014F3} = {9B7C5F59-F26B-47A4-81ED-0AB62B7014F3}
+		{91E29266-3D46-42B1-9FC9-CFB0C67362F3} = {91E29266-3D46-42B1-9FC9-CFB0C67362F3}
+		{941486EF-6151-41F2-AE02-8011236C3B22} = {941486EF-6151-41F2-AE02-8011236C3B22}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seogwipean.Data", "Seogwipean.Data\Seogwipean.Data.csproj", "{9B7C5F59-F26B-47A4-81ED-0AB62B7014F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91E29266-3D46-42B1-9FC9-CFB0C67362F3} = {91E29266-3D46-42B1-9FC9-CFB0C67362F3}
+		{941486EF-6151-41F2-AE02-8011236C3B22} = {941486EF-6151-41F2-AE02-8011236C3B22}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seogwipean.Model", "Seogwipean.Model\Seogwipean.Model.csproj", "{91E29266-3D46-42B1-9FC9-CFB0C67362F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{941486EF-6151-41F2-AE02-8011236C3B22} = {941486EF-6151-41F2-AE02-8011236C3B22}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seogwipean.Service", "Seogwipean.Service\Seogwipean.Service.csproj", "{F961964D-2081-4E43-B717-21CD6C826511}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9B7C5F59-F26B-47A4-81ED-0AB62B7014F3} = {9B7C5F59-F26B-47A4-81ED-0AB62B7014F3}
+		{91E29266-3D46-42B1-9FC9-CFB0C67362F3} = {91E29266-3D46-42B1-9FC9-CFB0C67362F3}
+		{941486EF-6151-41F2-AE02-8011236C3B22} = {941486EF-6151-41F2-AE02-8011236C3B22}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seogwipean.Util", "Seogwipean.Util\Seogwipean.Util.csproj", "{941486EF-6151-41F2-AE02-8011236C3B22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +40,22 @@ Global
 		{98BF6598-35FA-4658-A33C-FE39C8489860}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98BF6598-35FA-4658-A33C-FE39C8489860}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98BF6598-35FA-4658-A33C-FE39C8489860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B7C5F59-F26B-47A4-81ED-0AB62B7014F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7C5F59-F26B-47A4-81ED-0AB62B7014F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7C5F59-F26B-47A4-81ED-0AB62B7014F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7C5F59-F26B-47A4-81ED-0AB62B7014F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E29266-3D46-42B1-9FC9-CFB0C67362F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E29266-3D46-42B1-9FC9-CFB0C67362F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E29266-3D46-42B1-9FC9-CFB0C67362F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E29266-3D46-42B1-9FC9-CFB0C67362F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F961964D-2081-4E43-B717-21CD6C826511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F961964D-2081-4E43-B717-21CD6C826511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F961964D-2081-4E43-B717-21CD6C826511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F961964D-2081-4E43-B717-21CD6C826511}.Release|Any CPU.Build.0 = Release|Any CPU
+		{941486EF-6151-41F2-AE02-8011236C3B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{941486EF-6151-41F2-AE02-8011236C3B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{941486EF-6151-41F2-AE02-8011236C3B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{941486EF-6151-41F2-AE02-8011236C3B22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
