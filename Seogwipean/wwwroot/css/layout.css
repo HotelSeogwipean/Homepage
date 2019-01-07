@@ -1,0 +1,13 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+}
+body > .wrapper {
+    padding: 20px;
+    min-height: 100%;
+    margin: 0 auto -50px;
+}
+body > .footer,
+body > .wrapper > .push {
+    height: 50px;
+}

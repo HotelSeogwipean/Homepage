@@ -10,16 +10,110 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>@ViewData["Title"] - Hoon</title>
+    <link href="~/css/layout.css" rel="stylesheet" />
+    <link href="~/css/testtest.css" rel="stylesheet" />
     <link href="~/css/custom-alert.css" rel="stylesheet" />
     @RenderSection("Head", required: false)
 </head>
- 
+
 <body>
+    <header>
+        <div class="container">
+            <nav id="navigation">
+                <a href="#" class="logo"><img src="~/images/seogwipean.jpg" style="width: 125px;height: auto;" /></a>
+                <a aria-label="mobile menu" class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+                <ul class="menu-left">
+                    <li><a href="#about">서귀피안</a></li>
+                    <li><a href="#exp">객실</a></li>
+                    <li><a href="#skills">부대 시설</a></li>
+                    <li><a href="#projects">예약</a></li>
+                    <li><a href="#contact">커뮤니티</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     @RenderBody()
+    <section id="about">
+        <div class="container">
+        </div>
+    </section>
+
+    <p class="signature">Copyrightⓒ 2019. <a>Seogwipean</a>. All rights reserved.</p>
     <script src="~/lib/jquery-3.2.1.min.js"></script>
+    <script src="~/lib/jquery-ui.min.js"></script>
     <script src="~/lib/custom-alert.js"></script>
-    <script>
+    <script type="text/javascript">
+        // 알림창 변경
         new customAlert();
+
+        $('.logo').on('click', function (e) {
+            e.preventDefault();
+            $('.nav-toggle').removeClass('open');
+            $('.menu-left').removeClass('collapse');
+            $('html, body').animate({
+                scrollTop: 0
+            }, 750, 'easeInOutQuad')
+        });
+        $('a[href^="#"]').on('click', function (event) {
+
+            var $target = $(this.getAttribute('href'));
+
+            if ($target.length) {
+                event.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: $target.offset().top
+                }, 750, 'easeInOutQuad');
+            }
+        });
+
+        $('.nav-toggle').on('click', function () {
+            $(this).toggleClass('open');
+            $('.menu-left').toggleClass('collapse');
+        });
+        $('.menu-left a').on('click', function () {
+            $('.nav-toggle').removeClass('open');
+            $('.menu-left').removeClass('collapse');
+        });
+
+        var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('header').outerHeight();
+
+        $(window).scroll(function (event) {
+            didScroll = true;
+        });
+
+        setInterval(function () {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
+        function hasScrolled() {
+            var st = $(this).scrollTop();
+
+            if (Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            if (st > lastScrollTop && st > navbarHeight) {
+                // Scroll Down
+                $('header').removeClass('show-nav').addClass('hide-nav');
+                $('.nav-toggle').removeClass('open');
+                $('.menu-left').removeClass('collapse');
+            } else {
+                // Scroll Up
+                if (st + $(window).height() < $(document).height()) {
+                    $('header').removeClass('hide-nav').addClass('show-nav');
+                }
+            }
+            lastScrollTop = st;
+        }
     </script>
     @RenderSection("EndBody", required: false)
 </body>
