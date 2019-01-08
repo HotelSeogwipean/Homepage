@@ -1,3 +1,12 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿<div class="container">
+    <div style="padding-top: 10%; padding-left: 45%;">
+        <button id="nextLayout" style="border-radius: 4px; font: bold 700 verdana;">다음 레이아웃</button>
+    </div>
+</div>
+@section EndBody { 
+<script type="text/javascript">
+    $("#nextLayout").click(function () {
+        window.location.href = "/Home/Test";
+    });
+</script>
 }
