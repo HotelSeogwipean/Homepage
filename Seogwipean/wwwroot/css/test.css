@@ -37,17 +37,46 @@
     border-bottom: 1px solid gainsboro;
 }
 
+@font-face {
+    font-family: 'lighthouse_personal_useRg';
+    src: url('../fonts/lighthouse_personaluse-webfont.woff2') format('woff2'), url('../fonts/lighthouse_personaluse-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .logo {
     width: 50px;
-    font-size: 25px;
     color: #8f8f8f;
-    text-transform: uppercase;
     float: left;
     display: block;
-    margin-top: 0;
+    margin-top: -0.5%;
     line-height: 1;
-    margin-bottom: 10px;
+    margin-bottom: 35px;
 }
+
+@media screen and (min-width : 320px) {
+    .logo {
+        margin-top: -2.5%;
+    }
+}
+
+@media screen and (min-width : 1224px) {
+    .logo {
+        margin-top: -0.5%;
+    }
+}
+
+    .logo > span:first-child {
+        padding-left: 70%;
+        font-size: 15px;
+        font-family: RomanD;
+        text-transform: uppercase;
+    }
+
+    .logo > span:last-child {
+        font-size: 30px;
+        font-family: lighthouse_personal_useRg;
+    }
 
 @media only screen and (max-width: 766px) {
     .logo {
@@ -75,7 +104,7 @@ nav ul {
 
 @media only screen and (max-width: 766px) {
     nav ul {
-        padding-top: 10px;
+        padding-top: 0px;
         margin-bottom: 22px;
         float: left;
         text-align: center;
@@ -109,7 +138,7 @@ nav ul a {
     font-size: 20px;
     position: absolute;
     right: 22px;
-    top: 0;
+    top: 15%;
     width: 30px;
     -webkit-transition: all 200ms ease-in;
     -moz-transition: all 200ms ease-in;
@@ -146,7 +175,7 @@ nav ul a {
 body {
     color: #8f8f8f;
     background: white;
-    font-family: "Cardo", serif;
+    /*font-family: "Cardo", serif;*/
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
 }
@@ -174,30 +203,16 @@ p {
 
 .hero {
     position: relative;
-    background: url(http://www.philippefercha.com/cd/workspace.jpg) no-repeat center center fixed;
+    background: url(../images/main.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     text-align: center;
     color: #fff;
-    padding-top: 110px;
-    min-height: 500px;
-    letter-spacing: 2px;
-    font-family: "Montserrat", sans-serif;
+    padding-top: 450px;
+    min-height: 700px;
+    /*letter-spacing: 2px;*/
 }
-
-    .hero h1 {
-        font-size: 50px;
-        line-height: 1.3;
-    }
-
-        .hero h1 span {
-            font-size: 25px;
-            color: #e8f380;
-            border-bottom: 2px solid #e8f380;
-            padding-bottom: 12px;
-            line-height: 3;
-        }
 
 .mouse {
     display: block;
@@ -205,11 +220,11 @@ p {
     width: 26px;
     height: 46px;
     border-radius: 13px;
-    border: 2px solid #e8f380;
+    border: 2px solid #FFFFFF;
     position: absolute;
     bottom: 40px;
     position: absolute;
-    left: 50%;
+    left: 51%;
     margin-left: -26px;
 }
 
@@ -259,4 +274,52 @@ p {
         -ms-transform: translateY(20px);
         transform: translateY(20px);
     }
+}
+
+/* 메인 이미지 로고 텍스트 */
+.hero h1 {
+    line-height: 45px;
+}
+
+.logoHotel {
+    font-weight: 400;
+    font-family: RomanD;
+    text-transform: uppercase;
+}
+
+.logoSeogwipean {
+    font-weight: 200;
+    font-family: lighthouse_personal_useRg;
+    text-transform: none;
+}
+
+@media screen and (min-width : 320px){
+    .logoHotel {
+        font-size: 15px;
+    }
+    .logoSeogwipean {
+        font-size: 35px;
+    }
+}
+@media screen and (min-width : 480px){
+    .logoHotel {
+        font-size: 20px;
+    }
+    .logoSeogwipean {
+        font-size: 50px;
+    }
+}
+@media screen and (min-width : 1224px){
+    .logoHotel {
+        font-size: 25px;
+    }
+    .logoSeogwipean {
+        font-size: 65px;
+    }
+}
+/* 메인 이미지 로고 텍스트 */
+
+.content p {
+    white-space: pre-line;
+    word-break: keep-all;
 }
