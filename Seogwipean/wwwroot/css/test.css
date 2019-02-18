@@ -39,7 +39,7 @@
 
 @font-face {
     font-family: 'lighthouse_personal_useRg';
-    src: url('../fonts/lighthouse_personaluse-webfont.woff2') format('woff2'), url('../fonts/lighthouse_personaluse-webfont.woff') format('woff');
+    src: url('../fonts/lighthousepersonaluse-webfont.woff2') format('woff2'), url('../fonts/lighthousepersonaluse-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -59,7 +59,11 @@
         margin-top: -2.5%;
     }
 }
-
+@media screen and (min-width : 750px) {
+    .logo {
+        margin-top: -0.5%;
+    }
+}
 @media screen and (min-width : 1224px) {
     .logo {
         margin-top: -0.5%;
