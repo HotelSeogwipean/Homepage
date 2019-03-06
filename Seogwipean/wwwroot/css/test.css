@@ -19,16 +19,31 @@
     .main_h {
         padding-top: 25px;
     }
-}
 
-.open-nav {
-    max-height: 400px !important;
-}
-
-    .open-nav .mobile-toggle {
-        transform: rotate(-90deg);
-        -webkit-transform: rotate(-90deg);
+    .open-nav {
+        max-height: 400px !important;
     }
+
+    .booking {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    nav ul li a{
+        display: none;
+    }
+}
+@media only screen and (min-width: 771px) {
+    nav ul li a {
+        display: block;
+    }
+}
+
+.open-nav .mobile-toggle {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+}
 
 .sticky {
     background-color: rgba(255, 255, 255, 0.93);
@@ -46,12 +61,15 @@
 
 .logo {
     width: 50px;
-    color: #8f8f8f;
+    /*color: #8f8f8f;*/
+    color: #212121;
     float: left;
     display: block;
     margin-top: -0.5%;
     line-height: 1;
     margin-bottom: 35px;
+    position: absolute;
+    left: -30% !important;
 }
 
 @media screen and (min-width : 320px) {
@@ -59,28 +77,30 @@
         margin-top: -2.5%;
     }
 }
+
 @media screen and (min-width : 750px) {
     .logo {
         margin-top: -0.5%;
     }
 }
+
 @media screen and (min-width : 1224px) {
     .logo {
         margin-top: -0.5%;
     }
 }
 
-    .logo > span:first-child {
-        padding-left: 70%;
-        font-size: 15px;
-        font-family: RomanD;
-        text-transform: uppercase;
-    }
+.logo > span:first-child {
+    margin-left: 70%;
+    font-size: 15px;
+    font-family: RomanD;
+    text-transform: uppercase;
+}
 
-    .logo > span:last-child {
-        font-size: 30px;
-        font-family: lighthouse_personal_useRg;
-    }
+.logo > span:last-child {
+    font-size: 30px;
+    font-family: lighthouse_personal_useRg;
+}
 
 @media only screen and (max-width: 766px) {
     .logo {
@@ -90,7 +110,7 @@
 
 nav {
     float: right;
-    width: 60%;
+    width: 100%;
 }
 
 @media only screen and (max-width: 766px) {
@@ -104,6 +124,7 @@ nav ul {
     overflow: hidden;
     text-align: right;
     float: right;
+    padding-right: 25%;
 }
 
 @media only screen and (max-width: 766px) {
@@ -131,10 +152,47 @@ nav ul li {
 }
 
 nav ul a {
-    color: #888888;
+    color: #212121;
     text-transform: uppercase;
     font-size: 12px;
 }
+
+@media only screen and (min-width: 90%) {
+    .booking{
+        display: block;
+    }
+}
+
+.booking {
+    width: 100%;
+    position: absolute;
+}
+
+    .booking > a:hover {
+        color: #19445f;
+        font-weight: 800;
+        background-color: #fac2c3;
+    }
+
+    .booking > a {
+        width: 140px;
+        cursor: pointer;
+        position: absolute;
+        margin-left: 90%;
+        right: 10px;
+        display: inline-block;
+        padding: 0 40px;
+        height: 40px;
+        border-radius: 0 0 3px 3px;
+        background-color: #19445f;
+        font-size: 15px;
+        line-height: 40px;
+        color: #fff;
+        -webkit-transition: background-color 0.05s ease-in-out;
+        -moz-transition: background-color 0.05s ease-in-out;
+        -o-transition: background-color 0.05s ease-in-out;
+        transition: background-color 0.05s ease-in-out;
+    }
 
 .mobile-toggle {
     display: none;
@@ -205,9 +263,14 @@ p {
     padding: 50px 2% 250px;
 }
 
+section.container {
+    width: 100%;
+    height: 100%;
+}
+
 .hero {
     position: relative;
-    background: url(../images/main.jpg) no-repeat center center fixed;
+    /*background: url(../images/main.jpg) no-repeat center center fixed;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -215,6 +278,8 @@ p {
     color: #fff;
     padding-top: 450px;
     min-height: 700px;
+    width: 100%;
+    height: 100%;
     /*letter-spacing: 2px;*/
 }
 
@@ -297,26 +362,31 @@ p {
     text-transform: none;
 }
 
-@media screen and (min-width : 320px){
+@media screen and (min-width : 320px) {
     .logoHotel {
         font-size: 15px;
     }
+
     .logoSeogwipean {
         font-size: 35px;
     }
 }
-@media screen and (min-width : 480px){
+
+@media screen and (min-width : 480px) {
     .logoHotel {
         font-size: 20px;
     }
+
     .logoSeogwipean {
         font-size: 50px;
     }
 }
-@media screen and (min-width : 1224px){
+
+@media screen and (min-width : 1224px) {
     .logoHotel {
         font-size: 25px;
     }
+
     .logoSeogwipean {
         font-size: 65px;
     }

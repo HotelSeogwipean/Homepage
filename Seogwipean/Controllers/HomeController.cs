@@ -14,7 +14,13 @@ namespace Seogwipean.Controllers
         {
             return View();
         }
-        
+
+        [Route("/naver476d95bb846c01665a5a758ec213c6fb.html")]
+        public IActionResult NaverVerification()
+        {
+            return View("naver476d95bb846c01665a5a758ec213c6fb");
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

@@ -9,15 +9,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hotel Seogwipean">
+    <meta name="description" content="호텔 서귀피안에 오신 것을 환영합니다.">
+    <meta property="og:description" content="호텔 서귀피안에 오신 것을 환영합니다.">
+    <meta property="og:image" content="http://hotelseogwipean.com/logo.jpg">
+    <meta property="og:url" content="http://hotelseogwipean.com/">
     <title>Hotel Seogwipean</title>
-    <link href="~/css/layout.css" rel="stylesheet" type="text/css"/>
+    <link href="~/css/layout.css" rel="stylesheet" type="text/css" />
     <link href='~/css/test.css' rel='stylesheet' type='text/css'>
     <link href="~/css/custom-alert.css" rel="stylesheet" />
     @RenderSection("Head", required: false)
 </head>
 
 <body>
-    <header class="main_h">
+    <header class="main_h sticky">
         <div class="row">
             <a class="logo" href="#"><span>Hotel</span><br /><span>Seogwipean</span></a>
             <div class="mobile-toggle">
@@ -27,13 +33,16 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href=".sec01">Menu 01</a></li>
-                    <li><a href=".sec02">Menu 02</a></li>
-                    <li><a href=".sec03">Menu 03</a></li>
-                    <li><a href=".sec04">Menu 04</a></li>
+                    <li><a href=".sec01">Rooms ＆ Suits</a></li>
+                    <li><a href=".sec02">Offers</a></li>
+                    <li><a href=".sec03">Location</a></li>
+                    <li><a href=".sec04">The Hotel</a></li>
                 </ul>
             </nav>
         </div> <!-- / row -->
+        <div class="booking">
+            <a>예약하기</a>
+        </div>
     </header>
     @RenderBody()
     <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</p>
@@ -44,18 +53,22 @@
     <script type="text/javascript">
         // 알림창 변경
         new customAlert();
+        /*
         $(window).scroll(function () {
-            if ($(window).scrollTop() > 100) {
+            if ($(window).scrollTop() > 0) {
                 $('.main_h').addClass('sticky');
             } else {
                 $('.main_h').removeClass('sticky');
             }
         });
+        */
         $('.mobile-toggle').click(function () {
             if ($('.main_h').hasClass('open-nav')) {
                 $('.main_h').removeClass('open-nav');
+                $('nav ul li a').css('display', 'none');
             } else {
                 $('.main_h').addClass('open-nav');
+                $('nav ul li a').css('display', 'block');
             }
         });
         $('.main_h li a').click(function () {

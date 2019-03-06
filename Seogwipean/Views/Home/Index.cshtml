@@ -1,15 +1,24 @@
-﻿
-<div class="hero">
-    <h1>
-        <span class="logoHotel">Hotel</span><br />
-        <span class="logoSeogwipean">Seogwipean</span>
-    </h1>
-    <div class="mouse">
-        <span></span>
-    </div>
-</div>
+﻿@section Head{
+    <link href="~/css/fullclip.css" rel='stylesheet' type='text/css'>
+}
 
-<!------------------------ 메인 ------------------------>
+<section class="container">
+    <div class="hero">
+        <div class="fullBackground"></div>
+        <!-- 명칭 제거시 h2 제거-->
+        <h2 class="caption">
+            <span class="logoHotel">Hotel</span><br />
+            <span class="logoSeogwipean">Seogwipean</span>
+        </h2>
+        <!-- 명칭 제거시 h2 제거-->
+        <div class="mouse">
+            <span></span>
+        </div>
+    </div>
+</section>
+
+<!-------------------------- 메인 --------------------------->
+
 <div class="row content" style="text-align: center;">
     <h1 class="sec01">호텔 서귀피안에 방문해주셔서 감사합니다.</h1>
     <p>
@@ -19,3 +28,15 @@
         쫄리면 뒈지시던가~
     </p>
 </div>
+<!------------------------ 메인 종료 ------------------------>
+
+@section EndBody{
+    <script src="~/lib/fullclip.min.js" type="text/javascript"></script>
+    <script>
+        $('.fullBackground').fullClip({
+            images: ['/images/main.jpg', '/images/2.jpg', '/images/3.jpg'],
+            transitionTime: 2000,
+            wait: 3000
+        });
+    </script>
+}

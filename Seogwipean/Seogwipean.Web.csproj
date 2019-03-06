@@ -27,4 +27,8 @@
     <ProjectReference Include="..\Seogwipean.Service\Seogwipean.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\etc\" />
+  </ItemGroup>
+
 </Project>
