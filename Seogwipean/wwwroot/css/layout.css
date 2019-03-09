@@ -3,20 +3,16 @@
     margin: 0;
 }
 body > .wrapper {
-    padding: 20px;
     min-height: 100%;
-    margin: 0 auto -50px;
+    margin: 0 auto -30px;
 }
 body > .footer,
 body > .wrapper > .push {
-    height: 50px;
 }
+
 .signature {
-    /*position: fixed;*/
     font-weight: 100;
-    bottom: 10px;
     color: #000;
-    left: 0;
     letter-spacing: 4px;
     font-size: 10px;
     width: 100vw;

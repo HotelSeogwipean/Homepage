@@ -1,5 +1,8 @@
-﻿.main_h {
-    position: fixed;
+﻿*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.main_h {
     top: 0px;
     max-height: 70px;
     z-index: 999;
@@ -14,6 +17,14 @@
     padding-bottom: 6px;
     font-family: "Montserrat", sans-serif;
 }
+
+#customalert button {
+    cursor: pointer;
+}
+
+    #customalert button:hover {
+        font-weight: 600;
+    }
 
 @media only screen and (max-width: 766px) {
     .main_h {
@@ -30,10 +41,11 @@
 }
 
 @media only screen and (max-width: 770px) {
-    nav ul li a{
+    nav ul li a {
         display: none;
     }
 }
+
 @media only screen and (min-width: 771px) {
     nav ul li a {
         display: block;
@@ -47,7 +59,7 @@
 
 .sticky {
     background-color: rgba(255, 255, 255, 0.93);
-    opacity: 1;
+    opacity: 0.8;
     top: 0px;
     border-bottom: 1px solid gainsboro;
 }
@@ -127,6 +139,21 @@ nav ul {
     padding-right: 25%;
 }
 
+    nav ul li a:hover {
+        border-bottom: 1px solid black;
+    }
+
+.main-intro {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    min-height: 405px;
+    max-height: 600px;
+    border: 2px solid #e8f380;
+    /*background: url(https://dcgqfo29cbqjp.cloudfront.net/_img/bg-main-intro.jpg) center center no-repeat;*/
+    background-size: cover;
+}
+
 @media only screen and (max-width: 766px) {
     nav ul {
         padding-top: 0px;
@@ -158,7 +185,7 @@ nav ul a {
 }
 
 @media only screen and (min-width: 90%) {
-    .booking{
+    .booking {
         display: block;
     }
 }
@@ -238,6 +265,7 @@ body {
     color: #8f8f8f;
     background: white;
     /*font-family: "Cardo", serif;*/
+    background: #eeeeee url(https://dcgqfo29cbqjp.cloudfront.net/_img/pattern-white.jpg) 0 0 repeat;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
 }
@@ -265,7 +293,6 @@ p {
 
 section.container {
     width: 100%;
-    height: 100%;
 }
 
 .hero {
@@ -276,7 +303,7 @@ section.container {
     background-size: cover;
     text-align: center;
     color: #fff;
-    padding-top: 450px;
+    /*padding-top: 450px;*/
     min-height: 700px;
     width: 100%;
     height: 100%;
@@ -396,4 +423,107 @@ section.container {
 .content p {
     white-space: pre-line;
     word-break: keep-all;
+}
+
+@media only screen and (min-width: 1025px) {
+    .main-intro h1 {
+        padding-right: 50px;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .footer-cta-column, .main-intro .column {
+        width: 50%;
+    }
+}
+
+.main-intro .column {
+    width: 100%;
+    float: left;
+    padding: 60px 0 75px 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+    .main-intro .column * {
+        margin-left: 15%;
+    }
+
+.main-intro h1 {
+    font-size: 41px;
+    line-height: 1;
+    color: #fefefe;
+    text-transform: uppercase;
+    float: left;
+    margin-bottom: 15px;
+    font: normal 35px/1 "Montserrat", sans-serif;
+    color: #19445f;
+}
+
+.p-wrap {
+    clear: both;
+}
+
+.main-intro p {
+    color: #c8c6c6;
+    margin: 0 0 10px 0;
+}
+
+.main-intro a.btn-alt {
+    border-color: #fac2c3;
+    background-color: transparent;
+}
+
+.main-intro a.btn, .main-intro .btn {
+    display: inline-block;
+    float: left;
+    clear: both;
+    margin-top: 20px;
+    border: 3px solid #19445f;
+    border-radius: 3px;
+    padding: 14px 40px;
+    font-family: 'Fjalla One', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1;
+    color: #fff;
+    background-color: #19445f;
+    -webkit-transition: all 0.05s ease-in-out;
+    -moz-transition: all 0.05s ease-in-out;
+    -o-transition: all 0.05s ease-in-out;
+    transition: all 0.05s ease-in-out;
+    border: 2px solid white;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    outline: none;
+    cursor: pointer;
+    outline-width: 0px;
+    zoom: 1;
+}
+
+.topBanner {
+    width: 100%;
+    margin-bottom: 75px;
+}
+
+.banner h1 {
+    font-size: 37px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.roomDescription {
+    padding: 5px;
+    border: 1px solid #8f8f8f;
 }

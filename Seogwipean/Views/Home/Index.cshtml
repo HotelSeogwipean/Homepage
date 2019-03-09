@@ -18,6 +18,36 @@
 </section>
 
 <!-------------------------- 메인 --------------------------->
+<section id="main" class="main">
+
+    <div class="main-intro">
+        <div class="wrapper">
+            <article class="column">
+                <h1>Hôtel des Faubourgs</h1>
+                <div class="p-wrap">
+                    <p>Dressing the corner of rue du Faubourg Montmartre and rue Geoffroy Marie, the Panache is living in Paris.Here bubbling day and night, crossroads of trends and multiple destinations.Not far from the Grands Boulevards, where auctions of Drouot, theaters everywhere.Yet it is in the heart of the French capital.</p>
+                </div>
+                <a href="/AroundView" class="btn btn-alt" novaref="3479971" novatype="txt">
+                    Rooms &amp; Suites
+                </a>
+            </article>
+        </div>
+    </div>
+
+    <div class="main-secondary">
+        <div class="symbol-left" style="opacity: 1; background-position: 139px -114px; z-index: 0;" data-parallaxify-background-range="80"></div>
+        <div class="symbol-right" style="opacity: 1; background-position: 79px -54px; z-index: 0;" data-parallaxify-background-range="80"></div>
+        <div class="wrapper">
+            <span class="subtitle">Plan Your Visit</span>
+            <h2>
+                <span>Book now &amp; get our best </span>
+                <span>best rate guaranteed</span>
+            </h2>
+            <a href="#" class="btn">Special Offers</a>
+        </div>
+    </div>
+
+</section>
 
 <div class="row content" style="text-align: center;">
     <h1 class="sec01">호텔 서귀피안에 방문해주셔서 감사합니다.</h1>
@@ -32,9 +62,15 @@
 
 @section EndBody{
     <script src="~/lib/fullclip.min.js" type="text/javascript"></script>
-    <script>
+    <script type="text/javascript">
+        // 사진 사이즈 재조정
+        var $height = screen.height - 220;
+        $(window).on('load', function () {
+            $("section.container").css("height", $height);
+        });
+
         $('.fullBackground').fullClip({
-            images: ['/images/main.jpg', '/images/2.jpg', '/images/3.jpg'],
+            images: ['/images/1.jpg', '/images/2.jpg', '/images/3.jpg'],
             transitionTime: 2000,
             wait: 3000
         });

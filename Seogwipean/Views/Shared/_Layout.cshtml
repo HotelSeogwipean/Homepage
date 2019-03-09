@@ -25,7 +25,7 @@
 <body>
     <header class="main_h sticky">
         <div class="row">
-            <a class="logo" href="#"><span>Hotel</span><br /><span>Seogwipean</span></a>
+            <a class="logo" href="/"><span>Hotel</span><br /><span>Seogwipean</span></a>
             <div class="mobile-toggle">
                 <span></span>
                 <span></span>
@@ -44,24 +44,19 @@
             <a>예약하기</a>
         </div>
     </header>
-    @RenderBody()
-    <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</p>
-
+    <section class="wrapper">
+            @RenderBody()
+    </section>
+    <footer class="footer">
+        <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</p>
+    </footer>
     <script src="~/lib/jquery-3.2.1.min.js"></script>
     <script src="~/lib/jquery-ui.min.js"></script>
     <script src="~/lib/custom-alert.js"></script>
     <script type="text/javascript">
         // 알림창 변경
         new customAlert();
-        /*
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > 0) {
-                $('.main_h').addClass('sticky');
-            } else {
-                $('.main_h').removeClass('sticky');
-            }
-        });
-        */
+
         $('.mobile-toggle').click(function () {
             if ($('.main_h').hasClass('open-nav')) {
                 $('.main_h').removeClass('open-nav');
@@ -86,6 +81,7 @@
             }, 500);
             event.preventDefault();
         });
+
     </script>
     @RenderSection("EndBody", required: false)
 </body>
