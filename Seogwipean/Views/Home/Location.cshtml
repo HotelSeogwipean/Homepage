@@ -7,27 +7,67 @@
 
 <div id="map" style="width:100%;height:400px;"></div>
 
-<script>
-    var iconImage = '/images/mapLogo.png';
+@section EndBody{
 
-    var mapOptions =
-    {
-        center: new naver.maps.LatLng(33.244577, 126.590453),
-        zoom: 10
-    };
+    <script>
 
-    var map = new naver.maps.Map('map', mapOptions);
+        var zoomSize = 12;
+        var marker = null;
+        var iconImage = '/images/mapLogo.png';
 
-    var marker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(33.244577, 126.590453),
-        icon: {
-            url: iconImage,
-            size: new naver.maps.Size(50, 52),
-            origin: new naver.maps.Point(0, 0),
-            anchor: new naver.maps.Point(0, 0)
-        },
-        map: map
-    });
+        var mapOptions =
+        {
+            center: new naver.maps.LatLng(33.244914, 126.590505),
+            zoom: zoomSize
+        };
+        var map = new naver.maps.Map('map', mapOptions);
 
+        var fixedMarker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(33.244672, 126.590510),
+            map: map
+        });
 
-</script>
+        function fnMarkerUpdate() {
+            if (zoomSize > 11) {
+                marker = new naver.maps.Marker({
+                    position: new naver.maps.LatLng(33.244914, 126.590505),
+                    icon: {
+                        url: iconImage,
+                        scaledSize: new naver.maps.Size(100, 28)
+                    },
+                    animation: naver.maps.Animation.DROP,
+                    map: map
+                });
+            }
+            else {
+                marker = new naver.maps.Marker({
+                    position: new naver.maps.LatLng(33.244914, 126.590505),
+                    icon: {
+                        url: iconImage,
+                        scaledSize: new naver.maps.Size(50, 14)
+                    },
+                    map: map
+                });
+            }
+        }
+
+        function showMarker() {
+            if (marker.setMap()) return;
+            marker.setMap(map);
+        }
+
+        function hideMarker() {
+            if (!marker.setMap()) return;
+            marker.setMap(null);
+        }
+
+        fnMarkerUpdate();
+        naver.maps.Event.addListener(map, 'zoom_changed', function (i) {
+            zoomSize = i;
+            hideMarker();
+            if(zoomSize > 10)
+                fnMarkerUpdate();
+        });
+
+    </script>
+}
