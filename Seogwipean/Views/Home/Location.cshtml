@@ -8,10 +8,26 @@
 <div id="map" style="width:100%;height:400px;"></div>
 
 <script>
+    var iconImage = document.URL + '/images/logo.jpg';
+
     var mapOptions =
     {
         center: new naver.maps.LatLng(33.244577, 126.590453),
         zoom: 10
     };
+
     var map = new naver.maps.Map('map', mapOptions);
+
+    var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(33.244577, 126.590453),
+        icon: {
+            url: iconImage,
+            size: new naver.maps.Size(50, 52),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(25, 26)
+        },
+        map: map
+    });
+
+
 </script>
