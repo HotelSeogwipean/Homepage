@@ -41,6 +41,24 @@ namespace Seogwipean.Controllers
             return View();
         }
 
+        [Route("/Hotel")]
+        public IActionResult Hotel()
+        {
+            return View();
+        }
+
+        [Route("/location")]
+        public IActionResult Location()
+        {
+            return View();
+        }
+
+        [Route("/offers")]
+        public IActionResult Offers()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
