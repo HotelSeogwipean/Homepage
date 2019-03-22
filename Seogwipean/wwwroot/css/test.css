@@ -504,3 +504,8 @@ a {
     padding: 5px;
     border: 1px solid #8f8f8f;
 }
+
+.mainContents{
+    width: 1280px;
+    height: auto;
+}
