@@ -28,13 +28,12 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <title>Hotel Seogwipean</title>
     <link href="~/css/layout.css" rel="stylesheet" type="text/css" />
-    <link href='~/css/test.css' rel='stylesheet' type='text/css'>
+    <link href='~/css/seogwipean.css' rel='stylesheet' type='text/css'>
     <link href="~/css/custom-alert.css" rel="stylesheet" />
     @RenderSection("Head", required: false)
 </head>
@@ -50,10 +49,10 @@
             </div>
             <nav>
                 <ul>
+                    <li><a href="/hotel">The Hotel</a></li>
                     <li><a href="/room">Rooms ＆ Suits</a></li>
                     <li><a href="/offers">Offers</a></li>
                     <li><a href="/location">Location</a></li>
-                    <li><a href="/hotel">The Hotel</a></li> 
                 </ul>
             </nav>
         </div> <!-- / row -->
@@ -64,18 +63,16 @@
     <section class="wrapper">
             @RenderBody()
     </section>
-
     <footer class="footer">
         <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</p>
     </footer>
-
     <script src="~/lib/jquery-3.2.1.min.js"></script>
     <script src="~/lib/jquery-ui.min.js"></script>
     <script src="~/lib/custom-alert.js"></script>
+
     <script type="text/javascript">
         // 알림창 변경
         new customAlert();
-
         $('.mobile-toggle').click(function () {
             if ($('.main_h').hasClass('open-nav')) {
                 $('.main_h').removeClass('open-nav');

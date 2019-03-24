@@ -1,15 +1,212 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@section Head{
+    <link href="~/css/room.css" rel="stylesheet" />
+    <link href="~/css/roomdetail.css" rel="stylesheet" />
+}
+
 <article class="topBanner">
     <div class="banner">
-        <img alt="image" src="~/images/banner.jpg" style="width: 100%; opacity: 0.1;">
+        <img alt="image" src="~/images/banner.jpg">
         <div class="wrapper">
             <h1>ROOMS &amp; SUITES</h1>
         </div>
     </div>
 </article>
 
-<article class="roomDescription">
+<div class="wrapper roomWrapper">
+    <article class="post post-repeat">
+        <div class="inner">
+            <div class="post-img">
+                <a class="rooms-gallery" href="#" title="Standard Queen">
+                    <img alt="Standard Queen" src="https://dcgqfo29cbqjp.cloudfront.net/_novaimg/3484651-1090141_36_0_1416_1067_650_490.jpg" width="650" height="490">
+                    <div class="img-hover"></div>
+                </a>
+            </div>
+            <div class="post-content">
+                <h2>
+                    <span>Standard Queen</span>
+                </h2>
+                <ul class="room-basic-info">
+                    <li>기준 인원 2인</li>
+                    <li>최대 정원 2인</li>
+                    <li>퀸 사이즈 침대 1개</li>
+                </ul>
+                <a href="javascript:void(0)" class="read-more showoncmsload">
+                    <span class="show-more">상세 정보</span>
+                    <span class="show-less">줄이기</span>
+                </a>
+                @*<a href="#" target="_blank" class="btn absolute booklink">예약하기</a>*@
+                <div class="more-content hideonload showoncmsload" style="display: none;">
+                    <div class="p-wrap">
+                        <p>추가 정보 설명</p>
+                    </div>
+                    <ul class="alt-list">
+                        <li>13.5 m²</li>
+                        <li>금연 객실</li>
+                        <li>천장형 에어컨</li>
+                        <li>43' LED 벽걸이 TV</li>
+                        <li>Mini bar</li>
+                        <li>헤어드라이기</li>
+                        <li>소형 금고</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="post post-repeat">
+        <div class="inner">
+            <div class="post-img">
+                <a class="rooms-gallery" href="#" title="Standard Tween">
+                    <img alt="Standard Tween" src="https://dcgqfo29cbqjp.cloudfront.net/_novaimg/3484651-1090141_36_0_1416_1067_650_490.jpg" width="650" height="490">
+                    <div class="img-hover"></div>
+                </a>
+            </div>
+            <div class="post-content">
+                <h2>
+                    <span>Standard Tween</span>
+                </h2>
+                <ul class="room-basic-info">
+                    <li>기준 인원 2인</li>
+                    <li>최대 정원 2인</li>
+                    <li>퀸 사이즈 침대 1개</li>
+                </ul>
+                <a href="javascript:void(0)" class="read-more showoncmsload">
+                    <span class="show-more">상세 정보</span>
+                    <span class="show-less">줄이기</span>
+                </a>
+                @*<a href="#" target="_blank" class="btn absolute booklink">예약하기</a>*@
+                <div class="more-content hideonload showoncmsload" style="display: none;">
+                    <div class="p-wrap">
+                        <p>추가 정보 설명</p>
+                    </div>
+                    <ul class="alt-list">
+                        <li>13.5 m²</li>
+                        <li>금연 객실</li>
+                        <li>천장형 에어컨</li>
+                        <li>43' LED 벽걸이 TV</li>
+                        <li>Mini bar</li>
+                        <li>헤어드라이기</li>
+                        <li>소형 금고</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="post post-repeat">
+        <div class="inner">
+            <div class="post-img">
+                <a class="rooms-gallery" href="#" title="Deluxe Queen">
+                    <img alt="Deluxe Queen" src="https://dcgqfo29cbqjp.cloudfront.net/_novaimg/3484651-1090141_36_0_1416_1067_650_490.jpg" width="650" height="490">
+                    <div class="img-hover"></div>
+                </a>
+            </div>
+            <div class="post-content">
+                <h2>
+                    <span>Deluxe Queen</span>
+                </h2>
+                <ul class="room-basic-info">
+                    <li>기준 인원 2인</li>
+                    <li>최대 정원 2인</li>
+                    <li>퀸 사이즈 침대 1개</li>
+                </ul>
+                <a href="javascript:void(0)" class="read-more showoncmsload">
+                    <span class="show-more">상세 정보</span>
+                    <span class="show-less">줄이기</span>
+                </a>
+                @*<a href="#" target="_blank" class="btn absolute booklink">예약하기</a>*@
+                <div class="more-content hideonload showoncmsload" style="display: none;">
+                    <div class="p-wrap">
+                        <p>추가 정보 설명</p>
+                    </div>
+                    <ul class="alt-list">
+                        <li>13.5 m²</li>
+                        <li>금연 객실</li>
+                        <li>천장형 에어컨</li>
+                        <li>43' LED 벽걸이 TV</li>
+                        <li>Mini bar</li>
+                        <li>헤어드라이기</li>
+                        <li>소형 금고</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
 
-</article>
+@section EndBody{
+    <div class="room-detail detailCarousel">
+        <div class="exitBtn">
+            <a href="#" class="close"></a>
+        </div>
+        <div class="intro">
+            <h1 class="intro__title">스탠다드 퀸</h1>
+            <p class="intro__body">추가 삽입 내용</p>
+        </div>
+
+        <div class="carousel">
+            <input type="checkbox" class="faux-ui-facia">
+            <div class="slide" slide="5" annot=".">
+                <img src="~/images/1.jpg" alt="Slide 5">
+            </div>
+            <input type="checkbox" class="faux-ui-facia">
+            <div class="slide" slide="4" annot=".">
+                <img src="~/images/2.jpg" alt="Slide 4">
+            </div>
+            <input type="checkbox" class="faux-ui-facia">
+            <div class="slide" slide="3" annot=".">
+                <img src="~/images/3.jpg" alt="Slide 3">
+            </div>
+            <input type="checkbox" class="faux-ui-facia">
+            <div class="slide" slide="2" annot=".">
+                <img src="~/images/main.jpg" alt="Slide 2">
+            </div>
+            <input type="checkbox" class="faux-ui-facia">
+            <div class="slide" slide="1" annot="">
+                <img src="~/images/logo.png" alt="Slide 1">
+            </div>
+            <div class="counter" count="5"> / 5</div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(".show-more").click(function () {
+            $(".show-less").show(); $(this).hide();
+            $(this).parents(".post-repeat").find(".more-content").slideDown();
+        });
+        $(".show-less").click(function () {
+            $(".show-more").show(); $(this).hide();
+            $(this).parents(".post-repeat").find(".more-content").slideUp();
+        });
+
+        $(".post img").click(function (e) {
+            e.preventDefault();
+        });
+
+        function openDetail() {
+            var url = '/room/detail';
+            var option = 'width=800, height=800, top=100, scrollbars, resizeable, toolbar = no';
+            var win = window.open(url, "_blank", option);
+        }
+
+        function toggleDetail() {
+            if ($("section.wrapper").css("display") === "none") {
+                $("section.wrapper, header, footer").show();
+                $(".room-detail").hide();
+                return;
+            }
+            $("section.wrapper, header, footer").hide();
+            $(".room-detail").show();
+        }
+
+        $(".rooms-gallery, .exitBtn").click(function (e) {
+            var parents = $(this).parents(".post-repeat");
+            toggleDetail();
+        });
+
+
+    </script>
+}

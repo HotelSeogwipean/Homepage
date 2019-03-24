@@ -487,25 +487,19 @@ a {
     zoom: 1;
 }
 
-.topBanner {
-    width: 100%;
-    margin-bottom: 75px;
-}
-
-.banner h1 {
-    font-size: 37px;
-    line-height: 1;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 0;
-}
-
 .roomDescription {
     padding: 5px;
     border: 1px solid #8f8f8f;
 }
 
-.mainContents{
-    width: 1280px;
-    height: auto;
+.mainContents {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 25px;
+    position: relative;
+    overflow: visible;
+}
+
+.mainContents > div{
+    background-color: black;
 }

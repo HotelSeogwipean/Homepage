@@ -16,5 +16,10 @@ namespace Seogwipean.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult Detail()
+        {
+            return View();
+        }
     }
 }
