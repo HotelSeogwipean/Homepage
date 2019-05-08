@@ -1,0 +1,83 @@
+﻿html, body {
+    height: 98%;
+    margin: 0;
+}
+
+    body > .wrapper {
+        min-height: 90%;
+        margin: 0 auto 0;
+    }
+
+        body > .footer,
+        body > .wrapper > .push {
+            position: relative;
+        }
+
+.signature {
+    font-weight: 100;
+    color: #000;
+    letter-spacing: 4px;
+    font-size: 10px;
+    width: 100vw;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.wrapper {
+    position: relative;
+    text-align: center;
+    margin: 0px;
+    margin-top: 10px;
+    height: 100%;
+}
+
+    .wrapper > div {
+        width: 100%;
+        position: fixed;
+        text-align: center;
+    }
+
+@media only screen and (min-width: 319px) {
+    .wrapper > div {
+        margin-top: 65%;
+    }
+}
+
+@media only screen and (min-width: 424px) {
+    .wrapper > div {
+        margin-top: 70%;
+    }
+}
+
+@media only screen and (min-width: 767px) {
+    .wrapper > div {
+        margin-top: 35%;
+    }
+}
+
+@media only screen and (min-width: 1023px) {
+    .wrapper > div {
+        margin-top: 30%;
+    }
+}
+
+@media only screen and (min-width: 1439px) {
+    .wrapper > div {
+        margin-top: 17%;
+    }
+}
+
+
+.responsive {
+    margin: 0px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0px auto;
+}

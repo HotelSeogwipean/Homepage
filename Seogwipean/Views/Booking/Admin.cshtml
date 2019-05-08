@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>시숙 예약 목록</title>
+    <link href="~/css/admintable.css" rel="stylesheet"/>
+</head>
+<body>
+    <table class="adminTable">
+        <colgroup>
+            <col style="width: 30px;" />
+            <col style="width: 40px;" />
+            <col style="width: 30px;" />
+            <col style="width: 30px;" />
+            <col style="width: 5px;" />
+            <col style="width: 10px;" />
+            <col style="width: 20px;" />
+            <col style="width: 100px; height: auto;" />
+            <col style="width: 20px;" />
+            <col style="width: 10px;" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>예약자명</th>
+                <th>연락처</th>
+                <th>체크인</th>
+                <th>체크아웃</th>
+                <th>투숙 기간</th>
+                <th>투숙인원수</th>
+                <th>요청 객실 타입</th>
+                <th>요청사항</th>
+                <th>추천인</th>
+                <th>신청일자</th>
+            </tr>
+        </thead>
+        <tbody id="append">
+        </tbody>
+    </table>
+    <template id="listTemplate">
+        <td class="name">cell1_10</td>
+        <td class="phone">cell2_10</td>
+        <td class="startDate">cell4_10</td>
+        <td class="endDate">cell5_10</td>
+        <td class="days"></td>
+        <td class="headCount">cell6_10</td>
+        <td class="roomType">cell7_10</td>
+        <td class="request">cell8_10</td>
+        <td class="recommender">cell3_10</td>
+        <td class="createDate">cell9_10</td>
+    </template>
+
+    <script src="~/lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: '/booking/admin',
+            type: 'POST',
+            dataType: 'JSON',
+            data: null,
+            success: function (data) {
+                
+                $(data).each(function (i) {
+                    var __data = data.data[i];
+                    var listTemplate = "<tr>" + $("#listTemplate").html().trim() + "</tr>";
+                    var listTemplateClone = $(listTemplate);
+                    var days = Number(__data.endDate.slice(8, 10)) - Number(__data.startDate.slice(8, 10));
+                    listTemplateClone.find(".name").html(__data.userName);
+                    listTemplateClone.find(".phone").html(__data.phone);
+                    listTemplateClone.find(".recommender").html(__data.recommender);
+                    listTemplateClone.find(".days").html(days + "일");
+                    listTemplateClone.find(".startDate").html(__data.startDate.slice(0, 10));
+                    listTemplateClone.find(".endDate").html(__data.endDate.slice(0, 10));
+                    listTemplateClone.find(".headCount").html(__data.headCount);
+                    listTemplateClone.find(".roomType").html(__data.roomType);
+                    listTemplateClone.find(".request").html(__data.request);
+                    listTemplateClone.find(".createDate").html(__data.createDate.slice(0, 10));
+                    $("#append").append(listTemplateClone);
+                });
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    </script>
+
+</body>
+</html>

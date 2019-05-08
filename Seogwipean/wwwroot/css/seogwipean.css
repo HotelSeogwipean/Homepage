@@ -76,7 +76,7 @@
 
 .logo {
     width: 160px;
-    color: #212121;
+    color: #212121 !important;
     float: left;
     display: block;
     margin-top: -0.5%;

@@ -1,0 +1,212 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hotel Seogwipean">
+    <meta name="description" content="호텔 서귀피안에 오신 것을 환영합니다.">
+    <meta property="og:description" content="호텔 서귀피안에 오신 것을 환영합니다.">
+    <meta property="og:image" content="http://hotelseogwipean.com/logo.png">
+    <meta property="og:url" content="http://hotelseogwipean.com/">
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>Hotel Seogwipean</title>
+    <link href="~/css/custom-alert.css" rel="stylesheet" />
+    <link href="~/css/booking.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div style="margin-top: 50px;">
+        <img src="~/images/logo.png" />
+    </div>
+    <form action="">
+        <!--  General -->
+        <div class="form-group">
+            <h2 class="heading">Booking & contact</h2>
+            <div class="controls">
+                <input type="text" id="name" class="floatLabel" name="name">
+                <label for="name">예약자 성함</label>
+            </div>
+            <div class="controls">
+                <input type="text" id="email" class="floatLabel" name="email">
+                <label for="email">이메일</label>
+            </div>
+            <div class="controls">
+                <input type="tel" id="phone" class="floatLabel" name="phone" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+                <label for="phone">연락처</label>
+            </div>
+            <div class="controls">
+                <input type="text" id="recommender" class="floatLabel" name="recommender">
+                <label for="country">추천인</label>
+            </div>
+        </div>
+        <!--  Details -->
+        <div class="form-group">
+            <h2 class="heading">Details</h2>
+            <div class="grid">
+                <div class="col-1-3 col-1-3-sm">
+                    <div class="controls">
+                        <input type="date" id="startDate" class="floatLabel" name="startDate" min="2019-05-15" max="2019-05-31" value="<?php echo date('Y-m-d'); ?>">
+                        <label for="arrive" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Check-In</label>
+                    </div>
+                </div>
+                <div class="col-1-3 col-1-3-sm">
+                    <div class="controls">
+                        <input type="date" id="endDate" class="floatLabel" name="endDate" min="2019-05-15" max="2019-05-31" value="<?php echo date('Y-m-d'); ?>" />
+                        <label for="depart" class="label-date"><i class="fa fa-calendar"></i>Check-Out</label>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-1-3 col-1-3-sm">
+                    <div class="controls">
+                        <i class="fa fa-sort"></i>
+                        <select class="floatLabel">
+                            <option value="blank"></option>
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;투숙 인원수</label>
+                    </div>
+                </div>
+                <div class="col-1-3 col-1-3-sm">
+                    <div class="controls">
+                        <i class="fa fa-sort"></i>
+                        <select class="floatLabel">
+                            <option value="랜덤">랜덤</option>
+                            <option value="스탠다드">스탠다드</option>
+                            <option value="스탠다드 트윈">스탠다드 트윈</option>
+                            <option value="슈페리어">슈페리어</option>
+                            <option value="디럭스">디럭스</option>
+                            <option value="온돌">온돌</option>
+                        </select>
+                        <label for="fruit">객실 타입</label>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <p class="info-text">요청 사항에 대해 기입해주세요.</p>
+                <br>
+                <div class="controls">
+                    <textarea name="comments" class="floatLabel" id="comments"></textarea>
+                    <label for="comments">Comments</label>
+                </div>
+            </div>
+        </div> <!-- /.form-group -->
+
+        <div style="margin: 0 auto; text-align:center; display: inline-block;">
+            <button type="button" id="submit" style="width: 500px; border-radius: 3px;">시숙 예약하기</button>
+        </div>
+    </form>
+
+    <footer class="footer">
+        <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</p>
+    </footer>
+
+    <script src="~/lib/jquery-3.2.1.min.js"></script>
+    <script src="~/lib/jquery-ui.min.js"></script>
+    <script src="~/lib/custom-alert.js"></script>
+    <script type="text/javascript">
+        new customAlert();
+        
+        $(function () {
+            var today = Number(new Date().toISOString().slice(8, 10));
+            if (today < 15)
+                document.getElementById('startDate').value = "2019-05-15";
+            else
+                (document.getElementById('startDate').value = new Date().toISOString().slice(0, 8)) + today.toString();
+        });
+
+        (function ($) {
+            function floatLabel(inputType) {
+                $(inputType).each(function () {
+                    var $this = $(this);
+                    $this.focus(function () {
+                        $this.next().addClass("active");
+                    });
+                    $this.blur(function () {
+                        if ($this.val() === '' || $this.val() === 'blank') {
+                            $this.next().removeClass();
+                        }
+                    });
+                });
+            }
+            floatLabel(".floatLabel");
+        })(jQuery);
+        
+        $("#submit").click(function () {
+            var _validation = false;
+            var userName = $("#name").val().trim();
+            var email = $("#email").val().trim();
+            var phone = $("#phone").val().trim();
+            var recommender = $("#recommender").val().trim();
+            var headCount = $("select:eq(0)").val().trim();
+            var roomType = $("select:eq(1)").val().trim();
+            var request = $("#request").val().trim();
+            if (userName.trim() == null || userName.trim() == "") {
+                alert("예약자 성함을 입력해주세요."); $("#name").focus();
+            } else if (email.trim() == null || email.trim() == "") {
+                alert("이메일을 입력해주세요."); $("#email").focus();
+            } else if (phone.trim() == null || phone.trim() == "") {
+                alert("연락처를 입력해주세요."); $("#phone").focus();
+            } else if (recommender.trim() == null || recommender.trim() == "") {
+                alert("추천인을 입력해주세요."); $("#recommender").focus();
+            } else if ($("#endDate").val() == "") {
+                alert("퇴실일을 선택해주세요."); $("#endDate").focus();
+            } else {
+                _validation = true;
+            }
+
+            if (_validation) {
+                phone = phone.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3");
+                var _vm = new Object();
+                _vm.UserName = userName;
+                _vm.Email = email;
+                _vm.Phone = phone;
+                _vm.Recommender = recommender;
+                _vm.HeadCount = headCount;
+                _vm.RoomType = roomType;
+                _vm.Request = request;
+                _vm.StartDate = $("#startDate").val().trim();
+                _vm.EndDate = $("#endDate").val().trim();
+                $.ajax({
+                    url: '/booking/add',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: _vm,
+                    success: function (data) {
+                        alert("시숙 예약이 완료되었습니다.");
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+            return;
+        });
+
+    </script>
+
+</body>
+</html>

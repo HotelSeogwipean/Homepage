@@ -3,7 +3,7 @@ using Seogwipean.Data.Models;
 
 namespace Seogwipean.Data
 {
-    public class SeogwipeanDbContext : HotelSeogwipeanDbContext
+    public class SeogwipeanDbContext : Seogwipean.Data.Models.SeogwipeanDbContext
     {
         private readonly string connectionString;
 

@@ -5,7 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Seogwipean.Data;
+using Seogwipean.Data.Repositories;
+using Seogwipean.Data.Repositories.Interface;
 using Seogwipean.Service;
+using Seogwipean.Service.Booking;
+using Seogwipean.Service.Interface;
 
 namespace Seogwipean
 {
@@ -32,8 +36,16 @@ namespace Seogwipean
         {
             services.AddMvc();
             services.AddScoped<IViewRenderService, ViewRenderService>();
+
             services.AddSingleton<HotelSeogwipeanDbContextFactory>();
+
+            services.AddSingleton<IBookingRepository, BookingRepository>();
+
+            services.AddSingleton<IBookingService, BookingService>();
+
             services.AddSingleton<IConfiguration>(Configuration);
+
+
             services.AddMvc().AddSessionStateTempDataProvider();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>

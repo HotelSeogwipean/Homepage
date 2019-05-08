@@ -12,7 +12,7 @@
 }
 
 .post-repeat:nth-of-type(1) {
-    padding-top: 0;
+    padding-top: 20px;
     background: none;
 }
 
@@ -113,20 +113,19 @@
 
 @media only screen and (min-width: 1025px) {
     .content, .post-content {
-        width: 60%;
+        width: 40%;
     }
 }
 
-@media only screen and (min-width: 680px) {
-    .post-content {
-        width: 50%;
-        float: right;
+@media only screen and (min-width: 1280px) {
+    .content, .post-content {
+        width: 45%;
     }
 }
 
-.post-content {
+/*.post-content {
     padding-top: 40px;
-}
+}*/
 
 .room-basic-info {
     width: 100%;
@@ -176,10 +175,6 @@ a.read-more {
     font-size: 14px;
     color: #19445f !important;
     text-transform: none;
-}
-
-a:link, a:visited, a:active {
-    color: #19445f;
 }
 
 a.read-more {
@@ -309,4 +304,17 @@ a.btn, .btn {
 .topBanner .wrapper {
     border-top: 1px solid #d0d0d0;
     width: 100%;
+}
+
+.roomTitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    color: #000000;
+    font-size: 28px;
+}
+
+.room-basic-info > li,
+.alt-list {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 24px;
 }
