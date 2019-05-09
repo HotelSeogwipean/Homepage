@@ -84,11 +84,6 @@ namespace Seogwipean.Data.Repositories
                         };
                     }
 
-                    var check = db.Booking.AsNoTracking().FirstOrDefault(b => b.UserName == userName);
-                    if(check != null)
-                    {
-                        throw new SeogwipeanException("이미 예약이 존재합니다.");
-                    }
                     if (string.IsNullOrWhiteSpace(userName))
                     {
                         throw new SeogwipeanException("예약자명이 존재하지 않습니다.");
