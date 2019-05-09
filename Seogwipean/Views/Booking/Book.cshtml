@@ -33,9 +33,15 @@
     <title>Hotel Seogwipean</title>
     <link href="~/css/custom-alert.css" rel="stylesheet" />
     <link href="~/css/booking.css" rel="stylesheet" />
+
 </head>
 <body>
-
+    <div id="loaderBox" >
+        <div class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>
+    </div>
     <div style="margin-top: 50px;">
         <img src="~/images/logo.png" />
     </div>
@@ -67,7 +73,7 @@
                 <div class="col-1-3 col-1-3-sm">
                     <div class="controls">
                         <input type="date" id="startDate" class="floatLabel" name="startDate" min="2019-05-15" max="2019-05-31" value="<?php echo date('Y-m-d'); ?>">
-                        <label for="arrive" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Check-In</label>
+                        <label for="arrive" class="label-date"><i class="fa fa-calendar"></i>Check-In</label>
                     </div>
                 </div>
                 <div class="col-1-3 col-1-3-sm">
@@ -87,7 +93,7 @@
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
-                        <label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;투숙 인원수</label>
+                        <label for="fruit"><i class="fa fa-male"></i>투숙 인원수</label>
                     </div>
                 </div>
                 <div class="col-1-3 col-1-3-sm">
@@ -116,7 +122,8 @@
         </div> <!-- /.form-group -->
 
         <div style="margin: 0 auto; text-align:center; display: inline-block;">
-            <button type="button" id="submit" style="width: 500px; border-radius: 3px;">시숙 예약하기</button>
+            <button type="button" id="checkBook" style="width: 100px; border-radius: 3px; margin-left: 10px;">예약확인</button>
+            <button type="button" id="submit" style="width: 400px; border-radius: 3px;">시숙 예약하기</button>
         </div>
     </form>
 
@@ -129,7 +136,7 @@
     <script src="~/lib/custom-alert.js"></script>
     <script type="text/javascript">
         new customAlert();
-        
+
         $(function () {
             var today = Number(new Date().toISOString().slice(8, 10));
             if (today < 15)
@@ -154,7 +161,7 @@
             }
             floatLabel(".floatLabel");
         })(jQuery);
-        
+
         $("#submit").click(function () {
             var _validation = false;
             var userName = $("#name").val().trim();
@@ -163,14 +170,14 @@
             var recommender = $("#recommender").val().trim();
             var headCount = $("select:eq(0)").val().trim();
             var roomType = $("select:eq(1)").val().trim();
-            var request = $("#request").val().trim();
-            if (userName.trim() == null || userName.trim() == "") {
+            var request = $("#comments").val();
+            if (userName == null || userName == "") {
                 alert("예약자 성함을 입력해주세요."); $("#name").focus();
-            } else if (email.trim() == null || email.trim() == "") {
+            } else if (email == null || email == "") {
                 alert("이메일을 입력해주세요."); $("#email").focus();
-            } else if (phone.trim() == null || phone.trim() == "") {
+            } else if (phone == null || phone == "") {
                 alert("연락처를 입력해주세요."); $("#phone").focus();
-            } else if (recommender.trim() == null || recommender.trim() == "") {
+            } else if (recommender == null || recommender == "") {
                 alert("추천인을 입력해주세요."); $("#recommender").focus();
             } else if ($("#endDate").val() == "") {
                 alert("퇴실일을 선택해주세요."); $("#endDate").focus();
@@ -179,6 +186,7 @@
             }
 
             if (_validation) {
+                $("#loaderBox").show();
                 phone = phone.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3");
                 var _vm = new Object();
                 _vm.UserName = userName;
@@ -196,14 +204,24 @@
                     dataType: 'JSON',
                     data: _vm,
                     success: function (data) {
-                        alert("시숙 예약이 완료되었습니다.");
+                        setTimeout(function () {
+                            alert("시숙 예약이 완료되었습니다.", function () {
+                                window.location.href = "/";
+                            });
+                            $("#loaderBox").hide();
+                        }, 2000);
                     },
                     error: function (data) {
                         console.log(data);
+                        $("#loaderBox").hide();
                     }
                 });
             }
             return;
+        });
+
+        $("#checkBook").click(function () {
+            alert("준비중입니다.");
         });
 
     </script>

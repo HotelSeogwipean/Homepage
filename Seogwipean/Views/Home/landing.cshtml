@@ -33,6 +33,7 @@
     <link href="~/css/landing.css" rel="stylesheet" />
 </head>
 <body>
+
     <div class="wrapper">
         <div>
             <img src="~/images/comingsoon.jpg" alt="오픈 예정중입니다." class="responsive" align="middle" />
@@ -42,7 +43,6 @@
 
     <script src="~/lib/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
-
         $(document).ready(function () {
             $(document).bind('keydown', function (e) {
                 if (e.keyCode == 123) {
@@ -57,11 +57,14 @@
             var _height = screen.height - 30;
             document.body.style.width = $width + "px";
             document.querySelector(".wrapper > div").style.height = _height + "px";
+        };
+
+        window.onclick = function () {
             $(".wrapper").fadeOut(1500);
             setTimeout(function () {
                 window.location.href = "/booking/book";
             }, 1500);
-        }
+        };
     </script>
 </body>
 </html>

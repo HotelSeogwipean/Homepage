@@ -63,8 +63,8 @@
             dataType: 'JSON',
             data: null,
             success: function (data) {
-                
-                $(data).each(function (i) {
+                console.log(data);
+                $(data.data).each(function (i) {
                     var __data = data.data[i];
                     var listTemplate = "<tr>" + $("#listTemplate").html().trim() + "</tr>";
                     var listTemplateClone = $(listTemplate);
