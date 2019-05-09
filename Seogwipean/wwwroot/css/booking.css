@@ -210,6 +210,10 @@ button {
     float: right;
 }
 
+#checkBook {
+    background-color: #6F6F6F;
+}
+
     button:hover {
         background-color: #224c60;
     }
