@@ -53,6 +53,12 @@ namespace Seogwipean.Web.Controllers
             });
         }
 
+        public IActionResult GetBooking(BookingViewModel vm)
+        {
+            var find = _bookingService.GetBooking(vm);
+            return Json(find);
+        }
+
         [HttpPost("/booking/add")]
         public IActionResult AddBooking(BookingViewModel vm)
         {

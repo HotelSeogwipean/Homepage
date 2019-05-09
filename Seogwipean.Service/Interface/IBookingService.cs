@@ -8,7 +8,7 @@ namespace Seogwipean.Service.Interface
 {
     public interface IBookingService
     {
-        LongResult<BookingViewModel> GetBooking(BookingViewModel vm);
+        LongResult<IList<BookingViewModel>> GetBooking(BookingViewModel vm);
         LongResult AddBooking(BookingViewModel vm);
         LongResult<IList<Data.Models.Booking>> GetBookingList();
     }

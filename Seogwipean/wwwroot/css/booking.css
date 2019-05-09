@@ -80,6 +80,8 @@ a {
 
 header, form {
     padding: 4em 10%;
+    width: 70%;
+    margin-left: 15%;
 }
 
 .form-group {
@@ -366,3 +368,100 @@ body > .wrapper > .push {
 [type=button] {
     font-family: 'Nanum Gothic', sans-serif;
 }
+
+.pop-layer .pop-container {
+    padding: 20px 25px;
+}
+
+.pop-layer p.ctxt {
+    color: #666;
+    line-height: 25px;
+}
+
+.pop-layer .btn-r {
+    width: 100%;
+    margin: 10px 0 20px;
+    padding-top: 10px;
+    border-top: 1px solid #DDD;
+    text-align: right;
+}
+
+.pop-layer {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 410px;
+    height: auto;
+    background-color: #fff;
+    border: 2px solid #10620A;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.dim-layer {
+    display: none;
+    position: fixed;
+    _position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+    .dim-layer .dimBg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: .5;
+        filter: alpha(opacity=50);
+    }
+
+    .dim-layer .pop-layer {
+        display: block;
+    }
+
+.pop-layer .btn-r a{
+    cursor: pointer;
+    background-color: #1b3d4d;
+    border: none;
+    color: #fff;
+    padding: 12px 0;
+    float: right;
+    width: 50px;
+    height: 35px;
+    border-radius: 3px;
+    margin-left: 10px;
+    text-align: center;
+    font-size: 8px;
+}
+
+.pop-layer .addText{
+    font-size: 11px;
+}
+
+a.btn-layerClose:hover {
+    background-color: #1f326a;
+    color: #fff;
+}
+
+.pop-header {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Jeju Gothic', sans-serif;
+}
+
+#pop1{
+    /*display: none;*/
+}
+
+    #pop1 h2.heading {
+        font-size: 13px;
+        color: #10620A;
+        border-bottom: 1px solid #10620A;
+    }

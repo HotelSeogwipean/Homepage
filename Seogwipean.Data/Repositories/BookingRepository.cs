@@ -134,52 +134,59 @@ namespace Seogwipean.Data.Repositories
             }
         }
 
-        public LongResult<BookingViewModel> GetBooking(BookingViewModel vm)
+        public LongResult<IList<BookingViewModel>> GetBooking(BookingViewModel vm)
         {
             try
             {
                 using (var db = _dbContextFactory.Create())
                 {
-                    long bookingId = vm.BookingId;
                     string userName = vm.UserName;
-                    int headCount = vm.HeadCount;
-                    string request = vm.Request;
-                    DateTime startDate = vm.StartDate;
-                    DateTime? endDate = vm.EndDate;
-                    DateTime? createDate = vm.CreateDate;
-                    if(vm == null)
+                    string phone = vm.Phone;
+
+                    if (vm == null)
                     {
-                        return new LongResult<BookingViewModel>
+                        return new LongResult<IList<BookingViewModel>>
                         {
                             Result = Common.Fail,
                             Reason = "데이터가 존재하지 않습니다."
                         };
                     }
-                    
+
+                    var _booking = from _b in db.Booking.AsNoTracking()
+                                   select new BookingViewModel
+                                   {
+                                       BookingId = _b.BookingId,
+                                       Phone = _b.Phone,
+                                       CreateDate = _b.CreateDate,
+                                       Email = _b.Email,
+                                       EndDate = _b.EndDate,
+                                       HeadCount = _b.HeadCount,
+                                       Recommender = _b.Recommender,
+                                       Request = _b.Request,
+                                       RoomType = _b.RoomType,
+                                       StartDate = _b.StartDate,
+                                       UserName = _b.UserName
+                                   };
+                    var find = new List<BookingViewModel>();
+
                     if (!string.IsNullOrWhiteSpace(userName))
                     {
-                        throw new SeogwipeanException("예약자명이 존재하지 않습니다.");
+                        find = _booking.Where(_b => _b.UserName == userName || _b.UserName.Contains(userName)).ToList();
+                    }
+                    if (!string.IsNullOrWhiteSpace(phone))
+                    {
+                        find = _booking.Where(_b => _b.Phone == phone || _b.Phone.Contains(phone)).ToList();
                     }
 
-                    var booking = db.Booking.FirstOrDefault(b => b.UserName.Contains(userName));
-                    if(booking == null)
+                    if(find.Count() < 1)
                     {
                         throw new SeogwipeanException("존재하지 않는 예약자 정보 입니다.");
                     }
 
-                    return new LongResult<BookingViewModel>
+                    return new LongResult<IList<BookingViewModel>>
                     {
                         Result = Common.Success,
-                        Data = new BookingViewModel
-                        {
-                            BookingId = booking.BookingId,
-                            UserName = booking.UserName,
-                            HeadCount = booking.HeadCount,
-                            Request = booking.Request,
-                            StartDate = booking.StartDate,
-                            EndDate = booking.EndDate,
-                            CreateDate = booking.CreateDate
-                        }
+                        Data = find
                     };
                 }
             }
@@ -188,13 +195,13 @@ namespace Seogwipean.Data.Repositories
                 _logger.LogError(e.ToString());
                 if (e is SeogwipeanException)
                 {
-                    return new LongResult<BookingViewModel>
+                    return new LongResult<IList<BookingViewModel>>
                     {
                         Result = Common.Fail,
                         Reason = e.Message
                     };
                 }
-                return new LongResult<BookingViewModel>
+                return new LongResult<IList<BookingViewModel>>
                 {
                     Result = Common.Exception,
                     Reason = null

@@ -20,7 +20,7 @@ namespace Seogwipean.Service.Booking
             _logger = loggerFactory.CreateLogger<BookingService>();
         }
 
-        public LongResult<BookingViewModel> GetBooking(BookingViewModel vm)
+        public LongResult<IList<BookingViewModel>> GetBooking(BookingViewModel vm)
         {
             return _bookingRepository.GetBooking(vm);
         }
