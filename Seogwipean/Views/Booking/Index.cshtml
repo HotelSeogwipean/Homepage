@@ -43,15 +43,6 @@
     <script src="~/lib/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
 
-        $(document).ready(function () {
-            $(document).bind('keydown', function (e) {
-                if (e.keyCode == 123) {
-                    e.preventDefault();
-                    e.returnValue = false;
-                }
-            });
-        });
-
         window.onload = function () {
             var $width = screen.width;
             var _height = screen.height - 30;
@@ -62,6 +53,16 @@
                 window.location.href = "/booking/book";
             }, 1500);
         }
+
+        $(document).ready(function () {
+            $(document).bind('keydown', function (e) {
+                if (e.keyCode == 123) {
+                    e.preventDefault();
+                    e.returnValue = false;
+                }
+            });
+        });
+
     </script>
 </body>
 </html>

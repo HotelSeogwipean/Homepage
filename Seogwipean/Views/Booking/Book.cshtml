@@ -31,9 +31,9 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <title>Hotel Seogwipean</title>
+    <link href="~/css/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/css/custom-alert.css" rel="stylesheet" />
     <link href="~/css/booking.css" rel="stylesheet" />
-
 </head>
 <body>
     <div id="loaderBox">
@@ -76,10 +76,6 @@
                     </div>
                     <span id="foundHeadCount"></span>
                     <div class="form-group">
-                        <h2 class="heading">희망 객실</h2>
-                    </div>
-                    <span id="foundRoomType"></span>
-                    <div class="form-group">
                         <h2 class="heading">요청사항</h2>
                     </div>
                     <span id="foundRequest"></span>
@@ -104,7 +100,7 @@
                             <input type="tel" id="findPhone" class="floatLabel" name="findPhone" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
                             <label for="findPhone">연락처</label>
                         </div>
-                        <span class="addText">예약하실때 기입한 예약자 정보와 동일하게 입력해주세요.</span>
+                        <span class="addText">※ 예약하실때 기입한 예약자 정보와 동일하게 입력해주세요.</span>
                     </p>
                     <div class="btn-r">
                         <a href="#" class="btn-layerClose">닫기</a>
@@ -147,49 +143,33 @@
             <div class="grid">
                 <div class="col-1-2 col-1-2-sm">
                     <div class="controls">
-                        <input type="date" id="startDate" class="floatLabel" name="startDate" min="2019-05-15" max="2019-05-31" value="<?php echo date('Y-m-d'); ?>">
-                        <label for="arrive" class="label-date"><i class="fa fa-calendar"></i>Check-In</label>
+                        <input type="text" id="startDate" class="floatLabel" name="startDate" readonly>
+                        <label for="startDate">Check-In</label>
                     </div>
                 </div>
                 <div class="col-1-2 col-1-2-sm">
                     <div class="controls">
-                        <input type="date" id="endDate" class="floatLabel" name="endDate" min="2019-05-15" max="2019-05-31" value="<?php echo date('Y-m-d'); ?>" />
-                        <label for="depart" class="label-date"><i class="fa fa-calendar"></i>Check-Out</label>
+                        <input type="text" id="endDate" class="floatLabel" name="endDate" readonly />
+                        <label for="endDate">Check-Out</label>
                     </div>
                 </div>
             </div>
             <div class="grid">
-                <div class="col-1-2 col-1-2-sm">
-                    <div class="controls">
-                        <i class="fa fa-sort"></i>
-                        <select class="floatLabel">
-                            <option value="1" selected>1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                        <label for="fruit"><i class="fa fa-male"></i>투숙 인원수</label>
-                    </div>
-                </div>
-                <div class="col-1-2 col-1-2-sm">
-                    <div class="controls">
-                        <i class="fa fa-sort"></i>
-                        <select class="floatLabel">
-                            <option value="랜덤">랜덤</option>
-                            <option value="스탠다드">스탠다드</option>
-                            <option value="스탠다드 트윈">스탠다드 트윈</option>
-                            <option value="슈페리어">슈페리어</option>
-                            <option value="디럭스">디럭스</option>
-                            <option value="온돌">온돌</option>
-                        </select>
-                        <label for="fruit">객실 타입</label>
-                    </div>
+                <div class="controls">
+                    <i class="fa fa-sort"></i>
+                    <select class="floatLabel">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <label for="fruit"><i class="fa fa-male"></i>투숙 인원수</label>
                 </div>
             </div>
             <div class="grid">
@@ -207,7 +187,7 @@
             <button type="button" id="submit" style="width: 70%; border-radius: 3px; margin-right: 1%;">시숙 예약하기</button>
         </div>
     </form>
-   
+
     <footer class="footer">
         <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</p>
     </footer>
@@ -219,11 +199,27 @@
         new customAlert();
 
         $(function () {
+            $("#startDate").datepicker();
+            $("#endDate").datepicker();
+
             var today = Number(new Date().toISOString().slice(8, 10));
             if (today < 15)
                 document.getElementById('startDate').value = "2019-05-15";
             else
                 (document.getElementById('startDate').value = new Date().toISOString().slice(0, 8)) + today.toString();
+        });
+
+        $.datepicker.setDefaults({
+            dateFormat: 'yy-mm-dd',
+            prevText: '이전 달',
+            nextText: '다음 달',
+            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            showMonthAfterYear: true,
+            yearSuffix: '년'
         });
 
         (function ($) {
@@ -250,7 +246,6 @@
             var phone = $("#phone").val().trim();
             var recommender = $("#recommender").val().trim();
             var headCount = $("select:eq(0)").val().trim();
-            var roomType = $("select:eq(1)").val().trim();
             var request = $("#comments").val();
             if (userName == null || userName == "") {
                 alert("예약자 성함을 입력해주세요."); $("#name").focus();
@@ -281,7 +276,6 @@
                 _vm.Phone = phone;
                 _vm.Recommender = recommender;
                 _vm.HeadCount = headCount;
-                _vm.RoomType = roomType;
                 _vm.Request = request;
                 _vm.StartDate = $("#startDate").val().trim();
                 _vm.EndDate = $("#endDate").val().trim();
@@ -370,7 +364,6 @@
                     $("#foundCheckOut").html(_data.endDate.slice(0, 10));
                     $("#foundDay").html(dayText);
                     $("#foundHeadCount").html(_data.headCount + "명");
-                    $("#foundRoomType").html(_data.roomType);
                     $("#foundRequest").html(_data.request);
                 },
                 error: function (data) {

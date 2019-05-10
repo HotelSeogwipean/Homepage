@@ -40,7 +40,7 @@
         text-align: center;
     }
 
-@media only screen and (min-width: 319px) {
+@media only screen and (min-width: 0px) {
     .wrapper > div {
         margin-top: 65%;
     }
@@ -48,25 +48,25 @@
 
 @media only screen and (min-width: 424px) {
     .wrapper > div {
-        margin-top: 70%;
+        margin-top: 35%;
     }
 }
 
 @media only screen and (min-width: 767px) {
     .wrapper > div {
-        margin-top: 35%;
+        margin-top: 20%;
     }
 }
 
 @media only screen and (min-width: 1023px) {
     .wrapper > div {
-        margin-top: 30%;
+        margin-top: 20%;
     }
 }
 
 @media only screen and (min-width: 1439px) {
     .wrapper > div {
-        margin-top: 17%;
+        margin-top: 10%;
     }
 }
 
