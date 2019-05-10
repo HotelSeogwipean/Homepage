@@ -25,6 +25,40 @@ namespace Seogwipean.Data.Repositories
 
         #region #########################
 
+        public LongResult DeleteBooking(long bookingId)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var _booking = db.Booking.Where(b => b.BookingId == bookingId);
+                    db.Remove(_booking);
+                    var _result = db.SaveChanges();
+                    return new LongResult
+                    {
+                        Result = _result
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return new LongResult
+                    {
+                        Result = Common.Fail,
+                        Reason = e.Message
+                    };
+                }
+                return new LongResult
+                {
+                    Result = Common.Exception,
+                    Reason = null
+                };
+            }
+        }
+
         public LongResult<IList<Booking>> GetBookingList()
         {
             try

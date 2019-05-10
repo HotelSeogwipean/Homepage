@@ -35,5 +35,10 @@ namespace Seogwipean.Service.Booking
             return _bookingRepository.GetBookingList();
         }
 
+        public LongResult DeleteBooking(long bookingId)
+        {
+            return _bookingRepository.DeleteBooking(bookingId);
+        }
+
     }
 }

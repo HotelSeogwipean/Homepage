@@ -53,6 +53,14 @@ namespace Seogwipean.Web.Controllers
             });
         }
 
+        [HttpPost]
+        public IActionResult DeleteBooking(BookingViewModel vm)
+        {
+            var bookingId = vm.BookingId;
+            var delete = _bookingService.DeleteBooking(bookingId);
+            return Json(delete);
+        }
+
         public IActionResult GetBooking(BookingViewModel vm)
         {
             var find = _bookingService.GetBooking(vm);
