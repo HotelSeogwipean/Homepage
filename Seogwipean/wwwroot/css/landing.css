@@ -46,6 +46,13 @@
     }
 }
 
+@media only screen and (min-width: 320px) {
+    .logoBox {
+        margin-top: 50%;
+    }
+}
+
+
 @media only screen and (min-width: 1280px) {
     .logoBox {
         margin-top: 25%;
