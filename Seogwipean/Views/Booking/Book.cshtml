@@ -37,7 +37,7 @@
     <link href="~/css/videojs.css" rel="stylesheet">
     <link href="~/css/RV-gallery.min.css" rel="stylesheet" />
 </head>
-<body>
+<body style="display: none;">
     <div id="loaderBox">
         <div class="spinner">
             <div class="dot1"></div>
@@ -240,6 +240,7 @@
         });
 
         $(function () {
+            $("body").fadeIn(1000);
             $("#startDate").datepicker();
             $("#endDate").datepicker();
             $('.gallery').initGallery({
