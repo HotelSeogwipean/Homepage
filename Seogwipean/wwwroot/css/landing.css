@@ -38,12 +38,33 @@
     .wrapper > div {
         width: 100%;
         text-align: center;
-        top: 20%;
     }
 
-.logoBox {
-    margin-top: 30%;
+@media only screen and (min-width: 0px) {
+    .logoBox {
+        margin-top: 30%;
+    }
 }
+
+@media only screen and (min-width: 1280px) {
+    .logoBox {
+        margin-top: 25%;
+    }
+}
+
+
+@media only screen and (min-width: 1440px) {
+    .logoBox {
+        margin-top: 20%;
+    }
+}
+
+@media only screen and (min-width: 1900px) {
+    .logoBox {
+        margin-top: 15%;
+    }
+}
+
 
 .btnBox{
     margin-top: 5%;
