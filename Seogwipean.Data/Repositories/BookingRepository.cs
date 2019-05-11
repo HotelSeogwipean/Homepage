@@ -59,17 +59,36 @@ namespace Seogwipean.Data.Repositories
             }
         }
 
-        public LongResult<IList<Booking>> GetBookingList()
+        public LongResult<IList<Booking>> GetBookingList(BookingViewModel vm)
         {
             try
             {
                 using (var db = _dbContextFactory.Create())
                 {
-                    var _list = db.Booking.AsNoTracking().ToList();
+                    var _list = db.Booking.AsNoTracking();
+                    var isSearch = vm.IsSearch;
+                    var userName = vm.UserName;
+                    var startDate = vm.StartDate;
+                    var endDate = vm.EndDate;
+                    if(isSearch)
+                    {
+                        if (!string.IsNullOrEmpty(userName))
+                        {
+                            _list = _list.Where(b => b.UserName == userName);
+                        }
+                        if(startDate >= DateTime.Now || startDate.Date >= DateTime.Now.Date)
+                        {
+                            _list = _list.Where(b => b.StartDate >= startDate);
+                        }
+                        if (endDate >= DateTime.Now)
+                        {
+                            _list = _list.Where(b => b.EndDate <= endDate);
+                        }
+                    }
                     return new LongResult<IList<Booking>>
                     {
                         Result = Common.Success,
-                        Data = _list
+                        Data = _list.OrderBy(b => b.StartDate).OrderBy(b => b.EndDate).ToList()
                     };
                 }
             }

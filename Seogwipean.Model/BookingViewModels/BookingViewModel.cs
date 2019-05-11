@@ -4,6 +4,7 @@ namespace Seogwipean.Model.BookingViewModels
 {
     public class BookingViewModel
     {
+        public bool IsSearch { get; set; }
         public long BookingId { get; set; }
         public string UserName { get; set; }
         public string Phone { get; set; }

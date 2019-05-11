@@ -30,9 +30,9 @@ namespace Seogwipean.Service.Booking
             return _bookingRepository.AddBooking(vm);
         }
 
-        public LongResult<IList<Data.Models.Booking>> GetBookingList()
+        public LongResult<IList<Data.Models.Booking>> GetBookingList(BookingViewModel vm)
         {
-            return _bookingRepository.GetBookingList();
+            return _bookingRepository.GetBookingList(vm);
         }
 
         public LongResult DeleteBooking(long bookingId)

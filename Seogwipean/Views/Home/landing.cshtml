@@ -8,10 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Hotel Seogwipean - Coming Soon ...">
-    <meta name="description" content="Hotel Seogwipean - Coming Soon ...">
-    <meta property="og:description" content="Hotel Seogwipean - Coming Soon ...">
-    <meta property="og:image" content="http://hotelseogwipean.com/logo.png">
+    <meta property="og:title" content="Hotel Seogwipean Web Site">
+    <meta name="description" content="Hotel Seogwipean Web Site">
+    <meta property="og:description" content="Hotel Seogwipean Web Site">
+    <meta property="og:image" content="http://hotelseogwipean.com/images/logo.png">
     <meta property="og:url" content="http://hotelseogwipean.com/">
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
@@ -31,15 +31,14 @@
     <meta name="theme-color" content="#ffffff">
     <title>Hotel Seogwipean</title>
     <link href="~/css/landing.css" rel="stylesheet" />
+    
 </head>
 <body>
-
-    <div class="wrapper">
+    <div class="wrapper" style="position: relative; width: 100%;">
         <div>
-            <img src="~/images/onlybooking.png" alt="오픈 예정중입니다." class="responsive" align="middle" />
+            <img id="toBook" src="~/images/onlybooking.png" alt="오픈 예정중입니다." class="responsive" align="middle" />
         </div>
     </div>
-
 
     <script src="~/lib/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
@@ -59,7 +58,7 @@
             document.querySelector(".wrapper > div").style.height = _height + "px";
         };
 
-        window.onclick = function () {
+        document.getElementById("toBook").onclick = function () {
             $(".wrapper").fadeOut(1500);
             setTimeout(function () {
                 window.location.href = "/booking/book";

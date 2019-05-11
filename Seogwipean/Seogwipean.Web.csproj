@@ -31,4 +31,10 @@
     <Folder Include="wwwroot\etc\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Booking\Booked.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

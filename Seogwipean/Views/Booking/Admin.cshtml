@@ -7,41 +7,85 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hotel Seogwipean Web Site">
+    <meta name="description" content="Hotel Seogwipean Web Site">
+    <meta property="og:description" content="Hotel Seogwipean Web Site">
+    <meta property="og:image" content="http://hotelseogwipean.com/images/logo.png">
+    <meta property="og:url" content="http://hotelseogwipean.com/">
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>Hotel Seogwipean</title>
+    <link href="~/css/landing.css" rel="stylesheet" />
     <title>시숙 예약 목록</title>
-    <link href="~/css/admintable.css" rel="stylesheet"/>
+    <link href="~/css/admintable.css" rel="stylesheet" />
+    <link href="~/css/jquery-ui.min.css" rel="stylesheet" />
 </head>
 <body>
-    <table class="adminTable">
-        <colgroup>
-            <col style="width: 30px;" />
-            <col style="width: 40px;" />
-            <col style="width: 30px;" />
-            <col style="width: 30px;" />
-            <col style="width: 5px;" />
-            <col style="width: 10px;" />
-            <col style="width: 20px;" />
-            <col style="width: 100px; height: auto;" />
-            <col style="width: 20px;" />
-            <col style="width: 10px;" />
-        </colgroup>
-        <thead>
-            <tr>
-                <th>예약자명</th>
-                <th>연락처</th>
-                <th>체크인</th>
-                <th>체크아웃</th>
-                <th>투숙 기간</th>
-                <th>투숙인원수</th>
-                <th>요청 객실 타입</th>
-                <th>요청사항</th>
-                <th>추천인</th>
-                <th>신청일자</th>
-            </tr>
-        </thead>
-        <tbody id="append">
-        </tbody>
-    </table>
+    <div id="searchBox">
+        <div>
+            <label for="bookerName">예약자</label>
+            <input type="text" id="bookerName" />
+        </div>
+        <div>
+            <label for="startDate">체크인</label>
+            <input type="text" id="startDate" readonly />
+        </div>
+        <div>
+            <label for="endDate">체크아웃</label>
+            <input type="text" id="endDate" readonly />
+        </div>
+        <input type="button" id="btnSearch" value="검색" />
+        <input type="button" id="btnReset" value="초기화" />
+    </div>
+    <div class="result-table">
+        <table class="adminTable">
+            <colgroup>
+                <col style="width: 30px;" />
+                <col style="width: 40px;" />
+                <col style="width: 30px;" />
+                <col style="width: 30px;" />
+                <col style="width: 5px;" />
+                <col style="width: 10px;" />
+                <col style="width: 20px;" />
+                <col style="width: 100px; height: auto;" />
+                <col style="width: 20px;" />
+                <col style="width: 10px;" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>예약자명</th>
+                    <th>연락처</th>
+                    <th>체크인</th>
+                    <th>체크아웃</th>
+                    <th>투숙 기간</th>
+                    <th>투숙인원수</th>
+                    <th>요청 객실 타입</th>
+                    <th>요청사항</th>
+                    <th>추천인</th>
+                    <th>신청일자</th>
+                </tr>
+            </thead>
+            <tbody id="append"></tbody>
+        </table>
+    </div>
     <template id="listTemplate">
         <td class="name">cell1_10</td>
         <td class="phone">cell2_10</td>
@@ -56,35 +100,90 @@
     </template>
 
     <script src="~/lib/jquery-3.2.1.min.js"></script>
+    <script src="~/lib/jquery-ui.min.js"></script>
     <script type="text/javascript">
-        $.ajax({
-            url: '/booking/admin',
-            type: 'POST',
-            dataType: 'JSON',
-            data: null,
-            success: function (data) {
-                console.log(data);
-                $(data.data).each(function (i) {
-                    var __data = data.data[i];
-                    var listTemplate = "<tr>" + $("#listTemplate").html().trim() + "</tr>";
-                    var listTemplateClone = $(listTemplate);
-                    var days = Number(__data.endDate.slice(8, 10)) - Number(__data.startDate.slice(8, 10));
-                    listTemplateClone.find(".name").html(__data.userName);
-                    listTemplateClone.find(".phone").html(__data.phone);
-                    listTemplateClone.find(".recommender").html(__data.recommender);
-                    listTemplateClone.find(".days").html(days + "일");
-                    listTemplateClone.find(".startDate").html(__data.startDate.slice(0, 10));
-                    listTemplateClone.find(".endDate").html(__data.endDate.slice(0, 10));
-                    listTemplateClone.find(".headCount").html(__data.headCount);
-                    listTemplateClone.find(".roomType").html(__data.roomType);
-                    listTemplateClone.find(".request").html(__data.request);
-                    listTemplateClone.find(".createDate").html(__data.createDate.slice(0, 10));
-                    $("#append").append(listTemplateClone);
-                });
-            },
-            error: function (data) {
-                console.log(data);
-            }
+        /*$(document).ready(function () {
+            $(document).bind('keydown', function (e) {
+                if (e.keyCode == 123) {
+                    e.preventDefault();
+                    e.returnValue = false;
+                }
+            });
+        });
+*/
+        function searchData() {
+            var obj = new Object();
+            var userName = $("#bookerName").val();
+            var startDate = $("#startDate").val();
+            var endDate = $("#endDate").val();
+            obj.userName = userName;
+            obj.startDate = startDate;
+            obj.endDate = endDate;
+            $("#append").html("");
+            $.ajax({
+                url: '/booking/admin',
+                type: 'POST',
+                dataType: 'JSON',
+                data: obj,
+                success: function (data) {
+                    $(data.data).each(function (i) {
+                        var __data = data.data[i];
+                        var listTemplate = "<tr>" + $("#listTemplate").html().trim() + "</tr>";
+                        var listTemplateClone = $(listTemplate);
+                        var days = Number(__data.endDate.slice(8, 10)) - Number(__data.startDate.slice(8, 10));
+                        listTemplateClone.find(".name").html(__data.userName);
+                        listTemplateClone.find(".phone").html(__data.phone);
+                        listTemplateClone.find(".recommender").html(__data.recommender);
+                        listTemplateClone.find(".days").html(days + "일");
+                        listTemplateClone.find(".startDate").html(__data.startDate.slice(0, 10));
+                        listTemplateClone.find(".endDate").html(__data.endDate.slice(0, 10));
+                        listTemplateClone.find(".headCount").html(__data.headCount);
+                        listTemplateClone.find(".roomType").html(__data.roomType);
+                        listTemplateClone.find(".request").html(__data.request);
+                        listTemplateClone.find(".createDate").html(__data.createDate.slice(0, 10));
+                        $("#append").append(listTemplateClone);
+                    });
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            });
+
+        }
+
+        $("#btnSearch").click(function () {
+            searchData();
+        });
+
+        $("#btnReset").click(function () {
+            $("input[type=text]").val("");
+        });
+
+        $(function () {
+            searchData();
+
+            $("#startDate").datepicker({
+                onSelect: function (dateText) {
+                    var yearmonth = dateText.slice(0, 8);
+                    var nextDay = eval(Number(dateText.slice(8, 10)) + 1);
+                    $("#endDate").datepicker("setDate", yearmonth + nextDay);
+                }
+            });
+            $("#endDate").datepicker();
+
+            $.datepicker.setDefaults({
+                dateFormat: 'yy-mm-dd',
+                prevText: '이전 달',
+                nextText: '다음 달',
+                monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+                dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+                dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+                showMonthAfterYear: true,
+                yearSuffix: '년',
+                maxDate: '2019-05-31'
+            });
         });
     </script>
 

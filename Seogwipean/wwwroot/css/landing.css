@@ -42,13 +42,13 @@
 
 @media only screen and (min-width: 0px) {
     .wrapper > div {
-        margin-top: 65%;
+        margin-top: 60%;
     }
 }
 
 @media only screen and (min-width: 424px) {
     .wrapper > div {
-        margin-top: 35%;
+        margin-top: 30%;
     }
 }
 

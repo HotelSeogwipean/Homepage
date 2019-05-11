@@ -28,6 +28,10 @@ namespace Seogwipean.Web.Controllers
             return View();
         }
 
+        public IActionResult Booked()
+        {
+            return View();
+        }
 
         public IActionResult Book()
         {
@@ -41,9 +45,15 @@ namespace Seogwipean.Web.Controllers
         }
 
         [HttpPost("/booking/admin")]
-        public IActionResult GetList()
+        public IActionResult GetList(BookingViewModel vm)
         {
-            var _list = _bookingService.GetBookingList();
+            var startDate = vm.StartDate;
+            if(startDate.Year > 1 || !string.IsNullOrEmpty(vm.UserName))
+            {
+                vm.IsSearch = true;
+            }
+
+            var _list = _bookingService.GetBookingList(vm);
             if(_list != null)
             {
                 return Json(_list);

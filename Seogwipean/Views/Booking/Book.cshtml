@@ -9,10 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Hotel Seogwipean">
-    <meta name="description" content="호텔 서귀피안에 오신 것을 환영합니다.">
-    <meta property="og:description" content="호텔 서귀피안에 오신 것을 환영합니다.">
-    <meta property="og:image" content="http://hotelseogwipean.com/logo.png">
+    <meta property="og:title" content="Hotel Seogwipean Web Site">
+    <meta name="description" content="Hotel Seogwipean Web Site">
+    <meta property="og:description" content="Hotel Seogwipean Web Site">
+    <meta property="og:image" content="http://hotelseogwipean.com/images/logo.png">
     <meta property="og:url" content="http://hotelseogwipean.com/">
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
@@ -34,12 +34,41 @@
     <link href="~/css/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/css/custom-alert.css" rel="stylesheet" />
     <link href="~/css/booking.css" rel="stylesheet" />
+    <link href="~/css/videojs.css" rel="stylesheet">
+    <link href="~/css/RV-gallery.min.css" rel="stylesheet" />
 </head>
 <body>
     <div id="loaderBox">
         <div class="spinner">
             <div class="dot1"></div>
             <div class="dot2"></div>
+        </div>
+    </div>
+
+    <div class="travelHotel">
+        <div id="travelClicker" style="width: 100%; position:absolute; top:0; left:0; opacity:0.9;"></div>
+        <div id="travels" class="pop-layer">
+            <div class="travelHeader">
+                <button type="button" data-value="picture">갤러리</button>
+            </div>
+            <div class="travelBody">
+                <div class="pictureViewer">
+                    <div class="gallery">
+                        <img class="gallery-item" src="~/building/front.jpg">
+                        <img class="gallery-item" src="~/rooms/standardtwin.jpg">
+                        <img class="gallery-item" src="~/rooms/bathroom.jpg">
+                    </div>
+                </div>
+                <div class="videoPlayer">
+                    <video id='my-video' class='video-js' controls preload='auto' poster='/images/comingsoon.jpg' data-setup='{}' style="width: 100%;">
+                        <source src='~/video/hotel.mp4' type='video/mp4'>
+                        <p class='vjs-no-js'>
+                            동영상이 재생되지 않는다면 크롬 브라우저를 통해 접근해주세요.
+                            <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+                        </p>
+                    </video>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -114,9 +143,10 @@
 
 
     <div style="margin-top: 50px;">
-        <img id="logo" src="~/images/logo.png" />
+        <img id="logo" src="~/images/clicker.png" />
     </div>
-    <form action="">
+
+    <form action="" class="bookForm">
         <!--  General -->
         <div class="form-group">
             <h2 class="heading">Booking & contact</h2>
@@ -182,7 +212,7 @@
             </div>
         </div> <!-- /.form-group -->
 
-        <div style="margin-left: auto; margin-right: auto; width: 100%;">
+        <div class="btnGroup">
             <button type="button" href="#layer2" id="checkBook" style="width: 29%; border-radius: 3px;">예약 확인</button>
             <button type="button" id="submit" style="width: 70%; border-radius: 3px; margin-right: 1%;">시숙 예약하기</button>
         </div>
@@ -194,13 +224,37 @@
 
     <script src="~/lib/jquery-3.2.1.min.js"></script>
     <script src="~/lib/jquery-ui.min.js"></script>
+    <script src="~/lib/videojs-ie8.min.js"></script>
+    <script src='~/lib/videojs.js'></script>
     <script src="~/lib/custom-alert.js"></script>
+    <script src="~/lib/RV-gallery.min.js"></script>
     <script type="text/javascript">
         new customAlert();
+        $(document).ready(function () {
+            $(document).bind('keydown', function (e) {
+                if (e.keyCode == 123) {
+                    e.preventDefault();
+                    e.returnValue = false;
+                }
+            });
+        });
 
         $(function () {
             $("#startDate").datepicker();
             $("#endDate").datepicker();
+
+            $('.gallery').initGallery({
+                nav: ["<span> < </span>", "<span> > </span>"],
+                close: "<span>X</span>",
+                aspectRatio: "auto",
+                showDots: true,
+                showNavIfOneItem: false,
+                showNav: false,
+                arrows: true,
+                transition: "fade",
+                fullScreen: true,
+                autoplay: false
+            });
 
             var today = Number(new Date().toISOString().slice(8, 10));
             if (today < 15)
@@ -219,7 +273,9 @@
             dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
             dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
             showMonthAfterYear: true,
-            yearSuffix: '년'
+            yearSuffix: '년',
+            maxDate: '2019-05-15',
+            maxDate: '2019-05-31'
         });
 
         (function ($) {
@@ -287,7 +343,7 @@
                     success: function (data) {
                         setTimeout(function () {
                             alert("시숙 예약이 완료되었습니다.", function () {
-                                window.location.href = "/";
+                                window.location.href = "/booking/booked";
                             });
                             $("#loaderBox").hide();
                         }, 2000);
@@ -324,18 +380,28 @@
             } else {
                 $el.css({ top: 0, left: 0 });
             }
-
             $el.find('a.btn-layerClose').click(function () {
                 isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
                 return false;
             });
-
             $('.layer .dimBg').click(function () {
                 $('.dim-layer').fadeOut();
                 return false;
             });
 
+            if (el === "#travels") {
+                $("#travelClicker").show();
+                $("#travelClicker").css("height", "1024px");
+                $("#travelClicker").click(function () {
+                    $(this).hide();
+                    $el.fadeOut();
+                });
+            }
         }
+
+        $("#logo").click(function () {
+            layer_popup("#travels");
+        });
 
         $("#btnFindBook").click(function () {
             var __vm = new Object();
@@ -356,8 +422,6 @@
                     var _data = data.data[0];
                     var _day = Number(_data.startDate.slice(8, 10)) - Number(_data.startDate.slice(8, 10));
                     var dayText = _day + "박" + " " + eval(_day + 1) + "일";
-                    console.log(_day);
-                    console.log(dayText);
                     $("#foundName").html(_data.userName);
                     $("#foundPhone").html(_data.phone);
                     $("#foundCheckIn").html(_data.startDate.slice(0, 10));
@@ -381,6 +445,24 @@
             $("#pop2").hide();
             $("#pop1").show();
         }
+
+        $(".travelHeader button").click(function () {
+            var _this = $(this);
+            var _value = _this.data("value");
+            if (_value == "video") {
+                _this.html("갤러리");
+                _this.data("value", "picture");
+                $(".videoPlayer").show();
+                $(".pictureViewer").hide();
+            } else {
+                $("video").each(function () { this.pause() });
+                _this.html("동영상");
+                _this.data("value", "video");
+                $(".videoPlayer").hide();
+                $(".pictureViewer").show();
+            }
+        });
+
     </script>
 
 </body>

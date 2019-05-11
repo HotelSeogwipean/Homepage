@@ -467,3 +467,70 @@ a.btn-layerClose:hover {
         color: #10620A;
         border-bottom: 1px solid #10620A;
     }
+
+    #logo{
+        cursor:pointer;
+    }
+
+.btnGroup {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.bookForm{
+    z-index: 20;
+}
+
+#travels {
+    width: 700px;
+    border: none;
+}
+    #travels .travelBody {
+        padding: 3px;
+        background-color: white;
+        border: 2px solid #10620A;
+        border-radius: 10px;
+    }
+
+        #travels .travelBody .pictureViewer{
+            display: none;
+        }
+
+    #travels .travelHeader {
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        margin: 0 auto;
+        float: none;
+        margin-bottom: 3px;
+    }
+
+            #travels .travelHeader button {
+                float:none;
+                margin: 0 auto;
+                border-radius: 3px;
+                text-align: center;
+                width: 90%;
+                background-color: #005000;
+            }
+
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+.g_img-cont .big-arrows > * > * {
+    font-size: 3rem;
+}
