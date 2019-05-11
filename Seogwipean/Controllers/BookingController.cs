@@ -38,6 +38,11 @@ namespace Seogwipean.Web.Controllers
             return View();
         }
 
+        public IActionResult Media()
+        {
+            return View();
+        }
+
         [HttpGet("/booking/admin")]
         public IActionResult Admin()
         {

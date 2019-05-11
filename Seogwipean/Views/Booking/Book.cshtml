@@ -219,7 +219,7 @@
     </form>
 
     <footer class="footer">
-        <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</p>
+        <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved. / h.p 010-7127-4216</p>
     </footer>
 
     <script src="~/lib/jquery-3.2.1.min.js"></script>
@@ -242,7 +242,6 @@
         $(function () {
             $("#startDate").datepicker();
             $("#endDate").datepicker();
-
             $('.gallery').initGallery({
                 nav: ["<span> < </span>", "<span> > </span>"],
                 close: "<span>X</span>",
@@ -255,7 +254,6 @@
                 fullScreen: true,
                 autoplay: false
             });
-
             var today = Number(new Date().toISOString().slice(8, 10));
             if (today < 15)
                 document.getElementById('startDate').value = "2019-05-15";

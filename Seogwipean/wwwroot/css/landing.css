@@ -42,11 +42,20 @@
 
 @media only screen and (min-width: 0px) {
     .logoBox {
-        margin-top: 30%;
+        margin-top: 70%;
     }
 }
 
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 319px) {
+    .logoBox {
+        margin-top: 55%;
+    }
+}
+
+@media only screen and (max-width: 426px) {
+    .wrapper > div{
+        zoom: 0.9;
+    }
     .logoBox {
         margin-top: 50%;
     }

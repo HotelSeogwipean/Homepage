@@ -1,0 +1,46 @@
+﻿#logo{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.pictureViewer {
+    display: none;
+    margin: 0 auto;
+}
+
+.videoPlayer {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.btnBox {
+    margin-top: 5%;
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+    .btnBox [type=button] {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: white;
+        background-color: #153908;
+        border: 1px solid #153908;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+#btnPicture {
+    margin-top: 2%;
+    width: 70%;
+    font-size: 14px;
+}
+
+#btnPrev {
+    width: 70%;
+    font-size: 14px;
+}
+
+.btnBox [type=button]:hover {
+    background-color: #20520e;
+}
