@@ -40,5 +40,15 @@ namespace Seogwipean.Service.Booking
             return _bookingRepository.DeleteBooking(bookingId);
         }
 
+        public bool UpdateBookingStatus(BookingViewModel vm)
+        {
+            return _bookingRepository.UpdateBookingStatus(vm);
+        }
+
+        public LongResult UpdateBooking(BookingViewModel vm)
+        {
+            return _bookingRepository.UpdateBooking(vm);
+        }
+
     }
 }

@@ -58,19 +58,21 @@
     <div class="result-table">
         <table class="adminTable">
             <colgroup>
+                <col style="width: 10px;" />
                 <col style="width: 30px;" />
                 <col style="width: 40px;" />
                 <col style="width: 30px;" />
                 <col style="width: 30px;" />
                 <col style="width: 5px;" />
                 <col style="width: 10px;" />
-                <col style="width: 20px;" />
-                <col style="width: 100px; height: auto;" />
+                <col style="width: 25px;" />
+                <col style="width: 100px; " />
                 <col style="width: 20px;" />
                 <col style="width: 10px;" />
             </colgroup>
             <thead>
                 <tr>
+                    <th>No.</th>
                     <th>예약자명</th>
                     <th>연락처</th>
                     <th>체크인</th>
@@ -87,6 +89,7 @@
         </table>
     </div>
     <template id="listTemplate">
+        <td class="numba"></td>
         <td class="name">cell1_10</td>
         <td class="phone">cell2_10</td>
         <td class="startDate">cell4_10</td>
@@ -97,6 +100,7 @@
         <td class="request">cell8_10</td>
         <td class="recommender">cell3_10</td>
         <td class="createDate">cell9_10</td>
+
     </template>
 
     <script src="~/lib/jquery-3.2.1.min.js"></script>
@@ -126,11 +130,18 @@
                 dataType: 'JSON',
                 data: obj,
                 success: function (data) {
+                    var idx = 0;
+                    if (data.data.length < 1) {
+                        var noList = '<td colspan="10">조회 결과가 없습니다.</td>';
+                        $("#append").append(noList);
+                    }
                     $(data.data).each(function (i) {
                         var __data = data.data[i];
                         var listTemplate = "<tr>" + $("#listTemplate").html().trim() + "</tr>";
                         var listTemplateClone = $(listTemplate);
                         var days = Number(__data.endDate.slice(8, 10)) - Number(__data.startDate.slice(8, 10));
+                        idx++;
+                        listTemplateClone.find(".numba").html(idx);
                         listTemplateClone.find(".name").html(__data.userName);
                         listTemplateClone.find(".phone").html(__data.phone);
                         listTemplateClone.find(".recommender").html(__data.recommender);
@@ -165,7 +176,7 @@
             $("#startDate").datepicker({
                 onSelect: function (dateText) {
                     var yearmonth = dateText.slice(0, 8);
-                    var nextDay = eval(Number(dateText.slice(8, 10)) + 1);
+                    var nextDay = eval(Number(dateText.slice(8, 10)) + 7);
                     $("#endDate").datepicker("setDate", yearmonth + nextDay);
                 }
             });
@@ -182,7 +193,7 @@
                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
                 showMonthAfterYear: true,
                 yearSuffix: '년',
-                maxDate: '2019-05-31'
+                minDate: '2019-05-01'
             });
         });
     </script>

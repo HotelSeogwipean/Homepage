@@ -16,5 +16,7 @@ namespace Seogwipean.Data.Models
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public DateTime? CreateDate { get; set; }
+        public short? Status { get; set; }
+        public string Password { get; set; }
     }
 }

@@ -62,8 +62,14 @@ namespace Seogwipean.Web.Controllers
                 Result = "Failed"
             });
         }
+        [HttpPost("/booking/admin/updatestatus")]
+        public IActionResult UpdateStatus(BookingViewModel vm)
+        {
+            var result = _bookingService.UpdateBookingStatus(vm);
+            return Json(result);
+        }
 
-        [HttpPost]
+        [HttpPost("/booking/admin/delete")]
         public IActionResult DeleteBooking(BookingViewModel vm)
         {
             var bookingId = vm.BookingId;

@@ -103,3 +103,7 @@
     #searchBox > [type=button]:hover {
         background-color: #20520e;
     }
+
+.result-table{
+    margin-top: 15px;
+}

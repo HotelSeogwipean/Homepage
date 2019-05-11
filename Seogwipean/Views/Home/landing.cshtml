@@ -31,17 +31,23 @@
     <meta name="theme-color" content="#ffffff">
     <title>Hotel Seogwipean</title>
     <link href="~/css/landing.css" rel="stylesheet" />
-    
 </head>
 <body>
     <div class="wrapper" style="position: relative; width: 100%;">
-        <div>
-            <img id="toBook" src="~/images/onlybooking.png" alt="오픈 예정중입니다." class="responsive" align="middle" />
+        <div class="logoBox">
+            <img id="toBook" src="~/images/logo.png" alt="오픈 예정중입니다." class="responsive" align="middle" />
         </div>
+
+        <div class="btnBox">
+            <input type="button" id="btnMedia" value="둘러보기" />
+            <input type="button" id="btnBooking" value="시숙 예약하기" />
+        </div>
+
     </div>
 
     <script src="~/lib/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
+        /*
         $(document).ready(function () {
             $(document).bind('keydown', function (e) {
                 if (e.keyCode == 123) {
@@ -49,21 +55,31 @@
                     e.returnValue = false;
                 }
             });
-        });
+        });*/
 
+        /*
         window.onload = function () {
             var $width = screen.width;
             var _height = screen.height - 30;
             document.body.style.width = $width + "px";
             document.querySelector(".wrapper > div").style.height = _height + "px";
         };
+        */
+        document.getElementById("btnMedia").onclick = function () {
+            $(".wrapper").fadeOut(1500);
+            setTimeout(function () {
+                window.location.href = "/booking/media";
+            }, 1500);
+        };
 
-        document.getElementById("toBook").onclick = function () {
+        document.getElementById("btnBooking").onclick = function () {
             $(".wrapper").fadeOut(1500);
             setTimeout(function () {
                 window.location.href = "/booking/book";
             }, 1500);
         };
+
+
     </script>
 </body>
 </html>

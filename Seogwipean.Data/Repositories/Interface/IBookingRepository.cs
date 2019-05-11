@@ -12,5 +12,7 @@ namespace Seogwipean.Data.Repositories.Interface
         LongResult AddBooking(BookingViewModel vm);
         LongResult<IList<Models.Booking>> GetBookingList(BookingViewModel vm);
         LongResult DeleteBooking(long bookingId);
+        bool UpdateBookingStatus(BookingViewModel vm);
+        LongResult UpdateBooking(BookingViewModel vm);
     }
 }

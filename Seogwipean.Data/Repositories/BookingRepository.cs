@@ -25,6 +25,96 @@ namespace Seogwipean.Data.Repositories
 
         #region #########################
 
+        public LongResult UpdateBooking(BookingViewModel vm)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var bookingId = vm.BookingId;
+                    var userName = vm.UserName;
+                    var email = vm.Email;
+                    var phone = vm.Phone;
+                    var checkIn = vm.StartDate;
+                    var checkOut = vm.EndDate;
+                    var request = vm.Request;
+                    var headCount = vm.HeadCount;
+                    var _booking = db.Booking.FirstOrDefault(b => b.BookingId == bookingId);
+
+                    if (!string.IsNullOrWhiteSpace(userName))
+                    {
+                        _booking.UserName = userName;
+                    }
+                    if (!string.IsNullOrWhiteSpace(email))
+                    {
+                        _booking.Email = email;
+                    }
+                    if (!string.IsNullOrWhiteSpace(phone))
+                    {
+                        _booking.Phone = phone;
+                    }
+                    if (checkIn.Year > 1)
+                    {
+                        _booking.StartDate = checkIn;
+                        _booking.EndDate = checkOut;
+                    }
+                    if (!string.IsNullOrWhiteSpace(request))
+                    {
+                        _booking.Request = request;
+                    }
+                    if(headCount > 0)
+                    {
+                        _booking.HeadCount = headCount;
+                    }
+                    db.Update(_booking);
+                    var _result = db.SaveChanges();
+                    return new LongResult
+                    {
+                        Result = _result
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return new LongResult
+                    {
+                        Result = Common.Fail,
+                        Reason = e.Message
+                    };
+                }
+                return new LongResult
+                {
+                    Result = Common.Exception,
+                    Reason = null
+                };
+            }
+        }
+
+        public bool UpdateBookingStatus(BookingViewModel vm)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var bookingId = vm.BookingId;
+                    var status = vm.Status;
+                    var _booking = db.Booking.Where(b => b.BookingId == bookingId).FirstOrDefault();
+                    _booking.Status = status;
+                    db.Update(_booking);
+                    var _result = db.SaveChanges() > 0;
+                    return _result;
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                return false;
+            }
+        }
+
         public LongResult DeleteBooking(long bookingId)
         {
             try
@@ -76,11 +166,11 @@ namespace Seogwipean.Data.Repositories
                         {
                             _list = _list.Where(b => b.UserName == userName);
                         }
-                        if(startDate >= DateTime.Now || startDate.Date >= DateTime.Now.Date)
+                        if(startDate.Year > 1)
                         {
                             _list = _list.Where(b => b.StartDate >= startDate);
                         }
-                        if (endDate >= DateTime.Now)
+                        if (endDate.Value.Year > 1)
                         {
                             _list = _list.Where(b => b.EndDate <= endDate);
                         }
@@ -157,9 +247,9 @@ namespace Seogwipean.Data.Repositories
                         RoomType = roomType,
                         StartDate = startDate,
                         EndDate = endDate,
-                        CreateDate = DateTime.UtcNow
+                        CreateDate = DateTime.UtcNow,
+                        Status = CodesName.Booking_Booked
                     };
-
                     db.Booking.Add(newBooking);
                     db.SaveChanges();
                     return new LongResult

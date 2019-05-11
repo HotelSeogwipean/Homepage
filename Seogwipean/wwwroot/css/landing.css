@@ -32,15 +32,38 @@
     margin: 0px;
     margin-top: 10px;
     height: 100%;
+    overflow: hidden;
 }
 
     .wrapper > div {
         width: 100%;
-        position: fixed;
         text-align: center;
+        top: 20%;
     }
 
-@media only screen and (min-width: 0px) {
+.logoBox {
+    margin-top: 20%;
+}
+
+.btnBox{
+    margin-top: 5%;
+}
+
+input[type=button] {
+    margin-top: 10px;
+    width: 300px;
+    height: 60px;
+    border: 1px solid #133424;
+    background-color: #133424;
+    border-radius: 3px;
+    color: white;
+}
+
+    input[type=button]:hover {
+        background-color: #1a4430;
+    }
+
+/*@media only screen and (min-width: 0px) {
     .wrapper > div {
         margin-top: 60%;
     }
@@ -68,7 +91,7 @@
     .wrapper > div {
         margin-top: 10%;
     }
-}
+}*/
 
 
 .responsive {

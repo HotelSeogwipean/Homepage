@@ -63,6 +63,8 @@ namespace Seogwipean.Data.Models
 
                 entity.Property(e => e.EndDate).HasColumnType("datetime");
 
+                entity.Property(e => e.Password).HasMaxLength(100);
+
                 entity.Property(e => e.Phone).HasMaxLength(100);
 
                 entity.Property(e => e.Recommender).HasMaxLength(50);
