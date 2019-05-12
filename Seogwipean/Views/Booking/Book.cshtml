@@ -190,10 +190,11 @@
                     </div>
                 </div>
             </div>
+
             <div class="grid">
                 <div class="controls">
                     <i class="fa fa-sort"></i>
-                    <select class="floatLabel">
+                    <select class="floatLabel" id="selectCount">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -208,6 +209,21 @@
                     <label for="fruit"><i class="fa fa-male"></i>투숙 인원수</label>
                 </div>
             </div>
+
+            <div class="grid">
+                <div class="controls">
+                    <i class="fa fa-sort"></i>
+                    <select class="floatLabel" id="selectAge">
+                        <option value="20" selected>20대</option>
+                        <option value="30">30대</option>
+                        <option value="40">40대</option>
+                        <option value="50">50대</option>
+                        <option value="60">60대 이상</option>
+                    </select>
+                    <label for="fruit"><i class="fa fa-male"></i>예약자 연령대</label>
+                </div>
+            </div>
+
             <div class="grid">
                 <p class="info-text">요청 사항에 대해 기입해주세요.</p>
                 <br>
@@ -249,6 +265,7 @@
             $("body").fadeIn(1000);
             $("#startDate").datepicker();
             $("#endDate").datepicker();
+            var spinner = $("#spinner").spinner();
             $('.gallery').initGallery({
                 nav: ["<span> < </span>", "<span> > </span>"],
                 close: "<span>X</span>",
@@ -306,7 +323,8 @@
             var email = $("#email").val().trim();
             var phone = $("#phone").val().trim();
             var recommender = $("#recommender").val().trim();
-            var headCount = $("select:eq(0)").val().trim();
+            var headCount = $("#selectCount").val().trim();
+            var ageRange = $("#selectAge").val().trim();
             var request = $("#comments").val();
             if (userName == null || userName == "") {
                 alert("예약자 성함을 입력해주세요."); $("#name").focus();
@@ -340,6 +358,7 @@
                 _vm.Request = request;
                 _vm.StartDate = $("#startDate").val().trim();
                 _vm.EndDate = $("#endDate").val().trim();
+                _vm.AgeRange = ageRange;
                 $.ajax({
                     url: '/booking/add',
                     type: 'POST',

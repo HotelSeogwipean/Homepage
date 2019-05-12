@@ -57,6 +57,8 @@ namespace Seogwipean.Data.Models
 
             modelBuilder.Entity<Booking>(entity =>
             {
+                entity.Property(e => e.AgeRange).HasMaxLength(24);
+
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Email).HasMaxLength(100);

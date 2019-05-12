@@ -18,5 +18,6 @@ namespace Seogwipean.Data.Models
         public DateTime? CreateDate { get; set; }
         public short? Status { get; set; }
         public string Password { get; set; }
+        public string AgeRange { get; set; }
     }
 }

@@ -215,6 +215,7 @@ namespace Seogwipean.Data.Repositories
                     string recommender = vm.Recommender;
                     int headCount = vm.HeadCount;
                     string request = vm.Request;
+                    string ageRange = vm.AgeRange;
                     DateTime startDate = vm.StartDate;
                     DateTime? endDate = vm.EndDate;
 
@@ -248,7 +249,8 @@ namespace Seogwipean.Data.Repositories
                         StartDate = startDate,
                         EndDate = endDate,
                         CreateDate = DateTime.UtcNow,
-                        Status = CodesName.Booking_Booked
+                        Status = CodesName.Booking_Booked,
+                        AgeRange = ageRange
                     };
                     db.Booking.Add(newBooking);
                     db.SaveChanges();
