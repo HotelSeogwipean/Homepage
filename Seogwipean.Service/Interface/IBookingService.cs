@@ -9,7 +9,7 @@ namespace Seogwipean.Service.Interface
     public interface IBookingService
     {
         LongResult<IList<BookingViewModel>> GetBooking(BookingViewModel vm);
-        LongResult AddBooking(BookingViewModel vm);
+        LongResult<BookingViewModel> AddBooking(BookingViewModel vm);
         LongResult<IList<Data.Models.Booking>> GetBookingList(BookingViewModel vm);
         LongResult DeleteBooking(long bookingId);
         bool UpdateBookingStatus(BookingViewModel vm);

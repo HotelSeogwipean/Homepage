@@ -25,7 +25,7 @@ namespace Seogwipean.Service.Booking
             return _bookingRepository.GetBooking(vm);
         }
 
-        public LongResult AddBooking(BookingViewModel vm)
+        public LongResult<BookingViewModel> AddBooking(BookingViewModel vm)
         {
             return _bookingRepository.AddBooking(vm);
         }

@@ -15,11 +15,14 @@ namespace Seogwipean.Web.Controllers
     {
         private readonly ILogger _logger;
         private readonly IBookingService _bookingService;
+        private readonly IEmailService _emailService;
 
         public BookingController(ILoggerFactory loggerFactory,
-                                        IBookingService bookingService)
+                                        IBookingService bookingService,
+                                        IEmailService emailService)
         {
             _bookingService = bookingService ?? throw new ArgumentNullException(nameof(bookingService));
+            _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
             _logger = loggerFactory.CreateLogger<BookingController>();
         }
 
@@ -99,6 +102,20 @@ namespace Seogwipean.Web.Controllers
                 });
             }
             var _add = _bookingService.AddBooking(vm);
+            var booker = _add.Data;
+            var contents = "예약자명 : " + booker.UserName +
+                "\r\n연락처 : " + booker.Phone +
+                "\r\n이메일 : " + booker.Email +
+                "\r\n인원 수 : " + booker.HeadCount +
+                "\r\n체크인 : " + booker.StartDate +
+                "\r\n체크아웃 : " + booker.EndDate +
+                "\r\n추천인 : " + booker.Recommender +
+                "\r\n요청사항 : " + booker.Request;
+            _emailService.SendEmail(new Model.EmailViewModels.EmailViewModel {
+                Email = "hotelseogwipean@naver.com",
+                Subject = "[HotelSeogwipean Web] 신규 시숙 예약",
+                Message = contents
+            });
             return Json(_add);
         }
     }

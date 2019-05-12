@@ -201,7 +201,7 @@ namespace Seogwipean.Data.Repositories
             }
         }
 
-        public LongResult AddBooking(BookingViewModel vm)
+        public LongResult<BookingViewModel> AddBooking(BookingViewModel vm)
         {
             try
             {
@@ -255,9 +255,24 @@ namespace Seogwipean.Data.Repositories
                     db.Booking.Add(newBooking);
                     db.SaveChanges();
                     _logger.LogInformation(DateTime.Now + " || 시숙 예약 추가, 예약자명: " + userName + ", 체크인: " + startDate.ToShortDateString() + ", 체크아웃: " + endDate.Value.ToShortDateString());
-                    return new LongResult
+                    return new LongResult<BookingViewModel>
                     {
-                        Result = Common.Success
+                        Result = Common.Success,
+                        Data = new BookingViewModel
+                        {
+                            UserName = userName,
+                            HeadCount = headCount,
+                            Email = email,
+                            Request = request,
+                            Phone = phone,
+                            Recommender = recommender,
+                            RoomType = roomType,
+                            StartDate = startDate,
+                            EndDate = endDate,
+                            CreateDate = DateTime.UtcNow,
+                            Status = CodesName.Booking_Booked,
+                            AgeRange = ageRange
+                        }
                     };
                 }
             }
@@ -266,13 +281,13 @@ namespace Seogwipean.Data.Repositories
                 _logger.LogError(e.ToString());
                 if (e is SeogwipeanException)
                 {
-                    return new LongResult
+                    return new LongResult<BookingViewModel>
                     {
                         Result = Common.Fail,
                         Reason = e.Message
                     };
                 }
-                return new LongResult
+                return new LongResult<BookingViewModel>
                 {
                     Result = Common.Exception,
                     Reason = null
