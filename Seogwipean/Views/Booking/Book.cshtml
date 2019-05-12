@@ -297,7 +297,7 @@
             showMonthAfterYear: true,
             yearSuffix: '년',
             minDate: '2019-05-15',
-            maxDate: '2019-05-31'
+            maxDate: '2019-06-01'
         });
 
         (function ($) {
@@ -340,9 +340,11 @@
                 _validation = true;
             }
 
+            var _startMonth = Number($("#startDate").val().trim().slice(5, 7));
+            var _endMonth = Number($("#endDate").val().trim().slice(5, 7));
             var _startDate = Number($("#startDate").val().trim().slice(8, 10));
             var _endDate = Number($("#endDate").val().trim().slice(8, 10));
-            if (_startDate > _endDate) {
+            if (_endMonth <= _startMonth && _startDate > _endDate) {
                 alert("체크아웃 날짜는 체크인 날짜보다 늦어야합니다."); return;
             }
             if (_validation) {
