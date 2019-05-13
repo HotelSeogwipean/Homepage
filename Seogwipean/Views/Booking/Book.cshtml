@@ -442,8 +442,10 @@
                 success: function (data) {
                     pop2();
                     var _data = data.data[0];
-                    var _day = Number(_data.startDate.slice(8, 10)) - Number(_data.startDate.slice(8, 10));
-                    var dayText = _day + "박" + " " + eval(_day + 1) + "일";
+                    var diff = new Date(_data.endDate) - new Date(_data.startDate);
+                    var currDay = 24 * 60 * 60 * 1000;
+                    var _days = parseInt(diff / currDay);
+                    var dayText = _days + "박" + " " + eval(_days + 1) + "일";
                     $("#foundName").html(_data.userName);
                     $("#foundPhone").html(_data.phone);
                     $("#foundCheckIn").html(_data.startDate.slice(0, 10));

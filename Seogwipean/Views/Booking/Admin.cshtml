@@ -139,7 +139,10 @@
                         var __data = data.data[i];
                         var listTemplate = "<tr>" + $("#listTemplate").html().trim() + "</tr>";
                         var listTemplateClone = $(listTemplate);
-                        var days = Number(__data.endDate.slice(8, 10)) - Number(__data.startDate.slice(8, 10));
+                        var diff = new Date(__data.endDate) - new Date(__data.startDate);
+                        var currDay = 24 * 60 * 60 * 1000;
+                        var days = parseInt(diff / currDay);
+
                         idx++;
                         listTemplateClone.find(".numba").html(idx);
                         listTemplateClone.find(".name").html(__data.userName);
