@@ -126,7 +126,7 @@
                             <label for="findName">예약자 성함</label>
                         </div>
                         <div class="controls">
-                            <input type="tel" id="findPhone" class="floatLabel" name="findPhone" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+                            <input type="tel" id="findPhone" class="floatLabel" name="findPhone" placeholder="01012345678" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
                             <label for="findPhone">연락처</label>
                         </div>
                         <span class="addText">※ 예약하실때 기입한 예약자 정보와 동일하게 입력해주세요.</span>
@@ -142,7 +142,7 @@
     </div>
 
 
-    <div style="margin-top: 50px;">
+    <div style="margin-top: 50px;" id="logoBox">
         <img id="logo" src="~/images/logo.png" />
     </div>
 
@@ -161,16 +161,16 @@
                 <label for="name">예약자 성함</label>
             </div>
             <div class="controls">
-                <input type="text" id="email" class="floatLabel" name="email">
+                <input type="text" id="email" class="floatLabel" name="email" placeholder="hotelseogwipean@naver.com">
                 <label for="email">이메일</label>
             </div>
             <div class="controls">
-                <input type="tel" id="phone" class="floatLabel" name="phone" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+                <input type="tel" id="phone" class="floatLabel" name="phone" placeholder="01012345678" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
                 <label for="phone">연락처</label>
             </div>
             <div class="controls">
-                <input type="text" id="recommender" class="floatLabel" name="recommender">
-                <label for="country">추천인</label>
+                <input type="text" id="recommender" class="floatLabel" name="recommender" >
+                <label for="recommender">추천인</label>
             </div>
         </div>
         <!--  Details -->
@@ -194,7 +194,7 @@
             <div class="grid">
                 <div class="controls">
                     <i class="fa fa-sort"></i>
-                    <select class="floatLabel" id="selectCount">
+                    <select class="floatLabel" id="selectCount" name="selectCount">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -206,21 +206,21 @@
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
-                    <label for="fruit"><i class="fa fa-male"></i>투숙 인원수</label>
+                    <label for="selectCount"><i class="fa fa-male"></i>투숙 인원수</label>
                 </div>
             </div>
 
             <div class="grid">
                 <div class="controls">
                     <i class="fa fa-sort"></i>
-                    <select class="floatLabel" id="selectAge">
+                    <select class="floatLabel" id="selectAge" name="selectAge">
                         <option value="20" selected>20대</option>
                         <option value="30">30대</option>
                         <option value="40">40대</option>
                         <option value="50">50대</option>
                         <option value="60">60대 이상</option>
                     </select>
-                    <label for="fruit"><i class="fa fa-male"></i>예약자 연령대</label>
+                    <label for="selectAge"><i class="fa fa-male"></i>예약자 연령대</label>
                 </div>
             </div>
 
