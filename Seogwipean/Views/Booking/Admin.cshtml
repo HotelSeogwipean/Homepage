@@ -39,6 +39,19 @@
     <link href="~/css/jquery-ui.min.css" rel="stylesheet" />
 </head>
 <body>
+    <div id="colorBox">
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>체크인 당일 : </td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
     <div id="searchBox">
         <div>
             <label for="bookerName">예약자</label>
@@ -55,20 +68,21 @@
         <input type="button" id="btnSearch" value="검색" />
         <input type="button" id="btnReset" value="초기화" />
     </div>
+
     <div class="result-table">
+        <span style="font-weight: 600; text-align: center;">진행중인 시숙 예약</span>
         <table class="adminTable">
             <colgroup>
-                <col style="width: 10px;" />
-                <col style="width: 30px;" />
-                <col style="width: 40px;" />
-                <col style="width: 30px;" />
-                <col style="width: 30px;" />
-                <col style="width: 5px;" />
-                <col style="width: 10px;" />
-                <col style="width: 25px;" />
-                <col style="width: 100px; " />
-                <col style="width: 20px;" />
-                <col style="width: 10px;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 10%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 40%; " />
+                <col style="width: 10%;" />
+                <col style="width: 10%;" />
             </colgroup>
             <thead>
                 <tr>
@@ -78,8 +92,7 @@
                     <th>체크인</th>
                     <th>체크아웃</th>
                     <th>투숙 기간</th>
-                    <th>투숙인원수</th>
-                    <th>요청 객실 타입</th>
+                    <th>인원수</th>
                     <th>요청사항</th>
                     <th>추천인</th>
                     <th>신청일자</th>
@@ -88,6 +101,40 @@
             <tbody id="append"></tbody>
         </table>
     </div>
+    
+    <div class="result-table" style="margin-top: 20px;">
+        <span style="font-weight: 600; text-align: center;">종료된 시숙 예약</span>
+        <table class="adminTable">
+            <colgroup>
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 10%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 40%; " />
+                <col style="width: 10%;" />
+                <col style="width: 10%;" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>예약자명</th>
+                    <th>연락처</th>
+                    <th>체크인</th>
+                    <th>체크아웃</th>
+                    <th>투숙 기간</th>
+                    <th>인원수</th>
+                    <th>요청사항</th>
+                    <th>추천인</th>
+                    <th>신청일자</th>
+                </tr>
+            </thead>
+            <tbody id="appendEnd"></tbody>
+        </table>
+    </div>
+
     <template id="listTemplate">
         <td class="numba"></td>
         <td class="name">cell1_10</td>
@@ -96,7 +143,6 @@
         <td class="endDate">cell5_10</td>
         <td class="days"></td>
         <td class="headCount">cell6_10</td>
-        <td class="roomType">cell7_10</td>
         <td class="request">cell8_10</td>
         <td class="recommender">cell3_10</td>
         <td class="createDate">cell9_10</td>
@@ -131,6 +177,7 @@
                 data: obj,
                 success: function (data) {
                     var idx = 0;
+                    var endIdx = 0;
                     if (data.data.length < 1) {
                         var noList = '<td colspan="10">조회 결과가 없습니다.</td>';
                         $("#append").append(noList);
@@ -139,12 +186,26 @@
                         var __data = data.data[i];
                         var listTemplate = "<tr>" + $("#listTemplate").html().trim() + "</tr>";
                         var listTemplateClone = $(listTemplate);
-                        var diff = new Date(__data.endDate) - new Date(__data.startDate);
+                        var _endDate = new Date(__data.endDate);
+                        var _startDate = new Date(__data.startDate);
+
+                        var diff = _endDate - _startDate;
                         var currDay = 24 * 60 * 60 * 1000;
                         var days = parseInt(diff / currDay);
+                        var today = new Date();
+                        var isCheckedOut = (today - _endDate) > 0;
+                        if (!isCheckedOut) {
+                            idx++;
+                            listTemplateClone.find(".numba").html(idx);
+                        } else {
+                            endIdx++;
+                            listTemplateClone.find(".numba").html(endIdx);
+                        }
 
-                        idx++;
-                        listTemplateClone.find(".numba").html(idx);
+                        if (_startDate.getMonth() == today.getMonth() && _startDate.getDate() == today.getDate()) {
+                            listTemplateClone.addClass("todayCheck");
+                        }
+
                         listTemplateClone.find(".name").html(__data.userName);
                         listTemplateClone.find(".phone").html(__data.phone);
                         listTemplateClone.find(".recommender").html(__data.recommender);
@@ -155,7 +216,11 @@
                         listTemplateClone.find(".roomType").html(__data.roomType);
                         listTemplateClone.find(".request").html(__data.request);
                         listTemplateClone.find(".createDate").html(__data.createDate.slice(0, 10));
-                        $("#append").append(listTemplateClone);
+                        if (isCheckedOut) {
+                            $("#appendEnd").append(listTemplateClone);
+                        } else {
+                            $("#append").append(listTemplateClone);
+                        }
                     });
                 },
                 error: function (data) {

@@ -71,10 +71,10 @@
         margin-top: 10px;
     }
 
-    #searchBox > div:first-child{
-        padding-bottom: 10px;
-        border-bottom: 1px groove #444444;
-    }
+        #searchBox > div:first-child {
+            padding-bottom: 10px;
+            border-bottom: 1px groove #444444;
+        }
 
         #searchBox > div > label {
             width: 10%;
@@ -100,10 +100,42 @@
         cursor: pointer;
     }
 
-    #searchBox > [type=button]:hover {
-        background-color: #20520e;
+        #searchBox > [type=button]:hover {
+            background-color: #20520e;
+        }
+
+.result-table {
+    margin-top: 15px;
+}
+
+
+#colorBox {
+    right: 0px;
+    top: 0px;
+    width: 150px;
+    position: absolute;
+}
+
+    #colorBox > table tr td:first-of-type {
+        font-size: 11px;
     }
 
-.result-table{
-    margin-top: 15px;
+    #colorBox > table tr td:last-of-type {
+        width: 10px;
+        height: 10px;
+    }
+    #colorBox > table tr:last-of-type td:last-of-type {
+        background-color: #e97979;
+    }
+
+    #colorBox > table tr:first-of-type td:last-of-type {
+        background-color: #153908;
+    }
+
+.checkedOut {
+    background-color: #153908;
+}
+
+.todayCheck {
+    background-color: #e97979;
 }
