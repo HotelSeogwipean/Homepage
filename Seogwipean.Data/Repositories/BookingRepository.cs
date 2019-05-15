@@ -341,7 +341,7 @@ namespace Seogwipean.Data.Repositories
 
                     if(find.Count() < 1)
                     {
-                        throw new SeogwipeanException("존재하지 않는 예약자 정보 입니다.");
+                        throw new SeogwipeanException($"검색어: {userName}, {phone} // 존재하지 않는 예약자 정보 입니다. {DateTime.Now}");
                     }
 
                     return new LongResult<IList<BookingViewModel>>
