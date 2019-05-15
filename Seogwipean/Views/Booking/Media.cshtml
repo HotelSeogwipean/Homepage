@@ -41,14 +41,14 @@
         <img src="~/images/logo.png" style="text-align:center;"/>
     </div>
     <div id="wrapper" align="center">
-        <div class="pictureViewer">
+        <div class="pictureViewer" >
             <div class="gallery">
-                <img class="gallery-item" src="~/building/front.jpg">
-                <img class="gallery-item" src="~/rooms/standardtwin.jpg">
+                <img class="gallery-item" src="~/building/front.jpg" >
+                <img class="gallery-item" src="~/rooms/standard2.jpg">
                 <img class="gallery-item" src="~/rooms/bathroom.jpg">
             </div>
         </div>
-        <div class="videoPlayer">
+        @*<div class="videoPlayer">
             <video id='my-video' class='video-js' controls preload='auto' poster='/images/comingsoon.jpg' data-setup='{}'>
                 <source src='~/video/hotel.mp4' type='video/mp4'>
                 <p class='vjs-no-js'>
@@ -56,9 +56,9 @@
                     <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
                 </p>
             </video>
-        </div>
+        </div>*@
         <div class="btnBox">
-            <input type="button" id="btnPicture" value="사진 보기" />
+            @*<input type="button" id="btnPicture" value="사진 보기" />*@
             <input type="button" id="btnPrev" value="시숙 예약하기" />
         </div>
     </div>
@@ -67,8 +67,6 @@
     <script src='~/lib/videojs.js'></script>
     <script src="~/lib/custom-alert.js"></script>
     <script src="~/lib/RV-gallery.min.js"></script>
-
-
     <script type="text/javascript">
         $(function () {
             $('.gallery').initGallery({
@@ -87,7 +85,6 @@
             $(".close-button").click(function () {
                 closeFullScreen();
             });
-
         });
 
         $("#btnPicture").click(function () {
@@ -97,19 +94,19 @@
         $("#btnPrev").click(function () {
             window.location.href = "/booking/book";
         });
-
+        
         function showFullScreen()
         {
             $(".gallery").css("z-index", "99999");
             $(".gallery").find(".g_f-s-hidden").fadeIn(400);
-            toggleView();
+            //toggleView();
         }
         function closeFullScreen()
         {
             $(".gallery").find(".g_f-s-hidden").fadeOut(400, function () {
                 $(".gallery").removeAttr("style")
             }.bind($(".gallery")));
-            toggleView();
+            //toggleView();
         }
 
         function toggleView() {
