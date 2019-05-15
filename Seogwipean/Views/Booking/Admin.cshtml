@@ -68,6 +68,38 @@
         <input type="button" id="btnSearch" value="검색" />
         <input type="button" id="btnReset" value="초기화" />
     </div>
+    <div class="result-table" style="margin-top: 20px;">
+        <span style="font-weight: 600; text-align: center;">당일 체크인 목록</span>
+        <table class="todayCheckIn">
+            <colgroup>
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 10%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 40%; " />
+                <col style="width: 10%;" />
+                <col style="width: 10%;" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>예약자명</th>
+                    <th>연락처</th>
+                    <th>체크인</th>
+                    <th>체크아웃</th>
+                    <th>투숙 기간</th>
+                    <th>인원수</th>
+                    <th>요청사항</th>
+                    <th>추천인</th>
+                    <th>신청일자</th>
+                </tr>
+            </thead>
+            <tbody id="todayAppend"></tbody>
+        </table>
+    </div>
 
     <div class="result-table">
         <span style="font-weight: 600; text-align: center;">진행중인 시숙 예약</span>
@@ -101,7 +133,7 @@
             <tbody id="append"></tbody>
         </table>
     </div>
-    
+
     <div class="result-table" style="margin-top: 20px;">
         <span style="font-weight: 600; text-align: center;">종료된 시숙 예약</span>
         <table class="adminTable">
@@ -170,6 +202,8 @@
             obj.startDate = startDate;
             obj.endDate = endDate;
             $("#append").html("");
+            $("#todayAppend").html("");
+            $("#appendEnd").html("");
             $.ajax({
                 url: '/booking/admin',
                 type: 'POST',
@@ -202,9 +236,7 @@
                             listTemplateClone.find(".numba").html(endIdx);
                         }
 
-                        if (_startDate.getMonth() == today.getMonth() && _startDate.getDate() == today.getDate()) {
-                            listTemplateClone.addClass("todayCheck");
-                        }
+                        
 
                         listTemplateClone.find(".name").html(__data.userName);
                         listTemplateClone.find(".phone").html(__data.phone);
@@ -218,6 +250,9 @@
                         listTemplateClone.find(".createDate").html(__data.createDate.slice(0, 10));
                         if (isCheckedOut) {
                             $("#appendEnd").append(listTemplateClone);
+                        } else if(_startDate.getMonth() == today.getMonth() && _startDate.getDate() == today.getDate()) {
+                            listTemplateClone.addClass("todayCheck");
+                            $("#todayAppend").append(listTemplateClone);
                         } else {
                             $("#append").append(listTemplateClone);
                         }

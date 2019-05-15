@@ -11,6 +11,6 @@ namespace Seogwipean.Util
         public static readonly short Booking_CheckIn = 2;
         public static readonly short Booking_CheckOut = 3;
         public static readonly short Booking_Updated = 4;
-
+        public static readonly short Booking_Canceled = 9;
     }
 }

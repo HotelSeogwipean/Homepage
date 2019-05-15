@@ -39,8 +39,8 @@ namespace Seogwipean.Data.Repositories
                     var checkOut = vm.EndDate;
                     var request = vm.Request;
                     var headCount = vm.HeadCount;
-                    var _booking = db.Booking.FirstOrDefault(b => b.BookingId == bookingId);
 
+                    var _booking = db.Booking.FirstOrDefault(b => b.BookingId == bookingId);
                     if (!string.IsNullOrWhiteSpace(userName))
                     {
                         _booking.UserName = userName;
