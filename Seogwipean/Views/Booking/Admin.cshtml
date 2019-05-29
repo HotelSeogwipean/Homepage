@@ -39,18 +39,19 @@
     <link href="~/css/jquery-ui.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="colorBox">
-        <table>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>체크인 당일 : </td>
-                <td></td>
-            </tr>
-        </table>
-    </div>
+
+    @*<div id="colorBox">
+            <table>
+                <tr>
+                    <td>체크인</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>체크인 당일 : </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>*@
 
     <div id="searchBox">
         <div>
@@ -219,6 +220,9 @@
                     }
                     $(data.data).each(function (i) {
                         var __data = data.data[i];
+                        if (__data.status == 9) { return; }
+
+
                         var listTemplate = "<tr>" + $("#listTemplate").html().trim() + "</tr>";
                         var listTemplateClone = $(listTemplate);
                         var _endDate = new Date(__data.endDate);
@@ -237,8 +241,6 @@
                             listTemplateClone.find(".numba").html(endIdx);
                         }
 
-                        
-
                         listTemplateClone.find(".name").html(__data.userName);
                         listTemplateClone.find(".phone").html(__data.phone);
                         listTemplateClone.find(".recommender").html(__data.recommender);
@@ -249,14 +251,31 @@
                         listTemplateClone.find(".roomType").html(__data.roomType);
                         listTemplateClone.find(".request").html(__data.request);
                         listTemplateClone.find(".createDate").html(__data.createDate.slice(0, 10));
+
                         if (isCheckedOut) {
                             $("#appendEnd").append(listTemplateClone);
-                        } else if(_startDate.getMonth() == today.getMonth() && _startDate.getDate() == today.getDate()) {
-                            // listTemplateClone.addClass("todayCheck");
+                        } else if (_startDate.getMonth() == today.getMonth() && _startDate.getDate() == today.getDate()) {
                             $("#todayAppend").append(listTemplateClone);
                         } else {
                             $("#append").append(listTemplateClone);
                         }
+
+                        if (__data.status == 1) {
+                            listTemplateClone.find(".name").css("background-color", "#e6dc75");
+                        }
+
+                        if (__data.status == 2) {
+                            listTemplateClone.find(".name").html(__data.userName +"(체크인)");
+                        }
+                        if (__data.status == 3) {
+                            listTemplateClone.find(".name").html(__data.userName +"(체크아웃)");
+                        }
+
+
+                        $(listTemplateClone).dblclick(function () {
+                            window.location.href = '/booking/admin/edit?bookingId=' + __data.bookingId;
+                        });
+
                     });
                 },
                 error: function (data) {

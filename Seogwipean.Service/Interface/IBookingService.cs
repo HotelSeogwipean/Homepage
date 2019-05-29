@@ -14,5 +14,6 @@ namespace Seogwipean.Service.Interface
         LongResult DeleteBooking(long bookingId);
         bool UpdateBookingStatus(BookingViewModel vm);
         LongResult UpdateBooking(BookingViewModel vm);
+        Data.Models.Booking GetAdminBook(long bookingId);
     }
 }

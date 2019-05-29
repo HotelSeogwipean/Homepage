@@ -25,6 +25,31 @@ namespace Seogwipean.Data.Repositories
 
         #region #########################
 
+        public Booking GetAdminBook(long bookingId)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var result = db.Booking.FirstOrDefault(b => b.BookingId == bookingId);
+                    if(result == null)
+                    {
+                        return null;
+                    }
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return null;
+                }
+                return null;
+            }
+        }
+
         public LongResult UpdateBooking(BookingViewModel vm)
         {
             try
@@ -56,12 +81,20 @@ namespace Seogwipean.Data.Repositories
                     if (checkIn.Year > 1)
                     {
                         _booking.StartDate = checkIn;
+                    }
+                    if(checkOut.HasValue)
+                    {
                         _booking.EndDate = checkOut;
                     }
                     if (!string.IsNullOrWhiteSpace(request))
                     {
                         _booking.Request = request;
                     }
+                    if(vm.Status > 0)
+                    {
+                        _booking.Status = vm.Status;
+                    }
+
                     if(headCount > 0)
                     {
                         _booking.HeadCount = headCount;

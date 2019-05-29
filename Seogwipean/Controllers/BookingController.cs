@@ -70,10 +70,25 @@ namespace Seogwipean.Web.Controllers
                 Result = "Failed"
             });
         }
+
+        [HttpGet("/booking/admin/edit")]
+        public IActionResult AdminEdit(long bookingId)
+        {
+            var data = _bookingService.GetAdminBook(bookingId);
+            return View("edit", data);
+        }
+
         [HttpPost("/booking/admin/updatestatus")]
         public IActionResult UpdateStatus(BookingViewModel vm)
         {
             var result = _bookingService.UpdateBookingStatus(vm);
+            return Json(result);
+        }
+
+        [HttpPost("/booking/admin/update")]
+        public IActionResult UpdateBookingData(BookingViewModel vm)
+        {
+            var result = _bookingService.UpdateBooking(vm);
             return Json(result);
         }
 

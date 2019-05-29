@@ -12,12 +12,17 @@ namespace Seogwipean.Service.Booking
     {
         private readonly ILogger _logger;
         private IBookingRepository _bookingRepository;
-
+        
         public BookingService(ILoggerFactory loggerFactory,
             IBookingRepository bookingRepository)
         {
             _bookingRepository = bookingRepository ?? throw new ArgumentNullException(nameof(bookingRepository));
             _logger = loggerFactory.CreateLogger<BookingService>();
+        }
+
+        public Data.Models.Booking GetAdminBook(long bookingId)
+        {
+            return _bookingRepository.GetAdminBook(bookingId);
         }
 
         public LongResult<IList<BookingViewModel>> GetBooking(BookingViewModel vm)
