@@ -126,7 +126,7 @@
                             <label for="findName">예약자 성함</label>
                         </div>
                         <div class="controls">
-                            <input type="tel" id="findPhone" class="floatLabel" name="findPhone" placeholder="01012345678" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+                            <input type="tel" id="findPhone" class="floatLabel" name="findPhone" placeholder="01012345678">
                             <label for="findPhone">연락처</label>
                         </div>
                         <span class="addText">※ 예약하실때 기입한 예약자 정보와 동일하게 입력해주세요.</span>
@@ -494,6 +494,40 @@
             }
         });
 
+        function autoHypenPhone(str) {
+            str = str.replace(/[^0-9]/g, '');
+            var tmp = '';
+            if (str.length < 4) {
+                return str;
+            } else if (str.length < 7) {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3);
+                return tmp;
+            } else if (str.length < 11) {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 3);
+                tmp += '-';
+                tmp += str.substr(6);
+                return tmp;
+            } else {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 4);
+                tmp += '-';
+                tmp += str.substr(7);
+                return tmp;
+            }
+            return str;
+        }
+
+        var cellPhone = document.getElementById('findPhone');
+        cellPhone.onkeyup = function (event) {
+            event = event || window.event;
+            var _val = this.value.trim();
+            this.value = autoHypenPhone(_val);
+        }
     </script>
 
 </body>
