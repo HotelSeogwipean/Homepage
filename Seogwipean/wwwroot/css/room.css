@@ -148,7 +148,7 @@
         font-family: 'Fjalla One', Arial, sans-serif;
         font-size: 15px;
         line-height: 25px;
-        color: #d25458;
+        color: #368843;
     }
 
     .room-basic-info li {
@@ -221,7 +221,7 @@ a {
     clear: both;
 }
 
-a.btn, .btn {
+.roomWrapper a.btn, .roomWrapper .btn {
     display: inline-block;
     float: left;
     clear: both;
@@ -258,7 +258,7 @@ a.btn, .btn {
     left: -24px;
     z-index: 100;
     opacity: 1;
-    background: url(https://dcgqfo29cbqjp.cloudfront.net/_img/img-hover.svg) 0 0 no-repeat;
+    background: url(../images/img-hover.svg) 0 0 no-repeat;
 }
 
 .logo img, .post img {

@@ -148,6 +148,10 @@
     }
 }
 
+header {
+    box-sizing: border-box;
+}
+
 nav {
     float: right;
     width: 100%;
@@ -164,7 +168,8 @@ nav ul {
     overflow: hidden;
     text-align: right;
     float: right;
-    padding-right: 25%;
+    /*padding-right: 25%;*/
+    padding-right: 40%;
 }
 
     nav ul li a:hover {
@@ -213,9 +218,9 @@ nav ul a {
 }
 
     .booking > a:hover {
-        color: #19445f;
+        color: #fff;
         font-weight: 800;
-        background-color: #fac2c3;
+        background-color: #3f8d4b;
     }
 
     .booking > a {
@@ -498,8 +503,4 @@ a {
     margin-top: 25px;
     position: relative;
     overflow: visible;
-}
-
-.mainContents > div{
-    background-color: black;
 }

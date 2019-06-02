@@ -49,9 +49,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="/hotel">The Hotel</a></li>
+                    @*<li><a href="/hotel">The Hotel</a></li>*@
                     <li><a href="/room">Rooms ＆ Suits</a></li>
-                    <li><a href="/offers">Offers</a></li>
+                    @*<li><a href="/offers">Offers</a></li>*@
                     <li><a href="/location">Location</a></li>
                 </ul>
             </nav>
@@ -69,12 +69,7 @@
     <script src="~/lib/jquery-3.2.1.min.js"></script>
     <script src="~/lib/jquery-ui.min.js"></script>
     <script src="~/lib/custom-alert.js"></script>
-
     <script type="text/javascript">
-
-        $(function () {
-            window.location.href = "/booking";
-        });
 
         // 알림창 변경
         new customAlert();
@@ -101,6 +96,10 @@
                 scrollTop: target
             }, 500);
             event.preventDefault();
+        });
+
+        $(".booking a").click(function () {
+            alert("예약 문의는 064-735-1453을 통해 가능합니다.");
         });
 
     </script>

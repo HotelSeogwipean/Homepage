@@ -1,0 +1,23 @@
+﻿
+.topBanner {
+    width: calc(100% - 60px);
+}
+
+    .topBanner img {
+        width: 100%;
+        opacity: 0.1;
+    }
+
+.banner h1 {
+    font-size: 37px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 34px;
+}
+
+
+#wrapper {
+    border-top: 1px solid #d0d0d0;
+    padding-top: 10px;
+}
