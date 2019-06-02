@@ -90,7 +90,8 @@
 
 @media screen and (min-width : 320px) {
     .logo {
-        margin-top: -2.5%;
+        margin-top: -4.5%;
+        left: 5% !important;
     }
 }
 
@@ -98,6 +99,7 @@
     .logo {
         margin-left: 32%;
         margin-top: -0.5%;
+        left: -30% !important;
     }
 }
 
@@ -159,7 +161,8 @@ nav {
 
 @media only screen and (max-width: 766px) {
     nav {
-        width: 100%;
+        width: 77%;
+        margin-top: 5%;
     }
 }
 
@@ -249,13 +252,12 @@ nav ul a {
     cursor: pointer;
     font-size: 20px;
     position: absolute;
-    right: 22px;
+    right: 10px;
     top: 15%;
     width: 30px;
     -webkit-transition: all 200ms ease-in;
     -moz-transition: all 200ms ease-in;
     transition: all 200ms ease-in;
-    margin-top: 3%;
 }
 
 @media only screen and (max-width: 766px) {
