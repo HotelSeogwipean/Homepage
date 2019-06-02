@@ -279,10 +279,16 @@ a {
     display: none;
 }
 
+
 .roomWrapper {
     width: 75%;
 }
 
+@media only screen and (max-width: 766px) {
+    .roomWrapper {
+        width: 100%;
+    }
+}
 
 .topBanner {
     width: calc(100% - 60px);
