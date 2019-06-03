@@ -296,8 +296,8 @@
             dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
             showMonthAfterYear: true,
             yearSuffix: '년',
-            minDate: '2019-05-29',
-            maxDate: '2019-06-10'
+            minDate: new Date().toISOString().slice(0, 10),
+            maxDate: '2019-12-31'
         });
 
         (function ($) {
