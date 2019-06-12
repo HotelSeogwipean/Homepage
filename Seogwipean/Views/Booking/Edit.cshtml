@@ -77,6 +77,12 @@
             <h2 class="heading">투숙 인원 수</h2>
         </div>
         <input type="number" id="foundHeadCount" value="@Html.DisplayFor(model => model.HeadCount)" />
+        
+        <div class="form-group">
+            <h2 class="heading">추천인</h2>
+        </div>
+        <input type="text" id="foundRecommender" value="@Html.DisplayFor(model => model.Recommender)" />
+
         <div class="form-group">
             <h2 class="heading">요청사항</h2>
         </div>
@@ -193,6 +199,9 @@
                 _vm.StartDate = $("#foundCheckIn").val();
             if ('@Html.DisplayFor(b => b.EndDate)' != $("#foundCheckOut").val())
                 _vm.EndDate = $("#foundCheckOut").val();
+            if ('@Html.DisplayFor(b => b.Recommender)' != $("#foundRecommender").val().trim())
+                _vm.Recommender = $("#foundRecommender").val().trim();
+
             if (_status != checkedStatus)
                 _vm.Status = checkedStatus;
 

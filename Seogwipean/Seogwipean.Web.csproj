@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\img\spin.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +30,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\etc\" />
+    <Folder Include="wwwroot\rooms\" />
   </ItemGroup>
 
   <ItemGroup>

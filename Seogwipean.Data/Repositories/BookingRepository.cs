@@ -64,6 +64,7 @@ namespace Seogwipean.Data.Repositories
                     var checkOut = vm.EndDate;
                     var request = vm.Request;
                     var headCount = vm.HeadCount;
+                    var recommender = vm.Recommender;
 
                     var _booking = db.Booking.FirstOrDefault(b => b.BookingId == bookingId);
                     if (!string.IsNullOrWhiteSpace(userName))
@@ -77,6 +78,10 @@ namespace Seogwipean.Data.Repositories
                     if (!string.IsNullOrWhiteSpace(phone))
                     {
                         _booking.Phone = phone;
+                    }
+                    if (!string.IsNullOrWhiteSpace(recommender))
+                    {
+                        _booking.Recommender = recommender;
                     }
                     if (checkIn.Year > 1)
                     {
@@ -211,7 +216,7 @@ namespace Seogwipean.Data.Repositories
                     return new LongResult<IList<Booking>>
                     {
                         Result = Common.Success,
-                        Data = _list.OrderBy(b => b.StartDate).OrderBy(b => b.EndDate).ToList()
+                        Data = _list.OrderBy(b => b.StartDate).ToList()
                     };
                 }
             }

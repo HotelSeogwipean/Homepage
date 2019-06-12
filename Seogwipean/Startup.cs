@@ -9,6 +9,7 @@ using Seogwipean.Data.Repositories;
 using Seogwipean.Data.Repositories.Interface;
 using Seogwipean.Service;
 using Seogwipean.Service.Booking;
+using Seogwipean.Service.Community;
 using Seogwipean.Service.Email;
 using Seogwipean.Service.Interface;
 
@@ -41,9 +42,11 @@ namespace Seogwipean
             services.AddSingleton<HotelSeogwipeanDbContextFactory>();
 
             services.AddSingleton<IBookingRepository, BookingRepository>();
+            services.AddSingleton<ICommunityRepository, CommunityRepository>();
 
             services.AddSingleton<IBookingService, BookingService>();
             services.AddSingleton<IEmailService, EmailService>();
+            services.AddSingleton<ICommunityService, CommunityService>();
 
             services.AddSingleton<IConfiguration>(Configuration);
 

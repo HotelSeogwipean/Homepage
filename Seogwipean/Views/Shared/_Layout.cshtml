@@ -40,8 +40,11 @@
 
 <body>
     <header class="main_h sticky">
+        <a class="logo" href="/">
+            @*<span>Hotel</span><br /><span>Seogwipean</span>*@
+            <img src="~/images/officialLogo.png" />
+        </a>
         <div class="row">
-            <a class="logo" href="/"><span>Hotel</span><br /><span>Seogwipean</span></a>
             <div class="mobile-toggle">
                 <span></span>
                 <span></span>
@@ -49,10 +52,9 @@
             </div>
             <nav>
                 <ul>
-                    @*<li><a href="/hotel">The Hotel</a></li>*@
-                    <li><a href="/room">Rooms ＆ Suits</a></li>
-                    @*<li><a href="/offers">Offers</a></li>*@
+                    <li><a href="/room">Accomodations</a></li>
                     <li><a href="/location">Location</a></li>
+                    <li><a href="/community">Community</a></li>
                 </ul>
             </nav>
         </div> <!-- / row -->
@@ -98,8 +100,9 @@
             event.preventDefault();
         });
 
+
         $(".booking a").click(function () {
-            alert("예약 문의는 064-735-1453을 통해 가능합니다.");
+            alert("예약 문의는 대표 번호 064-735-1453을 통해 가능합니다.");
         });
 
     </script>

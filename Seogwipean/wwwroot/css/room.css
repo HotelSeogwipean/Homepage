@@ -261,7 +261,7 @@ a {
     background: url(../images/img-hover.svg) 0 0 no-repeat;
 }
 
-.logo img, .post img {
+.post img {
     width: 100%;
     height: auto;
     cursor: default;

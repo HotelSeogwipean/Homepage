@@ -18,6 +18,7 @@ namespace Seogwipean.Data.Models
         public virtual DbSet<Board> Board { get; set; }
         public virtual DbSet<BoardComment> BoardComment { get; set; }
         public virtual DbSet<Booking> Booking { get; set; }
+        public virtual DbSet<Community> Community { get; set; }
         public virtual DbSet<Member> Member { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -78,6 +79,31 @@ namespace Seogwipean.Data.Models
                 entity.Property(e => e.UserName)
                     .IsRequired()
                     .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Community>(entity =>
+            {
+                entity.HasKey(e => e.BoardId);
+
+                entity.Property(e => e.Contents).IsRequired();
+
+                entity.Property(e => e.CreateDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifyDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Phone).HasMaxLength(50);
+
+                entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasMaxLength(20);
             });
 
             modelBuilder.Entity<Member>(entity =>

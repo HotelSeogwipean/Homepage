@@ -3,13 +3,14 @@
     margin: 0;
 }
 body > .wrapper {
-    min-height: 100%;
+    /* 추후에 풀어야 함
+        min-height: 100%;*/
     margin: 0 auto -30px;
 }
 body > .footer,
 body > .wrapper > .push {
     position: relative;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .signature {

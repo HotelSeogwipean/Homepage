@@ -2,6 +2,10 @@
     box-sizing: inherit;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 .main_h {
     top: 0px;
     max-height: 70px;
@@ -16,6 +20,7 @@
     top: -100px;
     padding-bottom: 6px;
     font-family: "Montserrat", sans-serif;
+    box-sizing: inherit;
 }
 
 #customalert button {
@@ -27,10 +32,6 @@
     }
 
 @media only screen and (max-width: 766px) {
-    .main_h {
-        padding-top: 25px;
-    }
-
     .open-nav {
         max-height: 400px !important;
     }
@@ -43,6 +44,7 @@
 .open-nav .mobile-toggle {
     transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
+    top: 15px;
 }
 
 .sticky {
@@ -75,94 +77,34 @@
 }
 
 .logo {
-    width: 160px;
-    color: #212121 !important;
-    float: left;
-    display: block;
-    margin-top: -0.5%;
-    line-height: 1;
-    margin-bottom: 35px;
-    left: -30% !important;
     position: absolute;
+    left: 40px;
+    float: left;
     transition: ease-in-out;
-    transition-duration: 1s;
+    transition-delay: 1s;
 }
 
-@media screen and (min-width : 320px) {
-    .logo {
-        margin-top: -4.5%;
-        left: 5% !important;
+    .logo img {
+        width: 150px;
     }
-}
-
-@media screen and (min-width : 750px) {
-    .logo {
-        margin-left: 32%;
-        margin-top: -0.5%;
-        left: -30% !important;
-    }
-}
-
-@media screen and (min-width : 960px) {
-    .logo {
-        margin-left: 35%;
-    }
-}
-
-@media screen and (min-width : 1080px) {
-    .logo {
-        margin-left: 30%;
-    }
-}
-
-@media screen and (min-width : 1600px) {
-    .logo {
-        margin-left: 15%;
-    }
-}
-
-@media screen and (min-width : 1900px) {
-    .logo {
-        margin-left: 0;
-    }
-}
-
-
-
-.logo > span:first-child {
-    margin-left: 30%;
-    font-size: 23px;
-    font-family: seogwipean;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: 600;
-}
-
-.logo > span:last-child {
-    font-size: 30px;
-    font-family: seogwipean;
-    font-weight: 600;
-}
-
-@media only screen and (max-width: 766px) {
-    .logo {
-        float: none;
-    }
-}
 
 header {
     box-sizing: border-box;
 }
 
+header *{
+    box-sizing: unset;
+}
+
 nav {
-    float: right;
+    float: left;
     width: 100%;
 }
 
 @media only screen and (max-width: 766px) {
     nav {
-        width: 77%;
-        margin-top: 5%;
+        width: 85%;
+        margin-top: 10%;
     }
 }
 
@@ -171,12 +113,12 @@ nav ul {
     overflow: hidden;
     text-align: right;
     float: right;
-    /*padding-right: 25%;*/
-    padding-right: 40%;
+    padding-right: 30%;
 }
 
     nav ul li a:hover {
-        border-bottom: 1px solid black;
+        color: #09280d;
+        font-weight: 600;
     }
 
 @media only screen and (max-width: 766px) {
@@ -196,10 +138,18 @@ nav ul li {
 }
 
 @media only screen and (max-width: 766px) {
+    .logo {
+        position: absolute;
+        left: 30px;
+        float: left;
+        top: 25px;
+    }
+
     nav ul li {
-        width: 100%;
+        width: 50%;
         padding: 7px 0;
         margin: 0;
+        border-bottom: 1px solid #a1a1a1;
     }
 }
 
@@ -252,8 +202,8 @@ nav ul a {
     cursor: pointer;
     font-size: 20px;
     position: absolute;
-    right: 10px;
-    top: 15%;
+    right: 10%;
+    top: 10px;
     width: 30px;
     -webkit-transition: all 200ms ease-in;
     -moz-transition: all 200ms ease-in;
@@ -285,9 +235,9 @@ nav ul a {
 }
 
 .mobile-toggle span {
-    width: 30px;
-    height: 4px;
-    margin-bottom: 6px;
+    width: 50px;
+    height: 5px;
+    margin-bottom: 10px;
     border-radius: 1000px;
     background: #8f8f8f;
     display: block;
@@ -337,7 +287,6 @@ section.container {
 
 .hero {
     position: relative;
-    /*background: url(../images/main.jpg) no-repeat center center fixed;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -505,4 +454,49 @@ a {
     margin-top: 25px;
     position: relative;
     overflow: visible;
+}
+
+/* Smartphones (portrait and landscape) */
+@media only screen and (min-device-width : 320px){
+/* Styles */
+}
+
+/* Smartphones (landscape) */
+@media only screen and (min-width : 321px) {
+    /* Styles */
+}
+
+/* Smartphones (portrait) */
+@media only screen and (max-width : 320px) {
+    /* Styles */
+}
+
+/* iPads (portrait and landscape) */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    /* Styles */
+}
+
+/* iPads (landscape) */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    /* Styles */
+}
+
+/* iPads (portrait) */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    /* Styles */
+}
+
+/* Desktops and laptops */
+@media only screen and (min-width : 1224px) {
+    /* Styles */
+}
+
+/* Large screens  */
+@media only screen and (min-width : 1824px) {
+    /* Styles */
+}
+
+/* iPhone 4 */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+    /* Styles */
 }
