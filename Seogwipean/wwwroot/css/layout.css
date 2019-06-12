@@ -3,8 +3,7 @@
     margin: 0;
 }
 body > .wrapper {
-    /* 추후에 풀어야 함
-        min-height: 100%;*/
+    min-height: 100%;
     margin: 0 auto -30px;
 }
 body > .footer,
