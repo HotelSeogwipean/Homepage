@@ -32,15 +32,20 @@
     <script src="~/lib/fullclip.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         // 사진 사이즈 재조정
-        var $width = screen.width;
-        var $height = screen.height - 220;
         $(window).on('load', function () {
-            $("section.container").css("width", $width).css("height", $height);
+            var $width = window.innerWidth;
+            var $height = screen.height - 220;
+
+            if (window.screen < 780) {
+                $("section.container").css("width", $width).css("height", "auto");
+            } else {
+                $("section.container").css("width", $width).css("height", $height);
+            }
         });
+
         $('.fullBackground').fullClip({
-            images: ['../building/day1.jpg', '../building/day2.jpg', '../building/day3.jpg', '../building/night2.jpg',
-                '../building/night1.jpg', '../building/night3.jpg', '../building/day4.jpg', '../building/day5.jpg', ],
-            transitionTime: 1000,
+            images: ['../building/day5.jpg', '../building/day2.jpg', '../building/day3.jpg', '../building/night2.jpg', '../building/night3.jpg' ],
+            transitionTime: 2000,
             wait: 3000
         });
     </script>

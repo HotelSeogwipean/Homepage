@@ -82,6 +82,8 @@ body{
     float: left;
     transition: ease-in-out;
     transition-delay: 1s;
+    -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
 
     .logo img {
@@ -98,14 +100,7 @@ header *{
 
 nav {
     float: left;
-    width: 100%;
-}
-
-@media only screen and (max-width: 766px) {
-    nav {
-        width: 85%;
-        margin-top: 11%;
-    }
+    width: 90%;
 }
 
 nav ul {
@@ -115,6 +110,17 @@ nav ul {
     float: right;
     padding-right: 30%;
 }
+    nav ul a {
+        color: #212121;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    nav ul li {
+        display: inline-block;
+        margin-left: 35px;
+        line-height: 1.5;
+    }
 
     nav ul li a:hover {
         color: #09280d;
@@ -122,25 +128,22 @@ nav ul {
     }
 
 @media only screen and (max-width: 766px) {
-    nav ul {
-        padding-top: 0px;
-        margin-bottom: 22px;
-        float: left;
-        text-align: center;
-        width: 100%;
+    nav {
+        width: 85%;
+        margin-top: 11%;
     }
-}
 
-nav ul li {
-    display: inline-block;
-    margin-left: 35px;
-    line-height: 1.5;
-}
+        nav ul {
+            padding-top: 0px;
+            margin-bottom: 22px;
+            float: left;
+            text-align: center;
+            width: 100%;
+        }
 
-@media only screen and (max-width: 766px) {
     .logo {
         position: absolute;
-        left: 30px;
+        left: 20px;
         float: left;
         top: 25px;
     }
@@ -151,13 +154,13 @@ nav ul li {
         margin: 0;
         border-bottom: 1px solid #a1a1a1;
     }
+
+    nav ul a {
+        font-size: 15px;
+    }
 }
 
-nav ul a {
-    color: #212121;
-    text-transform: uppercase;
-    font-size: 12px;
-}
+
 
 @media only screen and (min-width: 90%) {
     .booking {
@@ -202,7 +205,7 @@ nav ul a {
     cursor: pointer;
     font-size: 20px;
     position: absolute;
-    right: 10%;
+    right: 11%;
     top: 10px;
     width: 30px;
     -webkit-transition: all 200ms ease-in;
@@ -235,7 +238,7 @@ nav ul a {
 }
 
 .mobile-toggle span {
-    width: 50px;
+    width: 45px;
     height: 5px;
     margin-bottom: 10px;
     border-radius: 1000px;
@@ -292,11 +295,10 @@ section.container {
     background-size: cover;
     text-align: center;
     color: #fff;
-    /*padding-top: 450px;*/
     min-height: 700px;
     width: 100%;
     height: 100%;
-    /*letter-spacing: 2px;*/
+    z-index: 1;
 }
 
 .mouse {
@@ -366,51 +368,7 @@ section.container {
     line-height: 45px;
 }
 
-.logoHotel {
-    font-weight: 400;
-    font-family: seogwipean;
-    text-transform: uppercase;
-}
-
-.logoSeogwipean {
-    font-weight: 400;
-    font-family: seogwipean;
-    text-transform: none;
-}
-
-@media screen and (min-width : 320px) {
-    .logoHotel {
-        font-size: 15px;
-    }
-
-    .logoSeogwipean {
-        font-size: 35px;
-    }
-
-    .booking > a {
-        width: 40px;
-    }
-}
-
-@media screen and (min-width : 480px) {
-    .logoHotel {
-        font-size: 30px;
-    }
-
-    .logoSeogwipean {
-        font-size: 50px;
-    }
-}
-
 @media screen and (min-width : 1224px) {
-    .logoHotel {
-        font-size: 40px;
-    }
-
-    .logoSeogwipean {
-        font-size: 65px;
-    }
-
     .booking > a {
         width: 140px;
     }

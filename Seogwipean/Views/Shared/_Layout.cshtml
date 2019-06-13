@@ -84,12 +84,14 @@
                 $('nav ul li a').css('display', 'block');
             }
         });
+
         $('.main_h li a').click(function () {
             if ($('.main_h').hasClass('open-nav')) {
                 $('.navigation').removeClass('open-nav');
                 $('.main_h').removeClass('open-nav');
             }
         });
+
         $('nav a').click(function (event) {
             var id = $(this).attr("href");
             var offset = 70;
@@ -103,6 +105,10 @@
 
         $(".booking a").click(function () {
             alert("예약 문의는 대표 번호 064-735-1453을 통해 가능합니다.");
+        });
+
+        $("#logo img").click(function () {
+            location.href = "/";
         });
 
     </script>
