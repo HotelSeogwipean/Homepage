@@ -9,5 +9,6 @@ namespace Seogwipean.Service.Interface
     public interface ICommunityService
     {
         LongResult<CommunityViewModel> AddWrite(CommunityViewModel vm);
+        LongResult<IList<Seogwipean.Data.Models.Community>> GetList(CommunityViewModel vm);
     }
 }

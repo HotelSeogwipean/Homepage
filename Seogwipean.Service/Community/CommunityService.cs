@@ -26,5 +26,10 @@ namespace Seogwipean.Service.Community
             return _communityRepository.AddWrite(vm);
         }
 
+        public LongResult<IList<Seogwipean.Data.Models.Community>> GetList(CommunityViewModel vm)
+        {
+            return _communityRepository.GetList(vm);
+        }
+
     }
 }

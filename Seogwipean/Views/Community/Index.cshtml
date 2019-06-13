@@ -1,8 +1,139 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Head{
+    <link href="~/css/community.css" rel="stylesheet"/>
+}
+<section>
+    <div id="titleBar">
+        <dl>
+            <dt>Q&A</dt>
+        </dl>
+    </div>
+    <div id="container">
 
-<h2>Index</h2>
+        <div style="width:100%;" class="view_page" id="viewWrite">
+            <div class="view_type">
+                <span class="view_type01">제목</span>
+                <span class="view_type02">2019.06.13</span>
+            </div>
+            <table class="comTable readTable">
+                <tbody>
+                    <tr>
+                        <td style="word-break:break-all;">
+                            <div id="writeContents" class="viewcont">
+                            </div>
+                            <div class="cboth hb5px"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="commentContents">
+            </div>
+            <div class="cboth">
+                <div class="btnBox">
+                    <input type="button" id="btnToList" value="목록으로" />
+                    <input type="button" class="permissionBtn" value="수정" />
+                    <input type="button" class="permissionBtn" value="삭제" />
+                    <input type="button" class="permissionBtn" value="글쓰기" />
+                </div>
+            </div>
+        </div>
 
+        <table class="comTable listTable">
+            <tbody id="tableContents">
+                <tr>
+                    <th scope="col" width="50">No.</th>
+                    <th scope="col">SUBJECT</th>
+                    <th scope="col" width="110">NAME</th>
+                    <th scope="col" width="80">DATE</th>
+                    <th scope="col" width="50">VIEW</th>
+                </tr>
+            </tbody>
+        </table>
+        <div id="pagingBox" align="center">
+            <div id="paging"></div>
+        </div>
+        <div id="btnBox">
+            <input type="button" value="글쓰기"/>
+        </div>
+    </div>
+</section>
+
+@section EndBody{
+<template id="listTemplate">
+        <td class="num"></td>
+        <td class="title">
+            <nobr style="display:block; overflow:hidden;"><a href="#"></a></nobr>
+        </td>
+        <td class="name">김에스더</td>
+        <td class="date">2019-06-07</td>
+        <td class="hit">0</td>
+</template>
+
+    <script src="~/lib/jquery-paging-min.js"></script>
+    <script type="text/javascript">
+        $("#paging").paging({
+            current: 1,
+            max: 5,
+            onclick: function (e, page) {
+                alert(`clicked ${e}, ${page}`);
+            }
+        });
+
+        $(function () {
+            fnGetList(1);
+        });
+
+        var _dataList = new Array();
+        var fnGetList = function (pageNo) {
+            $("#loaderBox").show();
+            var obj = new Object();
+            obj.PageNo = pageNo;
+            obj.PageSize = 15;
+
+            $.ajax({
+                url: '/Community/GetList',
+                type: 'POST',
+                dataType: 'JSON',
+                data: obj,
+                success: function (data) {
+                    $("#loaderBox").hide();
+                    $(data.data).each(function (i) {
+                        var _data = data.data[i];
+                        _dataList[_data.boardId] = _data;
+                        var listTemplate = `<tr>${$("#listTemplate").html().trim()}</tr>`;
+                        var listTemplateClone = $(listTemplate);
+                        listTemplateClone.data("value", _data.boardId);
+                        listTemplateClone.find(".num").html(_data.boardId);
+                        listTemplateClone.find(".title a").html(_data.title);
+                        listTemplateClone.find(".name").html(_data.userName);
+                        listTemplateClone.find(".date").html(_data.createDate.slice(0,10));
+                        listTemplateClone.find(".hit").html();
+                        listTemplateClone.click(function () {
+                            fnReadMore(listTemplateClone.data("value"));
+                        });
+                        $("#tableContents").append(listTemplateClone);
+                    });
+                },
+                error: function (data) {
+                    console.log(data);
+                    $("#loaderBox").hide();
+                }
+            });
+        }
+
+        $("#btnToList").click(function () {
+            $("#viewWrite").hide("fade", null, 1000, null);
+        });
+
+        function fnReadMore(_value) {
+            var _data = _dataList[_value];
+            $("#viewWrite").show();
+            $("#viewWrite .view_type01").html(_data.title);
+            $("#viewWrite .view_type02").html(_data.createDate.slice(0, 10));
+            $("#viewWrite #writeContents").html(_data.contents);
+        }
+
+    </script>
+}
