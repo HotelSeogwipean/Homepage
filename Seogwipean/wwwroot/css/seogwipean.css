@@ -8,7 +8,7 @@ body{
 
 .main_h {
     top: 0px;
-    max-height: 70px;
+    max-height: 50px;
     z-index: 999;
     width: 100%;
     padding-top: 17px;
@@ -170,7 +170,7 @@ nav ul {
 
 .booking {
     width: 100%;
-    position: absolute;
+    position: relative;
 }
 
     .booking > a:hover {

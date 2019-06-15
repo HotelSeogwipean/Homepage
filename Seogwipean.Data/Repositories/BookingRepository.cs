@@ -49,7 +49,7 @@ namespace Seogwipean.Data.Repositories
                 return null;
             }
         }
-
+        
         public LongResult UpdateBooking(BookingViewModel vm)
         {
             try
@@ -286,7 +286,7 @@ namespace Seogwipean.Data.Repositories
                         RoomType = roomType,
                         StartDate = startDate,
                         EndDate = endDate,
-                        CreateDate = DateTime.UtcNow,
+                        CreateDate = DateTime.Now,
                         Status = CodesName.Booking_Booked,
                         AgeRange = ageRange
                     };
@@ -307,7 +307,7 @@ namespace Seogwipean.Data.Repositories
                             RoomType = roomType,
                             StartDate = startDate,
                             EndDate = endDate,
-                            CreateDate = DateTime.UtcNow,
+                            CreateDate = DateTime.Now,
                             Status = CodesName.Booking_Booked,
                             AgeRange = ageRange
                         }

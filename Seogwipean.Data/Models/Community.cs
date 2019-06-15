@@ -16,5 +16,7 @@ namespace Seogwipean.Data.Models
         public DateTime CreateDate { get; set; }
         public DateTime ModifyDate { get; set; }
         public bool IsLocked { get; set; }
+        public int? ViewCount { get; set; }
+        public short? Status { get; set; }
     }
 }

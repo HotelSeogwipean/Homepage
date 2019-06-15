@@ -4,6 +4,7 @@
 @section Head{
     <script src="https://cdn.tiny.cloud/1/rrdzu3elmsxvoswkokxmsskjfr74n43vyrcehm1b9zrtsqj8/tinymce/5/tinymce.min.js"></script>
     <script src="~/lib/ko_KR.js"></script>
+    <link rel="stylesheet" href="~/css/write.css"/>
     <script type="text/javascript">
         var mentionsFetchFunction = function (query, success) {
             var users = [
@@ -145,80 +146,6 @@
             content_style: '.mce-annotation { background: #fff0b7; } .tc-active-annotation {background: #ffe168; color: black; }'
         });
     </script>
-    <style type="text/css">
-        section #titleBar {
-            width: 1024px;
-            height: 100px;
-            margin: 0 auto;
-            font-size: 42px;
-            font-weight: 500;
-            color: #000000;
-            letter-spacing: 5px;
-            border-bottom: 1px solid #757575;
-        }
-
-        #container {
-            width: 960px;
-            margin: 0 auto;
-            height: auto;
-        }
-
-            #container > table {
-                width: 100%;
-            }
-
-        .write_board {
-            width: 100%;
-            border-collapse: collapse;
-            border-spacing: 0;
-            border-bottom: 1px solid #494949 !important;
-        }
-
-            .write_board tr:first-child td {
-                border-top: 1px solid #494949 !important;
-                font-size: 9pt;
-                color: rgb(34, 34, 34);
-            }
-
-            .write_board td {
-                border-top: solid 1px #cccccc;
-                font-family: 'Noto Sans Korean','Malgun Gothic',sans-serif;
-                font-size: 9pt;
-                color: rgb(34, 34, 34);
-            }
-
-        .write_head {
-            padding: 16px;
-            font-weight: bold;
-            text-align: center;
-            width: 90px;
-        }
-
-        #btnBox {
-            float: right;
-            margin-top: 20px;
-        }
-
-        input[type=button] {
-            width: 60px;
-            display: inline-block;
-            height: 25px;
-            border: 1px solid #9f9898;
-            border-radius: 8px;
-            font-size: 15px;
-            line-height: 20px;
-            text-align: center;
-            background-color: #fff;
-            -webkit-transition: background-color 0.05s ease-in-out;
-            -moz-transition: background-color 0.05s ease-in-out;
-            -o-transition: background-color 0.05s ease-in-out;
-            transition: background-color 0.05s ease-in-out;
-        }
-
-            input[type=button]:hover {
-                border: 1px solid #757070;
-            }
-    </style>
 }
 
 <section>
@@ -247,6 +174,16 @@
                                     <td><input class="ed" type="tel" id="phone" maxlength="11" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/></td>
                                 </tr>
                                 <tr>
+                                    <td class="write_head" >글 공개</td>
+                                    <td>
+                                        <label for="radio-1">공개</label>
+                                        <input type="radio" name="isLocked" id="radio-1" value="1" checked>
+                                        <label for="radio-2" style="margin-left: 20px;">비공개</label>
+                                        <input type="radio" name="isLocked" id="radio-2" value="0">
+                                        <span style="float:right;">※비공개시 작성자, 관리자만 열람할 수 있습니다.</span>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class="write_head">제 목</td>
                                     <td colspan="3"><input class="ed" style="width: 100%; font-size: 12px;" id="title"></td>
                                 </tr>
@@ -271,6 +208,12 @@
 
 @section EndBody{
     <script type="text/javascript">
+
+        $(function () {
+            $("#loaderBox").fadeIn(1000);
+            setTimeout(function () { $("#loaderBox").fadeOut(1000);}, 1000);
+        });
+
         var btnCreated = false;
         function fnWrite() {
             var _userName = $("#userName").val();
@@ -290,6 +233,7 @@
             obj.Phone = _phone;
             obj.Title = _title;
             obj.Contents = tinyMCE.activeEditor.getContent();
+            obj.IsLocked = $("[name=isLocked]:checked").val();
             $.ajax({
                 url: '/Community/AddWrite',
                 type: 'POST',
@@ -320,6 +264,7 @@
             $(".custom-alert.button-done").click(function () {
                 window.location.href = "/Community";
             });
+
             alert("정말로 취소하시겠습니까?<br />지금까지 작성하신 내용은 저장되지 않고 삭제됩니다.");
         });
 

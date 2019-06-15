@@ -1,0 +1,73 @@
+﻿section #titleBar {
+    width: 1024px;
+    height: 100px;
+    margin: 0 auto;
+    font-size: 42px;
+    font-weight: 500;
+    color: #000000;
+    letter-spacing: 5px;
+    border-bottom: 1px solid #757575;
+}
+
+#container {
+    width: 960px;
+    margin: 0 auto;
+    height: auto;
+}
+
+    #container > table {
+        width: 100%;
+    }
+
+.write_board {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-bottom: 1px solid #494949 !important;
+}
+
+    .write_board tr:first-child td {
+        border-top: 1px solid #494949 !important;
+        font-size: 9pt;
+        color: rgb(34, 34, 34);
+    }
+
+    .write_board td {
+        border-top: solid 1px #cccccc;
+        font-family: 'Noto Sans Korean','Malgun Gothic',sans-serif;
+        font-size: 9pt;
+        color: rgb(34, 34, 34);
+    }
+
+.write_head {
+    padding: 16px;
+    font-weight: bold;
+    text-align: center;
+    width: 90px;
+}
+
+#btnBox {
+    float: right;
+    margin-top: 20px;
+}
+
+input[type=button] {
+    width: 60px;
+    display: inline-block;
+    height: 25px;
+    border: 1px solid #9f9898;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #fff;
+    -webkit-transition: background-color 0.05s ease-in-out;
+    -moz-transition: background-color 0.05s ease-in-out;
+    -o-transition: background-color 0.05s ease-in-out;
+    transition: background-color 0.05s ease-in-out;
+}
+
+    input[type=button]:hover {
+        border: 1px solid #757070;
+    }
+

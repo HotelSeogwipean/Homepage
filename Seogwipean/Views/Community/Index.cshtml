@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Head{
-    <link href="~/css/community.css" rel="stylesheet"/>
+    <link href="~/css/community.css" rel="stylesheet" />
 }
 <section>
     <div id="titleBar">
@@ -11,7 +11,6 @@
         </dl>
     </div>
     <div id="container">
-
         <div style="width:100%;" class="view_page" id="viewWrite">
             <div class="view_type">
                 <span class="view_type01">제목</span>
@@ -28,26 +27,69 @@
                     </tr>
                 </tbody>
             </table>
+            <div id="commentsWrite">
+                <table>
+                    <tr>
+                        <td style="width: 50%;">
+                            <label>작성자명: </label><input type="text" id="txtWriter" />
+                            <label>비밀번호: </label><input type="password" id="txtPassword" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea id="txtComment"></textarea>
+                        </td>
+                        <td>
+                            <input type="button" id="btnComment" value="작성하기" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <div id="commentContents">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td width="100%">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td valign="top">
+                                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                    <tbody id="commentList"></tbody>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="5" colspan="3"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="cboth">
                 <div class="btnBox">
                     <input type="button" id="btnToList" value="목록으로" />
-                    <input type="button" class="permissionBtn" value="수정" />
-                    <input type="button" class="permissionBtn" value="삭제" />
-                    <input type="button" class="permissionBtn" value="글쓰기" />
+                    <input type="button" class="permissionBtn" value="수정" style="display: none;" />
+                    <input type="button" class="permissionBtn" id="btnDelete" value="삭제" />
+                    <input type="button" class="permissionBtn btnWrite" value="글쓰기" />
                 </div>
             </div>
         </div>
 
         <table class="comTable listTable">
             <tbody id="tableContents">
-                <tr>
-                    <th scope="col" width="50">No.</th>
+                <tr class="tableHead">
+                    <th scope="col" width="5%">No.</th>
                     <th scope="col">SUBJECT</th>
-                    <th scope="col" width="110">NAME</th>
-                    <th scope="col" width="80">DATE</th>
-                    <th scope="col" width="50">VIEW</th>
+                    <th scope="col" width="10%">NAME</th>
+                    <th scope="col" width="10%">DATE</th>
+                    <th scope="col" width="5%">VIEW</th>
                 </tr>
             </tbody>
         </table>
@@ -55,13 +97,13 @@
             <div id="paging"></div>
         </div>
         <div id="btnBox">
-            <input type="button" value="글쓰기"/>
+            <input type="button" class="btnWrite" value="글쓰기" />
         </div>
     </div>
 </section>
 
 @section EndBody{
-<template id="listTemplate">
+    <template id="listTemplate">
         <td class="num"></td>
         <td class="title">
             <nobr style="display:block; overflow:hidden;"><a href="#"></a></nobr>
@@ -69,25 +111,34 @@
         <td class="name">김에스더</td>
         <td class="date">2019-06-07</td>
         <td class="hit">0</td>
-</template>
+    </template>
 
+    <template id="commentTemplate">
+        <td>
+            <div class="com_writerInfo">
+                <div class="com_writerInfo2">
+                    <strong><span class="com_name"></span></strong>
+                    <span class="com_date">19-06-15 16:30</span>
+                </div>
+            </div>
+            <div class="com_comment">
+            </div>
+        </td>
+    </template>
+    
+    <script src="~/lib/jquery.cookie.js"></script>
     <script src="~/lib/jquery-paging-min.js"></script>
     <script type="text/javascript">
-        $("#paging").paging({
-            current: 1,
-            max: 5,
-            onclick: function (e, page) {
-                alert(`clicked ${e}, ${page}`);
-            }
-        });
-
+        var totalCnt = 0;
+        var currentPage = 1;
         $(function () {
+            $("#loaderBox").show();
             fnGetList(1);
         });
 
         var _dataList = new Array();
         var fnGetList = function (pageNo) {
-            $("#loaderBox").show();
+            currentPage = pageNo;
             var obj = new Object();
             obj.PageNo = pageNo;
             obj.PageSize = 15;
@@ -98,30 +149,80 @@
                 dataType: 'JSON',
                 data: obj,
                 success: function (data) {
-                    $("#loaderBox").hide();
+                    $("#tableContents .addTr").remove();
+                    totalCnt = Number(data.reason);
+                    var maxPage = Math.ceil(totalCnt / obj.PageSize);
+                    $("#paging").paging({
+                        current: pageNo,
+                        max: maxPage,
+                        next: ' ＞ ',
+                        prev: ' ＜ ',
+                        first: ' ≪ ',
+                        last: ' ≫ ',
+                        onclick: function (e, page) {
+                            fnGetList(page);
+                        }
+                    });
+
                     $(data.data).each(function (i) {
                         var _data = data.data[i];
                         _dataList[_data.boardId] = _data;
-                        var listTemplate = `<tr>${$("#listTemplate").html().trim()}</tr>`;
+                        var listTemplate = `<tr id='tr${_data.boardId}' class='addTr'>${$("#listTemplate").html().trim()}</tr>`;
                         var listTemplateClone = $(listTemplate);
                         listTemplateClone.data("value", _data.boardId);
                         listTemplateClone.find(".num").html(_data.boardId);
+                        if (_data.isLocked == 0) {
+                            _data.title = '비밀글입니다 <img align="center" src="images/lock.png" />';
+                        }
                         listTemplateClone.find(".title a").html(_data.title);
                         listTemplateClone.find(".name").html(_data.userName);
-                        listTemplateClone.find(".date").html(_data.createDate.slice(0,10));
-                        listTemplateClone.find(".hit").html();
+                        listTemplateClone.find(".date").html(_data.createDate.slice(0, 10));
+                        listTemplateClone.find(".hit").html(_data.viewCount);
                         listTemplateClone.click(function () {
                             fnReadMore(listTemplateClone.data("value"));
                         });
                         $("#tableContents").append(listTemplateClone);
                     });
+                    $("#loaderBox").fadeOut(2000);
                 },
                 error: function (data) {
                     console.log(data);
-                    $("#loaderBox").hide();
+                    $("#loaderBox").fadeOut(2000);
                 }
             });
         }
+
+        $(".btnWrite").click(function () {
+            location.href = "/Community/Write";
+        });
+
+        $("#btnDelete").click(function () {
+            alert("비밀번호를 입력해주세요.<br/><br/><input type='password' style='width: 70%;border-radius: 6px;padding: 5px;' class='txtPassword'/>", function () {
+                $("#customAlertCancel").remove();
+                var obj = new Object();
+                obj.BoardId = $("#viewWrite").data("boardId");
+                obj.Password = $(".txtPassword").val();
+                $.ajax({
+                    url: '/Community/UpdateStatus',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: obj,
+                    success: function (data) {
+                        if (data.result) {
+                            alert("성공적으로 게시글이 삭제되었습니다.", function () {
+                                $("#viewWrite").fadeOut(1000);
+                                fnGetList(currentPage);
+                            });
+                        } else {
+                            alert(data.reason);
+                        }
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        });
 
         $("#btnToList").click(function () {
             $("#viewWrite").hide("fade", null, 1000, null);
@@ -129,11 +230,188 @@
 
         function fnReadMore(_value) {
             var _data = _dataList[_value];
-            $("#viewWrite").show();
-            $("#viewWrite .view_type01").html(_data.title);
-            $("#viewWrite .view_type02").html(_data.createDate.slice(0, 10));
-            $("#viewWrite #writeContents").html(_data.contents);
+
+            if (_data.isLocked == 0) {
+                alert("비밀번호를 입력해주세요.<br/><br/><input type='password' style='width: 70%;border-radius: 6px;padding: 5px;' class='alertPassword'/>", function () {
+                    $("#customAlertCancel").remove();
+                    var obj = new Object();
+                    obj.BoardId = _data.boardId;
+                    obj.Password = $(".alertPassword").val();
+                    $.ajax({
+                        url: '/Community/CheckPassword',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: obj,
+                        success: function (data) {
+                            if (data.result) {
+                                _dataList[_value] = data.data;
+                                fnReadMoreProcess(_value);
+                            } else {
+                                alert(data.reason);
+                            }
+                        },
+                        error: function (data) {
+                            console.log(data);
+                        }
+                    });
+                });
+            } else {
+                fnReadMoreProcess(_value);
+            }
+
+
         }
 
+        function fnReadMoreProcess(_value) {
+            fnGetComments(_value);
+            var _data = _dataList[_value];
+            $("#viewWrite").show();
+            $("#viewWrite").data("boardId", _value);
+            $("#viewWrite .view_type01").html(`<span style='font-size: 9px; padding-right: 20px;'>${_data.boardId}</span>${_data.title}`);
+            $("#viewWrite .view_type02").html(_data.createDate.slice(0, 10));
+            $("#viewWrite #writeContents").html(_data.contents);
+
+            var already = $.cookie(`read${_value}`) == 1;
+            if (!already) {
+                $.ajax({
+                    url: '/Community/UpdateViewCount',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: { "boardId": _value },
+                    success: function (data) {
+                        console.log(data);
+                        $.cookie(`read${_value}`, 1, { expires: 1 });
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+        }
+
+        function fnGetComments(boardId) {
+            $("#commentList").html("");
+            $.ajax({
+                url: '/Community/GetComments',
+                type: 'POST',
+                dataType: 'JSON',
+                data: { 'boardId': boardId },
+                success: function (data) {
+                    var _data = data.data;
+                    $(_data).each(function (i) {
+                        var listTemplate = `<tr>${$("#commentTemplate").html().trim()}</tr>`;
+                        var listTemplateClone = $(listTemplate);
+                        listTemplateClone.find(".com_name").html(_data[i].userName);
+                        listTemplateClone.find(".com_date").html(new Date(_data[i].createDate).format("yyyy-MM-dd일 a/p hh:mm분"));
+                        listTemplateClone.find(".com_comment").html(_data[i].comment);
+                        $("#commentList").append(listTemplateClone);
+                    });
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        $("#btnComment").click(function () {
+            fnAddComment();
+        });
+
+        function fnAddComment() {
+            var obj = new Object();
+            obj.BoardId = $("#viewWrite").data("boardId");
+            obj.UserName = $("#txtWriter").val();
+            obj.Password = $("#txtPassword").val();
+            obj.Comment = $("#txtComment").val();
+
+            if (obj.UserName.length < 2) {
+                alert("작성자명을 입력해주세요."); $("#txtWriter").focus(); return;
+            } if (obj.Password.length <= 5) {
+                alert("비밀번호를 6자 이상으로 입력해주세요."); $("#txtPassword").focus(); return;
+            } if (obj.Comment.length < 2) {
+                alert("댓글 내용을 입력해주세요."); $("#txtComment").focus(); return;
+            }
+            $.ajax({
+                url: '/Community/AddComment',
+                type: 'POST',
+                dataType: 'JSON',
+                data: obj,
+                success: function (data) {
+                    var _data = data.data;
+                    alert("댓글을 정상적으로 등록했습니다.");
+                    $("#txtWriter").clear();
+                    $("#txtPassword").clear();
+                    $("#txtComment").clear();
+                    fnGetComments(obj.BoardId);
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        Date.prototype.format = function (f) {
+
+            if (!this.valueOf()) return " ";
+
+
+
+            var weekKorName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+
+            var weekKorShortName = ["일", "월", "화", "수", "목", "금", "토"];
+
+            var weekEngName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+            var weekEngShortName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+            var d = this;
+
+
+
+            return f.replace(/(yyyy|yy|MM|dd|KS|KL|ES|EL|HH|hh|mm|ss|a\/p)/gi, function ($1) {
+
+                switch ($1) {
+
+                    case "yyyy": return d.getFullYear(); // 년 (4자리)
+
+                    case "yy": return (d.getFullYear() % 1000).zf(2); // 년 (2자리)
+
+                    case "MM": return (d.getMonth() + 1).zf(2); // 월 (2자리)
+
+                    case "dd": return d.getDate().zf(2); // 일 (2자리)
+
+                    case "KS": return weekKorShortName[d.getDay()]; // 요일 (짧은 한글)
+
+                    case "KL": return weekKorName[d.getDay()]; // 요일 (긴 한글)
+
+                    case "ES": return weekEngShortName[d.getDay()]; // 요일 (짧은 영어)
+
+                    case "EL": return weekEngName[d.getDay()]; // 요일 (긴 영어)
+
+                    case "HH": return d.getHours().zf(2); // 시간 (24시간 기준, 2자리)
+
+                    case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2); // 시간 (12시간 기준, 2자리)
+
+                    case "mm": return d.getMinutes().zf(2); // 분 (2자리)
+
+                    case "ss": return d.getSeconds().zf(2); // 초 (2자리)
+
+                    case "a/p": return d.getHours() < 12 ? "오전" : "오후"; // 오전/오후 구분
+
+                    default: return $1;
+
+                }
+
+            });
+
+        };
+
+
+
+        String.prototype.string = function (len) { var s = '', i = 0; while (i++ < len) { s += this; } return s; };
+
+        String.prototype.zf = function (len) { return "0".string(len - this.length) + this; };
+
+        Number.prototype.zf = function (len) { return this.toString().zf(len); };
     </script>
 }

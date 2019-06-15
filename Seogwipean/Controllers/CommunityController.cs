@@ -46,11 +46,26 @@ namespace Seogwipean.Web.Controllers
             return Json(list);
         }
 
+        /// <summary>
+        /// 삭제 전용
+        /// </summary>
+        /// <param name="vm"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult UpdateStatus(CommunityViewModel vm)
+        {
+            vm.Status = CodesName.Write_Deleted;
+            vm.Password = Common.ToHashString(vm.Password);
+            var result = _communityService.UpdateStatus(vm);
+            return Json(result);
+        }
+
         [HttpPost]
         public IActionResult AddWrite(CommunityViewModel vm)
         {
             var list = _communityService.AddWrite(vm);
-            if (list.Result == Common.Success) {
+            if (list.Result == Common.Success)
+            {
                 var contents = $"작성자 : ${vm.UserName} \r\n연락처 : ${vm.Phone}\r\n제목 : ${vm.Title}\r\n내용 : ${vm.Contents}";
                 _emailService.SendEmail(new Model.EmailViewModels.EmailViewModel
                 {
@@ -60,6 +75,46 @@ namespace Seogwipean.Web.Controllers
                 });
             }
             return Json(list);
+        }
+
+        [HttpPost]
+        public IActionResult CheckPassword(CommunityViewModel vm)
+        {
+            vm.Password = Common.ToHashString(vm.Password);
+            var result = _communityService.CheckPassword(vm);
+            return Json(result);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateViewCount(long boardId)
+        {
+            var update = _communityService.UpdateViewCount(boardId);
+            return Json(update);
+        }
+
+        [HttpPost]
+        public IActionResult GetComments(long boardId)
+        {
+            var list = _communityService.GetCommentsList(boardId);
+            return Json(list);
+        }
+
+        [HttpPost]
+        public IActionResult AddComment(CommentsViewModel vm)
+        {
+            System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
+            string ipAddr = string.Empty;
+            for (int i = 0; i < host.AddressList.Length; i++)
+            {
+                if (host.AddressList[i].AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    ipAddr = host.AddressList[i].ToString();
+                }
+            }
+
+            vm.Ip = ipAddr;
+            var result = _communityService.AddComments(vm);
+            return Json(result);
         }
 
     }

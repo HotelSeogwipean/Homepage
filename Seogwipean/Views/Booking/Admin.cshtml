@@ -91,6 +91,72 @@
     </div>
 
     <div class="result-table">
+        <span style="font-weight: 600; text-align: center;">재실자 목록</span>
+        <table class="adminTable">
+            <colgroup>
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 10%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 40%; " />
+                <col style="width: 10%;" />
+                <col style="width: 10%;" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>예약자명</th>
+                    <th>연락처</th>
+                    <th>체크인</th>
+                    <th>체크아웃</th>
+                    <th>투숙 기간</th>
+                    <th>인원수</th>
+                    <th>요청사항</th>
+                    <th>추천인</th>
+                    <th>신청일자</th>
+                </tr>
+            </thead>
+            <tbody id="ingAppend"></tbody>
+        </table>
+    </div>
+    
+    <div class="result-table" style="display: none;">
+        <span style="font-weight: 600; text-align: center;">퇴실 예정 목록</span>
+        <table class="adminTable">
+            <colgroup>
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 10%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 5%;" />
+                <col style="width: 40%; " />
+                <col style="width: 10%;" />
+                <col style="width: 10%;" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>예약자명</th>
+                    <th>연락처</th>
+                    <th>체크인</th>
+                    <th>체크아웃</th>
+                    <th>투숙 기간</th>
+                    <th>인원수</th>
+                    <th>요청사항</th>
+                    <th>추천인</th>
+                    <th>신청일자</th>
+                </tr>
+            </thead>
+            <tbody id="endAppend"></tbody>
+        </table>
+    </div>
+
+    <div class="result-table">
         <span style="font-weight: 600; text-align: center;">진행중인 시숙 예약</span>
         <table class="adminTable">
             <colgroup>
@@ -200,7 +266,10 @@
                 data: obj,
                 success: function (data) {
                     var idx = 0;
+                    var todayIdx = 0;
+                    var ingIdx = 0;
                     var endIdx = 0;
+                    var checkoutIdx = 0;
                     if (data.data.length < 1) {
                         var noList = '<td colspan="10">조회 결과가 없습니다.</td>';
                         $("#append").append(noList);
@@ -219,15 +288,26 @@
                         var currDay = 24 * 60 * 60 * 1000;
                         var days = parseInt(diff / currDay);
                         var today = new Date();
+                        var isIng = (today > _startDate && __data.status == 2);
+                        var isTodayCheckIn = _startDate.getMonth() == today.getMonth() && _startDate.getDate() == today.getDate();
                         var isCheckedOut = (today - _endDate) > 0;
-                        if (!isCheckedOut) {
+                        var isTodayCheckOut = _endDate.getMonth() == today.getMonth() && _endDate.getDate() == today.getDate() && __data.status != 3;
+                        if (isTodayCheckOut) {
+                            checkoutIdx++;
+                            listTemplateClone.find(".numba").html(checkoutIdx);
+                        }else if (isCheckedOut) {
                             idx++;
                             listTemplateClone.find(".numba").html(idx);
+                        } else if (isIng) {
+                            ingIdx++;
+                            listTemplateClone.find(".numba").html(ingIdx);
+                        } else if (isTodayCheckIn) {
+                            todayIdx++;
+                            listTemplateClone.find(".numba").html(todayIdx);
                         } else {
                             endIdx++;
                             listTemplateClone.find(".numba").html(endIdx);
                         }
-
                         listTemplateClone.find(".name").html(__data.userName);
                         listTemplateClone.find(".phone").html(__data.phone);
                         listTemplateClone.find(".recommender").html(__data.recommender);
@@ -239,11 +319,16 @@
                         listTemplateClone.find(".request").html(__data.request);
                         listTemplateClone.find(".createDate").html(__data.createDate.slice(0, 10));
 
-                        if (isCheckedOut) {
+                        if (isTodayCheckOut) {
+                            $("#endAppend").parents(".result-table").show();
+                            $("#endAppend").append(listTemplateClone);
+                        } else if (isCheckedOut) {
                             $("#appendEnd").append(listTemplateClone);
-                        } else if (_startDate.getMonth() == today.getMonth() && _startDate.getDate() == today.getDate()) {
+                        }  else if (isIng) {
+                            $("#ingAppend").append(listTemplateClone);
+                        } else if (isTodayCheckIn) {
                             $("#todayAppend").append(listTemplateClone);
-                        } else {
+                        }else {
                             $("#append").append(listTemplateClone);
                         }
 
@@ -252,10 +337,10 @@
                         }
 
                         if (__data.status == 2) {
-                            listTemplateClone.find(".name").html(__data.userName +"(체크인)");
+                            listTemplateClone.find(".name").html(__data.userName + "(체크인)");
                         }
                         if (__data.status == 3) {
-                            listTemplateClone.find(".name").html(__data.userName +"(체크아웃)");
+                            listTemplateClone.find(".name").html(__data.userName + "(체크아웃)");
                         }
 
 

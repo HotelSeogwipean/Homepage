@@ -19,5 +19,6 @@ namespace Seogwipean.Model.BookingViewModels
         public short Status { get; set; }
         public string Password { get; set; }
         public string AgeRange { get; set; }
+        public int ViewCount { get; set; }
     }
 }

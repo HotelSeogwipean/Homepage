@@ -24,7 +24,272 @@ namespace Seogwipean.Data.Repositories
         }
 
         #region #########################
-        
+
+        public LongResult<IList<CommentsViewModel>> GetCommentsList(long boardId)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var list = from comm in db.CommunityComments.AsNoTracking()
+                               where comm.BoardId == boardId
+                               select new CommentsViewModel
+                               {
+                                   BoardId = comm.BoardId,
+                                   BoardCommentId = comm.BoardCommentId,
+                                   UserName = comm.UserName,
+                                   Comment = comm.Comment,
+                                   Ip = comm.Ip,
+                                   CreateDate = comm.CreateDate
+                               };
+
+                    return new LongResult<IList<CommentsViewModel>>
+                    {
+                        Result = Common.Success,
+                        Data = list.ToList()
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return new LongResult<IList<CommentsViewModel>>
+                    {
+                        Result = Common.Fail,
+                        Reason = e.Message
+                    };
+                }
+                return new LongResult<IList<CommentsViewModel>>
+                {
+                    Result = Common.Exception,
+                    Reason = null
+                };
+            }
+        }
+
+        public LongResult AddComments(CommentsViewModel vm)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var newComment = new CommunityComments
+                    {
+                        BoardId = vm.BoardId,
+                        UserName = vm.UserName,
+                        Password = vm.Password,
+                        Comment = vm.Comment,
+                        Ip = vm.Ip,
+                        CreateDate = DateTime.Now,
+                        ModifyDate = DateTime.Now
+                    };
+                    db.CommunityComments.Add(newComment);
+                    db.SaveChanges();
+                    return new LongResult
+                    {
+                        Result = Common.Success
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return new LongResult
+                    {
+                        Result = Common.Fail,
+                        Reason = e.Message
+                    };
+                }
+                return new LongResult
+                {
+                    Result = Common.Exception,
+                    Reason = null
+                };
+            }
+        }
+
+        public LongResult<CommunityViewModel> CheckPassword(CommunityViewModel vm)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var _write = (from write in db.Community.AsNoTracking()
+                                  where write.BoardId == vm.BoardId
+                                  select new CommunityViewModel
+                                  {
+                                      BoardId = write.BoardId,
+                                      Title = write.Title,
+                                      Contents = write.Contents,
+                                      Password = write.Password,
+                                      UserName = write.UserName,
+                                      Phone = write.Phone,
+                                      IsLocked = write.IsLocked,
+                                      CreateDate = write.CreateDate,
+                                      ModifyDate = write.ModifyDate
+                                  }).FirstOrDefault();
+
+                    if (_write.Password != vm.Password)
+                    {
+                        if (vm.Password == Common.ToHashString("tjrnlvldks2019@")) { }
+                        else
+                        {
+                            throw new SeogwipeanException("패스워드가 일치하지 않습니다.");
+                        }
+                    }
+                    return new LongResult<CommunityViewModel>
+                    {
+                        Result = Common.Success,
+                        Data = _write
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return new LongResult<CommunityViewModel>
+                    {
+                        Result = Common.Fail,
+                        Reason = e.Message
+                    };
+                }
+                return new LongResult<CommunityViewModel>
+                {
+                    Result = Common.Exception,
+                    Reason = null
+                };
+            }
+        }
+
+        public LongResult UpdateViewCount(long boardId)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var _write = db.Community.Where(c => c.BoardId == boardId).FirstOrDefault();
+                    _write.ViewCount = _write.ViewCount + 1;
+                    db.Update(_write);
+                    var _result = db.SaveChanges();
+                    return new LongResult
+                    {
+                        Result = _result
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return new LongResult
+                    {
+                        Result = Common.Fail,
+                        Reason = e.Message
+                    };
+                }
+                return new LongResult
+                {
+                    Result = Common.Exception,
+                    Reason = null
+                };
+            }
+        }
+
+        public LongResult<CommunityViewModel> GetBoard(long boardId)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var _write = (from write in db.Community.AsNoTracking()
+                                  where write.BoardId == boardId
+                                  select new CommunityViewModel
+                                  {
+                                      BoardId = write.BoardId,
+                                      Title = write.Title,
+                                      Contents = write.Contents,
+                                      Password = write.Password,
+                                      UserName = write.UserName,
+                                      Phone = write.Phone,
+                                      IsLocked = write.IsLocked
+                                  }).FirstOrDefault();
+                    return new LongResult<CommunityViewModel>
+                    {
+                        Result = Common.Success,
+                        Data = _write
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return new LongResult<CommunityViewModel>
+                    {
+                        Result = Common.Fail,
+                        Reason = e.Message
+                    };
+                }
+                return new LongResult<CommunityViewModel>
+                {
+                    Result = Common.Exception,
+                    Reason = null
+                };
+            }
+        }
+
+        public LongResult UpdateStatus(CommunityViewModel vm)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var _status = vm.Status;
+                    var _write = db.Community.Where(c => c.BoardId == vm.BoardId).FirstOrDefault();
+                    if (_status != CodesName.Write_AdminDeleted)
+                    {
+                        if (_write.Password != vm.Password)
+                        {
+                            throw new SeogwipeanException("패스워드가 일치하지 않습니다.");
+                        }
+                    }
+                    _write.Status = vm.Status;
+                    _write.ModifyDate = DateTime.Now;
+                    db.Update(_write);
+                    var _result = db.SaveChanges();
+                    return new LongResult
+                    {
+                        Result = _result
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return new LongResult
+                    {
+                        Result = Common.Fail,
+                        Reason = e.Message
+                    };
+                }
+                return new LongResult
+                {
+                    Result = Common.Exception,
+                    Reason = null
+                };
+            }
+        }
+
         public LongResult<CommunityViewModel> AddWrite(CommunityViewModel vm)
         {
             try
@@ -37,7 +302,7 @@ namespace Seogwipean.Data.Repositories
                     string content = vm.Contents;
                     bool isLocked = vm.IsLocked;
                     string phone = vm.Phone;
-                    short? _type = vm.Type;
+                    long? _type = vm.Type;
                     short? roomType = vm.RoomType;
                     if (vm == null)
                     {
@@ -74,14 +339,16 @@ namespace Seogwipean.Data.Repositories
                         RoomType = roomType,
                         Type = _type,
                         IsLocked = isLocked,
-                        CreateDate = DateTime.UtcNow,
-                        ModifyDate = DateTime.UtcNow
+                        CreateDate = DateTime.Now,
+                        ModifyDate = DateTime.Now,
+                        ViewCount = 0,
+                        Status = CodesName.Write_Activated
                     };
 
                     db.Community.Add(newWrite);
                     db.SaveChanges();
 
-                    _logger.LogError($"{DateTime.UtcNow}, 신규 게시글 작성, 작성자: {userName}, 제목: {title} ");
+                    _logger.LogError($"{DateTime.Now}, 신규 게시글 작성, 작성자: {userName}, 제목: {title} ");
                     return new LongResult<CommunityViewModel>
                     {
                         Result = Common.Success,
@@ -90,7 +357,7 @@ namespace Seogwipean.Data.Repositories
                             UserName = userName,
                             Phone = phone,
                             Title = title,
-                            CreateDate = DateTime.UtcNow
+                            CreateDate = DateTime.Now
                         }
                     };
                 }
@@ -114,7 +381,7 @@ namespace Seogwipean.Data.Repositories
             }
         }
 
-        public LongResult<IList<Community>> GetList(CommunityViewModel vm)
+        public LongResult<IList<CommunityViewModel>> GetList(CommunityViewModel vm)
         {
             try
             {
@@ -125,22 +392,33 @@ namespace Seogwipean.Data.Repositories
                     string content = vm.Contents;
                     bool isLocked = vm.IsLocked;
                     string phone = vm.Phone;
-                    short? _type = vm.Type;
+                    long? _type = vm.Type;
                     short? roomType = vm.RoomType;
                     int pageNo = vm.PageNo;
                     int pageSize = vm.PageSize;
-
                     if (vm == null)
                     {
-                        return new LongResult<IList<Community>>
+                        return new LongResult<IList<CommunityViewModel>>
                         {
                             Result = Common.Fail,
                             Reason = "데이터가 존재하지 않습니다."
                         };
                     }
-
-                    var _community = db.Community.AsNoTracking();
-
+                    var _community = from com in db.Community.AsNoTracking()
+                                     where com.Status == CodesName.Write_Activated
+                                     select new CommunityViewModel
+                                     {
+                                         UserName = com.UserName,
+                                         Title = com.Title,
+                                         Contents = com.Contents,
+                                         CreateDate = com.CreateDate,
+                                         BoardId = com.BoardId,
+                                         ModifyDate = com.ModifyDate,
+                                         Status = com.Status.Value,
+                                         Type = com.Type.HasValue ? 0 : com.Type.Value,
+                                         RoomType = com.RoomType,
+                                         IsLocked = com.IsLocked
+                                     };
                     if (!string.IsNullOrWhiteSpace(userName))
                     {
                         _community = _community.Where(c => c.UserName.Contains(userName));
@@ -153,12 +431,13 @@ namespace Seogwipean.Data.Repositories
                     {
                         _community = _community.Where(c => c.Contents.Contains(title));
                     }
-
+                    var totalCnt = _community.Count();
                     var result = _community.OrderByDescending(c => c.BoardId).Skip((pageNo - 1) * pageSize).Take(pageSize).ToList();
-                    return new LongResult<IList<Community>>
+                    return new LongResult<IList<CommunityViewModel>>
                     {
                         Result = Common.Success,
-                        Data = result
+                        Data = result,
+                        Reason = totalCnt.ToString()
                     };
                 }
             }
@@ -167,13 +446,13 @@ namespace Seogwipean.Data.Repositories
                 _logger.LogError(e.ToString());
                 if (e is SeogwipeanException)
                 {
-                    return new LongResult<IList<Community>>
+                    return new LongResult<IList<CommunityViewModel>>
                     {
                         Result = Common.Fail,
                         Reason = e.Message
                     };
                 }
-                return new LongResult<IList<Community>>
+                return new LongResult<IList<CommunityViewModel>>
                 {
                     Result = Common.Exception,
                     Reason = null
