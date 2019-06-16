@@ -22,6 +22,7 @@ namespace Seogwipean.Model.CommunityViewModels
         public int PageNo { get; set; }
 
         public short Status { get; set; }
+        public int? ViewCount { get; set; }
     }
 
     public class CommentsViewModel

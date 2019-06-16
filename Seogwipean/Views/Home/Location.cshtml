@@ -22,7 +22,7 @@
 
 @section EndBody{
     <script>
-        var zoomSize = 12;
+        var zoomSize = 6;
         var marker = null;
         var iconImage = '/images/mapLogo.png';
 
@@ -42,10 +42,10 @@
             if (zoomSize > 11) {
                 marker = new naver.maps.Marker({
                     position: new naver.maps.LatLng(33.244914, 126.590505),
-                    icon: {
-                        url: iconImage,
-                        scaledSize: new naver.maps.Size(100, 28)
-                    },
+                    //icon: {
+                    //    url: iconImage,
+                    //    scaledSize: new naver.maps.Size(100, 28)
+                    //},
                     animation: naver.maps.Animation.DROP,
                     map: map
                 });
@@ -53,10 +53,10 @@
             else {
                 marker = new naver.maps.Marker({
                     position: new naver.maps.LatLng(33.244914, 126.590505),
-                    icon: {
-                        url: iconImage,
-                        scaledSize: new naver.maps.Size(50, 14)
-                    },
+                    //icon: {
+                    //    url: iconImage,
+                    //    scaledSize: new naver.maps.Size(50, 14)
+                    //},
                     map: map
                 });
             }

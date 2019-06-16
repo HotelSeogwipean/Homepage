@@ -218,7 +218,8 @@ namespace Seogwipean.Data.Repositories
                                       Password = write.Password,
                                       UserName = write.UserName,
                                       Phone = write.Phone,
-                                      IsLocked = write.IsLocked
+                                      IsLocked = write.IsLocked,
+                                      ViewCount = write.ViewCount
                                   }).FirstOrDefault();
                     return new LongResult<CommunityViewModel>
                     {
@@ -417,7 +418,8 @@ namespace Seogwipean.Data.Repositories
                                          Status = com.Status.Value,
                                          Type = com.Type.HasValue ? 0 : com.Type.Value,
                                          RoomType = com.RoomType,
-                                         IsLocked = com.IsLocked
+                                         IsLocked = com.IsLocked,
+                                         ViewCount = com.ViewCount
                                      };
                     if (!string.IsNullOrWhiteSpace(userName))
                     {
