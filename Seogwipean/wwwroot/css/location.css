@@ -23,3 +23,19 @@
     border-top: 1px solid #d0d0d0;
     padding-top: 10px;
 }
+
+.locationDoc {
+    margin-top: 0px;
+    margin: 0 auto;
+}
+
+#addr {
+    padding-top: 10px;
+    margin-top: 20px;
+    border-top: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.locationDoc img{
+    background-size: auto;
+}
