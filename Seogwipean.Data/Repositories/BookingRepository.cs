@@ -292,6 +292,7 @@ namespace Seogwipean.Data.Repositories
                     };
                     db.Booking.Add(newBooking);
                     db.SaveChanges();
+
                     _logger.LogError(DateTime.Now + " || 시숙 예약 추가, 예약자명: " + userName + ", 체크인: " + startDate.ToShortDateString() + ", 체크아웃: " + endDate.Value.ToShortDateString());
                     return new LongResult<BookingViewModel>
                     {
