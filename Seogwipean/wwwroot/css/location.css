@@ -24,18 +24,28 @@
     padding-top: 10px;
 }
 
+#map {
+    width: 100%;
+    height: 400px;
+}
+
+
 .locationDoc {
-    margin-top: 0px;
+    width: 70%;
     margin: 0 auto;
 }
 
-#addr {
-    padding-top: 10px;
-    margin-top: 20px;
-    border-top: 1px solid #d0d0d0;
-    border-bottom: 1px solid #d0d0d0;
-}
+    .locationDoc > div {
+        width: 100%;
+        padding-top: 10px;
+        margin-top: 20px;
+        border-top: 1px solid #d0d0d0;
+        border-bottom: 1px solid #d0d0d0;
+    }
 
-.locationDoc img{
-    background-size: auto;
+.locationImg {
+    width: 100%;
+    max-width: 1024px;
+    height: auto;
+    margin: 0 auto;
 }
