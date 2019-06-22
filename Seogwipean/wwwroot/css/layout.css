@@ -2,30 +2,77 @@
     height: 100%;
     margin: 0;
 }
-body > .wrapper {
-    min-height: 100%;
-    margin: 0 auto -30px;
-}
-body > .footer,
-body > .wrapper > .push {
-    position: relative;
-    margin-top: 30px;
-}
 
-.signature {
-    font-weight: 100;
-    color: #000;
-    letter-spacing: 4px;
-    font-size: 10px;
-    width: 100vw;
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    margin: 0px;
-    margin-top: 10px;
-}
+    body > .wrapper {
+        min-height: 100%;
+        margin-top: 0;
+        margin-bottom: -10px;
+    }
 
-.logo img{
+    body > .footer {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 33% 34% 33%;
+        margin-top: 25px;
+        background-color: #1e514f;
+        padding-top: 15px;
+        padding-bottom: 25px;
+    }
+
+    body > .footer *{
+        box-sizing: border-box;
+    }
+
+        body > .footer > div:not(:last-of-type) span {
+            font-family: 'NanumGothic', 'sans-serif';
+            font-size: 14px;
+            color: #fff;
+            font-weight: 100;
+        }
+
+        body > .footer,
+        body > .wrapper > .push {
+            position: relative;
+        }
+
+            body > .footer > div {
+                margin: 0 auto;
+            }
+
+                body > .footer > div > div {
+                    margin-top: 5px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                }
+                body > .footer > div  > div:first-of-type {
+                    margin-top: 20px;
+                }
+
+                    body > .footer > div > div:first-of-type {
+                        width: 35px;
+                        border-top: 1px solid gray;
+                    }
+
+            body > .footer > #footer_2 img{
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+            }
+
+            .signature {
+                position: relative;
+                font-weight: 100;
+                color: #fff;
+                letter-spacing: 4px;
+                font-size: 10px;
+                width: 100vw;
+                text-align: center;
+                text-transform: uppercase;
+                text-decoration: none;
+                top: 10px;
+            }
+
+.logo img {
     cursor: pointer;
 }
 
@@ -36,12 +83,14 @@ body > .wrapper > .push {
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Arita-dotum-SemiBold_TTF';
     src: url('fonts/Arita-dotum-SemiBold_TTF.eot') format('embedded-opentype');
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Arita-dotum-Medium_TTF';
     src: url('fonts/Arita-dotum-Medium_TTF.eot') format('embedded-opentype');
@@ -55,6 +104,7 @@ body > .wrapper > .push {
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Arita-dotum-Bold_TTF';
     src: url('fonts/Arita-dotum-Bold_TTF.eot') format('embedded-opentype');

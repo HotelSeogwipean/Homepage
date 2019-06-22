@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewData["Title"] = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head{
+
+    <style type="text/css">
+        body{
+            height: 1950px;
+        }
+        #btnMaster {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #test {
+            background: url(../../rooms/RoomCondi.png) 0 0 no-repeat;
+            background-size: contain;
+            background-position-x: center;
+            width: 100%;
+            height: 1800px;
+            margin: 0 auto;
+        }
+
+        #btnMaster > div.detailBtn {
+            position: absolute;
+            width: 435px;
+            height: 290px;
+            left: 17%;
+            cursor: pointer;
+            /*border: 3px solid #000;*/
+        }
+
+        #detailBtn1 {
+            top: 84%;
+        }
+
+        #detailBtn2 {
+            top: 132%;
+        }
+
+        #detailBtn3 {
+            top: 180%;
+        }
+
+        #btnMaster > div.bookBtn {
+            position: absolute;
+            width: 111px;
+            height: 30px;
+            right: 17.1%;
+            cursor: pointer;
+            /*border: 2px solid #000;*/
+        }
+
+        #testBtn1 {
+            top: 111.5%;
+        }
+
+        #testBtn2 {
+            top: 159%;
+        }
+
+        #testBtn3 {
+            top: 206.6%;
+        }
+
+        .roomHeader {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            background: url(../images/roomHeader3.png) center center no-repeat;
+            background-size: cover;
+            background-position-y: 62%;
+        }
+
+        #detailShot {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fff;
+            opacity: 0.95;
+            overflow-x: hidden;
+            z-index: 1;
+        }
+
+        .whole {
+            width: 100%;
+            height: 100%;
+        }
+
+        #detailShot > #btnX {
+            position: absolute;
+            right: 28%;
+            top: 9%;
+            width: 29px;
+            height: 30px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        #detailShot > #imgBox {
+            position: relative;
+            width: 1024px;
+            height: 1224px;
+            text-align: center;
+            margin: 0 auto;
+            -ms-overflow-style: none;
+            overflow-x: hidden;
+            background: url(../rooms/StandardDetail.png) 0 0 no-repeat;
+            background-size: cover;
+        }
+
+        #detailShot > #imgBox > img{
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+}
+    <div class="whole">
+        <div class="roomHeader"></div>
+        <div id="test"></div>
+        <div id="btnMaster">
+            <div id="detailBtn1" class="detailBtn"></div>
+            <div id="detailBtn2" class="detailBtn"></div>
+            <div id="detailBtn3" class="detailBtn"></div>
+
+            <div id="testBtn1" class="bookBtn"></div>
+            <div id="testBtn2" class="bookBtn"></div>
+            <div id="testBtn3" class="bookBtn"></div>
+        </div>
+
+        <div id="detailShot" onscroll="testfn();">
+            <div id="btnX" onscroll="testfn();"></div>
+            <div id="imgBox" onscroll="testfn();">
+            </div>
+        </div>
+    </div>
+
+@section EndBody{ 
+
+    <script src="~/lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(".detailBtn").click(function () {
+            $("#detailShot").fadeIn(1000);
+            $("body").css("overflow-y", "hidden");
+        });
+
+        $("#btnX").click(function () {
+            $("#detailShot").fadeOut(1000);
+            $("body").css("overflow-y", "scroll");
+        });
+    </script>
+}

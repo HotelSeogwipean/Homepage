@@ -47,8 +47,7 @@
     </div>
     <header class="main_h sticky">
         <a class="logo" href="/">
-            @*<span>Hotel</span><br /><span>Seogwipean</span>*@
-            <img src="~/images/officialLogo.png" />
+            <img src="~/images/SeogwipeanLogo.png" />
         </a>
         <div class="row">
             <div class="mobile-toggle">
@@ -56,24 +55,48 @@
                 <span></span>
                 <span></span>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="/room">Accomodations</a></li>
-                    <li><a href="/location">Location</a></li>
-                    <li><a href="/community">Community</a></li>
-                </ul>
-            </nav>
+            <div class="navbar-right">
+                <nav>
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/">ABOUT</a></li>
+                        <li><a href="/room">ROOMS & RATES</a></li>
+                        <li><a href="/location">CONTACT</a></li>
+                        @*<li><a href="/community">Community</a></li>*@
+                    </ul>
+                </nav>
+            </div>
         </div> <!-- / row -->
-        <div class="booking">
+        @*<div class="booking">
             <a>예약하기</a>
-        </div>
+        </div>*@
     </header>
-    <section class="wrapper">
+
+    @*<section class="wrapper">*@
         @RenderBody()
-    </section>
+    @*</section>*@
+
     <footer class="footer">
-        <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</p>
+        <div id="footer_1">
+            <div></div>
+            <div><span>TEL 064-735-1453</span></div>
+            <div><span>FAX 064-735-1455</span></div>
+            <div><span>제주특별자치도 서귀포시 보목로 64번길 178</span></div>
+        </div>
+        <div id="footer_2">
+            <div></div>
+            <div><span>Follow Us</span></div>
+            <div class="snsBtns">
+                <a href="https://www.instagram.com/hotelseogwipean_official/" target="_blank"><img id="instaBtn" src="~/images/whiteInsta.png" /></a>
+                <a href="https://www.facebook.com/HotelSeogwipeanJeju/" target="_blank"><img id="faceBtn" src="~/images/whiteFace.png" /></a>
+            </div>
+        </div>
+        <div id="footer_3">
+            <div></div>
+            <span class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</span>
+        </div>
     </footer>
+
     <script src="~/lib/jquery-3.2.1.min.js"></script>
     <script src="~/lib/jquery-ui.min.js"></script>
     <script src="~/js/common.js"></script>
@@ -113,7 +136,7 @@
             alert("예약 문의는 대표 번호 064-735-1453을 통해 가능합니다.");
         });
 
-        $("#logo img").click(function () {
+        $("#logo").click(function () {
             location.href = "/";
         });
 

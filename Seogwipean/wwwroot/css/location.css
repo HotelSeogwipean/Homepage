@@ -1,27 +1,10 @@
 ﻿
-.topBanner {
-    /*width: calc(100% - 60px);*/
-}
-
-    .topBanner img {
-        width: 100%;
-        opacity: 0.1;
-    }
-
-.banner h1 {
-    font-size: 37px;
-    line-height: 1;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 34px;
-}
-
-
-#wrapper {
+#location_wrapper {
     width: 1280px;
     margin: 0 auto;
     border-top: 1px solid #d0d0d0;
     padding-top: 10px;
+    font-family: 'NanumGothic', sans-serif;
 }
 
 #map {
@@ -29,23 +12,77 @@
     height: 400px;
 }
 
-
-.locationDoc {
-    width: 70%;
-    margin: 0 auto;
+#banner {
+    float: left;
+    position: relative;
+    width: 40%;
+    border-bottom: 1px solid #1e514f;
 }
 
-    .locationDoc > div {
-        width: 100%;
-        padding-top: 10px;
-        margin-top: 20px;
-        border-top: 1px solid #d0d0d0;
-        border-bottom: 1px solid #d0d0d0;
+#location_wrapper h2 {
+    font-size: 42px;
+    font-weight: 200;
+    color: #1e514f;
+}
+
+#locationText {
+    float: left;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+    #locationText span{
+        line-height: 25px;
+    }
+    #locationText span:last-of-type {
+        margin-top: 5px;
     }
 
-.locationImg {
+#byVehicle {
     width: 100%;
-    max-width: 1024px;
-    height: auto;
-    margin: 0 auto;
+    position: relative;
+    margin-top: 100px;
+    padding-bottom: 300px;
 }
+
+#byVehicle div{
+    position: relative;
+}
+
+    #byVehicle > div:nth-of-type(0) {
+        width: 100%;
+    }
+
+    #byVehicle h3 {
+        font-weight: 200;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    #byVehicle p {
+        line-height: 15px;
+        font-size: 12px;
+        letter-spacing: 4px;
+    }
+
+        #byVehicle p:first-of-type {
+            margin-top: 15px;
+        }
+
+
+    #byVehicle > div:nth-of-type(2),
+    #byVehicle > div:nth-of-type(3) {
+        position: relative;
+        float: left;
+        width: 50%;
+        font-size: 13px;
+        line-height: 5px;
+    }
+
+        #byVehicle > div:nth-of-type(2) > div,
+        #byVehicle > div:nth-of-type(3) > div {
+            width: 70%;
+            border-bottom: 1px solid #1e514f;
+            margin-bottom: 10px;
+        }

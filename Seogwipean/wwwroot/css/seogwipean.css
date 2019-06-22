@@ -8,19 +8,18 @@ body{
 
 .main_h {
     top: 0px;
-    max-height: 50px;
+    height: 100%;
+    max-height: 70px;
     z-index: 999;
     width: 100%;
-    padding-top: 17px;
+    padding: 17px 0 0 0;
     background: none;
     overflow: hidden;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
     opacity: 0;
-    top: -100px;
-    padding-bottom: 6px;
     font-family: "Montserrat", sans-serif;
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 #customalert button {
@@ -78,16 +77,19 @@ body{
 
 .logo {
     position: absolute;
-    left: 40px;
+    left: 11%;
+    top: 0px;
+    height: 80px;
     float: left;
     transition: ease-in-out;
     transition-delay: 1s;
+    cursor: pointer;
     -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
     transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
 
     .logo img {
-        width: 150px;
+        width: 80px;
     }
 
 header {
@@ -98,9 +100,17 @@ header *{
     box-sizing: unset;
 }
 
+header > .row {
+    max-width: 1500px !important;
+}
+
+
+.navbar-right {
+    float: right;
+}
+
 nav {
-    float: left;
-    width: 90%;
+    width: 100%;
 }
 
 nav ul {
@@ -108,7 +118,7 @@ nav ul {
     overflow: hidden;
     text-align: right;
     float: right;
-    padding-right: 30%;
+    /*padding-right: 30%;*/
 }
     nav ul a {
         color: #212121;
@@ -145,7 +155,6 @@ nav ul {
         position: absolute;
         left: 20px;
         float: left;
-        top: 25px;
     }
 
     nav ul li {
@@ -206,7 +215,7 @@ nav ul {
     font-size: 20px;
     position: absolute;
     right: 11%;
-    top: 10px;
+    top: 3px;
     width: 30px;
     -webkit-transition: all 200ms ease-in;
     -moz-transition: all 200ms ease-in;
@@ -248,7 +257,7 @@ nav ul {
 
 .row {
     width: 100%;
-    max-width: 940px;
+    max-width: 1280px;
     margin: 0 auto;
     position: relative;
     padding: 0 2%;
@@ -258,7 +267,7 @@ body {
     color: #8f8f8f;
     background: white;
     /*font-family: "Cardo", serif;*/
-    background: #eeeeee url(https://dcgqfo29cbqjp.cloudfront.net/_img/pattern-white.jpg) 0 0 repeat;
+    /*background: #eeeeee url(https://dcgqfo29cbqjp.cloudfront.net/_img/pattern-white.jpg) 0 0 repeat;*/
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
 }

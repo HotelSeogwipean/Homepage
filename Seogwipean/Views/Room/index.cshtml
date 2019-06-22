@@ -1,413 +1,193 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section Head{
-    <link href="~/css/room.css" rel="stylesheet" />
-    <link href="~/css/roomdetail.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+    <link href="~/css/roomTest.css" rel="stylesheet" />
 }
-<div class="wrapper roomWrapper">
 
-    @*<article class="post post-repeat">
-        <div class="inner">
-            <div class="post-img">
-                <a class="rooms-gallery" href="#" title="standard">
-                    <img alt="Amenity" src="~/rooms/Standard/std1.jpg" width="500" height="350">
-                    <div class="img-hover"></div>
-                </a>
-            </div>
-            <div class="post-content">
-                <h2 class="roomTitle">
-                    <span>Amenity</span>
-                </h2>
-                <ul class="room-basic-info">
-                    <li>기준 인원 2인</li>
-                </ul>
-                <a href="javascript:void(0)" class="read-more showoncmsload">
-                    <span class="show-more">상세 정보</span>
-                    <span class="show-less">줄이기</span>
-                </a>
-                <div class="more-content hideonload showoncmsload" style="display: none;">
-                    <ul class="alt-list">
-                        <li>23.58 m²</li>
-                        <li>금연 객실</li>
-                        <li>천장형 에어컨</li>
-                        <li>43' LED 벽걸이 TV</li>
-                        <li>헤어드라이기</li>
-                        <li>소형 금고</li>
-                    </ul>
-                </div>
-            </div>
+<section id="roomWrapper">
+    <div id="followMouse">
+        <span>ROOMS & RATES</span>
+    </div>
+    <div id="roomHeader">
+        <h5>SEOGWIPEAN</h5>
+        <div id="roomIntro">
+            <p>안녕하세요</p>
+            <p>호텔 서귀피안은 머무시는 기간 동안 편안한 공간을 제공하도록 노력하고 있습니다.</p>
+            <p>각 호실에서 멋진 경치를 감상할 수 있는 호텔 서귀피안은</p>
+            <p>고객님의 편안한 제주도 여행이 되도록 최선을 다하여 노력하겠습니다. 감사합니다.</p>
         </div>
-    </article>*@
+    </div>
 
-    <article class="post post-repeat">
-        <div class="inner">
-            <div class="post-img">
-                <a class="rooms-gallery" href="#" title="standard">
-                    <img alt="Standard Queen" src="~/rooms/Standard/std1.jpg" width="650" height="490">
-                    <div class="img-hover"></div>
-                </a>
-            </div>
-            <div class="post-content">
-                <h2 class="roomTitle">
-                    <span>스탠다드 오션뷰</span>
-                </h2>
-                <ul class="room-basic-info">
-                    <li>기준 인원 2인</li>
-                    <li>최대 정원 2인</li>
-                    <li>퀸 사이즈 침대 1개</li>
-                </ul>
-                <a href="javascript:void(0)" class="read-more showoncmsload">
-                    <span class="show-more">상세 정보</span>
-                    <span class="show-less">줄이기</span>
-                </a>
-                @*<a href="#" target="_blank" class="btn absolute booklink">예약하기</a>*@
-                <div class="more-content hideonload showoncmsload" style="display: none;">
-                    <ul class="alt-list">
-                        <li>23.58 m²</li>
-                        <li>금연 객실</li>
-                        <li>천장형 에어컨</li>
-                        <li>43' LED 벽걸이 TV</li>
-                        <li>헤어드라이기</li>
-                        <li>소형 금고</li>
-                    </ul>
+    <div id="detailWrapper">
+
+        <div class="roomDetail">
+            <div class="detailLeft">
+                <div class="detailImgDesc" data-type="standard">
+                    <div>STANDARD</div>
+                    <div>View More</div>
                 </div>
+                <img src="~/testFolder/Standard.png" />
+            </div>
+            <div class="detailRight">
+                <h1>STANDARD</h1>
+                <p>오션뷰의 멋진 경치</p>
+                <p>스탠다드룸은</p>
+                <p>쾌적한 룸을 자랑합니다.</p>
+            </div>
+            <div class="detailBooking rightSide" >
+                <div>예약하기</div>
+                <div>STANDARD</div>
             </div>
         </div>
-    </article>
-    <article class="post post-repeat">
-        <div class="inner">
-            <div class="post-img">
-                <a class="rooms-gallery" href="#" title="twin">
-                    <img alt="Standard Tween" src="~/rooms/Twin/twin.jpg" width="650" height="490">
-                    <div class="img-hover"></div>
-                </a>
-            </div>
-            <div class="post-content">
-                <h2 class="roomTitle">
-                    <span>스탠다드 트윈</span>
-                </h2>
-                <ul class="room-basic-info">
-                    <li>기준 인원 2인</li>
-                    <li>최대 정원 2인</li>
-                    <li>슈퍼 싱글 사이즈 침대 2개</li>
-                </ul>
-                <a href="javascript:void(0)" class="read-more showoncmsload">
-                    <span class="show-more">상세 정보</span>
-                    <span class="show-less">줄이기</span>
-                </a>
-                @*<a href="#" target="_blank" class="btn absolute booklink">예약하기</a>*@
-                <div class="more-content hideonload showoncmsload" style="display: none;">
-                    <ul class="alt-list">
-                        <li>23.58 m²</li>
-                        <li>금연 객실</li>
-                        <li>천장형 에어컨</li>
-                        <li>43' LED 벽걸이 TV</li>
-                        <li>헤어드라이기</li>
-                        <li>소형 금고</li>
-                    </ul>
+
+
+        <div class="roomDetail">
+            <div class="detailLeftReverse">
+                <div class="detailImgDescReverse" data-type="twin">
+                    <div>TWIN</div>
+                    <div>View More</div>
                 </div>
+                <img src="~/testFolder/Twin.png" />
+            </div>
+            <div class="detailRightReverse">
+                <h1>TWIN</h1>
+                <p>편안함이 묻어나는</p>
+                <p>트윈룸은</p>
+                <p>품격 있는 휴식을 자랑합니다.</p>
+            </div>
+            <div class="detailBooking leftSide" >
+                <div>예약하기</div>
+                <div>TWIN</div>
             </div>
         </div>
-    </article>
-    <article class="post post-repeat">
-        <div class="inner">
-            <div class="post-img">
-                <a class="rooms-gallery" href="#" title="deluxe">
-                    <img alt="Deluxe Queen" src="~/rooms/Deluxe/deluxe1.jpg" width="650" height="490">
-                    <div class="img-hover"></div>
-                </a>
+
+
+        <div class="roomDetail">
+            <div class="detailLeft">
+                <div class="detailImgDesc" data-type="deluxe">
+                    <div>DELUXE</div>
+                    <div>View More</div>
+                </div>
+                <img src="~/testFolder/Deluxe.png" />
             </div>
-            <div class="post-content">
-                <h2 class="roomTitle">
-                    <span>디럭스 오션뷰</span>
-                </h2>
-                <ul class="room-basic-info">
-                    <li>기준 인원 2인</li>
-                    <li>최대 정원 2인</li>
-                    <li>퀸 사이즈 침대 1개</li>
-                </ul>
-                <a href="javascript:void(0)" class="read-more showoncmsload">
-                    <span class="show-more">상세 정보</span>
-                    <span class="show-less">줄이기</span>
-                </a>
-                @*<a href="#" target="_blank" class="btn absolute booklink">예약하기</a>*@
-                <div class="more-content hideonload showoncmsload" style="display: none;">
-                    <div class="p-wrap">
-                        <p>추가 정보 설명</p>
+            <div class="detailRight">
+                <h1>DELUXE</h1>
+                <p>안락함이 최상인</p>
+                <p>디럭스룸은</p>
+                <p>쾌적한 룸을 자랑합니다.</p>
+            </div>
+            <div class="detailBooking rightSide">
+                <div>예약하기</div>
+                <div>DELUXE</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="detailView">
+        <div id="detailViewInner">
+            <div id="XBtn"></div>
+            <div id="mainPicture">
+                <div id="mainImage"></div>
+            </div>
+            <div id="subPicture">
+                <img src="~/rooms/Standard/std1.jpg" />
+                <img src="~/rooms/Standard/std2.jpg" />
+                <img src="~/rooms/Standard/std3.jpg" />
+            </div>
+            <div id="detailDescription">
+                <div>
+                    <h2>STANDARD</h2>
+                </div>
+                <div id="minDesc">
+                    <div>
+                        <p>객실크기</p>
+                        <p>침대타입</p>
+                        <p>권장/최대 인원</p>
+                        <p>전망</p>
+                        <p>위치</p>
                     </div>
-                    <ul class="alt-list">
-                        <li>29.61 m²</li>
-                        <li>금연 객실</li>
-                        <li>천장형 에어컨</li>
-                        <li>43' LED 벽걸이 TV</li>
-                        <li>3인용 소파</li>
-                        <li>헤어드라이기</li>
-                        <li>소형 금고</li>
-                    </ul>
+                    <div>
+                        <p>23.58㎡</p>
+                        <p>퀸 사이즈 베드 1개</p>
+                        <p>성인 2명</p>
+                        <p>오션뷰</p>
+                        <p>2 ~ 5층</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </article>
-    <article class="post post-repeat">
-        <div class="inner">
-            <div class="post-img">
-                <a class="rooms-gallery" href="#" title="ondol">
-                    <img alt="Ondol" src="~/rooms/Ondol/ondol.jpg" width="650" height="490">
-                    <div class="img-hover"></div>
-                </a>
-            </div>
-            <div class="post-content">
-                <h2 class="roomTitle">
-                    <span>온돌</span>
-                </h2>
-                <ul class="room-basic-info">
-                    <li>기준 인원 2인</li>
-                    <li>최대 정원 3인</li>
-                    <li>한실 침구 세트 2개</li>
-                </ul>
-                <a href="javascript:void(0)" class="read-more showoncmsload">
-                    <span class="show-more">상세 정보</span>
-                    <span class="show-less">줄이기</span>
-                </a>
-                @*<a href="#" target="_blank" class="btn absolute booklink">예약하기</a>*@
-                <div class="more-content hideonload showoncmsload" style="display: none;">
-                    <ul class="alt-list">
-                        <li>25.27 m²</li>
-                        <li>금연 객실</li>
-                        <li>천장형 에어컨</li>
-                        <li>43' LED 벽걸이 TV</li>
-                        <li>헤어드라이기</li>
-                        <li>소형 금고</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </article>
+                <div id="maxDesc">
+                    <div><p>이용안내</p></div>
+                    <div>
+                        <p>TV, 전화기, 개인금고, 실내용 슬리퍼, 이불 및 베개, 매트리스</p>
+                        <p>페이스타월 / 배스타월, 샴푸, 컨디셔너, 바디워시, 바디로션</p>
+                        <p>생수 2병, 티백, 물컵, 헤어드라이기, 전기포트</p>
+                        <p>온도 조절 시스템, 유무선 인터넷, 220V 전원, IPTV</p>
+                        <br />
+                        <p>모든 객실은 흡연이 금지되어 있습니다.</p>
+                        <p>영유아의 안전을 위해 항상 보호자의 보호와 통제가 필요합니다.</p>
+                        <p>애완용 동물, 발화 또는 인화성 위험물은 반입을 삼가주시기 바랍니다.</p>
 
-</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+    </div>
+
+</section>
+
 
 @section EndBody{
-
-    <template id="listTemplate">
-        <div>
-            <img data-u="image" src="img/002.jpg" />
-        </div>
-    </template>
-
-    <template id="makeCarousel">
-        <div class="room-detail detailCarousel" style="position:relative;margin:0 auto;top:0px;left:0px;width:1366px;height:768px;overflow:hidden;visibility:hidden;">
-            <!-- Loading Screen -->
-            <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg" />
-            </div>
-            <div data-u="slides" id="moreImages" style="cursor:default;position:relative;top:0px;left:0px;width:1366px;height:768px;overflow:hidden;">
-            </div>
-            <!-- Bullet Navigator -->
-            <div data-u="navigator" class="jssorb064" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
-                <div data-u="prototype" class="i" style="width:16px;height:16px;">
-                    <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                        <circle class="b" cx="8000" cy="8000" r="5800"></circle>
-                    </svg>
-                </div>
-            </div>
-            <!-- Arrow Navigator -->
-            <div data-u="arrowleft" class="jssora051" style="width:55px;height:55px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
-                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                    <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
-                </svg>
-            </div>
-            <div data-u="arrowright" class="jssora051" style="width:55px;height:55px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
-                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                    <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
-                </svg>
-            </div>
-        </div>
-    </template>
-    <script src="~/lib/jssor.slider-27.5.0.min.js"></script>
     <script type="text/javascript">
-        // 상세정보 클릭시
-        $(".show-more").click(function () {
-            $(this).parent().find(".show-less").show();
-            $(this).hide();
-            $(this).parents(".post-repeat").find(".more-content").slideDown();
-        });
-        // 줄이기 클릭시
-        $(".show-less").click(function () {
-            $(this).parent().find(".show-more").show();
-            $(this).hide();
-            $(this).parents(".post-repeat").find(".more-content").slideUp();
-        });
-
-        $(".post img").click(function (e) {
-            e.preventDefault();
-        });
-
-        var jssor_1_slider;
-        var carouselCnt = 1;
+        var _mouseY;
         $(function () {
-            var innerWidth = window.innerWidth;
-            if (innerWidth < 770) {
-                $(".detailCarousel, #moreImages").css("width", "640px");
-                $(".detailCarousel, #moreImages").css("height", "960px");
-            }
-        });
-
-        function addImage(_inputText, _url1, _url2, _url3, _url4, _url5) {
-            jssor_1_slider = null;
-            $(".detailCarousel:not(detailCarousel:eq(0))").remove();
-
-            var _carousel = $("#makeCarousel").html().trim();
-            var $_carousel = $(_carousel);
-            $_carousel.attr("id", "jssor_" + carouselCnt);
-            $("body").append($_carousel);
-            $(".detailCarousel").append('<div id="carouselCancel"></div>');
-            $("#carouselCancel").click(function () {
-                toggleDetail();
+            $(document).mousemove(function (e) {
+                _mouseY = e.pageY;
+                if (_mouseY > 120 && _mouseY < 3300) {
+                    $("#followMouse > span").css("top", eval(_mouseY - 170));
+                }
             });
-
-            if (_url1 != undefined)
-                counter = 1;
-            if (_url2 != undefined)
-                counter = 2;
-            if (_url3 != undefined)
-                counter = 3;
-            if (_url4 != undefined)
-                counter = 4;
-            if (_url5 != undefined)
-                counter = 5;
-            if (_url1 != null || _url1 != undefined) {
-                var listTemplate = $("#listTemplate").html().trim();
-                var listTemplateClone = $(listTemplate);
-                listTemplateClone.find("img").attr("src", _url1);
-                if (window.innerWidth > 769) {
-                    listTemplateClone.find("div").data("p", 267);
-                }
-                $("#moreImages").append(listTemplateClone);
-            } if (_url2 != null || _url2 != undefined) {
-                var listTemplate = $("#listTemplate").html().trim();
-                var listTemplateClone = $(listTemplate);
-                listTemplateClone.find("img").attr("src", _url2);
-                if (window.innerWidth > 769) {
-                    listTemplateClone.find("div").data("p", 267);
-                }
-                $("#moreImages").append(listTemplateClone);
-            } if (_url3 != null || _url3 != undefined) {
-                var listTemplate = $("#listTemplate").html().trim();
-                var listTemplateClone = $(listTemplate);
-                listTemplateClone.find("img").attr("src", _url3);
-                if (window.innerWidth > 769) {
-                    listTemplateClone.find("div").data("p", 267);
-                }
-                $("#moreImages").append(listTemplateClone);
-            }
-            if (_url4 != null || _url4 != undefined) {
-                var listTemplate = $("#listTemplate").html().trim();
-                var listTemplateClone = $(listTemplate);
-                listTemplateClone.find("img").attr("src", _url4);
-                if (window.innerWidth > 769) {
-                    listTemplateClone.find("div").data("p", 267);
-                }
-                $("#moreImages").append(listTemplateClone);
-            } if (_url5 != null || _url5 != undefined) {
-                var listTemplate = $("#listTemplate").html().trim();
-                var listTemplateClone = $(listTemplate);
-                listTemplateClone.find("img").attr("src", _url5);
-                if (window.innerWidth > 769) {
-                    listTemplateClone.find("div").data("p", 267);
-                }
-                $("#moreImages").append(listTemplateClone);
-            }
-            var jssor_1_options = {
-                $Idle: 2000,
-                $SlideEasing: $Jease$.$InOutSine,
-                $DragOrientation: 3,
-                $ArrowNavigatorOptions: {
-                    $Class: $JssorArrowNavigator$
-                },
-                $BulletNavigatorOptions: {
-                    $Class: $JssorBulletNavigator$
-                }
-            };
-
-            var findName = "jssor_" + carouselCnt;
-            jssor_1_slider = new $JssorSlider$(findName, jssor_1_options);
-
-            jssor_1_slider.$Elmt.style.margin = "";
-            var MAX_WIDTH = 3000;
-            var MAX_HEIGHT = 3000;
-            var MAX_BLEEDING = 0.128;
-            function ScaleSlider() {
-                var containerElement = jssor_1_slider.$Elmt.parentNode;
-                var containerWidth = containerElement.clientWidth;
-                if (containerWidth) {
-                    var originalWidth = jssor_1_slider.$OriginalWidth();
-                    var originalHeight = jssor_1_slider.$OriginalHeight();
-
-                    var containerHeight = containerElement.clientHeight || originalHeight;
-
-                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-                    var expectedHeight = Math.min(MAX_HEIGHT || containerHeight, containerHeight);
-                    jssor_1_slider.$ScaleSize(expectedWidth, expectedHeight, MAX_BLEEDING);
-                    jssor_1_slider.$Elmt.style.top = ((containerHeight - expectedHeight) / 2) + "px";
-                    jssor_1_slider.$Elmt.style.left = ((containerWidth - expectedWidth) / 2) + "px";
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
-                }
-            }
-            function OnOrientationChange() {
-                ScaleSlider();
-                window.setTimeout(ScaleSlider, 800);
-            }
-            ScaleSlider();
-            $(window).bind("load", ScaleSlider);
-            $(window).bind("resize", ScaleSlider);
-            $(window).bind("orientationchange", OnOrientationChange);
-            carouselCnt++;
-        }
-
-        function toggleDetail(title) {
-            if ($("section.wrapper").css("display") === "none") {
-                $("section.wrapper, header, footer").show();
-                $(".room-detail").hide();
-                return;
-            }
-            $("section.wrapper, header, footer").hide();
-
-            switch (title) {
-                case "standard": {
-                    addImage("", "../rooms/Standard/std1.jpg", "../rooms/Standard/std2.jpg", "../rooms/Standard/std3.jpg");
-                    break;
-                }
-                case "twin": {
-                    addImage("", "../rooms/Twin/twin.jpg");
-                    break;
-                }
-                case "deluxe": {
-                    addImage("", "../rooms/Deluxe/deluxe1.jpg", "../rooms/Deluxe/deluxe2.jpg", "../rooms/Deluxe/deluxe3.jpg");
-                    break;
-                }
-                case "ondol": {
-                    addImage("", "../rooms/Ondol/ondol.jpg");
-                    break;
-                }
-            }
-            $(".room-detail").show();
-        }
-
-        $(".rooms-gallery").click(function (e) {
-            var _title = $(this).attr("title");
-            var parents = $(this).parents(".post-repeat");
-            toggleDetail(_title);
         });
 
-        $(".exitBtn").click(function (e) {
-            var parents = $(this).parents(".post-repeat");
-            toggleDetail();
+        $(".detailImgDesc, .detailImgDescReverse").click(function () {
+            var _type = $(this).data("type");
+            fnDetail(_type);
         });
 
+        $("#XBtn").click(function () {
+            $("body").css("overflow-y", "auto");
+            $("#detailView").fadeOut(1000);
+        });
+
+
+        function fnDetail(_type) {
+            if (_type === "twin") {
+                $("#detailDescription h2").html("TWIN");
+                $("#detailDescription #minDesc div:eq(1) p:eq(1)").html("슈퍼 싱글 사이즈 베드 2개");
+                $("#detailDescription #minDesc div:eq(1) p:eq(2)").html("성인 2명 / 성인 4명");
+            } else if (_type === "deluxe") {
+                $("#detailDescription h2").html("DELUXE");
+                $("#detailDescription #minDesc div:eq(1) p:eq(0)").html("29.61㎡");
+                $("#detailDescription #minDesc div:eq(1) p:eq(2)").html("성인 2명 / 성인 3명");
+            }
+            var _imgUrl = $("#detailViewInner #subPicture img:eq(0)").attr("src");
+            $("#detailViewInner #mainImage").css("background", `url(${_imgUrl}) 0 0 no-repeat`);
+            $("#detailViewInner #mainImage").css("background-size", "cover");
+
+            $("#detailView").fadeIn(1000);
+            $("body").css("overflow-y", "hidden");
+            window.scrollTo(0, 0);
+        }
+
+        $("#subPicture img").click(function () {
+            var _imgUrl = $(this).attr("src");
+            $("#detailViewInner #mainImage").css("background", `url(${_imgUrl}) 0 0 no-repeat`);
+            $("#detailViewInner #mainImage").css("background-size", "cover");
+        });
+
+       
     </script>
+
 }

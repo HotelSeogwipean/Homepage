@@ -5,24 +5,45 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ix17pnbt29"></script>
 }
 
-<article class="topBanner">
-    <div class="banner">
-        <div class="wrapper">
-            <h1>찾아 오시는 길</h1>
+<div id="location_wrapper">
+
+    <div id="banner">
+        <h2>오시는 길</h2>
+    </div>
+    <div id="locationText">
+        <span>제주특별자치도 서귀포시 보목로 64번길 178 (보목동 1453)</span><br />
+        <span>Tel. 064.735.1453</span>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="byVehicle">
+        <div>
+            <h2>대중교통</h2>
+        </div>
+        <div>
+            <div>
+                <h3>공항버스</h3>
+            </div>
+
+            <p>제주국제공항 출발 > 5번 GATE > 600번 공항 버스 정류장으로 이동 ></p>
+            <p>600번 버스 승차 > 33개 정류장 이동 > 서귀포 칼 호텔(종점) 하차 ></p>
+            <p>도보 약 1.1km 직진 > 호텔 서귀피안</p>
+        </div>
+
+        <div>
+            <div>
+                <h3>일반버스</h3>
+            </div>
+
+            <p>제주국제공항 출발 > 5번 GATE > 버스 181번 탑승 ></p>
+            <p>서귀포 환승 정류장 하차 > 간선 버스 520(효돈중)(중앙로터리) 승차 > </p>
+            <p>라임오렌지빌 정류장 하차 >도보 약 350m 직진 > 호텔 서귀피안</p>
         </div>
     </div>
-</article>
 
-<div id="wrapper">
-    <div id="map"></div>
 </div>
 
-<div class="locationDoc" align="center">
-    <div>
-        <img class="locationImg" src="~/images/Addr.png" />
-    </div>
-    <img class="locationImg" src="~/images/Location.png" />
-</div>
 
 @section EndBody{
     <script>
