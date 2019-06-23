@@ -2,6 +2,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Head{
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/css/roomTest.css" rel="stylesheet" />
 }
 
@@ -35,7 +36,7 @@
                 <p>스탠다드룸은</p>
                 <p>쾌적한 룸을 자랑합니다.</p>
             </div>
-            <div class="detailBooking rightSide" >
+            <div class="detailBooking rightSide">
                 <div>예약하기</div>
                 <div>STANDARD</div>
             </div>
@@ -56,7 +57,7 @@
                 <p>트윈룸은</p>
                 <p>품격 있는 휴식을 자랑합니다.</p>
             </div>
-            <div class="detailBooking leftSide" >
+            <div class="detailBooking leftSide">
                 <div>예약하기</div>
                 <div>TWIN</div>
             </div>
@@ -133,7 +134,7 @@
             </div>
 
         </div>
-        
+
     </div>
 
 </section>
@@ -149,6 +150,10 @@
                     $("#followMouse > span").css("top", eval(_mouseY - 170));
                 }
             });
+
+            if (screen.width <= 425) {
+                $("#roomWrapper").css("width", screen.width);
+            }
         });
 
         $(".detailImgDesc, .detailImgDescReverse").click(function () {
@@ -157,8 +162,8 @@
         });
 
         $("#XBtn").click(function () {
-            $("body").css("overflow-y", "auto");
             $("#detailView").fadeOut(1000);
+            setTimeout(function () { $("body").css("overflow-y", "auto") }, 1000);
         });
 
 
@@ -187,7 +192,10 @@
             $("#detailViewInner #mainImage").css("background-size", "cover");
         });
 
-       
+        $(".detailBooking").click(function () {
+            alert("죄송합니다, 지금은 예약이 불가능합니다.<br/>호텔 서귀피안은 7월 1일 정식 오픈 예정입니다.");
+        });
+
     </script>
 
 }

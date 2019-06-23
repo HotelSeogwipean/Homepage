@@ -47,6 +47,12 @@
 
 @section EndBody{
     <script>
+        $(function () {
+            if (screen.width <= 425) {
+                $("#location_wrapper").css("width", screen.width);
+            }
+        });
+
         var zoomSize = 6;
         var marker = null;
         var iconImage = '/images/mapLogo.png';

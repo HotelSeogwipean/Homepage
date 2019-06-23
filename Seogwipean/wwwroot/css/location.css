@@ -32,12 +32,14 @@
     margin-top: 20px;
     margin-bottom: 40px;
 }
-    #locationText span{
+
+    #locationText span {
         line-height: 25px;
     }
-    #locationText span:last-of-type {
-        margin-top: 5px;
-    }
+
+        #locationText span:last-of-type {
+            margin-top: 5px;
+        }
 
 #byVehicle {
     width: 100%;
@@ -46,9 +48,9 @@
     padding-bottom: 300px;
 }
 
-#byVehicle div{
-    position: relative;
-}
+    #byVehicle div {
+        position: relative;
+    }
 
     #byVehicle > div:nth-of-type(0) {
         width: 100%;
@@ -62,8 +64,8 @@
 
     #byVehicle p {
         line-height: 15px;
-        font-size: 12px;
-        letter-spacing: 4px;
+        font-size: 1vw;
+        letter-spacing: 1px;
     }
 
         #byVehicle p:first-of-type {
@@ -86,3 +88,13 @@
             border-bottom: 1px solid #1e514f;
             margin-bottom: 10px;
         }
+
+
+@media only screen and (max-width: 425px) {
+    #byVehicle > div:nth-of-type(2), #byVehicle > div:nth-of-type(3) {
+        width: 100%;
+    }
+    #byVehicle p {
+        font-size: 3vw;
+    }
+}

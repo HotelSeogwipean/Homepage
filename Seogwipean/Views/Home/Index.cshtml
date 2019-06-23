@@ -10,6 +10,11 @@
     <img id="img4" src="~/building/night3.jpg" />
 </div>
 
+<div id="seogwipean">
+    <h2>SEOGWIPEAN</h2>
+    <h1>IN JEJU</h1>
+</div>
+
 <section class="container">
     <div class="hero">
         <div class="fullBackground"></div>
@@ -30,6 +35,7 @@
             $("#instaBtn").attr("src", "../images/whiteInsta.png");
             $("#faceBtn").attr("src", "../images/whiteFace.png");
             fnRepeat();
+            $("#seogwipean").fadeOut(5000);
         });
 
         function fnRepeat() {
@@ -42,8 +48,8 @@
             var $img4= $("#img4").attr("src");
             switch (backgroundCnt) {
                 case 0: { $("body").css("background", `url(${$img1}) 0 0 no-repeat`); $("body").css("background-position-y", "60%"); break; }
-                case 1: { $("body").css("background", `url(${$img2}) 0 0 no-repeat`); $("body").css("background-position-y", "30%");break; }
-                case 2: { $("body").css("background", `url(${$img3}) 0 0 no-repeat`); $("body").css("background-position-y", "20%");break; }
+                case 1: { $("body").css("background", `url(${$img2}) 0 0 no-repeat`); $("body").css("background-position-y", "30%"); break; }
+                case 2: { $("body").css("background", `url(${$img3}) 0 0 no-repeat`); $("body").css("background-position-y", "20%"); break; }
                 case 3: { $("body").css("background", `url(${$img4}) 0 0 no-repeat`); $("body").css("background-position-y", "55%"); backgroundCnt = 0; break; }
             }
             backgroundCnt++;
