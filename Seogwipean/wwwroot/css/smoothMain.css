@@ -5,17 +5,24 @@
     -moz-transition: background 2s;
     -o-transition: background 2s;
     transition: background 2s;
+    width: 100%;
 }
 
 .footer,
 .sticky {
     background-color: transparent !important;
     border-bottom: none !important;
+    bottom: 0;
 }
 
-    .sticky nav ul a {
-        color: #fff;
-    }
+#fullBack {
+    width: 100%;
+    height: 100%;
+}
+
+.sticky nav ul a {
+    color: #fff;
+}
 
 .footer span, .footer .signature {
     color: #fff !important;

@@ -334,6 +334,9 @@
     #roomHeader {
         margin-left: 30px;
     }
+    #roomIntro p {
+        font-size: 3vw;
+    }
     #detailWrapper > .roomDetail > .detailLeft {
         width: 100%;
     }

@@ -15,14 +15,16 @@
     <h1>IN JEJU</h1>
 </div>
 
-<section class="container">
-    <div class="hero">
-        <div class="fullBackground"></div>
-        @*<div class="mouse">
-                <span></span>
-            </div>*@
-    </div>
-</section>
+<div id="fullBack"></div>
+
+@*<section class="container">
+        <div class="hero">
+            <div class="fullBackground"></div>
+            <div class="mouse">
+                    <span></span>
+                </div>
+        </div>
+    </section>*@
 
 <!------------------------ 메인 종료 ------------------------>
 
@@ -45,12 +47,21 @@
             var $img1 = $("#img1").attr("src");
             var $img2 = $("#img2").attr("src");
             var $img3 = $("#img3").attr("src");
-            var $img4= $("#img4").attr("src");
-            switch (backgroundCnt) {
-                case 0: { $("body").css("background", `url(${$img1}) 0 0 no-repeat`); $("body").css("background-position-y", "60%"); break; }
-                case 1: { $("body").css("background", `url(${$img2}) 0 0 no-repeat`); $("body").css("background-position-y", "30%"); break; }
-                case 2: { $("body").css("background", `url(${$img3}) 0 0 no-repeat`); $("body").css("background-position-y", "20%"); break; }
-                case 3: { $("body").css("background", `url(${$img4}) 0 0 no-repeat`); $("body").css("background-position-y", "55%"); backgroundCnt = 0; break; }
+            var $img4 = $("#img4").attr("src");
+            if (screen.width <= 425) {
+                switch (backgroundCnt) {
+                    case 0: { $("body").css("background", `url(${$img1}) 35% 0 no-repeat`); break; }
+                    case 1: { $("body").css("background", `url(${$img2}) 25% 20% no-repeat`); break; }
+                    case 2: { $("body").css("background", `url(${$img3}) 0 20% no-repeat`); break; }
+                    case 3: { $("body").css("background", `url(${$img4}) 28% 20% no-repeat`); backgroundCnt = 0; break; }
+                }
+            } else {
+                switch (backgroundCnt) {
+                    case 0: { $("body").css("background", `url(${$img1}) 0 0 no-repeat`); break; }
+                    case 1: { $("body").css("background", `url(${$img2}) 0 20% no-repeat`); break; }
+                    case 2: { $("body").css("background", `url(${$img3}) 0 20% no-repeat`); break; }
+                    case 3: { $("body").css("background", `url(${$img4}) 0 20% no-repeat`); backgroundCnt = 0; break; }
+                }
             }
             backgroundCnt++;
             $("body").css("background-size", "cover");
