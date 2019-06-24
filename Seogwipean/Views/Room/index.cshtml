@@ -13,10 +13,10 @@
     <div id="roomHeader">
         <h5>SEOGWIPEAN</h5>
         <div id="roomIntro">
-            <p>안녕하세요</p>
-            <p>호텔 서귀피안은 머무시는 기간 동안 편안한 공간을 제공하도록 노력하고 있습니다.</p>
-            <p>각 호실에서 멋진 경치를 감상할 수 있는 호텔 서귀피안은</p>
-            <p>고객님의 편안한 제주도 여행이 되도록 최선을 다하여 노력하겠습니다. 감사합니다.</p>
+            <p>안녕하십니까, 호텔 서귀피안 입니다.</p>
+            <p>호텔 서귀피안은 저희 호텔에 머무시는 기간 편안한 공간을 제공하기위해 최선을 다하고 있습니다.</p>
+            <p>저희 호텔에서 느끼실수 있는 서귀포의 오션뷰와 제주도의 자연이 주는 편안함은 손님께 행복한 추억으로 기억될것입니다.</p>
+            <p>감사합니다.</p>
         </div>
     </div>
 
@@ -146,7 +146,7 @@
         $(function () {
             $(document).mousemove(function (e) {
                 _mouseY = e.pageY;
-                if (_mouseY > 120 && _mouseY < 3300) {
+                if (_mouseY > 120 && _mouseY < 3290) {
                     $("#followMouse > span").css("top", eval(_mouseY - 170));
                 }
             });
@@ -168,14 +168,24 @@
 
 
         function fnDetail(_type) {
-            if (_type === "twin") {
+            if (_type === "standard") {
+                $("#subPicture img:eq(0)").attr("src", "../rooms/Standard/standard1.jpg");
+                $("#subPicture img:eq(1)").attr("src", "../rooms/Standard/standard2.jpg");
+                $("#subPicture img:eq(2)").attr("src", "../rooms/Standard/standard3.jpg");
+            } else if (_type === "twin") {
                 $("#detailDescription h2").html("TWIN");
                 $("#detailDescription #minDesc div:eq(1) p:eq(1)").html("슈퍼 싱글 사이즈 베드 2개");
                 $("#detailDescription #minDesc div:eq(1) p:eq(2)").html("성인 2명 / 성인 4명");
+                $("#subPicture img:eq(0)").attr("src", "../rooms/Twin/twin1.jpg");
+                $("#subPicture img:eq(1)").attr("src", "../rooms/Twin/twin2.jpg");
+                $("#subPicture img:eq(2)").attr("src", "../rooms/Twin/twin3.jpg");
             } else if (_type === "deluxe") {
                 $("#detailDescription h2").html("DELUXE");
                 $("#detailDescription #minDesc div:eq(1) p:eq(0)").html("29.61㎡");
                 $("#detailDescription #minDesc div:eq(1) p:eq(2)").html("성인 2명 / 성인 3명");
+                $("#subPicture img:eq(0)").attr("src", "../rooms/Deluxe/deluxe1.jpg");
+                $("#subPicture img:eq(1)").attr("src", "../rooms/Deluxe/deluxe2.jpg");
+                $("#subPicture img:eq(2)").attr("src", "../rooms/Deluxe/deluxe3.jpg");
             }
             var _imgUrl = $("#detailViewInner #subPicture img:eq(0)").attr("src");
             $("#detailViewInner #mainImage").css("background", `url(${_imgUrl}) 0 0 no-repeat`);
@@ -193,7 +203,7 @@
         });
 
         $(".detailBooking").click(function () {
-            alert("죄송합니다, 지금은 예약이 불가능합니다.<br/>호텔 서귀피안은 7월 1일 정식 오픈 예정입니다.");
+            alert("죄송합니다, 지금은 예약이 불가능합니다.<br/>호텔 서귀피안은 7월 1일 오픈 예정중에 있습니다.");
         });
 
     </script>
