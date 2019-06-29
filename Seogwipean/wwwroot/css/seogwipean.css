@@ -156,6 +156,7 @@ nav ul {
         left: 20px;
         float: left;
         cursor: pointer;
+        z-index: 1;
     }
     .navbar-right {
         float: right;
