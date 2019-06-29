@@ -103,12 +103,12 @@
             marker.setMap(null);
         }
 
-        fnMarkerUpdate();
+        //fnMarkerUpdate();
         naver.maps.Event.addListener(map, 'zoom_changed', function (i) {
             zoomSize = i;
-            hideMarker();
-            if (zoomSize > 10)
-                fnMarkerUpdate();
+            //hideMarker();
+            //if (zoomSize > 10)
+            //    fnMarkerUpdate();
         });
 
     </script>

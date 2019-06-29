@@ -339,6 +339,14 @@
         font-size: 3vw;
         line-height: 20px;
     }
+
+        #roomIntro p:nth-of-type(2) {
+            width: 325px;
+        }
+        #roomIntro p:nth-of-type(3) {
+            width: 355px;
+        }
+
     #detailWrapper > .roomDetail > .detailLeft {
         width: 100%;
     }
@@ -409,6 +417,36 @@
     }
     #detailViewInner > #subPicture img {
         height: 74px !important;
+    }
+
+    #roomIntro p:nth-of-type(2) {
+        width: 285px;
+    }
+
+    #roomIntro p:nth-of-type(3) {
+        width: 310px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    #detailView > #detailViewInner {
+        width: 320px;
+        margin: 0 auto;
+    }
+
+    #detailViewInner > #subPicture img {
+        height: 64px !important;
+    }
+
+    #roomIntro p:nth-of-type(2) {
+        width: 245px;
+    }
+
+    #roomIntro p:nth-of-type(3) {
+        width: 265px;
+    }
+    #detailWrapper > .roomDetail:last-of-type {
+        height: 621px;
     }
 }
 
