@@ -47,14 +47,22 @@
         line-height: 20px;
     }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 426px) {
     #seogwipean > * {
         font-size: 55px;
     }
 
     #fullBack {
         width: 100%;
-        height: calc(100%-400px);
+        height: calc(100% - 250px);
+    }
+
+    .bookArea-wrap{
+        display: none;
+    }
+
+    footer.footer{
+        display: none !important;
     }
 }
 
