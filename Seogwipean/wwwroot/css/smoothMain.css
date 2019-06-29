@@ -17,7 +17,7 @@
 
 #fullBack {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 270px);
 }
 
 .sticky nav ul a {
@@ -51,4 +51,49 @@
     #seogwipean > * {
         font-size: 55px;
     }
+
+    #fullBack {
+        width: 100%;
+        height: calc(100%-400px);
+    }
+}
+
+.bookArea-wrap {
+    background: transparent !important;
+}
+
+#bookArea {
+    background: transparent !important;
+}
+
+    #bookArea .bookIns input {
+        margin-bottom: 0 !important;
+    }
+
+    #bookArea .bookIns .fb_rsvn button {
+        background: #4B697C !important;
+        color: #fff;
+    }
+
+    #bookArea input, #bookArea select {
+        background: transparent !important;
+        color: #fff !important;
+    }
+        #bookArea input::placeholder {
+            color: #fff !important;
+        }
+
+
+    #bookArea option{
+        color: #000 !important;
+    }
+
+body > .footer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+    margin-top: 0px; 
+    background-color: #1e514f;
+    padding-top: 15px;
+    padding-bottom: 0px;
 }
