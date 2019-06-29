@@ -220,6 +220,7 @@
 
         #detailView > #detailViewInner > #subPicture {
             margin-top: 15px;
+            text-align: center;
         }
 
             #detailView > #detailViewInner > #subPicture img {
@@ -380,7 +381,7 @@
         margin: 0 auto;
     }
         #detailView > #detailViewInner > #subPicture img {
-            height: 85px;
+            height: 84px;
         }
     #detailDescription p {
         font-size: 2.5vw;
@@ -396,4 +397,31 @@
         top: 5%;
         right: 5%;
     }
+    #detailWrapper > .roomDetail:last-of-type {
+        height: 621px;
+    }
 }
+
+@media only screen and (max-width: 375px) {
+    #detailView > #detailViewInner {
+        width: 375px;
+        margin: 0 auto;
+    }
+    #detailViewInner > #subPicture img {
+        height: 74px !important;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    #detailWrapper > .roomDetail {
+        height: 795px;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) {
+    #detailWrapper > .roomDetail {
+        height: 895px;
+    }
+}
+

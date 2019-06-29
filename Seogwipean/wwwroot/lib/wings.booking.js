@@ -8129,14 +8129,12 @@
             var $p = $(parent);
             if (calendar_type == 'single') {
 
-                console.log("activated 1-1");
                 $('#bookArea [data-toggle="datepicker"]').datepicker({
                     format: 'yyyy-MM-dd',
                     language: lang,
                     startDate: moment().format('YYYY-MM-DD'),
                     endDate: moment().add('12', 'month').format('YYYY-MM-DD'),
                     beforeShow: function (input) {
-                        console.log("activated 1-2");
                         var i_offset = $(input).offset();
                         setTimeout(function () {
                             $(".date-picker-wrapper").css({ "left": i_offset });
@@ -8154,7 +8152,6 @@
                     }
                 });
             } else {
-                console.log("activated 2-1");
                 $('.date_range').dateRangePicker({
                     language: lang,
                     stickyMonths: true,
