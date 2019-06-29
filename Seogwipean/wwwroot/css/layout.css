@@ -58,7 +58,9 @@
                 height: 25px;
                 cursor: pointer;
             }
-
+            body > .footer > #footer_2 > div {
+                line-height: 30px;
+            }
             .signature {
                 position: relative;
                 font-weight: 100;
@@ -69,7 +71,7 @@
                 text-align: center;
                 text-transform: uppercase;
                 text-decoration: none;
-                top: 10px;
+                top: 35px;
             }
 
 .logo img {
@@ -185,4 +187,21 @@
         transform: scale(1.0);
         -webkit-transform: scale(1.0);
     }
+}
+
+@media only screen and (max-width: 426px) {
+    body > .footer > #footer_1 {
+        margin-left: 10px;
+    }
+
+        body > .footer > #footer_1 > div {
+            line-height: 25px;
+        }
+    #footer_2 .snsBtns {
+        margin-top: 30px;
+    }
+    .signature {
+        top: 10px;
+    }
+
 }
