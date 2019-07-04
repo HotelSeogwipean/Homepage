@@ -164,13 +164,14 @@ nav ul {
     }
     nav ul li {
         width: 100%;
-        padding: 7px 0;
+        padding: 10px 0;
         margin: 0;
         border-bottom: 1px solid #a1a1a1;
     }
 
     nav ul a {
-        font-size: 15px;
+        font-size: 20px;
+        font-weight: 600;
     }
 }
 
