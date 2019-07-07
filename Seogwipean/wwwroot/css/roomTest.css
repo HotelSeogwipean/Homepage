@@ -111,6 +111,8 @@
             position: absolute !important;
             width: 120px;
             cursor: pointer;
+            font-size: 14px !important;
+            font-weight: 400;
         }
 
             #detailWrapper > .roomDetail > .detailBooking.rightSide {
