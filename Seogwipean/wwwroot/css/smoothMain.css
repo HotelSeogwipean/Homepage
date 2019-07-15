@@ -126,7 +126,7 @@ body > .footer {
     left: 25%;
     margin: 0 auto;
     display: none;
-    z-index: 1;
+    z-index: 1024;
 }
 
 #videoX {
@@ -144,6 +144,7 @@ body > .footer {
     position: relative;
     float: left;
     width: 100%;
+    z-index: 1024;
 }
 
     #videoChkBox > div:first-of-type {
