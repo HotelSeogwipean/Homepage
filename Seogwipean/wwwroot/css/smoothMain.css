@@ -126,6 +126,7 @@ body > .footer {
     left: 25%;
     margin: 0 auto;
     display: none;
+    z-index: 1;
 }
 
 #videoX {
