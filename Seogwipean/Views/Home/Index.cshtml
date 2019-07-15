@@ -2,7 +2,7 @@
     @*<link href="~/css/fullclip.css" rel='stylesheet' type='text/css'>*@
     <link href="~/css/smoothMain.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" charset="utf-8" href="https://s3.ap-northeast-2.amazonaws.com/static.wingsbooking.com/html/theme/theme01/_css/wings.booking.css">
-    
+
 }
 
 <div id="imageBox" style="display: none;">
@@ -24,9 +24,27 @@
         <div id="backgroundFill"></div>
     </div>
 </div>
+
+<div id="videoPop">
+    <div id="videoX">
+        <img src="~/images/xbutton.png"/>
+    </div>
+    <iframe src="~/video/hotelseogwipean.mp4" width="100%" height="100%"></iframe>
+    <div id="videoChkBox" >
+        <div></div>
+        <div>
+            <label for="videoChk" style="color: #fff; opacity: 1;">일주일동안 보지 않기</label><input type="checkbox" />
+        </div>
+    </div>
+</div>
+
+
+
 <!------------------------ 메인 종료 ------------------------>
 
 @section EndBody{
+    <script src="~/lib/html5lightbox.js"></script>
+    <script src="~/lib/jquery.cookie.js"></script>
     <script type="text/javascript" charset="utf-8" src="~/lib/wings.booking.js"></script>
     <script type="text/javascript">
         var backgroundCnt = 0;
@@ -39,6 +57,20 @@
 
             wscv.set({ "hotelId": "SGP1", "theme": "theme01", "type": "horizontal" });
             wscv.create(".wings-fast-book", { lang: 'ko' });
+
+            var $pop = $.cookie("popup");
+            if ($pop != "yes") {
+                $("#videoPop").show();
+            } else {
+                $("#videoPop").remove();
+            }
+        });
+
+        $('#videoX').click(function () {
+            if ($("#videoChkBox input:checked").length > 0) {
+                $.cookie("popup", "yes", { expires: 7 });
+            }
+            $("#videoPop").remove();
         });
 
         function fnRepeat() {

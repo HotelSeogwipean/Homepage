@@ -36,8 +36,11 @@
     position: absolute;
     top: 40%;
     right: 5%;
+    cursor: none;
 }
-
+#seogwipean > * {
+    cursor: none;
+}
     #seogwipean > * {
         font-family: 'NanumGothic', sans-serif;
         color: #fff;
@@ -113,4 +116,51 @@ body > .footer {
     background: black;
     opacity: 0.5;
     border-radius: 15px;
+}
+
+#videoPop {
+    width: 854px;
+    height: 480px;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    margin: 0 auto;
+    display: none;
+}
+
+#videoX {
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+
+    #videoX > img {
+        width: 25px;
+        height: 25px;
+    }
+
+#videoChkBox {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+    #videoChkBox > div:first-of-type {
+        width: 175px;
+        height: 21px;
+        background-color: black;
+        opacity: 0.5;
+    }
+
+    #videoChkBox > div:last-of-type {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+@media only screen and (max-width: 425px) {
+    #videoPop {
+        top: 10%;
+        left: 0;
+    }
 }
