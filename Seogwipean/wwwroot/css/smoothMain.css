@@ -160,7 +160,7 @@ body > .footer {
 
 @media only screen and (max-width: 425px) {
     #videoPop {
-        width: 425px;
+        width: 415px;
         height: 325px;
         top: 20%;
         left: 0;
@@ -169,7 +169,7 @@ body > .footer {
 
 @media only screen and (max-width: 375px) {
     #videoPop {
-        width: 375px;
+        width: 365px;
         height: 300px;
         top: 20%;
         left: 0;
@@ -178,7 +178,7 @@ body > .footer {
 
 @media only screen and (max-width: 320px) {
     #videoPop {
-        width: 320px;
+        width: 310px;
         height: 300px;
         top: 20%;
         left: 0;
