@@ -160,7 +160,27 @@ body > .footer {
 
 @media only screen and (max-width: 425px) {
     #videoPop {
-        top: 10%;
+        width: 425px;
+        height: 325px;
+        top: 20%;
+        left: 0;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    #videoPop {
+        width: 375px;
+        height: 300px;
+        top: 20%;
+        left: 0;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    #videoPop {
+        width: 320px;
+        height: 300px;
+        top: 20%;
         left: 0;
     }
 }
