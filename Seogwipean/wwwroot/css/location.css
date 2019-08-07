@@ -12,6 +12,10 @@
     height: 500px;
 }
 
+#telBox{
+    margin-top: 100px;
+}
+
 #banner {
     float: left;
     position: relative;

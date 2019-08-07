@@ -147,12 +147,16 @@ body > .footer {
     z-index: 1024;
 }
 
-    #videoChkBox > div:first-of-type {
-        width: 175px;
-        height: 21px;
-        background-color: black;
-        opacity: 0.5;
-    }
+#videoWeek label{
+    cursor: pointer;
+}
+
+#videoChkBox > div:first-of-type {
+    width: 160px;
+    height: 21px;
+    background-color: black;
+    opacity: 0.5;
+}
 
     #videoChkBox > div:last-of-type {
         position: absolute;

@@ -32,8 +32,8 @@
     <iframe src="~/video/hotelseogwipean.mp4" width="100%" height="100%"></iframe>
     <div id="videoChkBox" >
         <div></div>
-        <div>
-            <label for="videoChk" style="color: #fff; opacity: 1;">일주일동안 보지 않기</label><input type="checkbox" />
+        <div id="videoWeek">
+            <label for="videoChk" style="color: #fff; opacity: 1;">일주일동안 보지 않기</label>
         </div>
     </div>
 </div>
@@ -66,10 +66,12 @@
             }
         });
 
+        $("#videoWeek").click(function () {
+            $.cookie("popup", "yes", { expires: 7 });
+            $("#videoPop").remove();
+        });
+
         $('#videoX').click(function () {
-            if ($("#videoChkBox input:checked").length > 0) {
-                $.cookie("popup", "yes", { expires: 7 });
-            }
             $("#videoPop").remove();
         });
 
