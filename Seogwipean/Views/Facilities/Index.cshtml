@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <link href="~/css/facilities.css" rel="stylesheet" />
+}
+
+    <section id="facilitiesWrapper">
+        <div id="instafeed">
+
+        </div>
+
+        <div id="topTab">
+            <a id="toBoraed" href="#">보레드 베이커스</a>
+            <a id="toPool" href="#">야외 수영장</a>
+        </div>
+
+        <div id="facilitiesDetail">
+            <div>
+                <span class="boraedFont">보래드 베이커스</span>
+            </div>
+            <div>
+                <span class="poolFont">야외 수영장</span>
+            </div>
+        </div>
+
+    </section>
+
+@section EndBody{
+    <script src="~/lib/instafeed.js"></script>
+    <script type="text/javascript">
+        var userFeed = new Instafeed({
+            get: 'user',
+            userId: 14066122486,
+            sortBy: "most-recent",
+            limit: 5,
+            template: "",
+            accessToken: '14066122486.22e823f.109c3a05a3e24ccb9823888189d5d2d0',
+            success: function (images) {
+                $.each(images.data, function (imageID, post) {
+                    //console.table(post);
+                    var highResThumb = post.images.standard_resolution;
+                    $('#instafeed').append(`<a class="animation", href="${post.link}" target="_blank"><img src="${highResThumb.url}"></a>`);
+                });
+            }
+        });
+        userFeed.run();
+
+        $(function () {
+            $("#toPool").click(function () {
+                $("#facilitiesDetail div").fadeOut(500);
+                $("#facilitiesDetail div:eq(1)").fadeIn(1500);
+            });
+            $("#toBoraed").click(function () {
+                $("#facilitiesDetail div").fadeOut(500);
+                $("#facilitiesDetail div:eq(0)").fadeIn(1500);
+            });
+        });
+
+    </script>
+}
