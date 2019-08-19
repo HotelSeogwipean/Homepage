@@ -241,9 +241,9 @@ nav ul {
         display: none;
     }
 
-    nav li:nth-of-type(4){
+    /*nav li:nth-of-type(4){
         display: none;
-    }
+    }*/
 }
 
 @media only screen and (min-width: 767px) {

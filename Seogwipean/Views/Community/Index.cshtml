@@ -84,11 +84,11 @@
         <table class="comTable listTable">
             <tbody id="tableContents">
                 <tr class="tableHead">
-                    <th scope="col" width="5%">No.</th>
+                    <th scope="col" >No.</th>
                     <th scope="col">SUBJECT</th>
-                    <th scope="col" width="10%">NAME</th>
-                    <th scope="col" width="10%">DATE</th>
-                    <th scope="col" width="5%">VIEW</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">DATE</th>
+                    <th scope="col" >VIEW</th>
                 </tr>
             </tbody>
         </table>
@@ -173,7 +173,13 @@
                         if (_data.isLocked == 0) {
                             _data.title = '비밀글입니다 <img align="center" src="images/lock.png" />';
                         }
-                        listTemplateClone.find(".title a").html(_data.title);
+
+                        if (_data.title.length > 10) {
+                            listTemplateClone.find(".title a").html(_data.title.slice(0, 10) + "...");
+                        } else {
+                            listTemplateClone.find(".title a").html(_data.title);
+                        }
+
                         listTemplateClone.find(".name").html(_data.userName);
                         listTemplateClone.find(".date").html(_data.createDate.slice(0, 10));
                         listTemplateClone.find(".hit").html(_data.viewCount);

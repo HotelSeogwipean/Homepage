@@ -25,11 +25,54 @@ section {
         letter-spacing: 5px;
         border-bottom: 1px solid #757575;
     }
+    section #container {
+        margin: 0 auto;
+    }
+@media only screen and (min-width: 320px) {
+    section #container {
+        width: 320px;
+        margin: 0 auto;
+    }
 
+    #tableContents .tableHead th:nth-of-type(1) {
+        width: 5%;
+    }#tableContents .tableHead th:nth-of-type(3) {
+        width: 15%;
+    }#tableContents .tableHead th:nth-of-type(4) {
+        width: 25%;
+    }#tableContents .tableHead th:nth-of-type(5) {
+        width: 9%;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    section #container {
+        width: 375px;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 425px) {
+    section #container {
+        width: 425px;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
     section #container {
         width: 970px;
         margin: 0 auto;
+    }#tableContents .tableHead th:nth-of-type(1) {
+        width: 5%;
+    }#tableContents .tableHead th:nth-of-type(3) {
+        width: 10%;
+    }#tableContents .tableHead th:nth-of-type(4) {
+        width: 10%;
+    }#tableContents .tableHead th:nth-of-type(5) {
+        width: 5%;
     }
+}
 
 .comTable {
     width: 100%;
