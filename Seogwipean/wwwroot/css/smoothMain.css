@@ -50,25 +50,6 @@
         line-height: 20px;
     }
 
-@media only screen and (max-width: 426px) {
-    #seogwipean > * {
-        font-size: 55px;
-    }
-
-    #fullBack {
-        width: 100%;
-        height: calc(100% - 500px);
-    }
-
-    .bookArea-wrap{
-        display: none;
-    }
-
-    footer.footer{
-        display: none !important;
-    }
-}
-
 .bookArea-wrap {
     background: transparent !important;
 }
@@ -118,80 +99,22 @@ body > .footer {
     border-radius: 15px;
 }
 
-#videoPop {
-    width: 854px;
-    height: 480px;
-    position: absolute;
-    top: 10%;
-    left: 25%;
-    margin: 0 auto;
-    display: none;
-    z-index: 1024;
-}
-
-#videoX {
-    position: relative;
-    float: right;
-    cursor: pointer;
-}
-
-    #videoX > img {
-        width: 25px;
-        height: 25px;
-    }
-
-#videoChkBox {
-    position: relative;
-    float: left;
+#mainReference {
+    z-index: 9999;
     width: 100%;
-    z-index: 1024;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*background: url(../images/mainReference.jpg);
+    background-size: cover;*/
 }
 
-#videoWeek label{
-    cursor: pointer;
+#refImage,
+#refImage *{
+    width: 100%;
+    height: 100%;
 }
-
-#videoChkBox > div:first-of-type {
-    width: 160px;
-    height: 21px;
-    background-color: black;
-    opacity: 0.5;
-}
-
-    #videoChkBox > div:last-of-type {
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-
-@media only screen and (max-width: 425px) {
-    #videoPop {
-        width: 415px;
-        height: 325px;
-        top: 20%;
-        left: 0;
-    }
-}
-
-@media only screen and (max-width: 375px) {
-    #videoPop {
-        width: 365px;
-        height: 300px;
-        top: 20%;
-        left: 0;
-    }
-}
-
-@media only screen and (max-width: 320px) {
-    #videoPop {
-        width: 310px;
-        height: 300px;
-        top: 20%;
-        left: 0;
-    }
-}
-
-
 
 #mainSubject {
     margin: 0 auto;
@@ -209,7 +132,67 @@ body > .footer {
     position: fixed;
     right: 0;
     bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
     z-index: -1;
+}
+
+@media only screen and (max-width: 426px) {
+    #seogwipean > * {
+        font-size: 55px;
+    }
+
+    #fullBack {
+        width: 100%;
+        height: calc(100% - 500px);
+    }
+
+    .bookArea-wrap {
+        display: none;
+    }
+
+    footer.footer {
+        display: none !important;
+    }
+    #mainVideo {
+        height: 100%;
+    }
+}
+
+@media only screen and (min-width: 320px) {
+    #mainSubject {
+        left: 14%;
+    }
+
+}
+
+@media only screen and (min-width: 375px) {
+    #mainSubject {
+        left: 18%;
+    }
+}
+
+@media only screen and (min-width: 425px) {
+    #mainSubject {
+        left: 22%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #mainSubject {
+        left: 35%;
+    }
+    #mainVideo {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #mainSubject {
+        left: 40%;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    #mainSubject {
+        left: 45%;
+    }
 }

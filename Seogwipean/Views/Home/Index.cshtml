@@ -1,31 +1,21 @@
 ﻿@section Head{
     @*<link href="~/css/fullclip.css" rel='stylesheet' type='text/css'>*@
-    <style>
-        #mainReference {
-            z-index: 9999;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: url(../images/mainReference.jpg);
-            background-size: cover;
-        }
-    </style>
     <link href="~/css/smoothMain.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" charset="utf-8" href="https://s3.ap-northeast-2.amazonaws.com/static.wingsbooking.com/html/theme/theme01/_css/wings.booking.css">
 
 }
 <div id="mainReference">
+    <div id="refImage">
+        <img src="~/images/mainReference.jpg"/>
+    </div>
     <div id="mainSubject">
         <img src="~/images/seogwipenLogo.png" />
     </div>
 </div>
-
-
-<video autoplay muted loop id="mainVideo">
-    <source src="~/video/main1920.mp4" type="video/mp4">
-</video>
+    <video autoplay muted loop id="mainVideo">
+        <source src="~/video/main1920.mp4" type="video/mp4">
+        현재 사용중인 브라우저에서는 동영상 재생이 불가능합니다.
+    </video>
 
 <div id="imageBox" style="display: none;">
     <img id="img1" src="~/building/day2.jpg" />
@@ -46,20 +36,6 @@
         <div id="backgroundFill"></div>
     </div>
 </div>
-@*<div id="videoPop">
-        <div id="videoX">
-            <img src="~/images/xbutton.png"/>
-        </div>
-        <iframe src="~/video/hotelseogwipean.mp4" width="100%" height="100%"></iframe>
-        <div id="videoChkBox" >
-            <div></div>
-            <div id="videoWeek">
-                <label for="videoChk" style="color: #fff; opacity: 1;">일주일동안 보지 않기</label>
-            </div>
-        </div>
-    </div>*@
-
-
 
 <!------------------------ 메인 종료 ------------------------>
 
@@ -71,19 +47,9 @@
         var backgroundCnt = 0;
 
         var $video = document.getElementById("mainVideo");
-        /*
-        var btn = document.getElementById("myBtn");
-        function myFunction() {
-            if (video.paused) {
-                video.play();
-                btn.innerHTML = "Pause";
-            } else {
-                video.pause();
-                btn.innerHTML = "Play";
-            }
-        }*/
 
         $(function () {
+            $("body").css("overflow-y", "hidden");
             $(".logo img").attr("src", "../images/headerLogo.png");
             $("#instaBtn").attr("src", "../images/whiteInsta.png");
             $("#faceBtn").attr("src", "../images/whiteFace.png");
@@ -92,28 +58,13 @@
 
             wscv.set({ "hotelId": "SGP1", "theme": "theme01", "type": "horizontal" });
             wscv.create(".wings-fast-book", { lang: 'ko' });
-            /*
-            var $pop = $.cookie("popup");
-            if ($pop != "yes") {
-                $("#videoPop").show();
-            } else {
-                $("#videoPop").remove();
-            }*/
+           
         });
 
         $("#mainReference").click(function () {
             $("#mainReference").fadeOut(2000);
+            $("body").css("overflow-y", "auto");
         });
-
-        /*
-        $("#videoWeek").click(function () {
-            $.cookie("popup", "yes", { expires: 7 });
-            $("#videoPop").remove();
-        });
-
-        $('#videoX').click(function () {
-            $("#videoPop").remove();
-        });*/
 
         //사진 전환 
         function fnRepeat() {
