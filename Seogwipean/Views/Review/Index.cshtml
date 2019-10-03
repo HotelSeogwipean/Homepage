@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <link href="~/css/review.css" rel="stylesheet" />
+}
+
+<section id="reviewWrapper">
+
+    <div id="topBanner">
+        <h2>@@hotelseogwipean_official</h2>
+    </div>
+    <div id="bannerFollow">
+        <h4><a href="https://www.instagram.com/hotelseogwipean_official/" target="_blank">Follow</a></h4>
+    </div>
+
+    <div id="instafeed">
+
+    </div>
+</section>
+
+@section EndBody{
+    <script src="~/lib/instafeed.js"></script>
+    <script type="text/javascript">
+
+        var userFeed = new Instafeed({
+            get: 'user',
+            userId: 14066122486,
+            sortBy: "most-recent",
+            limit: 20,
+            template: "",
+            accessToken: '14066122486.22e823f.109c3a05a3e24ccb9823888189d5d2d0',
+            success: function (images) {
+                console.log(images);
+                var idx = 1;
+                $.each(images.data, function (imageID, post) {
+                    var highResThumb = post.images.standard_resolution;
+                    $('#instafeed').append(`<a class="animation", href="${post.link}" target="_blank" data-number="${idx}"><img src="${highResThumb.url}"></a>`);
+                    if (idx > 9) {
+                        $(`[data-number=${idx}]`).addClass("hideMe");
+                    }
+                    idx++;
+                });
+            }
+        });
+        userFeed.run();
+
+
+        var _idx = 10;
+        var isAble = true;
+        var fnLater = function () {
+            setTimeout(function () { isAble = true; }, 500);
+        };
+
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if (!isAble) { return; }
+                var bottom_of_window = $(window).scrollTop() + $(window).height();
+                if (bottom_of_window > 1630) {
+                  $(`[data-number=${_idx}]`).show();
+                    $(`[data-number=${_idx}]`).animate({ 'opacity': '1', 'margin-left': '0px' }, 1000);
+                    if (_idx % 3 == 0) {
+                        isAble = false;
+                        fnLater();
+                    }
+                    _idx++;
+                }
+            });
+        });
+    </script>
+}

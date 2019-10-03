@@ -15,8 +15,8 @@
         grid-template-columns: 33% 34% 33%;
         margin-top: 25px;
         background-color: #1e514f;
-        padding-top: 15px;
-        padding-bottom: 25px;
+        /*padding-top: 15px;
+        padding-bottom: 25px;*/
     }
 
     body > .footer *{

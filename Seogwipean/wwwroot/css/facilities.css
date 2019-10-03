@@ -2,95 +2,24 @@
     width: 1280px;
     margin: 50px auto;
     font-family: NanumGothic, sans-serif;
+    margin-bottom: 800px;
 }
 
-#instafeed {
-    margin: 0px auto;
-    border: 1px solid #f9f9f9;
-    background: #fff;
+#followMouse {
+    position: relative;
 }
-
-#instafeed .animation{
-    margin: 10px auto;
-    padding: 5px;
-}
-
-#instafeed .animation img{
-    width: 220px; 
-    margin: 2px;
-}
-
-    #instafeed .animation img:hover {
-        cursor: pointer;
-        transform: scale(0.95);
-        -o-transform: scale(0.95);
-        -moz-transform: scale(0.95);
-        -webkit-transform: scale(0.95);
-        transition: transform .35s;
-        -o-transition: transform .35s;
-        -moz-transition: transform .35s;
-        -webkit-transition: transform .35s;
+    #followMouse > span {
+        position: absolute;
+        right: 0;
+        height: 150px;
+        font-size: 11px;
+        font-weight: 400;
+        cursor: default;
+        writing-mode: vertical-rl;
     }
-
-
-#topTab {
-    padding: 5px;
-    width: 320px;
-    margin-top: 15px;
-}
-
-    #topTab a {
-        padding: 5px;
-        border-radius: 3px;
-        color: #1e514f;
-        font-size: 1.4em;
-        font-weight: 600;
-        border-top: 1px solid #1e514f;
-        border-left: 1px solid #1e514f;
-        border-right: 1px solid #1e514f;
-    }
-
-    #topTab a:first-of-type{
-        background-color: #fffcfc;
-    }
-
-    #topTab a:last-of-type{
-        background-color: #fcfcfc;
-    }
-
-#facilitiesDetail {
-    width: 100%;
-    height: 600px;
-}
-
-    #facilitiesDetail div:first-of-type {
-        margin: 0 auto;
-        width: 100%;
-        height: 100%;
-        background-color: #fffcfc;
-    }
-
-    #facilitiesDetail div:last-of-type {
-        display: none;
-        margin: 0 auto;
-        width: 100%;
-        height: 100%;
-        background-color: #fcfcfc;
-    }
-
-    #facilitiesDetail .boraedFont {
-    }
-
-
-    @media only screen and (min-width: 320px) {
-        #facilitiesWrapper {
+@media only screen and (min-width: 320px) {
+    #facilitiesWrapper {
         width: 320px;
-    }
-    #instafeed {
-        width: 320px;
-    }
-    #instafeed .animation img {
-        width: 130px;
     }
 }
 
@@ -98,58 +27,86 @@
     #facilitiesWrapper {
         width: 375px;
     }
-    #instafeed {
-        width: 375px;
-    }
-
-        #instafeed .animation img {
-            width: 110px;
-        }
 }
+
 @media only screen and (min-width: 425px) {
     #facilitiesWrapper {
         width: 425px;
     }
-    #instafeed {
-        width: 425px;
-    }
-
-        #instafeed .animation img {
-            width: 123px;
-        }
 }
+
 @media only screen and (min-width: 768px) {
     #facilitiesWrapper {
         width: 768px;
     }
-    #instafeed {
-        width: 768px;
-    }
-        #instafeed .animation img {
-            width: 135px;
-        }
 }
+
 @media only screen and (min-width: 1024px) {
     #facilitiesWrapper {
         width: 1024px;
     }
-    #instafeed {
-        width: 1024px;
-    }
-
-        #instafeed .animation img {
-            width: 180px;
-        }
 }
+
 @media only screen and (min-width: 1280px) {
     #facilitiesWrapper {
         width: 1280px;
     }
-    #instafeed {
-        width: 1280px;
+}
+
+.underBarBox {
+    position: relative;
+}
+
+    .underBarBox > div:nth-of-type(1) {
+        width: 38%;
+        border-bottom: 1.5px solid #1e514f;
     }
 
-        #instafeed .animation img {
-            width: 220px;
-        }
+    .underBarBox > div:nth-of-type(2) {
+        width: 100%;
+        border-bottom: 1px solid #d8d8d8;
+    }
+
+h2 {
+    color: #507876;
+    font-weight: 400;
 }
+
+#facilitiesWrapper p {
+    font-family: 'Yu Gothic', sans-serif;
+    word-spacing: 1px;
+    line-height: 13px;
+    font-weight: 400;
+}
+
+.detailBox{
+    float: left;
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+    .detailBox > div {
+        position: relative;
+        float: left;
+    }
+
+    .detailBox .imageBox{
+        width: 40%;
+    }
+
+    .detailBox .imageBox img{
+        width: 485px;
+    }
+
+    .detailBox .captionBox{
+        width: 60%;
+    }
+
+.captionBox img {
+    margin-top: 70px;
+    width: 370px;
+    height: 245px;
+}
+

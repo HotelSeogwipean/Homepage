@@ -1,0 +1,138 @@
+﻿#reviewWrapper {
+    width: 1280px;
+    margin: 50px auto;
+    font-family: NanumGothic, sans-serif;
+}
+
+#instafeed {
+    margin: 0px auto;
+    border: 1px solid #f9f9f9;
+    background: #fff;
+}
+
+#instafeed .animation{
+    margin: 10px auto;
+    padding: 5px;
+}
+
+#instafeed .animation img{
+    width: 220px; 
+    margin: 2px;
+}
+
+    #instafeed .animation img:hover {
+        cursor: pointer;
+        transform: scale(0.95);
+        -o-transform: scale(0.95);
+        -moz-transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        transition: transform .35s;
+        -o-transition: transform .35s;
+        -moz-transition: transform .35s;
+        -webkit-transition: transform .35s;
+    }
+
+    @media only screen and (min-width: 320px) {
+        #reviewWrapper {
+        width: 320px;
+    }
+    #instafeed {
+        width: 320px;
+    }
+    #instafeed .animation img {
+        width: 130px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    #reviewWrapper {
+        width: 375px;
+    }
+    #instafeed {
+        width: 375px;
+    }
+
+        #instafeed .animation img {
+            width: 110px;
+        }
+}
+@media only screen and (min-width: 425px) {
+    #reviewWrapper {
+        width: 425px;
+    }
+    #instafeed {
+        width: 425px;
+    }
+
+        #instafeed .animation img {
+            width: 123px;
+        }
+}
+@media only screen and (min-width: 768px) {
+    #reviewWrapper {
+        width: 768px;
+    }
+    #instafeed {
+        width: 768px;
+    }
+        #instafeed .animation img {
+            width: 135px;
+        }
+}
+@media only screen and (min-width: 1024px) {
+    #reviewWrapper {
+        width: 1024px;
+    }
+    #instafeed {
+        width: 1024px;
+    }
+
+        #instafeed .animation img {
+            width: 180px;
+        }
+}
+@media only screen and (min-width: 1280px) {
+    #reviewWrapper {
+        width: 1280px;
+    }
+    #instafeed {
+        width: 1280px;
+    }
+
+        #instafeed .animation img {
+            width: 400px;
+        }
+}
+
+#topBanner {
+    text-align: center;
+    margin: 0 auto;
+    width: 400px;
+    border-bottom: 1px solid #b6b6b6;
+}
+
+#bannerFollow {
+    text-align: center;
+    margin: 0 auto;
+}
+
+    #bannerFollow > *,
+    #bannerFollow > *:active{
+        font-family: 'Yu Gothic UI', sans-serif;
+        font-weight: 400;
+        color: #1e514f;
+        cursor: pointer;
+    }
+
+#topBanner > h2 {
+    font-family: 'Yu Gothic UI', sans-serif;
+    font-weight: 400;
+    color: black;
+}
+
+.hideMe {
+    display: none;
+    opacity: 0;
+    margin-left: -300px;
+    max-width: 100%;
+}
