@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\etc\" />
+    <Folder Include="wwwroot\video\" />
   </ItemGroup>
 
   <ItemGroup>
