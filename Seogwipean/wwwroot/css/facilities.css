@@ -17,6 +17,41 @@
         cursor: default;
         writing-mode: vertical-rl;
     }
+@media only screen and (min-width: 320px) {
+    #facilitiesWrapper {
+        width: 320px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    #facilitiesWrapper {
+        width: 375px;
+    }
+}
+
+@media only screen and (min-width: 425px) {
+    #facilitiesWrapper {
+        width: 425px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #facilitiesWrapper {
+        width: 768px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #facilitiesWrapper {
+        width: 1024px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    #facilitiesWrapper {
+        width: 1280px;
+    }
+}
 
 .underBarBox {
     position: relative;
@@ -57,112 +92,21 @@ h2 {
         float: left;
     }
 
-
-
-
-@media only screen and (min-width: 320px) {
-    .underBarBox > div:nth-of-type(1) {
-        width: 100%;
-        border-bottom: 1.5px solid #1e514f;
-    }
-
-    .underBarBox > div:nth-of-type(2) {
-        display: none;
-    }
-    .detailBox .imageBox,
-    .detailBox .imageBox img {
-        width: 100%;
-    }
-    .detailBox .captionBox {
-        width: 100%;
-    }
-    .captionBox img {
-        width: 319px;
-    }
-    #facilitiesWrapper {
-        width: 320px;
-    }
-}
-
-@media only screen and (min-width: 374px) {
-    .captionBox img {
-        width: 375px;
-    }
-    #facilitiesWrapper {
-        width: 375px;
-    }
-}
-
-@media only screen and (min-width: 424px) {
-    .captionBox img {
-        width: 485px;
-    }
-    #facilitiesWrapper {
-        width: 425px;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    #facilitiesWrapper {
-        width: 768px;
-    }
-    .detailBox .imageBox {
-        width: 50%;
-    }
-    .detailBox .imageBox img {
-        width: 90%;
-    }
-    .detailBox .captionBox {
-        width: 50%;
-    }
-    .captionBox img {
-        width: 180px;
-        height: 120px;
-    }
-    
-    .underBarBox > div:nth-of-type(1) {
-        width: 45%;
-        border-bottom: 1.5px solid #1e514f;
-    }
-
-    .underBarBox > div:nth-of-type(2) {
-        width: 100%;
-        display: block;
-        border-bottom: 1px solid #d8d8d8;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    #facilitiesWrapper {
-        width: 1024px;
-    }
-    .detailBox .imageBox {
+    .detailBox .imageBox{
         width: 40%;
     }
 
-        .detailBox .imageBox img {
-            width: 95%;
-        }
+    .detailBox .imageBox img{
+        width: 485px;
+    }
 
-    .detailBox .captionBox {
+    .detailBox .captionBox{
         width: 60%;
     }
-    .captionBox img {
-        width: 49%;
-        height: 200px;
-    }
-    .underBarBox > div:nth-of-type(1) {
-        width: 38%;
-    }
+
+.captionBox img {
+    margin-top: 70px;
+    width: 370px;
+    height: 245px;
 }
 
-@media only screen and (min-width: 1280px) {
-    #facilitiesWrapper {
-        width: 1280px;
-    }
-    .captionBox img {
-        width: 49%;
-        height: 250px;
-        margin-top: 65px;
-    }
-}
