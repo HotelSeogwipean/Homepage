@@ -16,10 +16,6 @@
 
   <ItemGroup>
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
-    <PackageReference Include="Estranged.Lfs.Adapter.S3" Version="2.1.0" />
-    <PackageReference Include="Estranged.Lfs.Api" Version="2.1.0" />
-    <PackageReference Include="Estranged.Lfs.Data" Version="2.1.0" />
-    <PackageReference Include="GitForWindows" Version="2.23.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.4" />

@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="GitForWindows" Version="2.23.0" />
-  </ItemGroup>
-
 </Project>
