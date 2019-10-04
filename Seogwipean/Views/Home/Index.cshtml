@@ -4,18 +4,11 @@
     <link type="text/css" rel="stylesheet" charset="utf-8" href="https://s3.ap-northeast-2.amazonaws.com/static.wingsbooking.com/html/theme/theme01/_css/wings.booking.css">
 
 }
-<div id="mainReference">
-    <div id="refImage">
-        <img src="~/images/mainReference.jpg"/>
-    </div>
-    <div id="mainSubject">
-        <img src="~/images/seogwipenLogo.png" />
-    </div>
-</div>
-    <video autoplay muted loop id="mainVideo">
-        <source src="~/video/main1920.mp4" type="video/mp4">
-        현재 사용중인 브라우저에서는 동영상 재생이 불가능합니다.
-    </video>
+
+<video autoplay muted loop id="mainVideo">
+    <source src="~/video/main1920.mp4" type="video/mp4">
+    현재 사용중인 브라우저에서는 동영상 재생이 불가능합니다.
+</video>
 
 <div id="imageBox" style="display: none;">
     <img id="img1" src="~/building/day2.jpg" />
@@ -45,9 +38,7 @@
     <script type="text/javascript" charset="utf-8" src="~/lib/wings.booking.js"></script>
     <script type="text/javascript">
         var backgroundCnt = 0;
-
         var $video = document.getElementById("mainVideo");
-
         $(function () {
             $("body").css("overflow-y", "hidden");
             $(".logo img").attr("src", "../images/headerLogo.png");
@@ -55,18 +46,11 @@
             $("#faceBtn").attr("src", "../images/whiteFace.png");
             //fnRepeat();
             //$("#seogwipean").fadeOut(5000);
-
             wscv.set({ "hotelId": "SGP1", "theme": "theme01", "type": "horizontal" });
             wscv.create(".wings-fast-book", { lang: 'ko' });
-           
         });
 
-        $("#mainReference").click(function () {
-            $("#mainReference").fadeOut(2000);
-            $("body").css("overflow-y", "auto");
-        });
-
-        //사진 전환 
+        //사진 전환
         function fnRepeat() {
             setTimeout(function () {
                 fnRepeat();

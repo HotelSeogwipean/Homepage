@@ -13,7 +13,12 @@ namespace Seogwipean.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View("Intro");
+        }
+        [Route("/Intro")]
+        public IActionResult Intro()
+        {
+            return View("Index");
         }
 
         [Route("/naver476d95bb846c01665a5a758ec213c6fb.html")]
