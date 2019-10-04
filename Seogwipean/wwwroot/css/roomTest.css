@@ -107,7 +107,7 @@
                     border-bottom: 1px solid #fff;
                 }
 
-        #detailWrapper > .roomDetail > .detailBooking {
+        #detailWrapper > .roomDetail  .detailBooking {
             position: absolute !important;
             width: 120px;
             cursor: pointer;
@@ -115,7 +115,7 @@
             font-weight: 400;
         }
 
-            #detailWrapper > .roomDetail > .detailBooking.rightSide {
+            #detailWrapper > .roomDetail  .detailBooking.rightSide {
                 right: 11%;
                 bottom: 2%;
                 text-align: right;
@@ -124,11 +124,11 @@
                 height: 80px;
             }
 
-            #detailWrapper > .roomDetail > .detailBooking > div {
+            #detailWrapper > .roomDetail  .detailBooking  div {
                 padding: 12px 0px 12px 10px;
             }
 
-                #detailWrapper > .roomDetail > .detailBooking > div:first-of-type {
+                #detailWrapper > .roomDetail  .detailBooking  div:first-of-type {
                     border-bottom: 1px solid #727272;
                 }
 
@@ -180,7 +180,7 @@
                 }
 
 
-        #detailWrapper > .roomDetail > .detailBooking.leftSide {
+        #detailWrapper > .roomDetail  .detailBooking.leftSide {
             left: 6%;
             bottom: 2%;
             height: 80px;
@@ -190,7 +190,7 @@
             padding: 12px 0px 0px 0px !important;
         }
 
-            #detailWrapper > .roomDetail > .detailBooking.leftSide > div {
+            #detailWrapper > .roomDetail  .detailBooking.leftSide > div {
                 padding: 12px 0px 12px 0px;
             }
 
@@ -359,7 +359,7 @@
         #detailWrapper > .roomDetail > .detailLeft > .detailImgDesc {
             left: 6%;
         }
-    #detailWrapper > .roomDetail > .detailBooking.rightSide {
+    #detailWrapper > .roomDetail  .detailBooking.rightSide {
         right: 10%;
         top: 1%;
         color: #fff;
@@ -378,7 +378,7 @@
         #detailWrapper > .roomDetail > .detailLeftReverse > .detailImgDescReverse {
             right: 10%;
         }
-    #detailWrapper > .roomDetail > .detailBooking.leftSide {
+    #detailWrapper > .roomDetail  .detailBooking.leftSide {
         left: 6%;
         color: #fff;
         top: 0%;

@@ -183,7 +183,11 @@ nav ul {
         font-weight: 600;
     }
 }
-
+@media only screen and (max-width: 1250px) {
+    .logo {
+        left: 1%;
+    }
+}
 
 
 @media only screen and (min-width: 90%) {
@@ -467,7 +471,7 @@ a {
 }
 
 /* Desktops and laptops */
-@media only screen and (min-width : 1224px) {
+@media only screen and (min-width : 767px) {
     .logo {
         left: 5%;
     }

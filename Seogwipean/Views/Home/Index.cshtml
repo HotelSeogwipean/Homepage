@@ -1,29 +1,13 @@
 ﻿@section Head{
-    @*<link href="~/css/fullclip.css" rel='stylesheet' type='text/css'>*@
-    <link href="~/css/smoothMain.css" rel="stylesheet" />
-    <link type="text/css" rel="stylesheet" charset="utf-8" href="https://s3.ap-northeast-2.amazonaws.com/static.wingsbooking.com/html/theme/theme01/_css/wings.booking.css">
-
+    <link href="~/css/smoothMain.css" type="text/css" rel="stylesheet" />
+    <link href="https://s3.ap-northeast-2.amazonaws.com/static.wingsbooking.com/html/theme/theme01/_css/wings.booking.css" type="text/css" rel="stylesheet" charset="utf-8" >
 }
 
 <video autoplay muted loop id="mainVideo">
     <source src="~/video/main1920.mp4" type="video/mp4">
     현재 사용중인 브라우저에서는 동영상 재생이 불가능합니다.
 </video>
-
-<div id="imageBox" style="display: none;">
-    <img id="img1" src="~/building/day2.jpg" />
-    <img id="img2" src="~/building/day3.jpg" />
-    <img id="img3" src="~/building/night2.jpg" />
-    <img id="img4" src="~/building/night3.jpg" />
-</div>
-
-@*<div id="seogwipean">
-        <h2>SEOGWIPEAN</h2>
-        <h1>IN JEJU</h1>
-    </div>*@
-
 <div id="fullBack"></div>
-
 <div class="bookArea-wrap">
     <div id="bookArea" class="wings-fast-book">
         <div id="backgroundFill"></div>
@@ -38,45 +22,13 @@
     <script type="text/javascript" charset="utf-8" src="~/lib/wings.booking.js"></script>
     <script type="text/javascript">
         var backgroundCnt = 0;
-        var $video = document.getElementById("mainVideo");
         $(function () {
             $("body").css("overflow-y", "hidden");
             $(".logo img").attr("src", "../images/headerLogo.png");
             $("#instaBtn").attr("src", "../images/whiteInsta.png");
             $("#faceBtn").attr("src", "../images/whiteFace.png");
-            //fnRepeat();
-            //$("#seogwipean").fadeOut(5000);
             wscv.set({ "hotelId": "SGP1", "theme": "theme01", "type": "horizontal" });
             wscv.create(".wings-fast-book", { lang: 'ko' });
         });
-
-        //사진 전환
-        function fnRepeat() {
-            setTimeout(function () {
-                fnRepeat();
-            }, 4000);
-            var $img1 = $("#img1").attr("src");
-            var $img2 = $("#img2").attr("src");
-            var $img3 = $("#img3").attr("src");
-            var $img4 = $("#img4").attr("src");
-            if (screen.width <= 425) {
-                switch (backgroundCnt) {
-                    case 0: { $("body").css("background", `url(${$img1}) 35% 0 no-repeat`); break; }
-                    case 1: { $("body").css("background", `url(${$img2}) 25% 20% no-repeat`); break; }
-                    case 2: { $("body").css("background", `url(${$img3}) 0 20% no-repeat`); break; }
-                    case 3: { $("body").css("background", `url(${$img4}) 28% 20% no-repeat`); backgroundCnt = 0; break; }
-                }
-            } else {
-                switch (backgroundCnt) {
-                    case 0: { $("body").css("background", `url(${$img1}) 0 40% no-repeat`); break; }
-                    case 1: { $("body").css("background", `url(${$img2}) 0 35% no-repeat`); break; }
-                    case 2: { $("body").css("background", `url(${$img3}) 0 30% no-repeat`); break; }
-                    case 3: { $("body").css("background", `url(${$img4}) 0 25% no-repeat`); backgroundCnt = 0; break; }
-                }
-            }
-            backgroundCnt++;
-            $("body").css("background-size", "cover");
-        }
-
     </script>
 }

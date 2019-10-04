@@ -1,10 +1,10 @@
 ﻿body {
-    background: url(../building/day2.jpg) 0 0 no-repeat;
+    /*background: url(../building/day2.jpg) 0 0 no-repeat;
     background-size: cover;
     -webkit-transition: background 2s;
     -moz-transition: background 2s;
     -o-transition: background 2s;
-    transition: background 2s;
+    transition: background 2s;*/
     width: 100%;
 }
 
@@ -104,7 +104,13 @@ body > .footer {
     position: fixed;
     right: 0;
     bottom: 0;
-    z-index: -1;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background: url(polina.jpg) no-repeat;
+    background-size: cover;
 }
 
 @media only screen and (max-width: 426px) {
@@ -124,47 +130,28 @@ body > .footer {
     footer.footer {
         display: none !important;
     }
-    #mainVideo {
-        height: 100%;
-    }
 }
 
 @media only screen and (min-width: 320px) {
-    #mainSubject {
-        left: 14%;
-    }
-
 }
 
 @media only screen and (min-width: 375px) {
-    #mainSubject {
-        left: 18%;
-    }
 }
 
 @media only screen and (min-width: 425px) {
-    #mainSubject {
-        left: 22%;
-    }
 }
 
 @media only screen and (min-width: 768px) {
-    #mainSubject {
-        left: 35%;
-    }
-    #mainVideo {
-        width: 100%;
-    }
+}
+
+@media only screen and (min-width: 780px){
 }
 
 @media only screen and (min-width: 1024px) {
-    #mainSubject {
-        left: 40%;
-    }
 }
 
 @media only screen and (min-width: 1280px) {
-    #mainSubject {
-        left: 45%;
-    }
+}
+
+@media only screen and (min-width: 1440px) {
 }
