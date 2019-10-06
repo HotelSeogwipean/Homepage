@@ -74,6 +74,7 @@ namespace Seogwipean
                 app.UseHsts();
             }
 
+            app.UseMiddleware(typeof(Web.VisitorCounterMiddleware));
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
