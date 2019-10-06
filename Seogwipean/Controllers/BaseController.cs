@@ -12,6 +12,5 @@ namespace Seogwipean.Web.Controllers
         //public long GetMemberId => Member.MemberId < 1 ? -1 : Member.MemberId;
         //public bool IsLogin => MemberSessionService.GetMemberSession(HttpContext.Session) != null;
         //public Member Member => MemberSessionService.GetMemberSession(HttpContext.Session);
-        
     }
 }
