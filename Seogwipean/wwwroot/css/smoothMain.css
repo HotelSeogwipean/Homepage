@@ -127,6 +127,7 @@ body > .footer {
     z-index: -100;
     background-size: cover;
 }
+
 @media only screen and (min-width: 320px) {
     #mainVideo {
         left: -75%;
@@ -134,28 +135,21 @@ body > .footer {
         zoom: 0.1;
     }
 }
-
 @media only screen and (min-width: 375px) {
 }
-
 @media only screen and (min-width: 425px) {
 }
-
 @media only screen and (min-width: 768px) {
 }
-
 @media only screen and (min-width: 780px){
     #mainVideo {
         right: 0;
         bottom: 0;
     }
 }
-
 @media only screen and (min-width: 1024px) {
 }
-
 @media only screen and (min-width: 1280px) {
 }
-
 @media only screen and (min-width: 1440px) {
 }

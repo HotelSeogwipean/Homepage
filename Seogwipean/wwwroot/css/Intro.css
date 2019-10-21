@@ -10,10 +10,16 @@
     background-size: cover;*/
 }
 
-#refImage,
-#refImage * {
+
+
+#refImage{
     width: 100%;
     height: 100%;
+}
+
+#refImage > img{
+    position: absolute;
+    top: 0;
 }
 
 #mainSubject {
@@ -32,11 +38,21 @@
     #mainSubject {
         left: 14%;
     }
+    #refImage > img {
+        width: 240%;
+        height: 115%;
+        left: -60%;
+    }
 }
 
 @media only screen and (min-width: 375px) {
     #mainSubject {
         left: 18%;
+    }
+
+    #refImage > img {
+        width: 200%;
+        left: -39%;
     }
 }
 
@@ -44,11 +60,21 @@
     #mainSubject {
         left: 22%;
     }
+    #refImage > img {
+        width: 180%;
+        left: -35%;
+    }
 }
 
 @media only screen and (min-width: 768px) {
     #mainSubject {
         left: 35%;
+    }
+    #refImage > img {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
     }
 }
 
