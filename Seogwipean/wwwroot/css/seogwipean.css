@@ -486,3 +486,12 @@ a {
 /* iPhone 4 */
 @media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
 }
+
+@media only screen and (max-width : 765px) {
+    body > .footer {
+        grid-template-columns: 100%;
+    }
+    #footer_2, #footer_3{
+        display: none;
+    }
+}

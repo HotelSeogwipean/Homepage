@@ -271,6 +271,7 @@
 
         #detailDescription h2 {
             color: #1c6f51;
+            margin-left: 15px;
         }
 
 #detailViewInner #mainImage {
@@ -332,6 +333,12 @@
                 height: 225px;
                 padding-top: 5px;
             }
+
+@media only screen and (max-width: 725px) {
+    #followMouse {
+        display: none;
+    }
+}
 
 @media only screen and (max-width: 425px) {
     #roomHeader {
