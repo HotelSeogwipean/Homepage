@@ -4,6 +4,13 @@
 @section Head{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/css/roomTest.css" rel="stylesheet" />
+    <!-- 전환페이지 설정 -->
+    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+    <script type="text/javascript">
+        var _nasa = {};
+        _nasa["cnv"] = wcs.cnv("4", "10"); // 전환유형, 전환가치 설정해야함. 설치매뉴얼 참고
+    </script>
+
 }
 
 <section id="roomWrapper">
@@ -63,7 +70,7 @@
                 <a href="https://be.wingsbooking.com/ko/SGP1/redirect/" target="_blank">
                     <div>예약하기</div>
                     <div>TWIN</div>
-                    </a>
+                </a>
             </div>
         </div>
 
@@ -86,7 +93,7 @@
                 <a href="https://be.wingsbooking.com/ko/SGP1/redirect/" target="_blank">
                     <div>예약하기</div>
                     <div>DELUXE</div>
-                    </a>
+                </a>
             </div>
         </div>
     </div>
@@ -206,7 +213,7 @@
             $("#detailViewInner #mainImage").css("background", `url(${_imgUrl}) 0 0 no-repeat`);
             $("#detailViewInner #mainImage").css("background-size", "cover");
         });
-        
+
     </script>
 
 }
