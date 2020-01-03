@@ -25,9 +25,9 @@
 
         body > .footer > div:not(:last-of-type) span {
             font-family: 'NanumGothic', 'sans-serif';
-            font-size: 14px;
-            color: #fff;
+            font-size: 0.8em;
             font-weight: 100;
+            color: #fff;
         }
 
         body > .footer,
