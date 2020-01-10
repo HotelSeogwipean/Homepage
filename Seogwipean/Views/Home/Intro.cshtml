@@ -34,6 +34,7 @@
 </head>
 
 <body>
+    <a id="clicker" href="/Intro"></a>
     <div id="mainReference">
         <div id="refImage">
             <img src="~/images/mainReference.jpg" />
@@ -48,7 +49,7 @@
         $("#mainReference").click(function () {
             $("#mainReference").fadeOut(2000);
             setTimeout(function () {
-                window.location.href = "/Intro";
+                document.getElementById("clicker").click();
             }, 2100);
         });
     </script>
