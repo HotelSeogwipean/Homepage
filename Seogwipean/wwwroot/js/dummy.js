@@ -33,3 +33,32 @@ function fnRepeat() {
     backgroundCnt++;
     $("body").css("background-size", "cover");
 }
+
+
+
+function randomInt(min, max) {
+    return min + Math.floor((max - min) * Math.random());
+}
+
+function fnAutoBat() {
+    $("#bet-price").val(1000);
+    var _rand = randomInt(1, 4);
+    switch (_rand) {
+        case 1: {
+            $("[data-pick-name='홀언더']").click();
+            break;
+        } case 2: {
+            $("[data-pick-name='홀오버']").click();
+            break;
+        } case 3: {
+            $("[data-pick-name='짝오버']").click();
+            break;
+        } case 4: {
+            $("[data-pick-name='짝언더']").click();
+            break;
+        }
+    }
+    betGo();
+    setTimeout(function () { $("#confirmModal .btn-confirm-ok").click(); }, 1000);
+    setTimeout(function () { $("#confirmModal .btn-confirm-ok").click(); }, 4000);
+};
