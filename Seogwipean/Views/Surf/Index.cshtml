@@ -34,9 +34,11 @@
     <meta name="theme-color" content="#ffffff">
     <title>Hotel Seogwipean</title>
     <link href="~/css/landing.css" rel="stylesheet" />
-    <title>시숙 예약 목록</title>
+    <title>서핑 예약 목록</title>
     <link href="~/css/admintable.css" rel="stylesheet" />
+    <link href="~/css/booking.css" rel="stylesheet" />
     <link href="~/css/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/css/custom-alert.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -60,29 +62,34 @@
     <div style="margin: 0 auto; text-align:center;" onclick="location.href = '/surf/add';">
         <input type="button" id="btnBook" value="예약 추가" />
     </div>
+
+    <span style="font-family: 'Yu Gothic' sans-serif; font-size: 14px;" class="sizeUp">
+        <i style="font-size: 16px; font-weight: 800">※</i> 더블클릭시 요청사항과 예약일자가 노출됩니다 ※
+    </span>
+
     <div class="result-table" style="margin-top: 20px;">
         <span style="font-weight: 600; text-align: center;">당일 서핑 이용객 목록</span>
         <table class="adminTable">
             <colgroup>
-                <col style="width: 5%;" />
-                <col style="width: 5%;" />
+                <col style="width: 1%;" />
                 <col style="width: 10%;" />
-                <col style="width: 10%;" />
-                <col style="width: 5%;" />
+                <col style="width: 13%;" />
+                <col style="width: 7%;" />
+                <col style="width: 4%;" />
                 <col style="width: 5%; " />
-                <col style="width: 40%;" />
-                <col style="width: 10%;" />
+                <col style="width: 40%;" class="sizeDown" />
+                <col style="width: 10%;" class="sizeDown" />
             </colgroup>
             <thead>
                 <tr>
                     <th>No.</th>
                     <th>예약자명</th>
                     <th>연락처</th>
-                    <th>서핑 날짜</th>
-                    <th>서핑 시간</th>
-                    <th>인원 수</th>
-                    <th>요청사항</th>
-                    <th>예약일자</th>
+                    <th>날짜</th>
+                    <th>시간</th>
+                    <th>인원</th>
+                    <th class="sizeDown">요청사항</th>
+                    <th class="sizeDown">예약일자</th>
                 </tr>
             </thead>
             <tbody id="todayAppend"></tbody>
@@ -93,25 +100,25 @@
         <span style="font-weight: 600; text-align: center;">서핑 이용객 예약 목록</span>
         <table class="adminTable">
             <colgroup>
-                <col style="width: 5%;" />
-                <col style="width: 5%;" />
+                <col style="width: 1%;" />
                 <col style="width: 10%;" />
-                <col style="width: 10%;" />
-                <col style="width: 5%;" />
+                <col style="width: 13%;" />
+                <col style="width: 7%;" />
+                <col style="width: 4%;" />
                 <col style="width: 5%; " />
-                <col style="width: 40%;" />
-                <col style="width: 10%;" />
+                <col style="width: 40%;" class="sizeDown" />
+                <col style="width: 10%;" class="sizeDown" />
             </colgroup>
             <thead>
                 <tr>
                     <th>No.</th>
                     <th>예약자명</th>
                     <th>연락처</th>
-                    <th>서핑 날짜</th>
-                    <th>서핑 시간</th>
-                    <th>인원 수</th>
-                    <th>요청사항</th>
-                    <th>예약일자</th>
+                    <th>날짜</th>
+                    <th>시간</th>
+                    <th>인원</th>
+                    <th class="sizeDown">요청사항</th>
+                    <th class="sizeDown">예약일자</th>
                 </tr>
             </thead>
             <tbody id="ingAppend"></tbody>
@@ -122,25 +129,25 @@
         <span style="font-weight: 600; text-align: center;">종료된 서핑 예약</span>
         <table class="adminTable">
             <colgroup>
-                <col style="width: 5%;" />
-                <col style="width: 5%;" />
+                <col style="width: 1%;" />
                 <col style="width: 10%;" />
-                <col style="width: 10%;" />
-                <col style="width: 5%;" />
+                <col style="width: 13%;" />
+                <col style="width: 7%;" />
+                <col style="width: 4%;" />
                 <col style="width: 5%; " />
-                <col style="width: 40%;" />
-                <col style="width: 10%;" />
+                <col style="width: 40%;" class="sizeDown" />
+                <col style="width: 10%;" class="sizeDown" />
             </colgroup>
             <thead>
                 <tr>
                     <th>No.</th>
                     <th>예약자명</th>
                     <th>연락처</th>
-                    <th>서핑 날짜</th>
-                    <th>서핑 시간</th>
-                    <th>인원 수</th>
-                    <th>요청사항</th>
-                    <th>예약일자</th>
+                    <th>날짜</th>
+                    <th>시간</th>
+                    <th>인원</th>
+                    <th class="sizeDown">요청사항</th>
+                    <th class="sizeDown">예약일자</th>
                 </tr>
             </thead>
             <tbody id="append"></tbody>
@@ -156,13 +163,16 @@
         <td class="startDate">cell4_10</td>
         <td class="startTime"></td>
         <td class="headCount">cell6_10</td>
-        <td class="request">cell8_10</td>
-        <td class="createDate">cell9_10</td>
+        <td class="request sizeDown">cell8_10</td>
+        <td class="createDate sizeDown">cell9_10</td>
     </template>
 
     <script src="~/lib/jquery-3.2.1.min.js"></script>
     <script src="~/lib/jquery-ui.min.js"></script>
+    <script src="~/lib/custom-alert.js"></script>
     <script type="text/javascript">
+        new customAlert();
+
         /*$(document).ready(function () {
             $(document).bind('keydown', function (e) {
                 if (e.keyCode == 123) {
@@ -172,7 +182,21 @@
             });
         });
 */
-        
+        function fnResize() {
+            var windowWidth = $(window).width();
+            if (windowWidth > 500) {
+                $(".sizeDown").show();
+                $(".sizeUp").hide();
+            } else {
+                $(".sizeDown").hide();
+                $(".sizeUp").show();
+            }
+        }
+
+
+
+
+
         function searchData() {
             var obj = new Object();
             var userName = $("#bookerName").val();
@@ -230,7 +254,9 @@
                         listTemplateClone.find(".headCount").html(__data.headCount);
                         listTemplateClone.find(".roomType").html(__data.roomType);
                         listTemplateClone.find(".request").html(__data.request);
-                        listTemplateClone.find(".createDate").html(__data.createDate);
+                        listTemplateClone.find(".createDate").html(new Date(__data.createDate).toLocaleDateString());
+                        listTemplateClone.attr("data-request", __data.request);
+                        listTemplateClone.attr("data-date", new Date(__data.createDate).toLocaleDateString());
 
                         if (isToday) {
                             $("#todayAppend").append(listTemplateClone);
@@ -245,18 +271,21 @@
                         }
 
                         if (__data.status == 2) {
-                            listTemplateClone.find(".name").html(__data.userName + "(체크인)");
+                            listTemplateClone.find(".name").html(__data.userName + "()");
                         }
                         if (__data.status == 3) {
-                            listTemplateClone.find(".name").html(__data.userName + "(체크아웃)");
+                            listTemplateClone.find(".name").html(__data.userName + "()");
                         }
 
 
                         $(listTemplateClone).dblclick(function () {
-                            window.location.href = '/booking/admin/edit?bookingId=' + __data.bookingId;
+
+                            alert(`요청사항: ${$(this).attr('data-request')}` + "<br>" + `예약일자: ${$(this).attr('data-date')}`);
+                            //window.location.href = '/booking/admin/edit?bookingId=' + __data.bookingId;
                         });
 
                     });
+                    fnResize();
                 },
                 error: function (data) {
                     alert(data);
@@ -273,8 +302,14 @@
             $("input[type=text]").val("");
         });
 
+
         $(function () {
             searchData();
+
+            $(window).resize(function () {
+                fnResize();
+            });
+
 
             $("#startDate").datepicker({
                 onSelect: function (dateText) {
