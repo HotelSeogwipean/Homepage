@@ -8,9 +8,9 @@ namespace Seogwipean.Web.Controllers
 {
     public class BookingController : BaseController
     {
-        private readonly ILogger _logger;
+        //private readonly ILogger _logger;
 
-        public BookingController(ILoggerFactory loggerFactory)
+        public BookingController()
         {
             //_logger = loggerFactory.CreateLogger<BookingController>();
         }
