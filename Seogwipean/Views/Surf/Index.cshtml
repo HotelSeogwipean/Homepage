@@ -172,8 +172,7 @@
             });
         });
 */
-        var testt;
-        var test;
+        
         function searchData() {
             var obj = new Object();
             var userName = $("#bookerName").val();
@@ -193,7 +192,7 @@
                     var ingIdx = 0;
                     var endIdx = 0;
                     console.log(data);
-                    if (data.data.length < 1) {
+                    if (data == null) {
                         var noList = '<td colspan="10">조회 결과가 없습니다.</td>';
                         $("#todayAppend").append(noList);
                     }
