@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Seogwipean.Model.BookingViewModels;
 using Seogwipean.Model.ResultModels;
-using Seogwipean.Service.Interface;
 using Seogwipean.Util;
 
 namespace Seogwipean.Web.Controllers
@@ -14,16 +9,10 @@ namespace Seogwipean.Web.Controllers
     public class BookingController : BaseController
     {
         private readonly ILogger _logger;
-        private readonly IBookingService _bookingService;
-        private readonly IEmailService _emailService;
 
-        public BookingController(ILoggerFactory loggerFactory,
-                                        IBookingService bookingService,
-                                        IEmailService emailService)
+        public BookingController(ILoggerFactory loggerFactory)
         {
-            _bookingService = bookingService ?? throw new ArgumentNullException(nameof(bookingService));
-            _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
-            _logger = loggerFactory.CreateLogger<BookingController>();
+            //_logger = loggerFactory.CreateLogger<BookingController>();
         }
 
         public IActionResult Index()
@@ -45,7 +34,7 @@ namespace Seogwipean.Web.Controllers
         {
             return View();
         }
-
+        /*
         [HttpGet("/booking/admin")]
         public IActionResult Admin()
         {
@@ -126,12 +115,12 @@ namespace Seogwipean.Web.Controllers
                 "\r\n체크아웃 : " + booker.EndDate +
                 "\r\n추천인 : " + booker.Recommender +
                 "\r\n요청사항 : " + booker.Request;
-            _emailService.SendEmail(new Model.EmailViewModels.EmailViewModel {
+            _emailService.SendEmail(new Model.EmailViewModels.SurfViewModel {
                 Email = "hotelseogwipean@naver.com",
                 Subject = "[HotelSeogwipean Web] 신규 시숙 예약",
                 Message = contents
             });
             return Json(_add);
-        }
+        }*/
     }
 }

@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Seogwipean.Model.CommunityViewModels;
-using Seogwipean.Service.Interface;
 using Seogwipean.Util;
 
 namespace Seogwipean.Web.Controllers
@@ -13,15 +11,11 @@ namespace Seogwipean.Web.Controllers
     public class CommunityController : BaseController
     {
         private readonly ILogger _logger;
-        private readonly ICommunityService _communityService;
-        private readonly IEmailService _emailService;
+        //private readonly ICommunityService _communityService;
 
-        public CommunityController(ILoggerFactory loggerFactory,
-                                        ICommunityService communityService,
-                                        IEmailService emailService)
+        public CommunityController(ILoggerFactory loggerFactory)
         {
-            _communityService = communityService ?? throw new ArgumentNullException(nameof(communityService));
-            _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
+            //_communityService = communityService ?? throw new ArgumentNullException(nameof(communityService));
             _logger = loggerFactory.CreateLogger<BookingController>();
         }
 
@@ -36,7 +30,7 @@ namespace Seogwipean.Web.Controllers
         {
             return View();
         }
-
+        /*
         [HttpPost]
         public IActionResult GetList(CommunityViewModel vm)
         {
@@ -67,7 +61,7 @@ namespace Seogwipean.Web.Controllers
             if (list.Result == Common.Success)
             {
                 var contents = $"작성자 : ${vm.UserName} \r\n연락처 : ${vm.Phone}\r\n제목 : ${vm.Title}\r\n내용 : ${vm.Contents}";
-                _emailService.SendEmail(new Model.EmailViewModels.EmailViewModel
+                _emailService.SendEmail(new Model.EmailViewModels.SurfViewModel
                 {
                     Email = "hotelseogwipean@naver.com",
                     Subject = "[HotelSeogwipean Web] 신규 게시글 작성",
@@ -115,7 +109,7 @@ namespace Seogwipean.Web.Controllers
             vm.Ip = ipAddr;
             var result = _communityService.AddComments(vm);
             return Json(result);
-        }
+        }*/
 
     }
 }
