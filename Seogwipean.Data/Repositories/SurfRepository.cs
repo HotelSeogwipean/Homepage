@@ -74,7 +74,7 @@ namespace Seogwipean.Data.Repositories
                     return new LongResult<IList<Surf>>
                     {
                         Result = Common.Success,
-                        Data = _list.OrderBy(b => b.StartDate).ToList()
+                        Data = _list.OrderBy(b => b.StartTime).OrderBy(b => b.StartDate).ToList()
                     };
                 }
             }
@@ -185,6 +185,94 @@ namespace Seogwipean.Data.Repositories
             }
         }
 
+
+        public LongResult<SurfViewModel> UpdateSurf(SurfViewModel vm)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var surfId = vm.Id;
+                    var userName = vm.UserName;
+                    var email = vm.Email;
+                    var phone = vm.Phone;
+                    var startDate = vm.StartDate;
+                    var startTime = vm.StartTime;
+                    var request = vm.Request;
+                    var headCount = vm.HeadCount;
+                    var ageRange = vm.AgeRange;
+
+                    var _booking = db.Surf.FirstOrDefault(b => b.Id == surfId);
+                    if (!string.IsNullOrWhiteSpace(userName))
+                    {
+                        _booking.UserName = userName;
+                    }
+                    if (!string.IsNullOrWhiteSpace(email))
+                    {
+                        _booking.Email = email;
+                    }
+                    if (!string.IsNullOrWhiteSpace(phone))
+                    {
+                        _booking.Phone = phone;
+                    }
+                    if (startDate.Year > 1)
+                    {
+                        _booking.StartDate = startDate;
+                    }
+                    if (startTime > 0)
+                    {
+                        _booking.StartTime = startTime;
+                    }
+                    if (!string.IsNullOrWhiteSpace(request))
+                    {
+                        _booking.Request = request;
+                    }
+                    if (vm.Status > 0)
+                    {
+                        _booking.Status = vm.Status;
+                    }
+                    if (headCount > 0)
+                    {
+                        _booking.HeadCount = headCount;
+                    }
+                    db.Update(_booking);
+                    var _result = db.SaveChanges();
+                    return new LongResult<SurfViewModel>
+                    {
+                        Result = Common.Success,
+                        Data = new SurfViewModel
+                        {
+                            UserName = userName,
+                            HeadCount = headCount,
+                            Email = email,
+                            Request = request,
+                            Phone = phone,
+                            StartDate = startDate,
+                            StartTime = startTime,
+                            Status = CodesName.Booking_Booked,
+                            AgeRange = ageRange
+                        }
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return new LongResult<SurfViewModel>
+                    {
+                        Result = Common.Fail,
+                        Reason = e.Message
+                    };
+                }
+                return new LongResult<SurfViewModel>
+                {
+                    Result = Common.Exception,
+                    Reason = null
+                };
+            }
+        }
 
 
     }

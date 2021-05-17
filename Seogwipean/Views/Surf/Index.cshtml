@@ -59,8 +59,8 @@
         <input type="button" id="btnSearch" value="검색" />
         <input type="button" id="btnReset" value="초기화" />
     </div>
-    <div style="margin: 0 auto; text-align:center;" onclick="location.href = '/surf/add';">
-        <input type="button" id="btnBook" value="예약 추가" />
+    <div style="margin: 0 auto; text-align:center;" >
+        <input type="button" id="btnBook" value="예약 추가" onclick="location.href = '/surf/add';"/>
     </div>
 
     <span style="font-family: 'Yu Gothic' sans-serif; font-size: 14px;" class="sizeUp">
@@ -255,6 +255,7 @@
                         listTemplateClone.find(".roomType").html(__data.roomType);
                         listTemplateClone.find(".request").html(__data.request);
                         listTemplateClone.find(".createDate").html(new Date(__data.createDate).toLocaleDateString());
+                        listTemplateClone.attr("data-id", __data.id);
                         listTemplateClone.attr("data-request", __data.request);
                         listTemplateClone.attr("data-date", new Date(__data.createDate).toLocaleDateString());
 
@@ -278,9 +279,8 @@
                         }
 
 
-                        $(listTemplateClone).dblclick(function () {
-
-                            alert(`요청사항: ${$(this).attr('data-request')}` + "<br>" + `예약일자: ${$(this).attr('data-date')}`);
+                        $(listTemplateClone).click(function () {
+                            alert(`요청사항: ${$(this).attr('data-request')}` + "<br>" + `예약일자: ${$(this).attr('data-date')}` + `<br>` + `<input type='button' onclick='location.href="/surf/adjust?surfid=${listTemplateClone.attr('data-id')}"' class='btnAdjust' style='width:100px; height:30px;' value='예약수정'/>`);
                             //window.location.href = '/booking/admin/edit?bookingId=' + __data.bookingId;
                         });
 

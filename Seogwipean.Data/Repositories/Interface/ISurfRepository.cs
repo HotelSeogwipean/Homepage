@@ -11,7 +11,8 @@ namespace Seogwipean.Data.Repositories.Interface
         LongResult<IList<Models.Surf>> GetSurfList(SurfViewModel vm);
 
         LongResult<SurfViewModel> AddSurf(SurfViewModel vm);
-        
-        
+        LongResult<SurfViewModel> UpdateSurf(SurfViewModel vm);
+
+
     }
 }

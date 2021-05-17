@@ -37,5 +37,11 @@ namespace Seogwipean.Service.Surf
             _logger.LogInformation("AddSurf " + vm.UserName);
             return _surfRepository.AddSurf(vm);
         }
+
+        public LongResult<SurfViewModel> UpdateSurf(SurfViewModel vm)
+        {
+            _logger.LogInformation("UpdateSurf " + vm.Id);
+            return _surfRepository.UpdateSurf(vm);
+        }
     }
 }

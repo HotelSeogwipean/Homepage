@@ -14,5 +14,6 @@ namespace Seogwipean.Service.Interface
 
         LongResult<SurfViewModel> AddSurf(SurfViewModel vm);
 
+        LongResult<SurfViewModel> UpdateSurf(SurfViewModel vm);
     }
 }
