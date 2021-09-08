@@ -24,11 +24,11 @@ namespace Seogwipean.Web.Controllers
         {
             return View();
         }
-
+        /*
         public IActionResult Book()
         {
             return View();
-        }
+        }*/
 
         public IActionResult Media()
         {
