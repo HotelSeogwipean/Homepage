@@ -21,6 +21,16 @@ namespace Seogwipean.Controllers
             return View("Index");
         }
 
+        [Route("/.well-known/pki-validation")]
+        [Route("/.well-known/pki-validation/godaddy.html")]
+        [Route("/.well-known/pki-validation/godaddy")]
+        [Route("/.well-known/pki-validation/godaddy.cshtml")]
+        public IActionResult Domein()
+        {
+            return View("GoDaddy");
+        }
+
+
         [Route("/naver476d95bb846c01665a5a758ec213c6fb.html")]
         public IActionResult NaverVerification()
         {
