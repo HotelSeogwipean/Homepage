@@ -39,5 +39,16 @@ namespace Seogwipean.Service.Coupon
             return _couponRepository.GetCouponList(vm);
         }
 
+        public LongResult<CouponViewModel> CreateCoupon(CouponViewModel vm)
+        {
+            _logger.LogInformation("CreateCoupon " + vm.CouponId);
+            return _couponRepository.CreateCoupon(vm);
+        }
+
+        public LongResult<CouponViewModel> UseCoupon(long couponId)
+        {
+            _logger.LogInformation("UseCoupon " + couponId);
+            return _couponRepository.UseCoupon(couponId);
+        }
     }
 }

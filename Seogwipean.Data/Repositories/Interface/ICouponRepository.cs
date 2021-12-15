@@ -11,6 +11,7 @@ namespace Seogwipean.Data.Repositories.Interface
         Coupon GetCoupon(long Id);
         CouponViewModel GetCouponModel(long Id);
         LongResult<IList<Coupon>> GetCouponList(CouponViewModel vm);
-
+        LongResult<CouponViewModel> CreateCoupon(CouponViewModel vm);
+        LongResult<CouponViewModel> UseCoupon(long couponId);
     }
 }

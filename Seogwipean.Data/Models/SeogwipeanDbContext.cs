@@ -90,6 +90,10 @@ namespace Seogwipean.Data.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Status).HasColumnName("status");
+
+                entity.Property(e => e.UseDate)
+                    .HasColumnName("useDate")
+                    .HasColumnType("date");
             });
 
             modelBuilder.Entity<Surf>(entity =>

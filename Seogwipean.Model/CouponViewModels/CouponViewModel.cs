@@ -13,5 +13,6 @@ namespace Seogwipean.Model.CouponViewModels
         public DateTime ExpireDate { get; set; }
         public int Status { get; set; }
         public string Comment { get; set; }
+        public DateTime? UseDate { get; set; }
     }
 }

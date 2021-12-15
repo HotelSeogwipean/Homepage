@@ -69,7 +69,8 @@ namespace Seogwipean.Data.Repositories
                         CreateDate = _db.CreateDate,
                         ExpireDate = _db.ExpireDate,
                         Comment = _db.Comment,
-                        Status = CodesName.Booking_Booked
+                        Status = CodesName.Booking_Booked,
+                        UseDate = _db.UseDate
                     };
 
                     return result;
@@ -93,14 +94,11 @@ namespace Seogwipean.Data.Repositories
             {
                 using (var db = _dbContextFactory.Create())
                 {
-                    var isSearch = true;
-
                     var _list = db.Coupon.AsNoTracking();
-
                     var phone = vm.Phone;
                     var createDate = vm.CreateDate;
-                    var expireDate = vm.ExpireDate;
-                    if (isSearch)
+
+                    if (vm != null)
                     {
                         if (!string.IsNullOrEmpty(phone))
                         {
@@ -110,7 +108,12 @@ namespace Seogwipean.Data.Repositories
                         {
                             _list = _list.Where(b => b.CreateDate >= createDate);
                         }
+                        if (vm.Status > 0)
+                        {
+                            _list = _list.Where(b => b.Status == vm.Status);
+                        }
                     }
+
                     return new LongResult<IList<Coupon>>
                     {
                         Result = Common.Success,
@@ -136,72 +139,52 @@ namespace Seogwipean.Data.Repositories
                 };
             }
         }
-        /*
-        public LongResult<SurfViewModel> AddSurf(SurfViewModel vm)
+        
+        public LongResult<CouponViewModel> CreateCoupon(CouponViewModel vm)
         {
             try
             {
                 using (var db = _dbContextFactory.Create())
                 {
-                    long Id = vm.Id;
-                    string userName = vm.UserName;
-                    string email = vm.Email;
-                    string phone = vm.Phone;
-                    int headCount = vm.HeadCount;
-                    string request = vm.Request;
-                    int? ageRange = vm.AgeRange;
-                    DateTime startDate = vm.StartDate;
-                    int startTime = vm.StartTime;
+                    var toDay = DateTime.Now;
+                    var expireDay = toDay.AddDays(7);
+                    var _phone = vm.Phone;
 
                     if (vm == null)
                     {
-                        return new LongResult<SurfViewModel>
+                        return new LongResult<CouponViewModel>
                         {
                             Result = Common.Fail,
                             Reason = "데이터가 존재하지 않습니다."
                         };
                     }
 
-                    if (string.IsNullOrWhiteSpace(userName))
+                    if (string.IsNullOrWhiteSpace(_phone))
                     {
-                        throw new SeogwipeanException("예약자명이 존재하지 않습니다.");
-                    }
-                    if (headCount < 1)
-                    {
-                        throw new SeogwipeanException("인원수가 존재하지 않습니다.");
+                        throw new SeogwipeanException("전화번호가 존재하지 않습니다.");
                     }
 
-                    var newBooking = new Surf
+                    var newDB = new Coupon
                     {
-                        UserName = userName,
-                        HeadCount = headCount,
-                        Email = email,
-                        Request = request,
-                        Phone = phone,
-                        StartDate = startDate,
-                        StartTime = startTime,
-                        Status = CodesName.Booking_Booked,
-                        AgeRange = ageRange,
-                        CreateDate = DateTime.Now
+                        Phone = vm.Phone,
+                        CreateDate = toDay,
+                        ExpireDate = expireDay,
+                        Status = CodesName.Coupon_UnUsed
                     };
-                    db.Surf.Add(newBooking);
+                    db.Coupon.Add(newDB);
                     db.SaveChanges();
 
-                    _logger.LogError(DateTime.Now + " || 서핑 예약 추가, 예약자명: " + userName + ", 체크인: " + startDate.ToString());
-                    return new LongResult<SurfViewModel>
+                    _logger.LogError(toDay + " || 쿠폰 신규 추가, 휴대폰 번호 : " + _phone);
+                    return new LongResult<CouponViewModel>
                     {
                         Result = Common.Success,
-                        Data = new SurfViewModel
+                        Data = new CouponViewModel
                         {
-                            UserName = userName,
-                            HeadCount = headCount,
-                            Email = email,
-                            Request = request,
-                            Phone = phone,
-                            StartDate = startDate,
-                            StartTime = startTime,
-                            Status = CodesName.Booking_Booked,
-                            AgeRange = ageRange
+                            CouponId = vm.CouponId,
+                            Phone = vm.Phone,
+                            CreateDate = toDay,
+                            ExpireDate = expireDay,
+                            Status = CodesName.Coupon_UnUsed,
                         }
                     };
                 }
@@ -211,13 +194,13 @@ namespace Seogwipean.Data.Repositories
                 _logger.LogError(e.ToString());
                 if (e is SeogwipeanException)
                 {
-                    return new LongResult<SurfViewModel>
+                    return new LongResult<CouponViewModel>
                     {
                         Result = Common.Fail,
                         Reason = e.Message
                     };
                 }
-                return new LongResult<SurfViewModel>
+                return new LongResult<CouponViewModel>
                 {
                     Result = Common.Exception,
                     Reason = null
@@ -225,7 +208,79 @@ namespace Seogwipean.Data.Repositories
             }
         }
 
+        public LongResult<CouponViewModel> UseCoupon(long couponId)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var _coupon = db.Coupon.FirstOrDefault(b => b.CouponId == couponId);
+                    var _status = _coupon.Status;
+                    var _today = DateTime.Now;
 
+                    if(_today > _coupon.ExpireDate)
+                    {
+                        _coupon.Status = CodesName.Coupon_Expired;
+                        db.Update(_coupon);
+                        db.SaveChanges();
+
+                        return new LongResult<CouponViewModel>
+                        {
+                            Result = Common.Fail,
+                            Reason = "유효기간이 지난 쿠폰입니다."
+                        };
+                    }
+
+                    if (_status != CodesName.Coupon_UnUsed)
+                    {
+                        return new LongResult<CouponViewModel>
+                        {
+                            Result = Common.Fail,
+                            Reason = $" 쿠폰 상태 : {_status} // 미사용: 0, 사용: 1, 유효기간 지남: 9"
+                        };
+                    }
+
+                    _coupon.Status = CodesName.Coupon_Used;
+                    _coupon.UseDate = _today;
+
+                    db.Update(_coupon);
+                    var _result = db.SaveChanges();
+                    return new LongResult<CouponViewModel>
+                    {
+                        Result = Common.Success,
+                        Data = new CouponViewModel
+                        {
+                            CouponId = _coupon.CouponId,
+                            CreateDate = _coupon.CreateDate,
+                            ExpireDate = _coupon.ExpireDate,
+                            Phone = _coupon.Phone,
+                            Comment = _coupon.Comment,
+                            Status = _coupon.Status,
+                            UseDate = _today
+                        }
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return new LongResult<CouponViewModel>
+                    {
+                        Result = Common.Fail,
+                        Reason = e.Message
+                    };
+                }
+                return new LongResult<CouponViewModel>
+                {
+                    Result = Common.Exception,
+                    Reason = null
+                };
+            }
+        }
+
+        /*
         public LongResult<SurfViewModel> UpdateSurf(SurfViewModel vm)
         {
             try

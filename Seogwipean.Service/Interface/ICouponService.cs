@@ -9,5 +9,7 @@ namespace Seogwipean.Service.Interface
         Data.Models.Coupon GetCoupon(long Id);
         CouponViewModel GetCouponModel(long Id);
         LongResult<IList<Data.Models.Coupon>> GetCouponList(CouponViewModel vm);
+        LongResult<CouponViewModel> CreateCoupon(CouponViewModel vm);
+        LongResult<CouponViewModel> UseCoupon(long couponId);
     }
 }

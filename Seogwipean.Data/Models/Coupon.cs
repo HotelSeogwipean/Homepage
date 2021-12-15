@@ -11,5 +11,6 @@ namespace Seogwipean.Data.Models
         public DateTime ExpireDate { get; set; }
         public int Status { get; set; }
         public string Comment { get; set; }
+        public DateTime? UseDate { get; set; }
     }
 }
