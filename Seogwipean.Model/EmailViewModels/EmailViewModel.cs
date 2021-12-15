@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Seogwipean.Model.EmailViewModels
 {
-    public class EmailViewModel
+    public class CouponViewModel
     {
         public string Email { get; set; }
         public string Subject { get; set; }

@@ -9,6 +9,6 @@ namespace Seogwipean.Service.Interface
 {
     public interface IEmailService
     {
-        Task SendEmail(EmailViewModel vm);
+        Task SendEmail(CouponViewModel vm);
     }
 }

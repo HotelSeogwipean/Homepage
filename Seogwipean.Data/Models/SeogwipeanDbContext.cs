@@ -15,19 +15,83 @@ namespace Seogwipean.Data.Models
         {
         }
 
+        public virtual DbSet<Booking> Booking { get; set; }
+        public virtual DbSet<Coupon> Coupon { get; set; }
         public virtual DbSet<Surf> Surf { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=tcp:seogwipean.database.windows.net,1433;Initial Catalog=seogwipean;Persist Security Info=False;User ID=hacker010;Password=tkdgns85@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Booking>(entity =>
+            {
+                entity.Property(e => e.BookingId).HasColumnName("bookingId");
+
+                entity.Property(e => e.Email)
+                    .HasColumnName("email")
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Instagram)
+                    .HasColumnName("instagram")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Phone)
+                    .IsRequired()
+                    .HasColumnName("phone")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PickupDate)
+                    .HasColumnName("pickupDate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.PickupTime).HasColumnName("pickupTime");
+
+                entity.Property(e => e.Request)
+                    .HasColumnName("request")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasColumnName("userName")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Coupon>(entity =>
+            {
+                entity.Property(e => e.CouponId).HasColumnName("couponId");
+
+                entity.Property(e => e.Comment)
+                    .HasColumnName("comment")
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreateDate)
+                    .HasColumnName("createDate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.ExpireDate)
+                    .HasColumnName("expireDate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Phone)
+                    .IsRequired()
+                    .HasColumnName("phone")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Status).HasColumnName("status");
+            });
+
             modelBuilder.Entity<Surf>(entity =>
             {
                 entity.Property(e => e.CreateDate).HasColumnType("date");

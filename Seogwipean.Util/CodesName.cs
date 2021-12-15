@@ -21,5 +21,8 @@ namespace Seogwipean.Util
         public static readonly short Write_Lock_Public = 1;
 
 
+        public static readonly short Coupon_UnUsed = 0;
+        public static readonly short Coupon_Used = 1;
+        public static readonly short Coupon_Expired = 9;
     }
 }

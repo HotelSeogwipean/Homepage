@@ -22,7 +22,7 @@ namespace Seogwipean.Service.Email
             _configuration = configuration;
         }
 
-        public async Task SendEmail(EmailViewModel vm)
+        public async Task SendEmail(CouponViewModel vm)
         {
             using (var client = new SmtpClient())
             {

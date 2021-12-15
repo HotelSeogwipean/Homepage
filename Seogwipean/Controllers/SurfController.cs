@@ -64,7 +64,7 @@ namespace Seogwipean.Web.Controllers
                  "\r\n서핑일자 : " + booker.StartDate.ToString("yyyy-MM-dd") + " " + booker.StartTime +
                 "\r\n요청사항 : " + booker.Request;
 
-            _emailService.SendEmail(new Model.EmailViewModels.EmailViewModel
+            _emailService.SendEmail(new Model.EmailViewModels.CouponViewModel
             {
                 Email = "hotelseogwipean@naver.com",
                 Subject = "[HotelSeogwipean] " + booker.StartDate.ToString("yyyy-MM-dd") + " " + booker.StartTime + "시 에 신규 서핑 예약건이 생성되었습니다.",
@@ -92,7 +92,7 @@ namespace Seogwipean.Web.Controllers
                 "\r\n인원 수 : " + booker.HeadCount +
                 "\r\n서핑일자 : " + booker.StartDate.ToString("yyyy-MM-dd") + " " + booker.StartTime +
                 "\r\n요청사항 : " + booker.Request;
-            _emailService.SendEmail(new Model.EmailViewModels.EmailViewModel
+            _emailService.SendEmail(new Model.EmailViewModels.CouponViewModel
             {
                 Email = "hotelseogwipean@naver.com",
                 Subject = "[HotelSeogwipean]" + booker.UserName + " 님의 서핑 예약건이 수정되었습니다",

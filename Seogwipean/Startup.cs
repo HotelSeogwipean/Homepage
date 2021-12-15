@@ -8,6 +8,7 @@ using Seogwipean.Data;
 using Seogwipean.Data.Repositories;
 using Seogwipean.Data.Repositories.Interface;
 using Seogwipean.Service;
+using Seogwipean.Service.Coupon;
 using Seogwipean.Service.Email;
 using Seogwipean.Service.Interface;
 using Seogwipean.Service.Surf;
@@ -42,14 +43,13 @@ namespace Seogwipean
 
             services.AddSingleton<ISurfRepository, SurfRepository>();
             services.AddSingleton<ISurfService, SurfService>();
+
+            services.AddSingleton<ICouponRepository, CouponRepository>();
+            services.AddSingleton<ICouponService, CouponService>();
+
+
             services.AddSingleton<IEmailService, EmailService>();
-            /*
-            services.AddSingleton<IBookingRepository, BookingRepository>();
-            services.AddSingleton<ICommunityRepository, CommunityRepository>();
-            services.AddSingleton<IBookingService, BookingService>();
             
-            services.AddSingleton<ICommunityService, CommunityService>();
-            */
             services.AddSingleton<IConfiguration>(Configuration);
 
 
