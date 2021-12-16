@@ -2,6 +2,7 @@
 using System.Net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -38,6 +39,12 @@ namespace Seogwipean
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+
+                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+            });
+
             services.AddScoped<IViewRenderService, ViewRenderService>();
 
             services.AddSingleton<HotelSeogwipeanDbContextFactory>();
@@ -90,15 +97,16 @@ namespace Seogwipean
             }*/
             app.UseExceptionHandler("/Error");
             app.UseHsts();
-
             app.UseHttpsRedirection();
-
             app.UseMiddleware(typeof(Web.VisitorCounterMiddleware));
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             app.UseAuthentication();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
