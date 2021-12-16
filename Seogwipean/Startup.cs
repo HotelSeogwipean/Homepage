@@ -39,11 +39,11 @@ namespace Seogwipean
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            /*
             services.Configure<ForwardedHeadersOptions>(options =>
             {
-
                 options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
-            });
+            });*/
 
             services.AddScoped<IViewRenderService, ViewRenderService>();
 
@@ -64,7 +64,7 @@ namespace Seogwipean
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
             });
-
+            /*
             services.AddHsts(options => {
                 options.Preload = true;
                 options.IncludeSubDomains = true;
@@ -78,7 +78,7 @@ namespace Seogwipean
                 options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
                 options.HttpsPort = 443;
             });
-
+            */
 
         }
 
@@ -97,15 +97,15 @@ namespace Seogwipean
             }*/
             app.UseExceptionHandler("/Error");
             app.UseHsts();
-            app.UseHttpsRedirection();
             app.UseMiddleware(typeof(Web.VisitorCounterMiddleware));
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            /*
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
+            });*/
             app.UseAuthentication();
             app.UseMvc(routes =>
             {
