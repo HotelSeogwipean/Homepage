@@ -57,7 +57,7 @@ namespace Seogwipean
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
             });
-            /*
+
             services.AddHsts(options => {
                 options.Preload = true;
                 options.IncludeSubDomains = true;
@@ -72,7 +72,7 @@ namespace Seogwipean
                 options.HttpsPort = 443;
             });
 
-            */
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
