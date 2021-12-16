@@ -44,15 +44,11 @@ namespace Seogwipean
 
             services.AddSingleton<ISurfRepository, SurfRepository>();
             services.AddSingleton<ISurfService, SurfService>();
-
             services.AddSingleton<ICouponRepository, CouponRepository>();
             services.AddSingleton<ICouponService, CouponService>();
-
-
             services.AddSingleton<IEmailService, EmailService>();
             
             services.AddSingleton<IConfiguration>(Configuration);
-
 
             services.AddMvc().AddSessionStateTempDataProvider();
             services.AddDistributedMemoryCache();
@@ -63,7 +59,6 @@ namespace Seogwipean
             });
 
             services.AddHsts(options => {
-
                 options.Preload = true;
                 options.IncludeSubDomains = true;
                 options.MaxAge = TimeSpan.FromDays(60);
@@ -96,7 +91,7 @@ namespace Seogwipean
             app.UseExceptionHandler("/Error");
             app.UseHsts();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseMiddleware(typeof(Web.VisitorCounterMiddleware));
             app.UseHttpsRedirection();
