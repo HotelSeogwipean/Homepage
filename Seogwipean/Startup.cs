@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -60,11 +61,29 @@ namespace Seogwipean
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
             });
+
+            services.AddHsts(options => {
+
+                options.Preload = true;
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(60);
+                options.ExcludedHosts.Add("hotelseogwipean.com");
+                options.ExcludedHosts.Add("www.hotelseogwipean.com");
+            });
+
+
+            services.AddHttpsRedirection(options => {
+                options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
+                options.HttpsPort = 443;
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            /*
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -72,9 +91,12 @@ namespace Seogwipean
             }
             else
             {
-                app.UseExceptionHandler("/Error");
-                app.UseHsts();
-            }
+              
+            }*/
+            app.UseExceptionHandler("/Error");
+            app.UseHsts();
+
+            app.UseHttpsRedirection();
 
             app.UseMiddleware(typeof(Web.VisitorCounterMiddleware));
             app.UseHttpsRedirection();

@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -9,9 +10,56 @@
 <head>
     <meta charset="utf-8">
     <title>Hello World</title>
+    <style>
+        :root {
+            --myColor: #333;
+        }
+        body {
+            position: fixed;
+            overflow: hidden;
+            touch-action: none;
+        }
+        .viewer {
+            width: 100vw;
+            max-width: 580px;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .body {
+            background-color: var(--myColor);
+        }
+    </style>
 </head>
 <body>
     <h1>Hello World</h1>
     <p>안녕하세요! HTML5</p>
+
+
+    <script type="text/javascript">
+        function setScreenSize() {
+            let vh = window.innerHeight * 0.01;
+
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        setScreenSize();
+
+        window.addEventListener('resize', () => setScreenSize());
+        disableScroll = () => {
+            document.querySelector('body').addEventListener('touchmove', this.removeEvent, { passive: false });
+            document.querySelector('body').addEventListener('onclick', this.removeEvent, { passive: false });
+            document.querySelector('body').addEventListener('mousewheel', this.removeEvent, { passive: false });
+        }
+        removeEvent = e => {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        enableScroll = () => {
+            document.querySelector('body').removeEventListener('touchmove', this.removeEvent);
+            document.querySelector('body').removeEventListener('onclick', this.removeEvent);
+            document.querySelector('body').removeEventListener('mousewheel', this.removeEvent);
+        }
+    </script>
 </body>
 </html>
