@@ -39,11 +39,11 @@ namespace Seogwipean
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            /*
+            
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
-            });*/
+            });
 
             services.AddScoped<IViewRenderService, ViewRenderService>();
 
@@ -73,12 +73,12 @@ namespace Seogwipean
                 options.ExcludedHosts.Add("www.hotelseogwipean.com");
             });
 
-            /*
+            
             services.AddHttpsRedirection(options => {
                 options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
                 options.HttpsPort = 443;
             });
-            */
+            
 
         }
 
@@ -98,7 +98,7 @@ namespace Seogwipean
             app.UseExceptionHandler("/Error");
             app.UseHsts();
             app.UseMiddleware(typeof(Web.VisitorCounterMiddleware));
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             
