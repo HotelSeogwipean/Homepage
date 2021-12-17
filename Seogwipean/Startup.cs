@@ -64,7 +64,7 @@ namespace Seogwipean
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
             });
-            /*
+            
             services.AddHsts(options => {
                 options.Preload = true;
                 options.IncludeSubDomains = true;
@@ -73,7 +73,7 @@ namespace Seogwipean
                 options.ExcludedHosts.Add("www.hotelseogwipean.com");
             });
 
-
+            /*
             services.AddHttpsRedirection(options => {
                 options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
                 options.HttpsPort = 443;
@@ -85,7 +85,7 @@ namespace Seogwipean
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            /*
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -94,18 +94,18 @@ namespace Seogwipean
             else
             {
               
-            }*/
+            }
             app.UseExceptionHandler("/Error");
             app.UseHsts();
             app.UseMiddleware(typeof(Web.VisitorCounterMiddleware));
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            /*
+            
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });*/
+            });
             app.UseAuthentication();
             app.UseMvc(routes =>
             {
