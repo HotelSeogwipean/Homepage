@@ -73,12 +73,12 @@ namespace Seogwipean
                 options.ExcludedHosts.Add("www.hotelseogwipean.com");
             });
 
-            
+            /*
             services.AddHttpsRedirection(options => {
                 options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
                 options.HttpsPort = 443;
             });
-            
+            */
 
         }
 
@@ -98,7 +98,7 @@ namespace Seogwipean
             app.UseExceptionHandler("/Error");
             app.UseHsts();
             app.UseMiddleware(typeof(Web.VisitorCounterMiddleware));
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             
