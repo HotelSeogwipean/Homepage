@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Seogwipean.Model.CouponViewModels;
-using Seogwipean.Model.ResultModels;
 using Seogwipean.Service.Interface;
 
 namespace Seogwipean.Web.Controllers
@@ -14,12 +10,15 @@ namespace Seogwipean.Web.Controllers
     {
         private readonly ILogger _logger;
         private readonly ICouponService _couponService;
-
+        private readonly IKakaoService _kakaoService;
+        
         public CouponController(ILoggerFactory loggerFactory,
-                                ICouponService couponService)
+                                ICouponService couponService,
+                                IKakaoService kakaoService)
         {
             _couponService = couponService ?? throw new ArgumentNullException(nameof(couponService));
-            _logger = loggerFactory.CreateLogger<BookingController>();
+            _kakaoService = kakaoService ?? throw new ArgumentNullException(nameof(kakaoService));
+            _logger = loggerFactory.CreateLogger<CouponController>();
         }
 
         public IActionResult Index()
@@ -58,5 +57,40 @@ namespace Seogwipean.Web.Controllers
             return Json(coupon);
         }
 
+        [Route("/Kakao/login")]
+        public RedirectResult Login()
+        {
+            return Redirect(_kakaoService.Login());
+        }
+
+        [Route("/Kakao/login-callback")]
+        public RedirectResult LoginCallback(String code)
+        {
+            return Redirect(_kakaoService.LoginCallback(code));
+        }
+
+        [Route("/Kakao/profile")]
+        public String GetProfile()
+        {
+            return _kakaoService.GetProfile();
+        }
+
+        [Route("/Kakao/authorize")]
+        public RedirectResult Authorize(String scope)
+        {
+            return Redirect(_kakaoService.Login(scope));
+        }
+
+        [Route("/Kakao/friends")]
+        public String GetFriends()
+        {
+            return _kakaoService.GetFriends();
+        }
+
+        [Route("/Kakao/message")]
+        public String Message()
+        {
+            return _kakaoService.Message();
+        }
     }
 }

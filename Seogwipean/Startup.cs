@@ -2,6 +2,7 @@
 using System.Net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +13,9 @@ using Seogwipean.Data.Repositories.Interface;
 using Seogwipean.Service;
 using Seogwipean.Service.Coupon;
 using Seogwipean.Service.Email;
+using Seogwipean.Service.Http;
 using Seogwipean.Service.Interface;
+using Seogwipean.Service.Kakao;
 using Seogwipean.Service.Surf;
 
 namespace Seogwipean
@@ -39,22 +42,22 @@ namespace Seogwipean
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            
+            services.AddDistributedMemoryCache();
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
             });
 
             services.AddScoped<IViewRenderService, ViewRenderService>();
-
             services.AddSingleton<HotelSeogwipeanDbContextFactory>();
-
             services.AddSingleton<ISurfRepository, SurfRepository>();
             services.AddSingleton<ISurfService, SurfService>();
             services.AddSingleton<ICouponRepository, CouponRepository>();
             services.AddSingleton<ICouponService, CouponService>();
             services.AddSingleton<IEmailService, EmailService>();
-            
+            services.AddSingleton<IKakaoService, KakaoService>();
+            services.AddSingleton<IHttpCallService, HttpCallService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IConfiguration>(Configuration);
 
             services.AddMvc().AddSessionStateTempDataProvider();
@@ -63,8 +66,9 @@ namespace Seogwipean
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
             });
-            
+
             services.AddHsts(options => {
                 options.Preload = true;
                 options.IncludeSubDomains = true;
@@ -93,15 +97,14 @@ namespace Seogwipean
             }
             else
             {
-              
+                app.UseExceptionHandler("/Error");
             }
-            app.UseExceptionHandler("/Error");
             app.UseHsts();
+            app.UseSession();
             app.UseMiddleware(typeof(Web.VisitorCounterMiddleware));
             // app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto

@@ -11,32 +11,36 @@
     <meta charset="utf-8">
     <title>Hello World</title>
     <style>
-        :root {
-            --myColor: #333;
-        }
-        body {
-            position: fixed;
-            overflow: hidden;
-            touch-action: none;
-        }
-        .viewer {
-            width: 100vw;
-            max-width: 580px;
-            height: 100vh;
-            overflow: hidden;
-            margin: 0 auto;
-        }
-        .body {
-            background-color: var(--myColor);
-        }
+        :root {--myColor: #333;}
+        body {position: fixed;overflow: hidden;touch-action: none;}
+        .viewer {width: 100vw;max-width: 580px;height: 100vh;overflow: hidden;margin: 0 auto;}
+        .body {background-color: var(--myColor);}
     </style>
+    
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <p>안녕하세요! HTML5</p>
+    <div class="text-center">
+        <a href="/Kakao/login">
+            <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" />
+        </a><br />
+        <button onclick="REST_Call('/Kakao/profile')">프로필 조회 </button><br />
+        <textarea id="contents" rows='20' cols='100'></textarea><br />
+        <a href="/Kakao/authorize?scope=friends,talk_message"> <h2> 친구목록 조회와 메세지 발송 권한 획득</h2></a><br />
+        <button onclick="REST_Call('/Kakao/friends')">친구목 조회 </button>
+        <button onclick="REST_Call('/Kakao/message')">나에게 메시지 발송 </button><br />
+    </div>
 
-
+    <script type="text/javascript" src="~/lib/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
+        function REST_Call(path) {
+            $.ajax({
+                type: "GET",
+                url: path,
+                success: (data) => { console.log(data); $('#contents').html(data); }
+            });
+        }
+
         function setScreenSize() {
             let vh = window.innerHeight * 0.01;
 
@@ -60,6 +64,8 @@
             document.querySelector('body').removeEventListener('onclick', this.removeEvent);
             document.querySelector('body').removeEventListener('mousewheel', this.removeEvent);
         }
+
+
     </script>
 </body>
 </html>
