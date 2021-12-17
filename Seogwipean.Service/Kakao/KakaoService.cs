@@ -48,7 +48,7 @@ namespace Seogwipean.Service.Kakao
             string rtn = _httpCallService.Call(Const.POST, TOKEN_URI, Const.EMPTY, param);
 
             _session.SetString("token", Trans.token(rtn));
-            return "/";
+            return "/coupon/idx";
         }
 
         public string GetProfile()

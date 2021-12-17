@@ -26,6 +26,11 @@ namespace Seogwipean.Web.Controllers
             return View();
         }
 
+        public IActionResult Idx()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult GetCoupon(long id)
         {
