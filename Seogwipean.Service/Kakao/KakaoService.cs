@@ -19,7 +19,7 @@ namespace Seogwipean.Service.Kakao
 
         private string REST_API_KEY = "55982beac0a9ebaf0a86fe0312dca1d7";
 
-        private string REDIRECT_URI = "https://localhost:44376/Kakao/login-callback";
+        private string REDIRECT_URI = "https://www.hotelseogwipean.com/Kakao/login-callback";
 
         private string AUTHORIZE_URI = "https://kauth.kakao.com/oauth/authorize";
 
