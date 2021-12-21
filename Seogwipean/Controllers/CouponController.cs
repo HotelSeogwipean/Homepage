@@ -23,6 +23,7 @@ namespace Seogwipean.Web.Controllers
 
         public IActionResult Index()
         {
+		System.Diagnostics.Trace.WriteLine("TEST");
             return View();
         }
 
