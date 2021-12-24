@@ -27,16 +27,32 @@ namespace Seogwipean.Web.Controllers
             _logger = loggerFactory.CreateLogger<CouponController>();
         }
 
+        // 
         public IActionResult Index()
         {
-		System.Diagnostics.Trace.WriteLine("TEST");
-            return View();
+            CouponViewModel _result = new CouponViewModel();
+            var isLogin = _couponService.IsLoggedIn();
+            if (isLogin)
+            {
+                _result = _couponService.GetCouponKakao(long.Parse(_session.GetString("id"))); 
+                return View("use", _result);
+            }
+            else
+            {
+                return View("test");
+            }
         }
 
         public IActionResult Idx()
         {
             return View();
         }
+
+        public IActionResult Test()
+        {
+            return View();
+        }
+
         [HttpGet][HttpPost]
         public IActionResult IsLoggedIn()
         {
@@ -50,6 +66,7 @@ namespace Seogwipean.Web.Controllers
             var coupon = _couponService.GetCoupon(id);
             return Json(coupon);
         }
+
         [HttpPost]
         public IActionResult GetCouponModel(long id)
         {

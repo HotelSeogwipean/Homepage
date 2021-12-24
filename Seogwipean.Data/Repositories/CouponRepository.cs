@@ -50,6 +50,40 @@ namespace Seogwipean.Data.Repositories
             }
         }
 
+        public CouponViewModel GetCouponKakao(long kakaoId)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var result = db.Coupon.FirstOrDefault(cou => cou.KakaoId == kakaoId);
+                    if (result == null)
+                    {
+                        return null;
+                    }
+                    return new CouponViewModel {
+                        CouponId = result.CouponId,
+                        Comment = result.Comment,
+                        CreateDate = result.CreateDate,
+                        ExpireDate = result.ExpireDate,
+                        UseDate = result.UseDate,
+                        KakaoId = result.KakaoId,
+                        Phone = result.Phone,
+                        Status = result.Status
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return null;
+                }
+                return null;
+            }
+        }
+
         public CouponViewModel GetCouponModel(long Id)
         {
             try

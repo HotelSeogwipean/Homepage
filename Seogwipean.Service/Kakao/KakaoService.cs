@@ -51,7 +51,7 @@ namespace Seogwipean.Service.Kakao
                 _session.SetString("phone", __user.Kakao_account.Phone_number);
             }
             _session.SetString("login", "true");
-            return "/coupon/idx";
+            return "/coupon";
         }
 
         public KakaoViewModel GetProfileSave()

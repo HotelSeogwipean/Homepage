@@ -11,10 +11,18 @@ namespace Seogwipean.Controllers
 {
     public class HomeController : BaseController
     {
+
         public IActionResult Index()
         {
+            var _url = Request.HttpContext.Request.Host;
+            if(_url.ToString() == "seogwipean.net")
+            {
+                Redirect("/coupon");
+            }
             return View("Intro");
         }
+
+
         [Route("/Intro")]
         public IActionResult Intro()
         {
@@ -30,6 +38,13 @@ namespace Seogwipean.Controllers
             return View("GoDaddy");
         }
 
+        [Route("/.well-known")]
+        [Route("/.well-known/acme-challenge/")]
+        [Route("/.well-known/acme-challenge/3tKq9j3ufevfG2jpKfzUk2LQ179g-qv6NuG10HO1lLQ")]
+        public IActionResult Domein2()
+        {
+            return View("GoDaddy");
+        }
 
         [Route("/naver476d95bb846c01665a5a758ec213c6fb.html")]
         public IActionResult NaverVerification()

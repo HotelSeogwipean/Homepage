@@ -43,6 +43,12 @@ namespace Seogwipean.Service.Coupon
             return _couponRepository.GetCoupon(Id);
         }
 
+        public CouponViewModel GetCouponKakao(long kakaoId)
+        {
+            _logger.LogInformation("GetCouponKakao " + kakaoId);
+            return _couponRepository.GetCouponKakao(kakaoId);
+        }
+
         public CouponViewModel GetCouponModel(long Id)
         {
             _logger.LogInformation("GetCouponModel " + Id);

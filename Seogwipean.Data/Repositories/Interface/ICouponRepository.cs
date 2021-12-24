@@ -13,5 +13,6 @@ namespace Seogwipean.Data.Repositories.Interface
         LongResult<IList<Coupon>> GetCouponList(CouponViewModel vm);
         LongResult<CouponViewModel> CreateCoupon(CouponViewModel vm);
         LongResult<CouponViewModel> UseCoupon(long couponId);
+        CouponViewModel GetCouponKakao(long kakaoId);
     }
 }
