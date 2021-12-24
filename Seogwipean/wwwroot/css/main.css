@@ -2910,7 +2910,19 @@ input, select, textarea {
 				color: #ffffff;
 			}
 
+
+			.nocursor {
+				cursor: default;
+			}
 /* Header */
+.header2 {
+	background-image: url("../img/bakerybread.jpg") !important; 
+	background-size: cover !important;
+}
+.header3 {
+	background-image: none !important;
+	background-size: cover !important;
+}
 
 #header {
 	/*padding: 9em 0 9em 0;*/

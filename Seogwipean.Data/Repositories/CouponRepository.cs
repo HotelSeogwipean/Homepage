@@ -183,6 +183,7 @@ namespace Seogwipean.Data.Repositories
                     var toDay = DateTime.Now;
                     var expireDay = toDay.AddDays(7);
                     var _phone = vm.Phone;
+                    var _kakaoId = vm.KakaoId;
 
                     if (vm == null)
                     {
@@ -193,9 +194,16 @@ namespace Seogwipean.Data.Repositories
                         };
                     }
 
-                    if (string.IsNullOrWhiteSpace(_phone))
+                    var _db = db.Coupon.FirstOrDefault(c => c.KakaoId == _kakaoId);
+                    if (_db != null)
                     {
-                        throw new SeogwipeanException("전화번호가 존재하지 않습니다.");
+                        throw new SeogwipeanException("이미 생성된 쿠폰이 있습니다.");
+                    }
+
+
+                    if (_kakaoId <= 0)
+                    {
+                        throw new SeogwipeanException("카카오톡 로그인이 되지 않았습니다.");
                     }
 
                     var newDB = new Coupon
@@ -207,7 +215,7 @@ namespace Seogwipean.Data.Repositories
                         KakaoId = vm.KakaoId
                     };
                     db.Coupon.Add(newDB);
-                    db.SaveChanges();
+                    var result = db.SaveChanges();
 
                     _logger.LogError(toDay + " || 쿠폰 신규 추가, 카카오톡 ID : 휴대폰 번호 : " + _phone);
                     return new LongResult<CouponViewModel>
@@ -215,6 +223,7 @@ namespace Seogwipean.Data.Repositories
                         Result = Common.Success,
                         Data = new CouponViewModel
                         {
+                            CouponId = result,
                             Phone = vm.Phone,
                             CreateDate = toDay,
                             ExpireDate = expireDay,
@@ -254,6 +263,7 @@ namespace Seogwipean.Data.Repositories
 
                     if(_today > _coupon.ExpireDate)
                     {
+                        _coupon.UseDate = _today;
                         _coupon.Status = CodesName.Coupon_Expired;
                         db.Update(_coupon);
                         db.SaveChanges();
@@ -270,7 +280,17 @@ namespace Seogwipean.Data.Repositories
                         return new LongResult<CouponViewModel>
                         {
                             Result = Common.Fail,
-                            Reason = $" 쿠폰 상태 : {_status} // 미사용: 0, 사용: 1, 유효기간 지남: 9"
+                            Reason = $" 쿠폰 상태 : {_status} // 미사용: 0, 사용: 1, 유효기간 지남: 9",
+                            Data = new CouponViewModel { 
+                                CouponId = _coupon.CouponId,
+                                Comment = _coupon.Comment,
+                                CreateDate = _coupon.CreateDate,
+                                Status = _coupon.Status,
+                                ExpireDate = _coupon.ExpireDate,
+                                UseDate = _coupon.UseDate,
+                                KakaoId = _coupon.KakaoId,
+                                Phone = _coupon.Phone
+                            }
                         };
                     }
 

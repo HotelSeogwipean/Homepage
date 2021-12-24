@@ -27,33 +27,39 @@ namespace Seogwipean.Web.Controllers
             _logger = loggerFactory.CreateLogger<CouponController>();
         }
 
-        // 
         public IActionResult Index()
         {
             CouponViewModel _result = new CouponViewModel();
-            var isLogin = _couponService.IsLoggedIn();
-            if (isLogin)
-            {
-                _result = _couponService.GetCouponKakao(long.Parse(_session.GetString("id"))); 
-                return View("use", _result);
+            var isLogin = _session.GetString("id");
+
+            if(isLogin == null || isLogin == "" || isLogin == "null") {
+                return View("test");
             }
             else
             {
-                return View("test");
+                _result = _couponService.GetCouponKakao(long.Parse(_session.GetString("id"))); 
+                if(_result == null)
+                {
+                    CouponViewModel _model = new CouponViewModel();
+                    var _phone = _session.GetString("phone");
+                        _model.Phone = _phone;
+                        _model.KakaoId = int.Parse(_session.GetString("id"));
+                    _couponService.CreateCoupon(_model);
+                }
+                else
+                {
+                    _session.SetString("coupon", _result.CouponId.ToString());
+                }
+                return View("use", _result);
             }
         }
 
-        public IActionResult Idx()
+        public IActionResult UseCoupon()
         {
-            return View();
+            var _result = _couponService.UseCoupon(long.Parse(_session.GetString("coupon")));
+            return View("use", _result.Data);
         }
 
-        public IActionResult Test()
-        {
-            return View();
-        }
-
-        [HttpGet][HttpPost]
         public IActionResult IsLoggedIn()
         {
             var _result = _couponService.IsLoggedIn();
