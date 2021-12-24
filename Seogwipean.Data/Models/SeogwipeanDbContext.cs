@@ -83,6 +83,8 @@ namespace Seogwipean.Data.Models
                     .HasColumnName("expireDate")
                     .HasColumnType("date");
 
+                entity.Property(e => e.KakaoId).HasColumnName("kakaoId");
+
                 entity.Property(e => e.Phone)
                     .IsRequired()
                     .HasColumnName("phone")

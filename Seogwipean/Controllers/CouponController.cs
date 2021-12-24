@@ -1,5 +1,7 @@
 ﻿using System;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.Extensions.Logging;
 using Seogwipean.Model.CouponViewModels;
 using Seogwipean.Service.Interface;
@@ -11,13 +13,17 @@ namespace Seogwipean.Web.Controllers
         private readonly ILogger _logger;
         private readonly ICouponService _couponService;
         private readonly IKakaoService _kakaoService;
-        
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private ISession _session => _httpContextAccessor.HttpContext.Session;
+
         public CouponController(ILoggerFactory loggerFactory,
                                 ICouponService couponService,
-                                IKakaoService kakaoService)
+                                IKakaoService kakaoService,
+                                IHttpContextAccessor httpContextAccessor)
         {
             _couponService = couponService ?? throw new ArgumentNullException(nameof(couponService));
             _kakaoService = kakaoService ?? throw new ArgumentNullException(nameof(kakaoService));
+            _httpContextAccessor = httpContextAccessor;
             _logger = loggerFactory.CreateLogger<CouponController>();
         }
 
@@ -29,6 +35,12 @@ namespace Seogwipean.Web.Controllers
         public IActionResult Idx()
         {
             return View();
+        }
+        [HttpGet][HttpPost]
+        public IActionResult IsLoggedIn()
+        {
+            var _result = _couponService.IsLoggedIn();
+            return Json(_result);
         }
 
         [HttpPost]
@@ -52,6 +64,9 @@ namespace Seogwipean.Web.Controllers
         [HttpPost]
         public IActionResult CreateCoupon(CouponViewModel vm)
         {
+            var _data = _kakaoService.GetProfileSave();
+            vm.KakaoId = _data.Id;
+            vm.Phone = _data.Kakao_account.Phone_number;
             var coupon = _couponService.CreateCoupon(vm);
             return Json(coupon);
         }
@@ -63,15 +78,17 @@ namespace Seogwipean.Web.Controllers
         }
 
         [Route("/Kakao/login")]
-        public RedirectResult Login()
+        public RedirectResult Login(string url)
         {
-            return Redirect(_kakaoService.Login());
+            var _url = Request.HttpContext.Request.Host;
+            return Redirect(_kakaoService.Login(_url.ToString()));
         }
 
         [Route("/Kakao/login-callback")]
         public RedirectResult LoginCallback(String code)
         {
-            return Redirect(_kakaoService.LoginCallback(code));
+            var _url = Request.HttpContext.Request.Host;
+            return Redirect(_kakaoService.LoginCallback(_url.ToString(), code));
         }
 
         [Route("/Kakao/profile")]
@@ -97,5 +114,6 @@ namespace Seogwipean.Web.Controllers
         {
             return _kakaoService.Message();
         }
+        
     }
 }

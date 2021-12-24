@@ -169,18 +169,18 @@ namespace Seogwipean.Data.Repositories
                         Phone = vm.Phone,
                         CreateDate = toDay,
                         ExpireDate = expireDay,
-                        Status = CodesName.Coupon_UnUsed
+                        Status = CodesName.Coupon_UnUsed,
+                        KakaoId = vm.KakaoId
                     };
                     db.Coupon.Add(newDB);
                     db.SaveChanges();
 
-                    _logger.LogError(toDay + " || 쿠폰 신규 추가, 휴대폰 번호 : " + _phone);
+                    _logger.LogError(toDay + " || 쿠폰 신규 추가, 카카오톡 ID : 휴대폰 번호 : " + _phone);
                     return new LongResult<CouponViewModel>
                     {
                         Result = Common.Success,
                         Data = new CouponViewModel
                         {
-                            CouponId = vm.CouponId,
                             Phone = vm.Phone,
                             CreateDate = toDay,
                             ExpireDate = expireDay,

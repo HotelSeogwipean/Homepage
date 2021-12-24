@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Seogwipean.Model.KakaoViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,11 +7,12 @@ namespace Seogwipean.Service.Interface
 {
     public interface IKakaoService
     {
-        String Login();
-        String Login(String scope);
-        String LoginCallback(String code);
-        String GetProfile();
-        String GetFriends();
-        String Message();
+        string Login(string url);
+        string Login(string url, string scope);
+        string LoginCallback(string url, string code);
+        string GetProfile();
+        string GetFriends();
+        string Message();
+        KakaoViewModel GetProfileSave();
     }
 }
