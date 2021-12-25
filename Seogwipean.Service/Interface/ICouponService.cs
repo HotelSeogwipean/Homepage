@@ -1,4 +1,5 @@
 ﻿using Seogwipean.Model.CouponViewModels;
+using Seogwipean.Model.KakaoViewModels;
 using Seogwipean.Model.ResultModels;
 using System.Collections.Generic;
 
@@ -12,6 +13,9 @@ namespace Seogwipean.Service.Interface
         LongResult<CouponViewModel> CreateCoupon(CouponViewModel vm);
         LongResult<CouponViewModel> UseCoupon(long couponId);
         bool IsLoggedIn();
-        CouponViewModel GetCouponKakao(long kakaoId);
+        CouponViewModel GetCouponKakao(KakaoViewModel vm);
+
+        Data.Models.CouponDb GetCouponDB(long Id);
+        Data.Models.CouponDb UpdateCouponDB(CouponDBViewModel vm);
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Seogwipean.Data.Repositories.Interface;
 using Seogwipean.Model.CouponViewModels;
+using Seogwipean.Model.KakaoViewModels;
 using Seogwipean.Model.ResultModels;
 using Seogwipean.Service.Interface;
 using Seogwipean.Util;
@@ -43,10 +44,10 @@ namespace Seogwipean.Service.Coupon
             return _couponRepository.GetCoupon(Id);
         }
 
-        public CouponViewModel GetCouponKakao(long kakaoId)
+        public CouponViewModel GetCouponKakao(KakaoViewModel vm)
         {
-            _logger.LogInformation("GetCouponKakao " + kakaoId);
-            return _couponRepository.GetCouponKakao(kakaoId);
+            _logger.LogInformation("GetCouponKakao " + vm.Phone_number);
+            return _couponRepository.GetCouponKakao(vm);
         }
 
         public CouponViewModel GetCouponModel(long Id)
@@ -71,6 +72,19 @@ namespace Seogwipean.Service.Coupon
         {
             _logger.LogInformation("UseCoupon " + couponId);
             return _couponRepository.UseCoupon(couponId);
+        }
+
+
+        public Data.Models.CouponDb GetCouponDB(long Id)
+        {
+            _logger.LogInformation("GetCouponDB " + Id);
+            return _couponRepository.GetCouponDB(Id);
+        }
+        
+        public Data.Models.CouponDb UpdateCouponDB(CouponDBViewModel vm)
+        {
+            _logger.LogInformation("UpdateCouponDB " + vm.Id);
+            return _couponRepository.UpdateCouponDB(vm);
         }
     }
 }

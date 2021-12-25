@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Production"
       },
       "sqlDebugging": false,
-      "nativeDebugging": true
+      "nativeDebugging": false
     },
     "Seogwipean": {
       "commandName": "Project",

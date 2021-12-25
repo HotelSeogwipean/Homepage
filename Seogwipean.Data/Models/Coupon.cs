@@ -13,5 +13,6 @@ namespace Seogwipean.Data.Models
         public string Comment { get; set; }
         public DateTime? UseDate { get; set; }
         public int KakaoId { get; set; }
+        public int Matchdb { get; set; }
     }
 }

@@ -27,37 +27,96 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <meta charset="utf-8" />
     @*<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />*@
-    
     <link rel="stylesheet" href="~/css/main.css" />
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <noscript><link rel="stylesheet" href="~/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
-    <!-- Header -->
+    <script type="text/javascript">
+        Kakao.init('e41a831b92d80f97e049d206858badf6');
+    </script>
     <section id="header">
         <div class="inner">
             <span class="icon solid major fa-cloud"></span>
             <h1>
                 서귀피안 베이커리 보래드 베이커스 호텔 서귀피안<br />
-                더비치하우스 더 비치 하우스 
+                더비치하우스 더 비치 하우스
             </h1>
             <p>
-                SPP<br />
+                SPP SEOGWIPEAN PROJECT<br />
                 서귀피안 프로젝트
             </p>
             <ul class="actions special">
-                <li><a href="/Kakao/login" class="button scrolly">쿠폰 발급</a></li>
+                @*<li><a href="/Kakao/login" target="_blank" class="button scrolly">쿠폰 발급</a></li>*@
+                <li><a id="kakaoLogin" class="button scrolly" onclick="kakaoLogin()" href="#">쿠폰 발급</a></li>
             </ul>
+            @*<button id="kakaoLogin" onclick="kakaoLogin()">kakaoLogin</button>*@
+            @*<button id="kakaoLogout" onclick="kakaoLogout()">kakaoLogout</button>*@
         </div>
     </section>
 
-    <!-- Scripts -->
+    <!--Scripts -->
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/jquery.scrolly.min.js"></script>
     <script src="~/js/browser.min.js"></script>
     <script src="~/js/breakpoints.min.js"></script>
     <script src="~/js/util.js"></script>
     <script src="~/js/main.js"></script>
-
+    <script type="text/javascript">
+        function kakaoLogin() {
+            Kakao.Auth.login({
+                success: function (response) {
+                    console.log(Kakao.Auth.getAccessToken());
+                    //사용자 정보 가져오기
+                    Kakao.API.request({
+                        url: '/v2/user/me', //계정 정보를 가져오는 request url
+                        success: function (response) {
+                            let user = response.kakao_account; //카카오 계정 정보
+                            user.token = Kakao.Auth.getAccessToken();
+                            console.log(user);
+                            $.ajax({
+                                url: '/KakaoLogin',
+                                type: 'POST',
+                                dataType: 'JSON',
+                                data: user,
+                                success: function (data) {
+                                    console.log(data + "AJAX S");
+                                    setTimeout(function () {
+                                        window.location.href = "/Coupon";
+                                    }, 300);
+                                },
+                                error: function (data) {
+                                    console.log(data + "AJAX F");
+                                }
+                            });
+                        },
+                        fail: function (error) {
+                            console.log(error);
+                        },
+                    })
+                },
+                fail: function (error) {
+                    console.log(error);
+                },
+            })
+        }
+        function kakaoLogout() {
+            if (Kakao.Auth.getAccessToken()) {
+                //토큰이 있으면
+                Kakao.API.request({
+                    //로그아웃하고
+                    url: '/v1/user/unlink',
+                    success: function (response) {
+                        //console.log(response)
+                    },
+                    fail: function (error) {
+                        console.log(error);
+                    },
+                })
+                //토큰도 삭제
+                Kakao.Auth.setAccessToken(undefined);
+            }
+        }
+    </script>
 </body>
 </html>

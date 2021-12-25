@@ -46,7 +46,7 @@ namespace Seogwipean.Service.Kakao
             var _user = _httpCallService.CallwithToken(Const.GET, uri, _session.GetString("token"));
             KakaoViewModel __user = JsonConvert.DeserializeObject<KakaoViewModel>(_user);
             _session.SetString("id", __user.Id.ToString());
-            _session.SetString("phone", __user.Kakao_account.Phone_number);
+            _session.SetString("phone", __user.Phone_number);
             _session.SetString("login", "true");
             return "/coupon";
         }

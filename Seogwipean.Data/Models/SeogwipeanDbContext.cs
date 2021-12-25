@@ -17,6 +17,7 @@ namespace Seogwipean.Data.Models
 
         public virtual DbSet<Booking> Booking { get; set; }
         public virtual DbSet<Coupon> Coupon { get; set; }
+        public virtual DbSet<CouponDb> CouponDb { get; set; }
         public virtual DbSet<Surf> Surf { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -85,6 +86,8 @@ namespace Seogwipean.Data.Models
 
                 entity.Property(e => e.KakaoId).HasColumnName("kakaoId");
 
+                entity.Property(e => e.Matchdb).HasColumnName("matchdb");
+
                 entity.Property(e => e.Phone)
                     .IsRequired()
                     .HasColumnName("phone")
@@ -96,6 +99,36 @@ namespace Seogwipean.Data.Models
                 entity.Property(e => e.UseDate)
                     .HasColumnName("useDate")
                     .HasColumnType("date");
+            });
+
+            modelBuilder.Entity<CouponDb>(entity =>
+            {
+                entity.ToTable("CouponDB");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.EndDate)
+                    .HasColumnName("endDate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Memo)
+                    .IsRequired()
+                    .HasColumnName("memo")
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Percentage).HasColumnName("percentage");
+
+                entity.Property(e => e.StartDate)
+                    .HasColumnName("startDate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.UseDate).HasColumnName("useDate");
+
+                entity.Property(e => e.Writer)
+                    .IsRequired()
+                    .HasColumnName("writer")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Surf>(entity =>

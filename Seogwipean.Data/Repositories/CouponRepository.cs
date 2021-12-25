@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using Seogwipean.Model.SurfViewModels;
 using Seogwipean.Model.CouponViewModels;
 using Microsoft.EntityFrameworkCore;
-
+using Seogwipean.Model.KakaoViewModels;
 
 namespace Seogwipean.Data.Repositories
 {
@@ -50,17 +50,26 @@ namespace Seogwipean.Data.Repositories
             }
         }
 
-        public CouponViewModel GetCouponKakao(long kakaoId)
+        public CouponViewModel GetCouponKakao(KakaoViewModel vm)
         {
             try
             {
                 using (var db = _dbContextFactory.Create())
                 {
-                    var result = db.Coupon.FirstOrDefault(cou => cou.KakaoId == kakaoId);
+                    Coupon result = new Coupon();
+                    if (vm.Search == 0)
+                    {
+                        result = db.Coupon.FirstOrDefault(cou => cou.KakaoId == vm.Id);
+                    }else if(vm.Search == 1)
+                    {
+                        result = db.Coupon.FirstOrDefault(cou => cou.Phone == vm.Phone_number);
+                    }
                     if (result == null)
                     {
                         return null;
                     }
+                    var _db = db.CouponDb.FirstOrDefault(c => c.Id == result.Matchdb);
+
                     return new CouponViewModel {
                         CouponId = result.CouponId,
                         Comment = result.Comment,
@@ -69,7 +78,8 @@ namespace Seogwipean.Data.Repositories
                         UseDate = result.UseDate,
                         KakaoId = result.KakaoId,
                         Phone = result.Phone,
-                        Status = result.Status
+                        Status = result.Status,
+                        Percentage = _db.Percentage
                     };
                 }
             }
@@ -184,7 +194,7 @@ namespace Seogwipean.Data.Repositories
                     var expireDay = toDay.AddDays(7);
                     var _phone = vm.Phone;
                     var _kakaoId = vm.KakaoId;
-
+                    var _db = new Coupon();
                     if (vm == null)
                     {
                         return new LongResult<CouponViewModel>
@@ -193,31 +203,30 @@ namespace Seogwipean.Data.Repositories
                             Reason = "데이터가 존재하지 않습니다."
                         };
                     }
-
-                    var _db = db.Coupon.FirstOrDefault(c => c.KakaoId == _kakaoId);
+                    if(vm.Search == 0)
+                    {
+                        _db = db.Coupon.FirstOrDefault(c => c.KakaoId == _kakaoId);
+                    }
+                    else
+                    {
+                        _db = db.Coupon.FirstOrDefault(c => c.Phone == _phone);
+                    }
                     if (_db != null)
                     {
                         throw new SeogwipeanException("이미 생성된 쿠폰이 있습니다.");
                     }
-
-
-                    if (_kakaoId <= 0)
-                    {
-                        throw new SeogwipeanException("카카오톡 로그인이 되지 않았습니다.");
-                    }
-
                     var newDB = new Coupon
                     {
                         Phone = vm.Phone,
                         CreateDate = toDay,
                         ExpireDate = expireDay,
                         Status = CodesName.Coupon_UnUsed,
-                        KakaoId = vm.KakaoId
+                        KakaoId = vm.KakaoId,
+                        Matchdb = 1
                     };
                     db.Coupon.Add(newDB);
                     var result = db.SaveChanges();
-
-                    _logger.LogError(toDay + " || 쿠폰 신규 추가, 카카오톡 ID : 휴대폰 번호 : " + _phone);
+                    _logger.LogError(toDay + " || 쿠폰 신규 추가, 휴대폰 번호 : " + _phone);
                     return new LongResult<CouponViewModel>
                     {
                         Result = Common.Success,
@@ -333,6 +342,76 @@ namespace Seogwipean.Data.Repositories
                 };
             }
         }
+        
+        public CouponDb GetCouponDB(long Id)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var _db = db.CouponDb.FirstOrDefault(c => c.Id == Id);
+                    if (_db == null)
+                    {
+                        return null;
+                    }
+                    return _db;
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return null;
+                }
+                return null;
+            }
+        }
+
+        public CouponDb UpdateCouponDB(CouponDBViewModel vm)
+        {
+            try
+            {
+                using (var db = _dbContextFactory.Create())
+                {
+                    var _db = db.CouponDb.FirstOrDefault(c => c.Id == vm.Id);
+                    if (_db == null)
+                    {
+                        return null;
+                    }
+                    if(vm.Percentage > 0)
+                    {
+                        _db.Percentage = vm.Percentage;
+                    }
+                    if (!string.IsNullOrWhiteSpace(vm.Memo))
+                    {
+                        _db.Memo = vm.Memo;
+                    }
+                    if (!string.IsNullOrWhiteSpace(vm.Writer))
+                    {
+                        _db.Writer = vm.Writer;
+                    }
+                    if(vm.UseDate > 0)
+                    {
+                        _db.StartDate = vm.StartDate;
+                        _db.EndDate = vm.EndDate;
+                    }
+                    db.Update(_db);
+                    db.SaveChanges();
+                    return _db;
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                if (e is SeogwipeanException)
+                {
+                    return null;
+                }
+                return null;
+            }
+        }
+
 
         /*
         public LongResult<SurfViewModel> UpdateSurf(SurfViewModel vm)

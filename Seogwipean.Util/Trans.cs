@@ -27,7 +27,8 @@ namespace Seogwipean.Util
 
         public static String token(String rtn)
         {
-            return JObject.Parse(rtn).GetValue("access_token").ToString();
+            return rtn;
+            //return JObject.Parse(rtn).GetValue("access_token").ToString();
         }
     }
 }

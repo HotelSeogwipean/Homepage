@@ -1,5 +1,6 @@
 ﻿using Seogwipean.Data.Models;
 using Seogwipean.Model.CouponViewModels;
+using Seogwipean.Model.KakaoViewModels;
 using Seogwipean.Model.ResultModels;
 using Seogwipean.Model.SurfViewModels;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace Seogwipean.Data.Repositories.Interface
         LongResult<IList<Coupon>> GetCouponList(CouponViewModel vm);
         LongResult<CouponViewModel> CreateCoupon(CouponViewModel vm);
         LongResult<CouponViewModel> UseCoupon(long couponId);
-        CouponViewModel GetCouponKakao(long kakaoId);
+        CouponViewModel GetCouponKakao(KakaoViewModel vm);
+        CouponDb GetCouponDB(long Id);
+        CouponDb UpdateCouponDB(CouponDBViewModel vm);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Seogwipean.Model.CouponViewModels
 {
-    public class KakaoViewModel
+    public class KakaoAuthViewModel
     {
         public string client_id { get; set; }
         public string redirect_uri { get; set; }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.Extensions.Logging;
 using Seogwipean.Model.CouponViewModels;
+using Seogwipean.Model.KakaoViewModels;
 using Seogwipean.Service.Interface;
 
 namespace Seogwipean.Web.Controllers
@@ -30,29 +31,67 @@ namespace Seogwipean.Web.Controllers
         public IActionResult Index()
         {
             CouponViewModel _result = new CouponViewModel();
-            var isLogin = _session.GetString("id");
+            var isLogin = _session.GetString("login");
 
-            if(isLogin == null || isLogin == "" || isLogin == "null") {
+            // 로그인을 하지 않은 상태
+            if(isLogin != "true") {
                 return View("test");
             }
             else
             {
-                _result = _couponService.GetCouponKakao(long.Parse(_session.GetString("id"))); 
+                // 로그인 한 상태일 경우.
+                KakaoViewModel vm = new KakaoViewModel();
+                vm.Search = 1; // 핸드폰 번호로 검색
+                vm.Phone_number = _session.GetString("phone");
+                _result = _couponService.GetCouponKakao(vm); 
                 if(_result == null)
                 {
                     CouponViewModel _model = new CouponViewModel();
                     var _phone = _session.GetString("phone");
-                        _model.Phone = _phone;
+                    var _id = _session.GetString("id");
+                    _model.KakaoId = 0;
+                    if (!string.IsNullOrEmpty(_id))
+                    {
                         _model.KakaoId = int.Parse(_session.GetString("id"));
-                    _couponService.CreateCoupon(_model);
-                }
-                else
-                {
-                    _session.SetString("coupon", _result.CouponId.ToString());
+                    }
+                    _model.Phone = _phone;
+                    _model.Search = 1;
+                    var __result = _couponService.CreateCoupon(_model);
+                    _result = __result.Data;
                 }
                 return View("use", _result);
             }
         }
+
+        [HttpPost]
+        [Route("/KakaoLogin")]
+        public IActionResult KakaoLogin(KakaoViewModel _model) 
+        {
+            if (!string.IsNullOrEmpty(_model.Phone_number))
+            {
+                _session.SetString("token", Util.Trans.token(_model.Token));
+                _session.SetString("phone", _model.Phone_number);
+                _session.SetString("login", "true");
+                return Json("Confirmed");
+            }
+            return Json(null);
+        }
+
+        [HttpGet]
+        public IActionResult Admin()
+        {
+            var db = _couponService.GetCouponDB(1);
+            return View(db);
+        }
+
+        [HttpPost]
+        public IActionResult AdminEdit(CouponDBViewModel vm)
+        {
+            var db = _couponService.UpdateCouponDB(vm);
+            return Json(db);
+        }
+
+
 
         public IActionResult UseCoupon()
         {
@@ -90,7 +129,7 @@ namespace Seogwipean.Web.Controllers
         {
             var _data = _kakaoService.GetProfileSave();
             vm.KakaoId = _data.Id;
-            vm.Phone = _data.Kakao_account.Phone_number;
+            vm.Phone = _data.Phone_number;
             var coupon = _couponService.CreateCoupon(vm);
             return Json(coupon);
         }

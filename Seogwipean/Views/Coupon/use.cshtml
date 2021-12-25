@@ -35,33 +35,63 @@
 <body class="is-preload">
     @if (Model.Status == 0)
     {
-        <section id="header" class="header2">
-            <div class="inner">
-                
-                <span class="icon solid major fa-cloud nocursor"></span>
-                <h1 class="nocursor">
-                    서귀피안 베이커리 보래드 베이커스 호텔 서귀피안<br />
-                    더비치하우스 더 비치 하우스
-                </h1>
-                <div>
-                    <h3>사용처: 보래드 베이커스, 서귀피안 베이커리</h3>
-                    <h4>쿠폰 사용 기한 : @Model.ExpireDate.ToLongDateString()</h4>
+        @if (Model.ExpireDate > new DateTime())
+        {
+            <section id="header" class="header2">
+                <div class="inner">
+
+                    <span class="icon solid major fa-cloud nocursor"></span>
+                    <h1 class="nocursor">
+                        서귀피안 베이커리 보래드 베이커스 호텔 서귀피안<br />
+                        더비치하우스 더 비치 하우스
+                    </h1>
+                    <div>
+                        <h3>사용처: 보래드 베이커스, 서귀피안 베이커리</h3>
+                        <h4>할인율 : @Model.Percentage %</h4>
+                        <h4>쿠폰 사용 기한 : @Model.ExpireDate.ToLongDateString()</h4>
+                    </div>
+                    <p class="nocursor">
+                        SPP<br />
+                        서귀피안 프로젝트
+                    </p>
+                    <ul class="actions special">
+                        <li><a href="#" id="btnUse" class="button scrolly">쿠폰 사용</a></li>
+                    </ul>
                 </div>
-                <p class="nocursor">
-                    SPP<br />
-                    서귀피안 프로젝트
-                </p>
-                <ul class="actions special">
-                    <li><a href="#" id="btnUse" class="button scrolly">쿠폰 사용</a></li>
-                </ul>
-            </div>
-        </section>
+            </section>
+        }
+        else
+        {
+            <section id="header" class="header2">
+                <div class="inner">
+
+                    <span class="icon solid major fa-cloud nocursor"></span>
+                    <h1 class="nocursor">
+                        서귀피안 베이커리 보래드 베이커스 호텔 서귀피안<br />
+                        더비치하우스 더 비치 하우스
+                    </h1>
+                    <div>
+                        <h3>사용처: 보래드 베이커스, 서귀피안 베이커리</h3>
+                        <h4>쿠폰 사용 기한 : @Model.ExpireDate.ToLongDateString()</h4>
+                        <h4>사용 기한이 지난 쿠폰입니다.</h4>
+                    </div>
+                    <p class="nocursor">
+                        SPP<br />
+                        서귀피안 프로젝트
+                    </p>
+                    <ul class="actions special">
+                        <li><a href="#" class="button disabled">사용 불가</a></li>
+                    </ul>
+                </div>
+            </section>
+        }
+
     }
     else if (Model.Status == 1)
     {
         <section id="header" class="header3">
             <div>
-                <img src="~/img/SPP LOGO.png" width="300px"/>
+                <img src="~/img/SPP LOGO.png" width="300px" />
             </div>
             <div class="inner">
                 <p>
