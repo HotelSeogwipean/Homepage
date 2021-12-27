@@ -47,7 +47,15 @@
                     </h1>
                     <div>
                         <h3>사용처: 보래드 베이커스, 서귀피안 베이커리</h3>
-                        <h4>할인율 : @Model.Percentage %</h4>
+                        @{
+
+                            var percen = Model.Percentage;
+                            if(Model.Percentage < 1)
+                            {
+                                percen = 20;
+                            }
+                        }
+                        <h4>할인율 : @percen %</h4>
                         <h4>쿠폰 사용 기한 : @Model.ExpireDate.ToLongDateString()</h4>
                     </div>
                     <p class="nocursor">
@@ -101,6 +109,7 @@
                 <div class="actions special">
                     <h2 style="color: black;">
                         쿠폰 사용 완료<br />
+                        이용해주셔서 감사합니다.<br/>
                         사용일자: @Model.UseDate.Value.ToShortDateString()
                     </h2>
                 </div>
