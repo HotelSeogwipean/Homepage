@@ -50,7 +50,7 @@ namespace Seogwipean.Service.Kakao
             _session.SetString("login", "true");
             return "/coupon";
         }
-        /*
+
         public KakaoViewModel GetProfileSave()
         {
             string uri = KAKAO_API_HOST + "/v2/user/me";
@@ -80,6 +80,6 @@ namespace Seogwipean.Service.Kakao
             string uri = KAKAO_API_HOST + "/v2/api/talk/memo/default/send";
             return _httpCallService.CallwithToken(Const.POST, uri, _session.GetString("token"), Trans.default_msg_param);
         }
-        */
+
     }
 }

@@ -146,7 +146,7 @@ namespace Seogwipean.Web.Controllers
             var _url = Request.HttpContext.Request.Host;
             return Redirect(_kakaoService.LoginCallback(_url.ToString(), code));
         }
-
+        /*
         [Route("/Kakao/profile")]
         public String GetProfile()
         {
@@ -169,6 +169,6 @@ namespace Seogwipean.Web.Controllers
         public String Message()
         {
             return _kakaoService.Message();
-        }
+        }*/
     }
 }
