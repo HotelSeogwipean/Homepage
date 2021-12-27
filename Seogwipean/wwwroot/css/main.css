@@ -2925,11 +2925,10 @@ input, select, textarea {
 }
 
 #header {
-	/*padding: 9em 0 9em 0;*/
-	margin-top: 10%;
+	padding: 9em 0 9em 0;
 	color: rgba(255, 255, 255, 0.75);
 	/*background-attachment: fixed;*/
-	background-image: url("../img/SPP LOGO.png");
+	background-image: url("../img/BAKERY.png");
 	background-repeat: no-repeat;
 	/*background-image: url("images/overlay2.png"), url("images/overlay3.svg"), linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2);*/
 	background-position: center;
@@ -3241,6 +3240,9 @@ input, select, textarea {
 					padding: 0;
 				}
 
+@media screen and (max-width: 2561px) {
+}
+
 /* XLarge */
 
 	@media screen and (max-width: 1680px) {
@@ -3253,9 +3255,9 @@ input, select, textarea {
 
 		/* Header */
 
-			#header {
-				padding: 6em 0 6em 0 ;
-			}
+		#header {
+			padding: 6em 0 6em 0;
+		}
 
 	}
 
@@ -3339,9 +3341,9 @@ input, select, textarea {
 
 		/* Header */
 
-			#header {
-				padding: 8em 3em 8em 3em ;
-			}
+		#header {
+			padding: 8em 3em 8em 3em;
+		}
 
 		/* Footer */
 
@@ -3430,9 +3432,10 @@ input, select, textarea {
 
 		/* Header */
 
-			#header {
-				padding: 4em 3em 4em 3em ;
-			}
+		#header {
+			margin-top: 15%;
+			padding: 4em 3em 4em 3em;
+		}
 
 				#header .actions {
 					margin: 2em 0 0 0;
@@ -3468,6 +3471,7 @@ input, select, textarea {
 		/* Header */
 
 			#header {
+				margin-top: 17%;
 				padding: 4em 2em 4em 2em ;
 			}
 
@@ -3516,9 +3520,10 @@ input, select, textarea {
 
 		/* Header */
 
-			#header {
-				padding: 3em 1em 3em 1em ;
-			}
+		#header {
+			margin-top: 20%;
+			padding: 3em 1em 3em 1em;
+		}
 
 		/* Footer */
 
