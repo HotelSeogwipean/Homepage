@@ -14,10 +14,10 @@ namespace Seogwipean.Controllers
 
         public IActionResult Index()
         {
-            var _url = Request.HttpContext.Request.Host; 
-            if (_url.ToString() == "seogwipean.net" || _url.ToString() == "www.seogwipean.net" || _url.ToString() == "localhost:44376")
+            var _url = Request.HttpContext.Request.Host;
+            if (_url.ToString().Contains("seogwipean.net") || _url.ToString().Trim().Contains("www.seogwipean.net") || _url.ToString().Trim().Contains("localhost"))
             {
-                Redirect("/coupon");
+                Redirect("/Coupon");
             }
             return View("Intro");
         }

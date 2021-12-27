@@ -56,31 +56,30 @@ namespace Seogwipean.Data.Repositories
             {
                 using (var db = _dbContextFactory.Create())
                 {
-                    Coupon result = new Coupon();
+                    var newDb = from _cou in db.Coupon
+                                join _coudb in db.CouponDb
+                                    on _cou.Matchdb equals _coudb.Id
+                                select new CouponViewModel
+                                {
+                                    CouponId = _cou.CouponId,
+                                    Comment = _cou.Comment,
+                                    CreateDate = _cou.CreateDate,
+                                    ExpireDate = _cou.ExpireDate,
+                                    UseDate = _cou.UseDate,
+                                    KakaoId = _cou.KakaoId,
+                                    Phone = _cou.Phone,
+                                    Status = _cou.Status,
+                                    Percentage = _coudb.Percentage
+                                };
+                    var result = new Coupon();
                     if (vm.Search == 0)
                     {
-                        result = db.Coupon.FirstOrDefault(cou => cou.KakaoId == vm.Id);
+                        newDb = newDb.Where(n => n.KakaoId == vm.Id);
                     }else if(vm.Search == 1)
                     {
-                        result = db.Coupon.FirstOrDefault(cou => cou.Phone == vm.Phone_number);
+                        newDb = newDb.Where(n => n.Phone == vm.Phone_number);
                     }
-                    if (result == null)
-                    {
-                        return null;
-                    }
-                    var _db = db.CouponDb.FirstOrDefault(c => c.Id == result.Matchdb);
-
-                    return new CouponViewModel {
-                        CouponId = result.CouponId,
-                        Comment = result.Comment,
-                        CreateDate = result.CreateDate,
-                        ExpireDate = result.ExpireDate,
-                        UseDate = result.UseDate,
-                        KakaoId = result.KakaoId,
-                        Phone = result.Phone,
-                        Status = result.Status,
-                        Percentage = _db.Percentage
-                    };
+                    return newDb.FirstOrDefault();
                 }
             }
             catch (Exception e)

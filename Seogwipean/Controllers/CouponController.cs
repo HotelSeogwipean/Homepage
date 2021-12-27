@@ -177,6 +177,5 @@ namespace Seogwipean.Web.Controllers
         {
             return _kakaoService.Message();
         }
-        
     }
 }
