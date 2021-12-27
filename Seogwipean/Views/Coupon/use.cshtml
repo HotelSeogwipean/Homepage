@@ -26,7 +26,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="~/favicon/spp/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="~/favicon/spp/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="~/favicon/spp/favicon-16x16.png">
-    <link rel="manifest" href="~favicon/spp/manifest.json">
+    <link rel="manifest" href="~/favicon/spp/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="~/favicon/spp/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -128,6 +128,10 @@
     </section>
 
     <!-- Scripts -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script type="text/javascript">
+        Kakao.init('e41a831b92d80f97e049d206858badf6');
+    </script>
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/jquery.scrolly.min.js"></script>
     <script src="~/js/browser.min.js"></script>
@@ -137,6 +141,10 @@
     <script src="~/lib/custom-alert.js"></script>
     <script type="text/javascript">
         new customAlert();
+        $(function () {
+            history.replaceState({}, null, location.pathname);
+        });
+
 
         $("#btnUse").click(function () {
 

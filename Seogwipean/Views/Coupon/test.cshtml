@@ -25,12 +25,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="~/favicon/spp/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="~/favicon/spp/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="~/favicon/spp/favicon-16x16.png">
-    <link rel="manifest" href="~favicon/spp/manifest.json">
+    <link rel="manifest" href="~/favicon/spp/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="~/favicon/spp/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="~/favicon/spp/ms-icon-144x144.png">
+    <link rel="stylesheet" href="~/css/custom-alert.css"/>
     <meta charset="utf-8" />
     @*<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />*@
     <link rel="stylesheet" href="~/css/main.css" />
@@ -54,7 +55,7 @@
             </p>
             <ul class="actions special">
                 @*<li><a href="/Kakao/login" target="_blank" class="button scrolly">쿠폰 발급</a></li>*@
-                <li><a id="kakaoLogin" class="button scrolly" onclick="kakaoLogin()" href="#">쿠폰 발급</a></li>
+                <li><a id="kakaoLogin" class="button scrolly" onclick="fnCheck()" href="#">쿠폰 발급</a></li>
             </ul>
             @*<button id="kakaoLogin" onclick="kakaoLogin()">kakaoLogin</button>*@
             @*<button id="kakaoLogout" onclick="kakaoLogout()">kakaoLogout</button>*@
@@ -66,6 +67,7 @@
     </section>
 
     <!--Scripts -->
+    <script src="~/lib/custom-alert.js"></script>
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/jquery.scrolly.min.js"></script>
     <script src="~/js/browser.min.js"></script>
@@ -73,6 +75,19 @@
     <script src="~/js/util.js"></script>
     <script src="~/js/main.js"></script>
     <script type="text/javascript">
+        new customAlert();
+        $(function () {
+            history.replaceState({}, null, location.pathname);
+        });
+
+        function fnCheck() {
+            var btnCancel = "<button class='btn custom-alert btn_cancel' style='margin-left: 10px;' onclick='$(`#customalert`).hide(); $(`#customalert-overlay`).hide();$(`.btn_cancel`).remove();'>취소</button>";
+            $("#customalert .footer").append(btnCancel);
+            alert("주의!<br/>쿠폰은 발급일로부터 7일간 유효합니다.<br/>쿠폰 발급을 진행하시겠습니까?", function () {
+                kakaoLogin();
+            });
+        }
+
         function kakaoLogin() {
             Kakao.Auth.login({
                 success: function (response) {
@@ -91,6 +106,7 @@
                                 data: user,
                                 success: function (data) {
                                     console.log(data + "AJAX S");
+                                    
                                     setTimeout(function () {
                                         window.location.href = "/Coupon";
                                     }, 300);
