@@ -91,11 +91,10 @@ namespace Seogwipean.Web.Controllers
             return Json(db);
         }
 
-
-
+        [Route("/Coupon/Use")]
         public IActionResult UseCoupon()
         {
-            var _result = _couponService.UseCoupon(long.Parse(_session.GetString("coupon")));
+            var _result = _couponService.UseCoupon(_session.GetString("phone"));
             return View("use", _result.Data);
         }
 
@@ -131,12 +130,6 @@ namespace Seogwipean.Web.Controllers
             vm.KakaoId = _data.Id;
             vm.Phone = _data.Phone_number;
             var coupon = _couponService.CreateCoupon(vm);
-            return Json(coupon);
-        }
-        [HttpPost]
-        public IActionResult UseCoupon(long couponId)
-        {
-            var coupon = _couponService.UseCoupon(couponId);
             return Json(coupon);
         }
 

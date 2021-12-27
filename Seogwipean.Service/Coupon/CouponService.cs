@@ -68,10 +68,10 @@ namespace Seogwipean.Service.Coupon
             return _couponRepository.CreateCoupon(vm);
         }
 
-        public LongResult<CouponViewModel> UseCoupon(long couponId)
+        public LongResult<CouponViewModel> UseCoupon(string phone)
         {
-            _logger.LogInformation("UseCoupon " + couponId);
-            return _couponRepository.UseCoupon(couponId);
+            _logger.LogInformation("UseCoupon " + phone);
+            return _couponRepository.UseCoupon(phone);
         }
 
 

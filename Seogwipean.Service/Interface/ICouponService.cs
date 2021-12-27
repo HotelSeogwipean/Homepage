@@ -11,7 +11,7 @@ namespace Seogwipean.Service.Interface
         CouponViewModel GetCouponModel(long Id);
         LongResult<IList<Data.Models.Coupon>> GetCouponList(CouponViewModel vm);
         LongResult<CouponViewModel> CreateCoupon(CouponViewModel vm);
-        LongResult<CouponViewModel> UseCoupon(long couponId);
+        LongResult<CouponViewModel> UseCoupon(string phone);
         bool IsLoggedIn();
         CouponViewModel GetCouponKakao(KakaoViewModel vm);
 

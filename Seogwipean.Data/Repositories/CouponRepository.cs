@@ -259,13 +259,13 @@ namespace Seogwipean.Data.Repositories
             }
         }
 
-        public LongResult<CouponViewModel> UseCoupon(long couponId)
+        public LongResult<CouponViewModel> UseCoupon(string phone)
         {
             try
             {
                 using (var db = _dbContextFactory.Create())
                 {
-                    var _coupon = db.Coupon.FirstOrDefault(b => b.CouponId == couponId);
+                    var _coupon = db.Coupon.FirstOrDefault(b => b.Phone == phone);
                     var _status = _coupon.Status;
                     var _today = DateTime.Now;
 
