@@ -26,11 +26,12 @@ namespace Seogwipean.Controllers
             _logger.LogInformation("HOMECONTROLLER // IP : " + _ip + " , URL : " + _url);
             Console.WriteLine("IP : " + _ip + " , URL : " + _url);
             //var _url = Request.HttpContext.Request.Host;
-            if (_url.ToString().Contains("seogwipean.net") || _url.ToString().Trim().Contains("www.seogwipean.net") || _url.ToString().Trim().Contains("localhost"))
+            if (_url.Contains("seogwipean.net") || _url.Contains("www.seogwipean.net") || _url.Contains("localhost"))
             {
-                Redirect("/Coupon");
+                return Redirect("/Coupon");
             }
-            return View("Intro");
+            return View("Intro"); 
+            
         }
 
 
