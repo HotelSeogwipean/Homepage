@@ -18,7 +18,6 @@ namespace Seogwipean.Controllers
         {
             _logger = loggerFactory.CreateLogger<HomeController>();
         }
-
         public IActionResult Index()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
