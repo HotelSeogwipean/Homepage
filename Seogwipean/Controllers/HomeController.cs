@@ -25,7 +25,6 @@ namespace Seogwipean.Controllers
             var _url = Request.Scheme + "://" + Request.Host.Value;
             var time = DateTime.Now;
             _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
-            Console.WriteLine("IP : " + _ip + " , URL : " + _url);
             //var _url = Request.HttpContext.Request.Host;
             if (_url.Contains("seogwipean.net") || _url.Contains("www.seogwipean.net") || _url.Contains("localhost"))
             {
