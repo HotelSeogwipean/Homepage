@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Seogwipean.Models;
 using Seogwipean.Web.Controllers;
 
@@ -11,10 +12,20 @@ namespace Seogwipean.Controllers
 {
     public class HomeController : BaseController
     {
+        private readonly ILogger _logger;
+
+        public HomeController(ILoggerFactory loggerFactory)
+        {
+            _logger = loggerFactory.CreateLogger<HomeController>();
+        }
 
         public IActionResult Index()
         {
-            var _url = Request.HttpContext.Request.Host;
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host.Value;
+            _logger.LogInformation("HOMECONTROLLER // IP : " + _ip + " , URL : " + _url);
+            Console.WriteLine("IP : " + _ip + " , URL : " + _url);
+            //var _url = Request.HttpContext.Request.Host;
             if (_url.ToString().Contains("seogwipean.net") || _url.ToString().Trim().Contains("www.seogwipean.net") || _url.ToString().Trim().Contains("localhost"))
             {
                 Redirect("/Coupon");
