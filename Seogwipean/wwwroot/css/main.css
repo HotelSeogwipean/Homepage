@@ -3260,83 +3260,88 @@ input, select, textarea {
 
 	}
 
-/* Large */
+@media screen and (max-width: 1280px) {
+	#footer{
+		display: none;
+	}
+}
+
+	/* Large */
 
 	@media screen and (max-width: 1140px) {
 
 		/* Basic */
 
-			body, input, select, textarea {
-				font-size: 13pt;
-			}
+		body, input, select, textarea {
+			font-size: 13pt;
+		}
 
-			h1 br, h2 br, h3 br, h4 br, h5 br, h6 br {
-				display: none;
-			}
+		h1 br, h2 br, h3 br, h4 br, h5 br, h6 br {
+			display: none;
+		}
 
 		/* List */
 
-			ul.major-icons li {
-				padding: 2em;
-			}
+		ul.major-icons li {
+			padding: 2em;
+		}
 
-				ul.major-icons li .icon {
-					height: 8em;
-					line-height: 8em;
-					width: 8em;
-				}
+			ul.major-icons li .icon {
+				height: 8em;
+				line-height: 8em;
+				width: 8em;
+			}
 
 		/* Main */
 
-			.main {
-				padding: 4em 0 2em 0 ;
-			}
+		.main {
+			padding: 4em 0 2em 0;
+		}
 
-				.main.style2 {
-					background-attachment: scroll;
-				}
+			.main.style2 {
+				background-attachment: scroll;
+			}
 
 		/* Header */
 
-			#header {
-				padding: 5em 0 5em 0 ;
-				background-attachment: scroll;
-			}
+		#header {
+			padding: 5em 0 5em 0;
+			background-attachment: scroll;
+		}
 
-				#header br {
-					display: inline;
-				}
+			#header br {
+				display: inline;
+			}
 
 		/* Footer */
 
-			#footer {
-				padding: 4em 0 4em 0 ;
-				background-attachment: scroll;
-			}
-
+		#footer {
+			padding: 4em 0 4em 0;
+			background-attachment: scroll;
+		}
 	}
 
-/* Medium */
+	/* Medium */
 
 	@media screen and (max-width: 980px) {
 
 		/* List */
 
-			ul.major-icons li {
-				padding: 2em;
-			}
+		ul.major-icons li {
+			padding: 2em;
+		}
 
-				ul.major-icons li .icon {
-					height: 7em;
-					line-height: 7em;
-					width: 7em;
-				}
+			ul.major-icons li .icon {
+				height: 7em;
+				line-height: 7em;
+				width: 7em;
+			}
 
 		/* Main */
 
-			.main {
-				padding: 5em 3em 3em 3em ;
-			}
+		.main {
+			padding: 5em 3em 3em 3em;
+		}
 
 		/* Header */
 
@@ -3346,88 +3351,87 @@ input, select, textarea {
 
 		/* Footer */
 
-			#footer {
-				padding: 5em 3em 5em 3em ;
-			}
+		#footer {
+			padding: 5em 3em 5em 3em;
+		}
 
 		/* One */
 
-			#one {
-				text-align: center;
-			}
+		#one {
+			text-align: center;
+		}
 
 		/* Two */
 
-			#two {
-				text-align: center;
-			}
-
+		#two {
+			text-align: center;
+		}
 	}
 
-/* Small */
+	/* Small */
 
 	@media screen and (max-width: 736px) {
 
 		/* Basic */
 
-			body, input, select, textarea {
-				font-size: 12pt;
-			}
+		body, input, select, textarea {
+			font-size: 12pt;
+		}
 
-			h1 {
-				font-size: 1.75em;
-			}
+		h1 {
+			font-size: 1.75em;
+		}
 
-			h2 {
-				font-size: 1.5em;
-			}
+		h2 {
+			font-size: 1.5em;
+		}
 
-			h3 {
-				font-size: 1.1em;
-			}
+		h3 {
+			font-size: 1.1em;
+		}
 
-			h4 {
-				font-size: 1em;
-			}
+		h4 {
+			font-size: 1em;
+		}
 
 		/* List */
 
-			ul.major-icons li {
-				padding: 1.5em;
+		ul.major-icons li {
+			padding: 1.5em;
+		}
+
+			ul.major-icons li .icon {
+				height: 5em;
+				line-height: 5em;
+				width: 5em;
 			}
 
-				ul.major-icons li .icon {
-					height: 5em;
-					line-height: 5em;
-					width: 5em;
+				ul.major-icons li .icon:before {
+					font-size: 42px;
 				}
-
-					ul.major-icons li .icon:before {
-						font-size: 42px;
-					}
 
 		/* Icon */
 
-			.icon.major {
-				margin: 0 0 1em 0;
-			}
+		.icon.major {
+			margin: 0 0 1em 0;
+		}
 
 		/* Button */
 
-			input[type="submit"],
-			input[type="reset"],
-			input[type="button"],
-			button,
-			.button {
-				height: 3em;
-				line-height: 3em;
-			}
+		input[type="submit"],
+		input[type="reset"],
+		input[type="button"],
+		button,
+		.button {
+			height: 3em;
+			line-height: 3em;
+		}
 
 		/* Main */
 
-			.main {
-				padding: 3em 1.5em 1em 1.5em ;
-			}
+		.main {
+			padding: 3em 1.5em 1em 1.5em;
+		}
 
 		/* Header */
 
@@ -3436,86 +3440,84 @@ input, select, textarea {
 			padding: 4em 3em 4em 3em;
 		}
 
-				#header .actions {
-					margin: 2em 0 0 0;
-				}
+			#header .actions {
+				margin: 2em 0 0 0;
+			}
 
 		/* Footer */
 
-			#footer {
-				padding: 3em 1.5em 3em 1.5em ;
-			}
-
+		#footer {
+			padding: 3em 1.5em 3em 1.5em;
+		}
 	}
 
-/* XSmall */
+	/* XSmall */
 
 	@media screen and (max-width: 480px) {
 
 		/* Button */
 
-			input[type="submit"],
-			input[type="reset"],
-			input[type="button"],
-			.button {
-				padding: 0;
-			}
+		input[type="submit"],
+		input[type="reset"],
+		input[type="button"],
+		.button {
+			padding: 0;
+		}
 
 		/* Main */
 
-			.main {
-				padding: 2em 1.5em 0.1em 1.5em ;
-			}
+		.main {
+			padding: 2em 1.5em 0.1em 1.5em;
+		}
 
 		/* Header */
 
-			#header {
-				margin-top: 17%;
-				padding: 4em 2em 4em 2em ;
-			}
+		#header {
+			margin-top: 17%;
+			padding: 4em 2em 4em 2em;
+		}
 
-				#header br {
-					display: none;
-				}
+			#header br {
+				display: none;
+			}
 
 		/* Footer */
 
-			#footer {
-				padding: 2em 1.5em 2em 1.5em ;
+		#footer {
+			padding: 2em 1.5em 2em 1.5em;
+		}
+
+			#footer .copyright {
+				margin: 1.5em 0 0 0;
 			}
 
-				#footer .copyright {
-					margin: 1.5em 0 0 0;
+				#footer .copyright li {
+					border: 0;
+					display: block;
+					margin: 1em 0 0 0;
+					padding: 0;
 				}
 
-					#footer .copyright li {
-						border: 0;
-						display: block;
-						margin: 1em 0 0 0;
-						padding: 0;
+					#footer .copyright li:first-child {
+						margin-top: 0;
 					}
-
-						#footer .copyright li:first-child {
-							margin-top: 0;
-						}
-
 	}
 
-/* XXSmall */
+	/* XXSmall */
 
 	@media screen and (max-width: 320px) {
 
 		/* Basic */
 
-			html, body {
-				min-width: 320px;
-			}
+		html, body {
+			min-width: 320px;
+		}
 
 		/* Main */
 
-			.main {
-				padding: 2em 1em 0.1em 1em ;
-			}
+		.main {
+			padding: 2em 1em 0.1em 1em;
+		}
 
 		/* Header */
 
@@ -3526,8 +3528,7 @@ input, select, textarea {
 
 		/* Footer */
 
-			#footer {
-				padding: 2em 1em 2em 1em ;
-			}
-
+		#footer {
+			padding: 2em 1em 2em 1em;
+		}
 	}

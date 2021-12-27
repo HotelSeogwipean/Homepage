@@ -13,25 +13,25 @@
     <meta property="og:description" content="Seogwipean Project Coupon">
     <meta property="og:image" content="https://seogwipean.net/img/pav.png">
     <meta property="og:url" content="https://seogwipean.net/">
-    <link rel="apple-touch-icon" sizes="57x57" href="~favicon/spp/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="~favicon/spp/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="~favicon/spp/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="~favicon/spp/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="~favicon/spp/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="~favicon/spp/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="~favicon/spp/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="~favicon/spp/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="~favicon/spp/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="~favicon/spp/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="~favicon/spp/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="~favicon/spp/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="~favicon/spp/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="~/favicon/spp/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/favicon/spp/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/favicon/spp/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/favicon/spp/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/favicon/spp/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/favicon/spp/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/favicon/spp/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/favicon/spp/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/favicon/spp/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/favicon/spp/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/favicon/spp/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/favicon/spp/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/favicon/spp/favicon-16x16.png">
     <link rel="manifest" href="~favicon/spp/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="~favicon/spp/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="~/favicon/spp/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="~favicon/spp/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="~/favicon/spp/ms-icon-144x144.png">
     <link rel="stylesheet" href="~/css/main.css" />
     <noscript><link rel="stylesheet" href="~/css/noscript.css" /></noscript>
     <link href="~/css/custom-alert.css" rel="stylesheet" />
@@ -50,11 +50,12 @@
                         더비치하우스 더 비치 하우스
                     </h1>
                     <div>
-                        <h3>사용처: 보래드 베이커스, 서귀피안 베이커리</h3>
+                        <h3>사용처: </h3>
+                        <h3>보래드 베이커스, 서귀피안 베이커리</h3>
                         @{
 
                             var percen = Model.Percentage;
-                            if(Model.Percentage < 1)
+                            if (Model.Percentage < 1)
                             {
                                 percen = 20;
                             }
@@ -113,7 +114,7 @@
                         쿠폰 사용 완료!<br />
                         이용해주셔서 감사합니다.<br />
                     </h2>
-                    <h3>
+                    <h3 style="color: black !important;">
                         사용일자: @Model.UseDate.Value.ToShortDateString()
                     </h3>
                 </div>
@@ -121,6 +122,10 @@
         </section>
     }
 
+    <section id="footer">
+        <div><span>SEOGWIPEAN PROJECT</span></div>
+        <span class="signature">Copyrightⓒ 2021. <a>B&LEE World Co., Ltd</a>. All rights reserved.</span>
+    </section>
 
     <!-- Scripts -->
     <script src="~/js/jquery.min.js"></script>
