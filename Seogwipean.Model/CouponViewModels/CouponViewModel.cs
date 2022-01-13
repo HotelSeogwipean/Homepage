@@ -16,6 +16,7 @@ namespace Seogwipean.Model.CouponViewModels
         public int KakaoId { get; set; }
         public int Search { get; set; }
         public int Percentage { get; set; }
+        public int Type { get; set; }
     }
 
     public class CouponDBViewModel

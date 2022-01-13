@@ -63,6 +63,12 @@ namespace Seogwipean.Web.Controllers
             }
         }
 
+        [Route("/Bakery")]
+        public IActionResult Bakery()
+        {
+            return View();
+        }
+
         [HttpPost]
         [Route("/KakaoLogin")]
         public IActionResult KakaoLogin(KakaoViewModel _model) 

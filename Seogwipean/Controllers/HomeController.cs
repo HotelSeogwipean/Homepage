@@ -18,6 +18,7 @@ namespace Seogwipean.Controllers
         {
             _logger = loggerFactory.CreateLogger<HomeController>();
         }
+
         public IActionResult Index()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
@@ -25,9 +26,10 @@ namespace Seogwipean.Controllers
             var time = DateTime.Now;
             _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             //var _url = Request.HttpContext.Request.Host;
+
             if (_url.Contains("seogwipean.net") || _url.Contains("www.seogwipean.net") || _url.Contains("localhost"))
             {
-                return Redirect("/Coupon");
+                return RedirectPermanent("https://www.seogwipean.com/");
             }
             return View("Intro"); 
             

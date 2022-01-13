@@ -96,6 +96,8 @@ namespace Seogwipean.Data.Models
 
                 entity.Property(e => e.Status).HasColumnName("status");
 
+                entity.Property(e => e.Type).HasColumnName("type");
+
                 entity.Property(e => e.UseDate)
                     .HasColumnName("useDate")
                     .HasColumnType("date");

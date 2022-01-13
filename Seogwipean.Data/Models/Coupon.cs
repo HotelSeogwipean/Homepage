@@ -14,5 +14,6 @@ namespace Seogwipean.Data.Models
         public DateTime? UseDate { get; set; }
         public int KakaoId { get; set; }
         public int Matchdb { get; set; }
+        public int Type { get; set; }
     }
 }

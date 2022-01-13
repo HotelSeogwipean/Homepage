@@ -69,7 +69,8 @@ namespace Seogwipean.Data.Repositories
                                     KakaoId = _cou.KakaoId,
                                     Phone = _cou.Phone,
                                     Status = _cou.Status,
-                                    Percentage = _coudb.Percentage
+                                    Percentage = _coudb.Percentage,
+                                    Type = _cou.Type
                                 };
                     var result = new Coupon();
                     if (vm.Search == 0)
@@ -113,7 +114,9 @@ namespace Seogwipean.Data.Repositories
                         ExpireDate = _db.ExpireDate,
                         Comment = _db.Comment,
                         Status = CodesName.Booking_Booked,
-                        UseDate = _db.UseDate
+                        UseDate = _db.UseDate,
+                        Type = _db.Type,
+                        KakaoId= _db.KakaoId
                     };
 
                     return result;
@@ -193,7 +196,10 @@ namespace Seogwipean.Data.Repositories
                     var expireDay = toDay.AddDays(7);
                     var _phone = vm.Phone;
                     var _kakaoId = vm.KakaoId;
+                    var _type = vm.Type;
+
                     var _db = new Coupon();
+
                     if (vm == null)
                     {
                         return new LongResult<CouponViewModel>
@@ -221,7 +227,8 @@ namespace Seogwipean.Data.Repositories
                         ExpireDate = expireDay,
                         Status = CodesName.Coupon_UnUsed,
                         KakaoId = vm.KakaoId,
-                        Matchdb = 1
+                        Matchdb = 1,
+                        Type = _type // 호텔에 2022 01월부터 뿌리는거가 0 , 클릭시 하는게 1 
                     };
                     db.Coupon.Add(newDB);
                     var result = db.SaveChanges();
@@ -297,7 +304,8 @@ namespace Seogwipean.Data.Repositories
                                 ExpireDate = _coupon.ExpireDate,
                                 UseDate = _coupon.UseDate,
                                 KakaoId = _coupon.KakaoId,
-                                Phone = _coupon.Phone
+                                Phone = _coupon.Phone,
+                                Type= _coupon.Type
                             }
                         };
                     }
@@ -318,7 +326,8 @@ namespace Seogwipean.Data.Repositories
                             Phone = _coupon.Phone,
                             Comment = _coupon.Comment,
                             Status = _coupon.Status,
-                            UseDate = _today
+                            UseDate = _today,
+                            Type = _coupon.Type
                         }
                     };
                 }
@@ -410,97 +419,6 @@ namespace Seogwipean.Data.Repositories
                 return null;
             }
         }
-
-
-        /*
-        public LongResult<SurfViewModel> UpdateSurf(SurfViewModel vm)
-        {
-            try
-            {
-                using (var db = _dbContextFactory.Create())
-                {
-                    var surfId = vm.Id;
-                    var userName = vm.UserName;
-                    var email = vm.Email;
-                    var phone = vm.Phone;
-                    var startDate = vm.StartDate;
-                    var startTime = vm.StartTime;
-                    var request = vm.Request;
-                    var headCount = vm.HeadCount;
-                    var ageRange = vm.AgeRange;
-
-                    var _booking = db.Surf.FirstOrDefault(b => b.Id == surfId);
-                    if (!string.IsNullOrWhiteSpace(userName))
-                    {
-                        _booking.UserName = userName;
-                    }
-                    if (!string.IsNullOrWhiteSpace(email))
-                    {
-                        _booking.Email = email;
-                    }
-                    if (!string.IsNullOrWhiteSpace(phone))
-                    {
-                        _booking.Phone = phone;
-                    }
-                    if (startDate.Year > 1)
-                    {
-                        _booking.StartDate = startDate;
-                    }
-                    if (startTime > 0)
-                    {
-                        _booking.StartTime = startTime;
-                    }
-                    if (!string.IsNullOrWhiteSpace(request))
-                    {
-                        _booking.Request = request;
-                    }
-                    if (vm.Status > 0)
-                    {
-                        _booking.Status = vm.Status;
-                    }
-                    if (headCount > 0)
-                    {
-                        _booking.HeadCount = headCount;
-                    }
-                    db.Update(_booking);
-                    var _result = db.SaveChanges();
-                    return new LongResult<SurfViewModel>
-                    {
-                        Result = Common.Success,
-                        Data = new SurfViewModel
-                        {
-                            UserName = userName,
-                            HeadCount = headCount,
-                            Email = email,
-                            Request = request,
-                            Phone = phone,
-                            StartDate = startDate,
-                            StartTime = startTime,
-                            Status = CodesName.Booking_Booked,
-                            AgeRange = ageRange
-                        }
-                    };
-                }
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e.ToString());
-                if (e is SeogwipeanException)
-                {
-                    return new LongResult<SurfViewModel>
-                    {
-                        Result = Common.Fail,
-                        Reason = e.Message
-                    };
-                }
-                return new LongResult<SurfViewModel>
-                {
-                    Result = Common.Exception,
-                    Reason = null
-                };
-            }
-        }*/
-
 
     }
 
