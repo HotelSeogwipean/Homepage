@@ -64,7 +64,29 @@ namespace Seogwipean.Web.Controllers
         }
 
         [Route("/Bakery")]
+        [HttpGet]
         public IActionResult Bakery()
+        {
+            return View();
+        }
+
+        [Route("/Bakery/Use")]
+        [HttpGet]
+        public IActionResult BakeryUse()
+        {
+            return View();
+        }
+
+        [Route("/BeachHouse")]
+        [HttpGet]
+        public IActionResult Beach()
+        {
+            return View();
+        }
+
+        [Route("/BeachHouse/Use")]
+        [HttpGet]
+        public IActionResult BeachUse()
         {
             return View();
         }

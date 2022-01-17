@@ -1,0 +1,164 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    text-align: center;
+    position: fixed;
+    overflow: hidden;
+    touch-action: none;
+    width: 480px;
+}
+
+body:before {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#wrap input[type=button] {
+    background: #1AAB8A;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 60px;
+    font-size: 1.6em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    margin-top: 15px;
+}
+
+#wrap input[type=button]:hover {
+    background: #fff;
+    color: #1AAB8A;
+}
+
+    #wrap input[type=button]:before, #wrap input[type=button]:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background: #1AAB8A;
+        transition: 400ms ease all;
+    }
+
+#wrap input[type=button]:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+    #wrap input[type=button]:hover:before, #wrap input[type=button]:hover:after {
+        width: 100%;
+        transition: 800ms ease all;
+    }
+
+#wrap {
+    margin-top: 15%;
+    background-position: center, center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+    div:nth-of-type(2) {
+        margin-top: 5%;
+    }
+
+#wrap img, #used img{
+    width: 100%;
+    background-size: cover;
+}
+
+
+#loaderBox {
+    position: absolute;
+    width: 100%;
+    height: 125%;
+    background-color: white;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.spinner {
+    top: 25%;
+    margin: 100px auto;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    text-align: center;
+    -webkit-animation: sk-rotate 2.0s infinite linear;
+    animation: sk-rotate 2.0s infinite linear;
+}
+
+.dot1, .dot2 {
+    width: 60%;
+    height: 60%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    background-color: #333;
+    border-radius: 100%;
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.dot2 {
+    top: auto;
+    bottom: 0;
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-rotate {
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+@keyframes sk-rotate {
+    100% {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+@-webkit-keyframes sk-bounce {
+    0%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+
+    50% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes sk-bounce {
+    0%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+
+    50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
+
+#used {
+    display: none;
+    margin-top: 20%;
+    background-position: center, center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+#used img{
+    opacity: 0.25;
+}

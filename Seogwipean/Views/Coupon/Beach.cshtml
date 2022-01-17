@@ -19,7 +19,7 @@
     </div>
 
     <div id="wrap">
-        <img src="~/img/bakerycoupon.png">
+        <img src="~/img/beachhousecoupon.png.png">
         <input type="button" value="사용하기" id="btn"/>
     </div>
 
@@ -34,7 +34,7 @@
     <script type="text/javascript">
         new customAlert();
         var _cookie;
-        _cookie = $.cookie('sbakery');
+        _cookie = $.cookie('sbeach');
         function fnUse(){
             $("#wrap").remove();
                 $("#used").show();
@@ -74,7 +74,7 @@
             var btnCancel = "<button class='btn custom-alert btn_cancel' style='margin-left: 10px;' onclick='$(`#customalert`).hide(); $(`#customalert-overlay`).hide();$(`.btn_cancel`).remove();'>취소</button>";
             $("#customalert .footer").append(btnCancel);
             alert("주의!<br/><br/>직원 외 사용시 쿠폰의 복구가 불가능합니다. <br/>직원이 사용 버튼을 누르고 있습니까?", function () {
-                $.cookie('sbakery', '1', { expires: 31, path: '/' });
+                $.cookie('sbeach', '1', { expires: 31, path: '/' });
                 fnUse();
             });
         });
