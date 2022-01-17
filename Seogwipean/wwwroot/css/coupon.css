@@ -78,7 +78,7 @@ body:before {
 
 #loaderBox {
     position: absolute;
-    width: 125%;
+    width: 105%;
     height: 125%;
     background-color: white;
     z-index: 1;
