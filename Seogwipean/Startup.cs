@@ -75,6 +75,8 @@ namespace Seogwipean
                 options.MaxAge = TimeSpan.FromDays(60);
                 options.ExcludedHosts.Add("hotelseogwipean.com");
                 options.ExcludedHosts.Add("www.hotelseogwipean.com");
+                options.ExcludedHosts.Add("seogwipean.com");
+                options.ExcludedHosts.Add("www.seogwipean.com");
             });
 
             /*

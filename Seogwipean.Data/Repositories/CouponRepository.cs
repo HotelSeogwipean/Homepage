@@ -228,7 +228,8 @@ namespace Seogwipean.Data.Repositories
                         Status = CodesName.Coupon_UnUsed,
                         KakaoId = vm.KakaoId,
                         Matchdb = 1,
-                        Type = _type // 호텔에 2022 01월부터 뿌리는거가 0 , 클릭시 하는게 1 
+                        Type = _type 
+                        // 서귀피안베이커리 10% 쿠폰(5) 더비치하우스(6)
                     };
                     db.Coupon.Add(newDB);
                     var result = db.SaveChanges();
