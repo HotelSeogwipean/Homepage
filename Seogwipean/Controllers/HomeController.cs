@@ -42,6 +42,11 @@ namespace Seogwipean.Controllers
             return View("Index");
         }
 
+        public IActionResult Robots()
+        {
+            return View();
+        }
+
         [Route("/.well-known/pki-validation")]
         [Route("/.well-known/pki-validation/godaddy.html")]
         [Route("/.well-known/pki-validation/godaddy")]
