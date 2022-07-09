@@ -31,6 +31,12 @@ namespace Seogwipean.Controllers
             {
                 return Redirect("https://www.seogwipean.com/");
             }
+
+            if (_url == "www.hotelseogwipean.com" || _url.Contains("www."))
+            {
+                return RedirectPermanent("https://hotelseogwipean.com/");
+            }
+
             return View("Intro"); 
             
         }
