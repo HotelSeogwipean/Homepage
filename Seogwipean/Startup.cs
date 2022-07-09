@@ -69,7 +69,6 @@ namespace Seogwipean
                 options.Cookie.IsEssential = true;
             });
 
-            /*
             services.AddHsts(options => {
                 options.Preload = true;
                 options.IncludeSubDomains = true;
@@ -79,7 +78,6 @@ namespace Seogwipean
                 options.ExcludedHosts.Add("seogwipean.com");
                 options.ExcludedHosts.Add("www.seogwipean.com");
             });
-            */
 
             /*
             services.AddHttpsRedirection(options => {
