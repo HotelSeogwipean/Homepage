@@ -20,7 +20,6 @@ namespace Seogwipean.Controllers
         }
         public IActionResult Index()
         {
-
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
             var _url = Request.Scheme + "://" + Request.Host.Value;
             var time = DateTime.Now;
