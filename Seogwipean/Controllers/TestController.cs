@@ -42,7 +42,6 @@ namespace Seogwipean.Web.Controllers
             string _source = vm.Source;
             string _target = vm.Target;
             string _query = vm.Text;
-
             Console.WriteLine("1: Client " + _client + " Secret " + _secret + " Source " + _source + " Target " + _target + " Text " + _query);
             if (_source == "" || _source == null)
             {
