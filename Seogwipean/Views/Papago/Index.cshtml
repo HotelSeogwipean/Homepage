@@ -1,0 +1,82 @@
+﻿@{
+    Layout = null;
+}
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title class="notranslate">Live Translate Helper</title>
+        <link rel="stylesheet" href="~/css/papago.css">
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="~/js/papago.js"></script>
+    </head>
+    
+    <body>
+        <header class="notranslate">
+            <h1>PAPAGO / Korean Speech to English Speak Helper <span id="statusSpan">작동 중지</span></h1>
+            <h4 id="intro" style="border: 1px solid black; border-radius: 3px;">여기를 클릭하여 사용방법 확인</h4>
+            <div class="base-line" style="display: none;" onclick="window.open(`https://download.vb-audio.com/Download_CABLE/VBCABLE_Driver_Pack43.zip`, `_blank`);">
+                입력음을 텍스트화하여 시각적으로 확인<br/>
+                0. (여기를 클릭) VB-Audio 설치 (출력음을 입력음으로 변경)<br/>
+                1. 하단 작업표시줄에서 소리 우클릭 > 소리 설정 열기 > 하단 (고급 사운드 옵션)에서 앱 볼륨 및 장치 기본 설정 클릭<br/>
+                2. 접속하는 인터넷 브라우저(크롬/엣지 등)의 입력값을 (VB-Audio Output)로 변경<br/>
+                3. 입력할 게임 또는 브라우저 출력값을 (VB-Audio Input)로 변경시, 음성을 화면에 텍스트화하여 출력 가능<br/>
+                4. 상단 구글 번역기 > 한글로 지정시 자동 번역 진행<br/>
+                아 근데 이거는 다른 버전이라서 위에거 별 쓸모 없겠다. Voicemeeter 프로그램 설치해야함<br/>
+            </div>
+        </header>
+        <div style="text-align: center; margin: 0 auto;">
+            <span style="font-size: 20px; text-align: center;" id="speech">대기</span>
+        </div>
+        <div class="contents" style="width: 100%;">
+            <button id="requestMic" style="display: none;">마이크 액세스 요청</button>
+            <section class="wrapper">
+                <div class="result" style="width: 100%; height: 300px; overflow-y: scroll;">
+                    <table id="resultTable" style="width: 100%; max-width: 1000px;">
+                        <tr>
+                            <th style="width: 15%;">시간</th>
+                            <th style="width: 84%;" class="notranslate">내용</th>
+                            <!-- <th style="width: 33.33%;">번역</th> -->
+                        </tr>
+                    </table>
+                </div>
+                <div class="recognized-textarea" style="width: 100%; padding: 30px 0px 30px 0px">
+                    <span class="final notranslate" id="final_span"></span>
+                    <span class="interim notranslate" id="interim_span"></span>
+                </div>
+                <div class="Button-area">
+                    <button class="mic notranslate"> 음성 인식
+                        <span id="recording-state"></span>
+                    </button>
+                    <button class="remove notranslate"> 초기화
+                    </button>
+                </div>
+            </section>
+        </div>
+
+
+    <form>
+        <div>
+          <label for="rate">Rate</label
+          ><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate" />
+          <div class="rate-value">1</div>
+          <div class="clearfix"></div>
+        </div>
+        <div>
+          <label for="pitch">Pitch</label
+          ><input type="range" min="0" max="2" value="1" step="0.1" id="pitch" />
+          <div class="pitch-value">1</div>
+          <div class="clearfix"></div>
+        </div>
+        <select id="select"></select>
+      </form>
+        
+        <footer>
+            <div class="base-line"></div>
+            <p class="inc"> ⓒ Sanghun Lee Inc. All Rights Reserved. </p>
+        </footer>
+    </body>
+    </html>

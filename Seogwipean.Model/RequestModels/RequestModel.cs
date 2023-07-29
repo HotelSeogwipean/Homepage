@@ -5,6 +5,8 @@
         public string Source { get; set; }
         public string Target { get; set; }
         public string Text { get; set; }
+        public string Secret { get; set; }
+        public string Client { get; set; }
     }
 
     public class RequestModel<T> : RequestModel
