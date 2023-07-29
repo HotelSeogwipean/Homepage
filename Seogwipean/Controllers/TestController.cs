@@ -68,8 +68,8 @@ namespace Seogwipean.Web.Controllers
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = byteDataParams.Length;
 
-            _logger.LogDebug("Client " + _client);
-            _logger.LogDebug("Secret " + _secret);
+            Console.WriteLine("Client " + _client + " Secret " + _secret + " Source " + _source + " Target " + _target + " Text " + _query);
+            Console.WriteLine();
 
 
             Stream st = request.GetRequestStream();
