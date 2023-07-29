@@ -19,9 +19,9 @@ namespace Seogwipean.Web.Controllers
         public IActionResult Index()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
+            var _url = Request.Scheme + "://" + Request.Host.Value;
             var time = DateTime.Now;
-            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
+            _logger.LogInformation("FacilitiesController " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
         }
     }
