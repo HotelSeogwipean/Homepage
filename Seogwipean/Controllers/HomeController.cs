@@ -20,11 +20,6 @@ namespace Seogwipean.Controllers
         {
             _logger = loggerFactory.CreateLogger<HomeController>();
             _httpContextAccessor = httpContextAccessor;
-
-            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
-            var time = DateTime.Now;
-            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
         }
         public IActionResult Index()
         {

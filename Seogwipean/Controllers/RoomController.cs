@@ -13,10 +13,6 @@ namespace Seogwipean.Web.Controllers
         public RoomController(ILoggerFactory loggerFactory)
         {
             _logger = loggerFactory.CreateLogger<RoomController>();
-            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
-            var time = DateTime.Now;
-            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
         }
         public IActionResult Index()
         {
