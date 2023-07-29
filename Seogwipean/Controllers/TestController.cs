@@ -42,8 +42,10 @@ namespace Seogwipean.Web.Controllers
                 vm.Source = "ko";
                 vm.Target = "en";
                 vm.Text = "지금 진행중인 내용은 테스트를 위한 의미없는 번역입니다.";
-                vm.Client = "xTvSfa4FtosiAGIJy7XE";
-                vm.Secret = "qMuICLBMLp";
+                // vm.Client = "xTvSfa4FtosiAGIJy7XE";
+                // vm.Secret = "qMuICLBMLp";
+                vm.Client = "Y9EjKoi9iVLwIRmq0C3d";
+                vm.Secret = "gEYBMfFMP5";
 
                 //return Json(new LongResult {
                 //    Result = Common.Fail,
