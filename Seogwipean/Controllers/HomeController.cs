@@ -44,6 +44,10 @@ namespace Seogwipean.Controllers
         [Route("/Intro")]
         public IActionResult Intro()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View("Index");
         }
 
@@ -77,30 +81,50 @@ namespace Seogwipean.Controllers
 
         public IActionResult Privacy()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
         }
 
         [Route("/Hotel")]
         public IActionResult Hotel()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
         }
 
         [Route("/location")]
         public IActionResult Location()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
         }
 
         [Route("/offers")]
         public IActionResult Offers()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
