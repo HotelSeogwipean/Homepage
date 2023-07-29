@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Seogwipean.Models;
@@ -13,10 +14,12 @@ namespace Seogwipean.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger _logger;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(ILoggerFactory loggerFactory)
+        public HomeController(ILoggerFactory loggerFactory, IHttpContextAccessor httpContextAccessor)
         {
             _logger = loggerFactory.CreateLogger<HomeController>();
+            _httpContextAccessor = httpContextAccessor;
         }
         public IActionResult Index()
         {
@@ -46,8 +49,9 @@ namespace Seogwipean.Controllers
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
             var _url = Request.Scheme + "://" + Request.Host.Value;
+            string host = _httpContextAccessor.HttpContext.Request.Host.Value;
             var time = DateTime.Now;
-            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url + " ___ " + host);
             return View("Index");
         }
 
