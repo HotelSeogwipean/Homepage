@@ -35,7 +35,7 @@ namespace Seogwipean.Web.Controllers
 
         [HttpGet("/Test/Papago")]
         [HttpPost("/Test/Papago")]
-        public IActionResult GetPapago([FromForm]RequestModel vm)
+        public IActionResult GetPapago([FromBody]RequestModel vm)
         {
             string _client = vm.Client;
             string _secret = vm.Secret;
