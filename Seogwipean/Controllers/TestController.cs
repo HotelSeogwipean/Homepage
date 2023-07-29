@@ -44,7 +44,7 @@ namespace Seogwipean.Web.Controllers
             string _query = vm.Text;
 
             Console.WriteLine("1: Client " + _client + " Secret " + _secret + " Source " + _source + " Target " + _target + " Text " + _query);
-            if (vm.Source == "" || vm.Source == null)
+            if (_source == "" || _source == null)
             {
                 vm.Source = "ko";
                 vm.Target = "en";
