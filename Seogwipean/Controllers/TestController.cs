@@ -37,7 +37,7 @@ namespace Seogwipean.Web.Controllers
         [HttpPost("/Test/Papago")]
         public IActionResult GetPapago(RequestModel vm)
         {
-            if(vm == null)
+            if (vm.Source == "" || vm.Source == null)
             {
                 vm.Source = "ko";
                 vm.Target = "en";
@@ -46,12 +46,12 @@ namespace Seogwipean.Web.Controllers
                 // vm.Secret = "qMuICLBMLp";
                 vm.Client = "Y9EjKoi9iVLwIRmq0C3d";
                 vm.Secret = "gEYBMfFMP5";
+            }
 
                 //return Json(new LongResult {
                 //    Result = Common.Fail,
                 //    Reason = "REQUESET 내용이 없습니다."
                 //});
-            }
             string _client = vm.Client;
             string _secret = vm.Secret;
             string _source = vm.Source;
@@ -67,6 +67,11 @@ namespace Seogwipean.Web.Controllers
             byte[] byteDataParams = Encoding.UTF8.GetBytes("source=" + _source + "&target=" + _target + "&text=" + _query);
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = byteDataParams.Length;
+
+            _logger.LogDebug("Client " + _client);
+            _logger.LogDebug("Secret " + _secret);
+
+
             Stream st = request.GetRequestStream();
             st.Write(byteDataParams, 0, byteDataParams.Length);
             st.Close();

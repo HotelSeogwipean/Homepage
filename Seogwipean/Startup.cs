@@ -79,6 +79,18 @@ namespace Seogwipean
                 options.ExcludedHosts.Add("www.seogwipean.com");
             });
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost",
+                                            "http://sanghun0729.cafe24.com",
+                                            "https://localhost",
+                                            "https://sanghun0729.cafe24.com");
+                    });
+            });
+
             /*
             services.AddHttpsRedirection(options => {
                 options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
@@ -122,6 +134,7 @@ namespace Seogwipean
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            app.UseCors();
         }
     }
 }
