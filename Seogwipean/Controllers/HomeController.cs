@@ -20,11 +20,16 @@ namespace Seogwipean.Controllers
         {
             _logger = loggerFactory.CreateLogger<HomeController>();
             _httpContextAccessor = httpContextAccessor;
+
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
         }
         public IActionResult Index()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
             var time = DateTime.Now;
             _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             //var _url = Request.HttpContext.Request.Host;
@@ -48,10 +53,9 @@ namespace Seogwipean.Controllers
         public IActionResult Intro()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host.Value;
-            string host = _httpContextAccessor.HttpContext.Request.Host.Value;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
             var time = DateTime.Now;
-            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url + " ___ " + host);
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View("Index");
         }
 
@@ -86,7 +90,7 @@ namespace Seogwipean.Controllers
         public IActionResult Privacy()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
             var time = DateTime.Now;
             _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
@@ -96,7 +100,7 @@ namespace Seogwipean.Controllers
         public IActionResult Hotel()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
             var time = DateTime.Now;
             _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
@@ -106,7 +110,7 @@ namespace Seogwipean.Controllers
         public IActionResult Location()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
             var time = DateTime.Now;
             _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
@@ -116,7 +120,7 @@ namespace Seogwipean.Controllers
         public IActionResult Offers()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
             var time = DateTime.Now;
             _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
@@ -126,7 +130,7 @@ namespace Seogwipean.Controllers
         public IActionResult Error()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
             var time = DateTime.Now;
             _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
