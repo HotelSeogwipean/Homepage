@@ -35,24 +35,24 @@ namespace Seogwipean.Web.Controllers
 
         [HttpGet("/Test/Papago")]
         [HttpPost("/Test/Papago")]
-        public IActionResult GetPapago([FromBody]RequestModel vm)
+        public IActionResult GetPapago([FromBody]string client, [FromBody] string secret, [FromBody] string source, [FromBody] string target, [FromBody] string inputs)
         {
-            string _client = vm.Client;
-            string _secret = vm.Secret;
-            string _source = vm.Source;
-            string _target = vm.Target;
-            string _query = vm.Text;
+            string _client = client;
+            string _secret = secret;
+            string _source = source;
+            string _target = target;
+            string _query = inputs;
 
             Console.WriteLine("1: Client " + _client + " Secret " + _secret + " Source " + _source + " Target " + _target + " Text " + _query);
             if (_source == "" || _source == null)
             {
-                vm.Source = "ko";
-                vm.Target = "en";
-                vm.Text = "지금 진행중인 내용은 테스트를 위한 의미없는 번역입니다.";
+                _source = "ko";
+                _target = "en";
+                _query = "지금 진행중인 내용은 테스트를 위한 의미없는 번역입니다.";
                 // vm.Client = "xTvSfa4FtosiAGIJy7XE";
                 // vm.Secret = "qMuICLBMLp";
-                vm.Client = "Y9EjKoi9iVLwIRmq0C3d";
-                vm.Secret = "gEYBMfFMP5";
+                _client = "Y9EjKoi9iVLwIRmq0C3d";
+                _secret = "gEYBMfFMP5";
             }
 
                 //return Json(new LongResult {
