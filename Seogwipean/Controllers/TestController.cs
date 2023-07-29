@@ -33,6 +33,7 @@ namespace Seogwipean.Web.Controllers
             public string Secret { get; set; }
         }
 
+        [FromBody]
         [HttpGet("/Test/Papago")]
         [HttpPost("/Test/Papago")]
         public IActionResult GetPapago(RequestModel vm)
