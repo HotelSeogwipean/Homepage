@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Seogwipean.Models;
@@ -13,15 +14,17 @@ namespace Seogwipean.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger _logger;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(ILoggerFactory loggerFactory)
+        public HomeController(ILoggerFactory loggerFactory, IHttpContextAccessor httpContextAccessor)
         {
             _logger = loggerFactory.CreateLogger<HomeController>();
+            _httpContextAccessor = httpContextAccessor;
         }
         public IActionResult Index()
         {
             var _ip = Request.HttpContext.Connection.RemoteIpAddress;
-            var _url = Request.Scheme + "://" + Request.Host.Value;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
             var time = DateTime.Now;
             _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
 
@@ -45,6 +48,10 @@ namespace Seogwipean.Controllers
         [Route("/Intro")]
         public IActionResult Intro()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View("Index");
         }
 
@@ -78,30 +85,50 @@ namespace Seogwipean.Controllers
 
         public IActionResult Privacy()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
         }
 
         [Route("/Hotel")]
         public IActionResult Hotel()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
         }
 
         [Route("/location")]
         public IActionResult Location()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
         }
 
         [Route("/offers")]
         public IActionResult Offers()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            var _ip = Request.HttpContext.Connection.RemoteIpAddress;
+            var _url = Request.Scheme + "://" + Request.Host + Request.PathBase + Request.Path + Request.QueryString;
+            var time = DateTime.Now;
+            _logger.LogInformation("HOMECONTROLLER " + time + "// IP : " + _ip + " , URL : " + _url);
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
